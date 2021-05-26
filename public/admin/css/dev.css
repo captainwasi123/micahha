@@ -20,3 +20,29 @@
     margin-top: -10px;
     margin-bottom: 0;
 }
+.sidebar-nav ul li.nav-small-cap {
+    color: #ffffff !important;
+    background-color: #1976d2 !important;
+    font-weight: bold !important;
+}
+.db-heading h6 {
+    border-top: 1px solid #e6e6e6;
+    padding: 5px 0px 0px 0px;
+}
+.db-heading h2 {
+    font-weight: 700;
+    font-size: 32px;
+}
+.cut-text { 
+  text-overflow: ellipsis;
+  overflow: hidden; 
+  width: 160px; 
+  height: 1.2em; 
+  white-space: nowrap;
+}
+.thumbnail {
+    width: 30px;
+}
+.sidebar-nav>ul>li>a.active {
+    background: #24293314 !important;
+}
