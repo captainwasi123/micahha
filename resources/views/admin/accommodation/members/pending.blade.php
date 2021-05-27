@@ -24,7 +24,7 @@
                             <tr>
                                 <td>1</td>
                                 <td style="width:35px"><img src="{{URL::to('/public/admin/')}}/assets/images/dp-placeholder.jpg" alt="user" class="thumbnail" /></td>
-                                <td>Peter</td>
+                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Peter</a></td>
                                 <td>12121212121</td>
                                 <td><a href="mailto:peter@gmail.com">peter@gmail.com</a></td>
                                 <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
@@ -42,7 +42,7 @@
                             <tr>
                                 <td>2</td>
                                 <td style="width:35px"><img src="{{URL::to('/public/admin/')}}/assets/images/dp-placeholder.jpg" alt="user" class="thumbnail" /></td>
-                                <td>Peter</td>
+                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Peter</a></td>
                                 <td>12121212121</td>
                                 <td><a href="mailto:peter@gmail.com">peter@gmail.com</a></td>
                                 <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
@@ -60,7 +60,7 @@
                             <tr>
                                 <td>3</td>
                                 <td style="width:35px"><img src="{{URL::to('/public/admin/')}}/assets/images/dp-placeholder.jpg" alt="user" class="thumbnail" /></td>
-                                <td>Peter</td>
+                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Peter</a></td>
                                 <td>12121212121</td>
                                 <td><a href="mailto:peter@gmail.com">peter@gmail.com</a></td>
                                 <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>

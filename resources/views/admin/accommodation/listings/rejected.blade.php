@@ -1,4 +1,4 @@
-@extends('admin.includes.master')
+<a href="{{route('admin.accommodation.members.profile')}}" target="_blank">@ext</ends('admin.includes.master')
 @section('title', 'Rejected | Listings | Accommodation')
 @section('content')
 
@@ -23,9 +23,9 @@
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>Khawaja house</td>
+                                <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
                                 <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                <td>Wasi</td>
+                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Wasi</a></td>
                                 <td>$50.0</td>
                                 <td>
                                 	<p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>
@@ -35,9 +35,9 @@
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Khawaja house</td>
+                                <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
                                 <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                <td>Wasi</td>
+                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Wasi</a></td>
                                 <td>$50.0</td>
                                 <td>
                                 	<p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>
@@ -47,9 +47,9 @@
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Khawaja house</td>
+                                <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
                                 <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                <td>Wasi</td>
+                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Wasi</a></td>
                                 <td>$50.0</td>
                                 <td>
                                 	<p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>

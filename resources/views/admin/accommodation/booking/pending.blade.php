@@ -26,7 +26,7 @@
                             <tr>
                                 <td>1</td>
                                 <td>Wasi</td>
-                                <td>Peter</td>
+                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Peter</a></td>
                                 <td>House</td>
                                 <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
                                 <td>6 nights</td>
@@ -48,7 +48,7 @@
                             <tr>
                                 <td>2</td>
                                 <td>Wasi</td>
-                                <td>Peter</td>
+                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Peter</a></td>
                                 <td>House</td>
                                 <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
                                 <td>6 nights</td>
@@ -70,7 +70,7 @@
                             <tr>
                                 <td>3</td>
                                 <td>Wasi</td>
-                                <td>Peter</td>
+                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Peter</a></td>
                                 <td>House</td>
                                 <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
                                 <td>6 nights</td>

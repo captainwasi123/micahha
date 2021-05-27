@@ -21,15 +21,18 @@ class accommodationController extends Controller
 
 			return view('admin.accommodation.listings.pending');
 		}
-
 		function publishedListing(){
 
 			return view('admin.accommodation.listings.published');
 		}
-
 		function rejectedListing(){
 
 			return view('admin.accommodation.listings.rejected');
+		}
+
+		function detailListting(){
+
+			return view('admin.accommodation.listings.details');
 		}
 
 
@@ -62,6 +65,11 @@ class accommodationController extends Controller
 		function rejectedMembers(){
 
 			return view('admin.accommodation.members.rejected');
+		}
+
+		function profileMembers(){
+
+			return view('admin.accommodation.members.profile');
 		}
 
 

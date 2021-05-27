@@ -21,9 +21,11 @@
     margin-bottom: 0;
 }
 .sidebar-nav ul li.nav-small-cap {
-    color: #ffffff !important;
-    background-color: #1976d2 !important;
-    font-weight: bold !important;
+    font-size: 15px;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 .db-heading h6 {
     border-top: 1px solid #e6e6e6;
@@ -45,4 +47,7 @@
 }
 .sidebar-nav>ul>li>a.active {
     background: #24293314 !important;
+}
+.m-b-25{
+    margin-bottom: 25px;
 }

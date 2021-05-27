@@ -48,6 +48,8 @@ Route::get('/', function () {
 								Route::get('pending', 'accommodationController@pendingListing')->name('admin.accommodation.listing.pending');
 								Route::get('published', 'accommodationController@publishedListing')->name('admin.accommodation.listing.published');
 								Route::get('rejected', 'accommodationController@rejectedListing')->name('admin.accommodation.listing.rejected');
+
+								Route::get('details', 'accommodationController@detailListting')->name('admin.accommodation.listing.details');
 							});
 
 						//Bookings
@@ -64,6 +66,8 @@ Route::get('/', function () {
 								Route::get('pending', 'accommodationController@pendingMembers')->name('admin.accommodation.members.pending');
 								Route::get('approved', 'accommodationController@approvedMembers')->name('admin.accommodation.members.approved');
 								Route::get('rejected', 'accommodationController@rejectedMembers')->name('admin.accommodation.members.rejected');
+
+								Route::get('profile', 'accommodationController@profileMembers')->name('admin.accommodation.members.profile');
 							});	
 
 						//Inquiries
