@@ -104,7 +104,9 @@ Route::namespace('web')->group(function(){
 	Route::prefix('landlord')->namespace('landlord')->group(function(){
 		//dashboard
 		Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
-
+		//user settings
+		Route::get('/profile-edit', 'SettingsController@profile_edit')->name('user.profile.edit');
+		Route::get('/change-password', 'SettingsController@change_password')->name('user.change.password');
 		//Listings
 		Route::prefix('listing')->group(function(){
 			
