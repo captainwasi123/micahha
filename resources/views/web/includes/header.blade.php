@@ -9,23 +9,27 @@
                   <button type="submit"> <i class="fa fa-search"> </i> </button>
                </div>
             </div>
-            <div class="user-dropdown">
-               <a title="Login" href="{{route('user.login')}}">
-                  <i class="fa fa-user"> </i>
-               </a>
-            </div>
-            <!-- <div class="user-dropdown">
-               <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-user"> </i>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                     <a class="dropdown-item" href="#">Action</a>
-                     <a class="dropdown-item" href="#">Another action</a>
-                     <a class="dropdown-item" href="#">Something else here</a>
+            @if(Auth::check())
+               <div class="user-dropdown">
+                  <div class="dropdown">
+                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <i class="fa fa-user"> </i> &nbsp;{{Auth::user()->first_name}} |
+                     </button>
+                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Dashboard</a>
+                        <a class="dropdown-item" href="#">Profile</a>
+                        <hr class="m-t-0 m-b-0">
+                        <a class="dropdown-item" href="{{route('user.logout')}}">Logout</a>
+                     </div>
                   </div>
                </div>
-            </div> -->
+            @else
+               <div class="user-dropdown">
+                  <a title="Login" href="{{route('user.login')}}">
+                     <i class="fa fa-user"> </i>
+                  </a>
+               </div>
+            @endif
             <div class="cart-dropdown">
                <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,7 +54,7 @@
    <div class="header-menu">
       <div class="container">
          <div class="menu-item">
-            <a href=""> Accomodation </a>
+            <a href="{{route('accommodation')}}"> Accomodation </a>
          </div>
          <div class="menu-item">
             <a href=""> Art </a>
@@ -60,6 +64,7 @@
          </div>
       </div>
    </div>
+   @yield('filter')
    <div class="header-bottom">
    </div>
 </header>

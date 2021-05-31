@@ -25,3 +25,26 @@
     letter-spacing: 0.5px;
     font-family: 'helvetica-bold';
 }
+.custom-btn1 {
+    background: #15345a;
+    color: white;
+    border: none;
+    letter-spacing: 0.8px;
+    display: inline-block !important;
+    width: auto;
+    height: auto;
+    padding: 8px 40px !important;
+    min-width: 145px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'helvetica-bold';
+}
+.custom-btn1:hover {
+    background: #000;
+}
+.m-t-0{
+    margin-top: 0;
+}
+.m-b-0{
+    margin-bottom: 0;
+}

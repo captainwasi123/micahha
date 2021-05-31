@@ -13,14 +13,25 @@
            <div class="col-md-6 col-lg-6 col-12 col-sm-12">
               <div class="login-form">
                  <h3> Login </h3>
-                 <form>
+                  @if(session()->has('success'))
+                      <div class="alert alert-success">
+                          {{ session()->get('success') }}
+                      </div>
+                  @endif
+                  @if(session()->has('error'))
+                      <div class="alert alert-danger">
+                          {{ session()->get('error') }}
+                      </div>
+                  @endif
+                 <form method="post">
+                     @csrf
                     <div class="form-field1">
                        <p> Email Address </p>
-                       <input type="email" name="email-field" required="">
+                       <input type="email" name="email" required="">
                     </div>
                     <div class="form-field1">
                        <p> Password </p>
-                       <input type="password" name="password-field" required="">
+                       <input type="password" name="password" required="">
                        <a href="" class="reset-password">  Reset Password </a>
                     </div>
                     <div class="form-field1 no-margin">

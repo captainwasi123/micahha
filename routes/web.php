@@ -18,11 +18,22 @@ Route::namespace('web')->group(function(){
 
 	//User Authentication
 		Route::get('/login', 'authController@login')->name('user.login');
+		Route::get('/logout', 'authController@logout')->name('user.logout');
 		Route::get('/register', 'authController@register')->name('user.register');
 
+		Route::post('/login', 'authController@loginSubmit');
+		Route::post('/register', 'authController@registerSubmit');
 
 	//Web Pages
 		Route::get('/', 'webController@index');
+
+
+		//Accommodation
+			Route::prefix('accommodation')->group(function(){
+
+				Route::get('/', 'accommodationController@index')->name('accommodation');
+				Route::get('/all', 'accommodationController@all')->name('accommodation.all');
+			});
 });
 
 
