@@ -13,8 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Website
+Route::namespace('web')->group(function(){
+
+	//User Authentication
+		Route::get('/login', 'authController@login')->name('user.login');
+		Route::get('/register', 'authController@register')->name('user.register');
+
+
+	//Web Pages
+		Route::get('/', 'webController@index');
 });
 
 
