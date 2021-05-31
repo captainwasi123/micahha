@@ -80,3 +80,21 @@ Route::get('/', function () {
 			});
 
 	});
+
+	//landlord
+	Route::prefix('landlord')->namespace('landlord')->group(function(){
+		//dashboard
+		Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
+
+		//Listings
+		Route::prefix('listing')->group(function(){
+			
+			Route::get('add', 'ListingController@add_listing')->name('landlord.listing.add');
+			
+			Route::get('pending', 'ListingController@pending_listing')->name('landlord.listing.pending');
+			Route::get('published', 'ListingController@published_listing')->name('landlord.listing.published');
+			Route::get('rejected', 'ListingController@rejected_listing')->name('landlord.listing.rejected');
+
+			Route::get('listing/details', 'ListingController@listing_details')->name('landlord.listing.details');
+		});
+	});
