@@ -32,4 +32,5 @@
     <link rel="stylesheet" href="{{URL::to('/public/user/')}}/css/metisMenu.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{URL::to('/public/user/')}}/css/style.css" />
+    <link rel="stylesheet" href="{{URL::to('/public/user/')}}/css/dev.css" />
     <link rel="stylesheet" href="{{URL::to('/public/user/')}}/css/colors/default.css" id="colorSkinCSS">

@@ -61,7 +61,7 @@
             if(typeof placeholderImage.width != 'undefined'){
                 placeholderImageWidth = placeholderImage.width;
             }
-            var template = `<div class="${groupClassName} spartan_item_wrapper" data-spartanindexrow="${count}" style="margin-bottom : 20px; ">`+
+            var template = `<div class="${groupClassName}" data-spartanindexrow="${count}" style="margin-bottom : 20px; ">`+
                                 `<div style="position: relative;">`+
                                     `<div class="spartan_item_loader" data-spartanindexloader="${count}" style=" position: absolute; width: 100%; height: ${rowHeight}; background: rgba(255,255,255, 0.7); z-index: 22; text-align: center; align-items: center; margin: auto; justify-content: center; flex-direction: column; display : none; font-size : 1.7em; color: #CECECE">` +
                                         `${uploadLoaderIcon}` +
