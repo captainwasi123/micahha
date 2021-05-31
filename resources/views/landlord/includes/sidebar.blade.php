@@ -1,55 +1,60 @@
-<aside class="left-sidebar">
-    <!-- Sidebar scroll-->
-    <div class="scroll-sidebar">
-        <!-- User profile -->
-        <div class="user-profile">
-            <!-- User profile image -->
-            <div class="profile-img"> <img src="{{URL::to('/public/admin/')}}/assets/images/dp-placeholder.jpg" alt="user" />
-                <!-- this is blinking heartbit-->
-                <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
-            </div>
-            <!-- User profile text-->
-            <div class="profile-text">
-                <h5>landlord</h5>
-                <p class="text-muted">landlord@landlord.com</p>
-            </div>
+ <!-- sidebar part here -->
+<nav class="sidebar vertical-scroll  ps-container ps-theme-default ps-active-y">
+    <div class="logo d-flex justify-content-between">
+        <a href="index-2.html"><h2>MICAHHA</h2></a>
+        <div class="sidebar_close_icon d-lg-none">
+            <i class="ti-close"></i>
         </div>
-        <!-- End User profile text-->
-        <!-- Sidebar navigation-->
-        <nav class="sidebar-nav">
-            <ul id="sidebarnav">
-                <li class="nav-devider"></li>
-                <li> 
-                    <a class="waves-effect waves-dark" href="{{route('landlord.dashboard')}}" aria-expanded="false">
-                        <i class="mdi mdi-gauge"></i>
-                        <span class="hide-menu">Dashboard</span>
-                    </a>
+    </div>
+    <ul id="sidebar_menu">
+        <li class="">
+          <a class=""  href="{{route('landlord.dashboard')}}">
+          <div class="icon_menu">
+              <img src="{{URL::to('/public/user/')}}/img/menu-icon/dashboard.svg" alt="">
+        </div>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="">
+            <a   class="has-arrow" href="#" aria-expanded="false">
+              <div class="icon_menu">
+                  <img src="{{URL::to('/public/user/')}}/img/menu-icon/2.svg" alt="">
+              </div>
+              <span>Listing</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{route('landlord.listing.add')}}">Add Listing</a>
                 </li>
-
-                <li class="nav-small-cap">ACCOMMODATION</li>
-                <li> 
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-format-list-bulleted"></i>
-                        <span class="hide-menu"> Listing</span>
-                    </a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li>
-                            <a href="{{route('landlord.listing.add')}}">Add </a>
-                        </li>
-                        <li>
-                            <a href="{{route('landlord.listing.pending')}}">Pending </a>
-                        </li>
-                        <li>
-                            <a href="{{route('landlord.listing.published')}}">Published</a>
-                        </li>
-                        <li>
-                            <a href="{{route('landlord.listing.rejected')}}">Rejected</a>
-                        </li>
-                    </ul>
+                <li>
+                    <a href="{{route('landlord.listing.pending')}}">Pending </a>
+                </li>
+                <li>
+                    <a href="{{route('landlord.listing.published')}}">Published</a>
+                </li>
+                <li>
+                    <a href="{{route('landlord.listing.rejected')}}">Rejected</a>
                 </li>
             </ul>
-        </nav>
-        <!-- End Sidebar navigation -->
-    </div>
-    <!-- End Sidebar scroll-->
-</aside>
+        </li>
+        <li class="">
+            <a   class="has-arrow" href="#" aria-expanded="false">
+              <div class="icon_menu">
+                  <img src="{{URL::to('/public/user/')}}/img/menu-icon/2.svg" alt="">
+              </div>
+              <span>Reservation</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{route('landlord.reservation.add')}}">Add Reservation</a>
+                </li>
+                <li>
+                    <a href="{{route('landlord.reservation.all')}}">All Reservation </a>
+                </li>
+            </ul>
+        </li>
+    
+</nav>
+<!-- sidebar part end -->
+
+

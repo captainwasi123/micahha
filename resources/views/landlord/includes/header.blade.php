@@ -1,61 +1,124 @@
-<header class="topbar">
-    <nav class="navbar top-navbar navbar-expand-md navbar-light">
-        <!-- ============================================================== -->
-        <!-- Logo -->
-        <!-- ============================================================== -->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{{route('admin.dashboard')}}">
-                <!-- Logo icon -->
-                <b class="logo-brand logo-bg">
-                    M
-                </b>
-                <!--End Logo icon -->
-                <!-- Logo text -->
-                <span class="logo-brand">
-                 ICAHHA
-                </span> 
-            </a>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Logo -->
-        <!-- ============================================================== -->
-        <div class="navbar-collapse">
-            <!-- ============================================================== -->
-            <!-- toggle and nav items -->
-            <!-- ============================================================== -->
-            <ul class="navbar-nav mr-auto mt-md-0">
-                <!-- This is  -->
-                <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
-                <li class="nav-item m-l-10"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
-                
-            </ul>
-            <!-- ============================================================== -->
-            <!-- User profile and search -->
-            <!-- ============================================================== -->
-            <ul class="navbar-nav my-lg-0">
-               
-                <!-- ============================================================== -->
-                <!-- Profile -->
-                <!-- ============================================================== -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <strong>Hi, Landlord&nbsp;&nbsp;|</strong>
-                        <img src="{{URL::to('/public/admin/')}}/assets/images/dp-placeholder.jpg" alt="user" class="profile-pic" />
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right scale-up">
-                        <ul class="dropdown-user">
-                            <li>
-                                <div class="dw-user-box">
-                                    <div class="u-img"><img src="{{URL::to('/public/admin/')}}/assets/images/dp-placeholder.jpg" alt="user"></div>
-                                    <div class="u-text">
-                                        <h4>landlord</h4>
-                                        <p class="text-muted">landlord@landlord.com</p><a href="" class="btn btn-rounded btn-danger btn-sm"><i class="fa fa-power-off"></i> Logout</a></div>
-                                </div>
-                            </li>
-                        </ul>
+<section class="main_content dashboard_part large_header_bg">
+        <!-- menu  -->
+    <div class="container-fluid no-gutters">
+        <div class="row">
+            <div class="col-lg-12 p-0 ">
+                <div class="header_iner d-flex justify-content-between align-items-center">
+                    <div class="sidebar_icon d-lg-none">
+                        <i class="ti-menu"></i>
                     </div>
-                </li>
-            </ul>
+                    <div class="serach_field-area d-flex align-items-center">
+                            <div class="search_inner">
+                                <form action="#">
+                                    <div class="search_field">
+                                        <input type="text" placeholder="Search here..." >
+                                    </div>
+                                    <button type="submit"> <img src="{{URL::to('/public/user/')}}/img/icon/icon_search.svg" alt=""> </button>
+                                </form>
+                            </div>
+                            <span class="f_s_14 f_w_400 ml_25 white_text text_white" >Apps</span>
+                        </div>
+                    <div class="header_right d-flex justify-content-between align-items-center">
+                        <div class="header_notification_warp d-flex align-items-center">
+                            <li>
+                                <a class="bell_notification_clicker nav-link-notify" href="#"> <img src="{{URL::to('/public/user/')}}/img/icon/bell.svg" alt="">
+                                    
+                                </a>
+                                <!-- Menu_NOtification_Wrap  -->
+                            <div class="Menu_NOtification_Wrap">
+                                <div class="notification_Header">
+                                    <h4>Notifications</h4>
+                                </div>
+                                <div class="Notification_body">
+                                    <!-- single_notify  -->
+                                    <div class="single_notify d-flex align-items-center">
+                                        <div class="notify_thumb">
+                                            <a href="#"><img src="{{URL::to('/public/user/')}}/img/staf/2.png" alt=""></a>
+                                        </div>
+                                        <div class="notify_content">
+                                            <a href="#"><h5>Cool Marketing </h5></a>
+                                            <p>Lorem ipsum dolor sit amet</p>
+                                        </div>
+                                    </div>
+                                    <!-- single_notify  -->
+                                    <div class="single_notify d-flex align-items-center">
+                                        <div class="notify_thumb">
+                                            <a href="#"><img src="{{URL::to('/public/user/')}}/img/staf/4.png" alt=""></a>
+                                        </div>
+                                        <div class="notify_content">
+                                            <a href="#"><h5>Awesome packages</h5></a>
+                                            <p>Lorem ipsum dolor sit amet</p>
+                                        </div>
+                                    </div>
+                                    <!-- single_notify  -->
+                                    <div class="single_notify d-flex align-items-center">
+                                        <div class="notify_thumb">
+                                            <a href="#"><img src="{{URL::to('/public/user/')}}/img/staf/3.png" alt=""></a>
+                                        </div>
+                                        <div class="notify_content">
+                                            <a href="#"><h5>what a packages</h5></a>
+                                            <p>Lorem ipsum dolor sit amet</p>
+                                        </div>
+                                    </div>
+                                    <!-- single_notify  -->
+                                    <div class="single_notify d-flex align-items-center">
+                                        <div class="notify_thumb">
+                                            <a href="#"><img src="{{URL::to('/public/user/')}}/img/staf/2.png" alt=""></a>
+                                        </div>
+                                        <div class="notify_content">
+                                            <a href="#"><h5>Cool Marketing </h5></a>
+                                            <p>Lorem ipsum dolor sit amet</p>
+                                        </div>
+                                    </div>
+                                    <!-- single_notify  -->
+                                    <div class="single_notify d-flex align-items-center">
+                                        <div class="notify_thumb">
+                                            <a href="#"><img src="{{URL::to('/public/user/')}}/img/staf/4.png" alt=""></a>
+                                        </div>
+                                        <div class="notify_content">
+                                            <a href="#"><h5>Awesome packages</h5></a>
+                                            <p>Lorem ipsum dolor sit amet</p>
+                                        </div>
+                                    </div>
+                                    <!-- single_notify  -->
+                                    <div class="single_notify d-flex align-items-center">
+                                        <div class="notify_thumb">
+                                            <a href="#"><img src="{{URL::to('/public/user/')}}/img/staf/3.png" alt=""></a>
+                                        </div>
+                                        <div class="notify_content">
+                                            <a href="#"><h5>what a packages</h5></a>
+                                            <p>Lorem ipsum dolor sit amet</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="nofity_footer">
+                                    <div class="submit_button text-center pt_20">
+                                        <a href="#" class="btn_1">See More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/ Menu_NOtification_Wrap  -->
+                            </li>
+                            <li>
+                                <a class="CHATBOX_open nav-link-notify" href="#"> <img src="{{URL::to('/public/user/')}}/img/icon/msg.svg" alt="">   </a>
+                            </li>
+                        </div>
+                        <div class="profile_info">
+                            <img src="{{URL::to('/public/user/')}}/img/client_img.png" alt="#">
+                            <div class="profile_info_iner">
+                                <div class="profile_author_name">
+                                    <p>Neurologist </p>
+                                    <h5>Dr. Robar Smith</h5>
+                                </div>
+                                <div class="profile_info_details">
+                                    <a href="#">My Profile </a>
+                                    <a href="#">Settings</a>
+                                    <a href="#">Log Out </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nav>
-</header>
+    </div>

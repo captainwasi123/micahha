@@ -96,5 +96,14 @@ Route::get('/', function () {
 			Route::get('rejected', 'ListingController@rejected_listing')->name('landlord.listing.rejected');
 
 			Route::get('listing/details', 'ListingController@listing_details')->name('landlord.listing.details');
+
+			Route::get('reservation', 'ListingController@reservation')->name('landlord.listing.reservation');
+		});
+
+		//reservation
+		Route::prefix('reservation')->group(function(){
+			
+			Route::get('add', 'ReservationController@add')->name('landlord.reservation.add');
+			Route::get('all', 'ReservationController@all')->name('landlord.reservation.all');
 		});
 	});
