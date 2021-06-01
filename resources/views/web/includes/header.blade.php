@@ -16,7 +16,9 @@
                      <i class="fa fa-user"> </i> &nbsp;{{Auth::user()->first_name}} |
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Dashboard</a>
+                        @if(Auth::user()->user_type == '2')
+                           <a class="dropdown-item" href="{{route('landlord.dashboard')}}">Dashboard</a>
+                        @endif
                         <a class="dropdown-item" href="#">Profile</a>
                         <hr class="m-t-0 m-b-0">
                         <a class="dropdown-item" href="{{route('user.logout')}}">Logout</a>

@@ -100,8 +100,9 @@ Route::namespace('web')->group(function(){
 
 	});
 
-	//landlord
-	Route::prefix('landlord')->namespace('landlord')->group(function(){
+
+//landlord
+	Route::prefix('landlord')->namespace('landlord')->middleware('landlordAuth')->group(function(){
 		//dashboard
 		Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
 		//user settings
@@ -111,6 +112,7 @@ Route::namespace('web')->group(function(){
 		Route::prefix('listing')->group(function(){
 			
 			Route::get('add', 'ListingController@add_listing')->name('landlord.listing.add');
+			Route::post('add', 'ListingController@insert_listing')->name('landlord.listing.insert');
 			
 			Route::get('pending', 'ListingController@pending_listing')->name('landlord.listing.pending');
 			Route::get('published', 'ListingController@published_listing')->name('landlord.listing.published');
