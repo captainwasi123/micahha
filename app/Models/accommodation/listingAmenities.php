@@ -4,7 +4,7 @@ namespace App\Models\accommodation;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\amenities;
+use App\Models\accommodation\amenities;
 
 class listingAmenities extends Model
 {

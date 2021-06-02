@@ -33,13 +33,18 @@
                                     <td>
                                         <p class="cut-text" title="{{$address}}">
                                             {{$address}}
-                                        </p></td>
+                                        </p>
+                                    </td>
                                     <td>
                                         <a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
                                             {{empty($val->landlord) ? '' : $val->landlord->first_name}} 
                                             {{empty($val->landlord) ? '' : $val->landlord->last_name}} 
-                                        </a></td>
-                                    <td><strong>{{'$'.number_format($val->price, 2)}}</strong> <small>{{$val->unit}}</small></td>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <strong>{{'$'.number_format($val->price, 2)}}</strong> 
+                                        <small>{{$val->unit}}</small>
+                                    </td>
                                     <td>
                                     	<p class="cut-text" title="{{$val->description}}">
                                             {{$val->description}}   
@@ -57,6 +62,7 @@
                                      	</a>
                                  	</td>
                                 </tr>
+                                @php $s++; @endphp
                             @endforeach
                         </tbody>
                     </table>

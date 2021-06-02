@@ -9,27 +9,52 @@
                             <div class="box_header m-0">
                                 <div class="main-title">
                                     <h3 class="m-0">{{$title}}</h3>
+                                    @if ($errors->any())
+                                        <div class="alert text-white bg-danger mb-0 mt-2" role="alert">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    @if(session()->has('success'))
+                                        <div class="alert text-white bg-success mb-0 mt-2" role="alert">
+                                           <div class="alert-text"><b>Success!</b> {{ session()->get('success') }}</div>
+                                        </div>
+                                    @endif
+                                    @if(session()->has('error'))
+                                        <div class="alert text-white bg-danger mb-0 mt-2" role="alert">
+                                           <div class="alert-text"><b>Alert!</b> {{ session()->get('error') }}</div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                         <div class="white_card_body">
                             <div class="card-body">
-                                <form>
+                                <form method="post">
+                                    @csrf
                                     <div class="form-row">
-                                        <div class="form-group col-md-12">
+                                        <div class="form-group col-md-4">
                                             <label for="">Current Password</label>
-                                            <input type="password" class="form-control" id="inputEmail4" placeholder="enter current password">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="">New Password</label>
-                                            <input type="password" class="form-control" id="inputPassword4" placeholder="enter new password">
-                                        </div>
-                                        <div class="form-group col-md-12">
-                                            <label for="">Conform Password</label>
-                                            <input type="password" class="form-control" id="inputPassword4" placeholder="enter conform password">
+                                            <input type="password" class="form-control" name="cur_password" required>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="">New Password</label>
+                                            <input type="password" class="form-control" name="password" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="">Conform Password</label>
+                                            <input type="password" class="form-control" name="password_confirmation" required>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Change</button>
                                 </form>
                             </div>
                         </div>

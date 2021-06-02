@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -24,6 +25,19 @@ class User extends Authenticatable
         $u->newsletter = empty($data['newsletter']) ? '0' : '1';
         $u->status = '1';
         $u->save();
+    }
+
+    public static function updateProfile(array $data){
+        $p = User::find(Auth::id());
+        $p->first_name = $data['first_name'];
+        $p->last_name = $data['last_name'];
+        $p->phone = $data['phone'];
+        $p->address = $data['address'];
+        $p->city = $data['city'];
+        $p->state = $data['state'];
+        $p->post_code = $data['post_code'];
+        $p->country_id = $data['country'];
+        $p->save();
     }
     /**
      * The attributes that are mass assignable.

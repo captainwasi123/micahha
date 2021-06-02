@@ -51,3 +51,6 @@
 .m-b-25{
     margin-bottom: 25px;
 }
+.tab-pane.active {
+    min-height: 550px;
+}

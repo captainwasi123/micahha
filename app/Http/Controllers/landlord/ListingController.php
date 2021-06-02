@@ -38,8 +38,8 @@ class ListingController extends Controller
             foreach($request->file('fileUpload') as $image)
             {
                 $filename = date('dmyHis').'.'.$image->getClientOriginalExtension();
-                $id = listingGallery::addGalleryImage($id, $filename);
-                $filename = $id.'-'.$filename;
+                $gid = listingGallery::addGalleryImage($id, $filename);
+                $filename = $gid.'-'.$filename;
                 $image->move(base_path('/public/storage/listing/gallery/'), $filename);
             }
         }
