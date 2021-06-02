@@ -13,6 +13,16 @@
                 <div class="box_header m-0 mb-3">
                     <div class="main-title">
                         <h3 class="m-0">Add Listing</h3>
+                        @if(session()->has('success'))
+                            <div class="alert text-white bg-success mb-0 mt-2" role="alert">
+                               <div class="alert-text"><b>Success!</b> {{ session()->get('success') }}</div>
+                            </div>
+                        @endif
+                        @if(session()->has('error'))
+                            <div class="alert text-white bg-danger mb-0 mt-2" role="alert">
+                               <div class="alert-text"><b>Alert!</b> {{ session()->get('error') }}</div>
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="card-body">

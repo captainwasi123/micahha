@@ -8,6 +8,7 @@ use App\Models\country;
 use App\Models\accommodation\amenities;
 use App\Models\accommodation\propertyType;
 use App\Models\accommodation\listing;
+use App\Models\accommodation\listingGallery;
 
 class ListingController extends Controller
 {
@@ -23,8 +24,27 @@ class ListingController extends Controller
     }
     public function insert_listing(Request $request){
         $data = $request->all();
-        listing::addListing($data);
-        dd($data);
+        $id = listing::addListing($data);
+        if ($request->hasFile('main_img')) {
+            $file = $request->file('main_img');
+            $filename = date('dmyHis').'.'.$file->getClientOriginalExtension();
+            $filename = $id.'-'.$filename;
+            $file->move(base_path('/public/storage/listing/main/'), $filename);
+            listing::addFeatureImage($id, $filename);
+        }
+        if($request->hasfile('fileUpload'))
+        {
+
+            foreach($request->file('fileUpload') as $image)
+            {
+                $filename = date('dmyHis').'.'.$image->getClientOriginalExtension();
+                $id = listingGallery::addGalleryImage($id, $filename);
+                $filename = $id.'-'.$filename;
+                $image->move(base_path('/public/storage/listing/gallery/'), $filename);
+            }
+        }
+
+        return redirect()->back()->with('success', 'Listing Created. Please wait for admin approval.');
     }
 
     public function pending_listing()

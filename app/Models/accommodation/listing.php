@@ -37,6 +37,14 @@ class listing extends Model
         listingAddress::addAddress($id, $address);
         foreach($data['amenities'] as $val){
             listingAmenities::addAmenity($id, $val);
-        }   
+        }
+
+        return $id;   
+    }
+
+    public static function addFeatureImage($id, $filename){
+        $l = listing::find($id);
+        $l->feature_img = $filename;
+        $l->save();
     }
 }
