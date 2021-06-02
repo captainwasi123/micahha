@@ -4,6 +4,7 @@ namespace App\Models\accommodation;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\country;
 
 class listingAddress extends Model
 {
@@ -20,5 +21,9 @@ class listingAddress extends Model
         $a->post_code = $data['post_code'];
         $a->country_id = $data['country'];
         $a->save();
+    }
+
+    public function country(){
+        return $this->belongsTo(country::class, 'country_id');
     }
 }

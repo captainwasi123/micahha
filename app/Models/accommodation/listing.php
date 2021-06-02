@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\accommodation\amenities;
 use App\Models\accommodation\listingAmenities;
 use App\Models\accommodation\listingAddress;
+use App\Models\accommodation\propertyType;
+use App\Models\User;
 use Auth;
 
 class listing extends Model
@@ -46,5 +48,15 @@ class listing extends Model
         $l = listing::find($id);
         $l->feature_img = $filename;
         $l->save();
+    }
+
+    public function landlord(){
+        return $this->belongsTo(User::class, 'landlord_id', 'id');
+    }
+    public function address(){
+        return $this->belongsTo(listingAddress::class, 'id', 'accommodation_id');
+    }
+    public function type(){
+        return $this->belongsTo(propertyType::class, 'property_type');
     }
 }

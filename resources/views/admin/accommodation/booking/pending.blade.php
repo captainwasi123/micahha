@@ -23,30 +23,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($data as $val)
-                                <tr>
-                                    <td>1</td>
-                                    <td>Wasi</td>
-                                    <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Peter</a></td>
-                                    <td>House</td>
-                                    <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                    <td>6 nights</td>
-                                    <td>4</td>
-                                    <td>
-                                    	$250
-                                    </td>
-                                    <td>29-May-2021 8:11 pm</td>
-                                    <td> 
-                                    	<a href="#" data-toggle="tooltip" data-original-title="Approve"> 
-                                    		<i class="fa fa-check text-success"></i> 
-                                    	</a>
-                                    	&nbsp;&nbsp;
-                                        <a href="#" data-toggle="tooltip" data-original-title="Reject">
-                                         	<i class="fa fa-close text-danger"></i> 
-                                     	</a>
-                                 	</td>
-                                </tr>
-                            @endforeach
+                            <tr>
+                                <td>1</td>
+                                <td>Wasi</td>
+                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Peter</a></td>
+                                <td>House</td>
+                                <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
+                                <td>6 nights</td>
+                                <td>4</td>
+                                <td>
+                                	$250
+                                </td>
+                                <td>29-May-2021 8:11 pm</td>
+                                <td> 
+                                	<a href="#" data-toggle="tooltip" data-original-title="Approve"> 
+                                		<i class="fa fa-check text-success"></i> 
+                                	</a>
+                                	&nbsp;&nbsp;
+                                    <a href="#" data-toggle="tooltip" data-original-title="Reject">
+                                     	<i class="fa fa-close text-danger"></i> 
+                                 	</a>
+                             	</td>
+                            </tr>
                             <tr>
                                 <td>2</td>
                                 <td>Wasi</td>
