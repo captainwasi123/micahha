@@ -29,7 +29,7 @@ class ListingController extends Controller
             $file = $request->file('main_img');
             $filename = date('dmyHis').'.'.$file->getClientOriginalExtension();
             $filename = $id.'-'.$filename;
-            $file->move(base_path('/public/storagee/listing/main/'), $filename);
+            $file->move(base_path('/public/storage/listing/main/'), $filename);
             listing::addFeatureImage($id, $filename);
         }
         if($request->hasfile('fileUpload'))
@@ -40,7 +40,7 @@ class ListingController extends Controller
                 $filename = date('dmyHis').'.'.$image->getClientOriginalExtension();
                 $id = listingGallery::addGalleryImage($id, $filename);
                 $filename = $id.'-'.$filename;
-                $image->move(base_path('/public/storagee/listing/gallery/'), $filename);
+                $image->move(base_path('/public/storage/listing/gallery/'), $filename);
             }
         }
 
