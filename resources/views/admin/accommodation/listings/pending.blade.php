@@ -25,19 +25,19 @@
                             @php $s=1; @endphp
                             @foreach($data as $val) 
                                 @php 
-                                    $address = $val->address->address.', '.$val->address->city.', '.$val->address->state.', '.$val->address->country->country.'. '.$val->address->post_code;
+                                    $address = empty($val->address) ? '' : $val->address->address.', '.$val->address->city.', '.$val->address->state.', '.$val->address->country->country.'. '.$val->address->post_code;
                                 @endphp
                                 <tr>
                                     <td>{{$s}}</td>
-                                    <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">{{$val->title}}</a></td>
+                                    <td><a href="{{URL::to('/admin/accommodation/listing/details/'.base64_encode($val->id))}}" data-toggle="tooltip" data-original-title="View Details">{{$val->title}}</a></td>
                                     <td>
                                         <p class="cut-text" title="{{$address}}">
                                             {{$address}}
                                         </p></td>
                                     <td>
                                         <a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
-                                            {{$val->landlord->first_name}} 
-                                            {{$val->landlord->last_name}} 
+                                            {{empty($val->landlord) ? '' : $val->landlord->first_name}} 
+                                            {{empty($val->landlord) ? '' : $val->landlord->last_name}} 
                                         </a></td>
                                     <td><strong>{{'$'.number_format($val->price, 2)}}</strong> <small>{{$val->unit}}</small></td>
                                     <td>

@@ -68,7 +68,7 @@ Route::namespace('web')->group(function(){
 								Route::get('published', 'accommodationController@publishedListing')->name('admin.accommodation.listing.published');
 								Route::get('rejected', 'accommodationController@rejectedListing')->name('admin.accommodation.listing.rejected');
 
-								Route::get('details', 'accommodationController@detailListting')->name('admin.accommodation.listing.details');
+								Route::get('details/{id}', 'accommodationController@detailListting');
 							});
 
 						//Bookings

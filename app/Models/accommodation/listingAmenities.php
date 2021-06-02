@@ -4,6 +4,7 @@ namespace App\Models\accommodation;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\amenities;
 
 class listingAmenities extends Model
 {
@@ -16,5 +17,10 @@ class listingAmenities extends Model
         $a->accom_id = $id;
         $a->amenity_id = $amenity;
         $a->save();
+    }
+
+    public function amenities()
+    {
+        return $this->belongsTo(amenities::class, 'amenity_id');
     }
 }

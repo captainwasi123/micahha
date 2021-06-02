@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\accommodation\amenities;
 use App\Models\accommodation\listingAmenities;
 use App\Models\accommodation\listingAddress;
+use App\Models\accommodation\listingGallery;
 use App\Models\accommodation\propertyType;
 use App\Models\User;
 use Auth;
@@ -58,5 +59,13 @@ class listing extends Model
     }
     public function type(){
         return $this->belongsTo(propertyType::class, 'property_type');
+    }
+
+
+    public function amenities(){
+        return $this->hasMany(listingAmenities::class, 'id', 'accom_id');
+    }
+    public function galleryImages(){
+        return $this->hasMany(listingGallery::class, 'id', 'accom_id');
     }
 }
