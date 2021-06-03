@@ -85,8 +85,14 @@ Route::namespace('web')->group(function(){
 								Route::get('pending', 'accommodationController@pendingMembers')->name('admin.accommodation.members.pending');
 								Route::get('approved', 'accommodationController@approvedMembers')->name('admin.accommodation.members.approved');
 								Route::get('rejected', 'accommodationController@rejectedMembers')->name('admin.accommodation.members.rejected');
+								Route::get('blocked', 'accommodationController@blockedMembers')->name('admin.accommodation.members.blocked');
 
-								Route::get('profile', 'accommodationController@profileMembers')->name('admin.accommodation.members.profile');
+								Route::get('profile/{id}', 'accommodationController@profileMembers');
+
+
+								Route::get('approve/{id}', 'accommodationController@approveMember');
+								Route::get('reject/{id}', 'accommodationController@rejectMember');
+								Route::get('block/{id}', 'accommodationController@blockMember');
 							});	
 
 						//Inquiries
@@ -96,6 +102,33 @@ Route::namespace('web')->group(function(){
 							});
 					});
 
+
+
+				//Settings
+					Route::prefix('settings')->group(function(){
+
+						//Accommodation
+							Route::prefix('accommodation')->group(function(){
+
+								Route::get('propertyType', 'settingsController@property_type')->name('admin.settings.accommodation.propertyType');
+								Route::post('propertyType', 'settingsController@property_type_insert');
+
+								Route::get('editPropertyType/{id}', 'settingsController@edit_property_type');
+								Route::post('editPropertyType', 'settingsController@property_type_update')->name('admin.settings.accommodation.editPropertyType');
+
+								Route::get('deletePropertyType/{id}', 'settingsController@delete_property_type');
+
+
+
+								Route::get('amenities', 'settingsController@amenities')->name('admin.settings.accommodation.amenities');
+								Route::post('amenities', 'settingsController@amenities_insert');
+
+								Route::get('deleteAmenities/{id}', 'settingsController@delete_amenities');
+
+								Route::get('editAmenities/{id}', 'settingsController@edit_amenities');
+								Route::post('editAmenities', 'settingsController@amenities_update')->name('admin.settings.accommodation.editAmenities');
+							});
+					});
 			});
 
 	});

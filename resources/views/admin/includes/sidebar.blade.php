@@ -64,6 +64,7 @@
                         <li><a href="{{route('admin.accommodation.members.pending')}}">Pending </a></li>
                         <li><a href="{{route('admin.accommodation.members.approved')}}">Approved</a></li>
                         <li><a href="{{route('admin.accommodation.members.rejected')}}">Rejected</a></li>
+                        <li><a href="{{route('admin.accommodation.members.blocked')}}">Blocked</a></li>
                     </ul>
                 </li>
                 <li> 
@@ -165,6 +166,20 @@
                         <span class="hide-menu">Inquiries</span>
                     </a>
                 </li> -->
+
+
+
+                <li class="nav-small-cap">Settings</li>
+                <li> 
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-home"></i>
+                        <span class="hide-menu"> Accommodation</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('admin.settings.accommodation.propertyType')}}">Property Type </a></li>
+                        <li><a href="{{route('admin.settings.accommodation.amenities')}}">Amenities </a></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

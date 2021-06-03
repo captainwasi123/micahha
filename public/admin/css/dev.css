@@ -54,3 +54,6 @@
 .tab-pane.active {
     min-height: 550px;
 }
+.popup-gallery img {
+    height: 210px;
+}
