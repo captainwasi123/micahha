@@ -1,5 +1,5 @@
 @extends('admin.includes.master')
-@section('title', $data->title.' | Listings | Accommodation')
+@section('title', 'Detail | Listings | Accommodation')
 @section('content')
 
 <div class="row">

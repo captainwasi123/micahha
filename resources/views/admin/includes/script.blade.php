@@ -14,6 +14,7 @@
 <script src="{{URL::to('/public/admin/')}}/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!--Custom JavaScript -->
 <script src="{{URL::to('/public/admin/')}}/js/custom.min.js"></script>
+<script src="{{URL::to('/public/admin/')}}/js/dev.js"></script>
 <!-- ============================================================== -->
 <!-- This page plugins -->
 <!-- ============================================================== -->

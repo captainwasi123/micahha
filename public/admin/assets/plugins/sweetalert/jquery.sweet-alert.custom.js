@@ -18,9 +18,9 @@
     });
 
     //Success Message
-    $('#sa-success').click(function(){
-        swal("Good job!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat eleifend ex semper, lobortis purus sed.", "success")
-    });
+    function successAlert(text){
+        swal("Success!", text, "success")
+    }
 
     //Warning Message
     $('#sa-warning').click(function(){

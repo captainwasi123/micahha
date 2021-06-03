@@ -8,12 +8,17 @@
         <div class="card">
             <div class="card-body">
                 <center class="m-t-30"> <img src="{{URL::to('/public/admin')}}/assets/images/users/5.jpg" class="img-circle" width="150" />
-                    <h4 class="card-title m-t-10">Hanna Gover</h4>
-                    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                    <h4 class="card-title m-t-10">
+                        {{$data->first_name}} 
+                        {{$data->last_name}}
+                    </h4>
+                    <h6 class="card-subtitle">
+                        Landlord
+                    </h6>
                     <div class="row text-center justify-content-md-center">
                         <div class="col-4">
                             <a href="javascript:void(0)" class="link" data-toggle="tooltip" data-original-title="Listings">
-                                <i class="mdi mdi-home-outline"></i> <font class="font-medium">10</font>
+                                <i class="mdi mdi-home-outline"></i> <font class="font-medium">{{count($data->listings)}}</font>
                             </a>
                         </div>
                         <div class="col-4">
@@ -31,10 +36,21 @@
             </div>
             <div>
                 <hr> </div>
-            <div class="card-body"> <small class="text-muted">Email address </small>
-                <h6>hannagover@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
-                <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
-                <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>
+            <div class="card-body"> 
+                <small class="text-muted">Email address </small>
+                <h6>{{$data->email}}</h6> 
+
+                <small class="text-muted p-t-30 db">Phone</small>
+                <h6>{{$data->phone}}</h6> 
+
+                <small class="text-muted p-t-30 db">Address</small>
+                <h6>
+                    {{!empty($data->address) ? $data->address.', ' : ''}}
+                    {{!empty($data->city) ? $data->city.', ' : ''}}
+                    {{!empty($data->state) ? $data->state.', ' : ''}}
+                    {{!empty($data->country) ? $data->country->country.'. ' : ''}}
+                    {{!empty($data->post_code) ? $data->post_code : ''}}
+                </h6>
                 
                 <small class="text-muted p-t-30 db">Social Profile</small>
                 <br/>
@@ -123,7 +139,7 @@
                 <div class="tab-pane" id="listing" role="tabpanel">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="listingTable" class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
                                         <th>S#</th>
@@ -137,43 +153,56 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                        <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                        <td>$50.0</td>
-                                        <td>
-                                            <p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>
-                                        </td>
-                                        <td>House</td>
-                                        <td><span class="badge badge-primary">Pending</span></td>
-                                        <td>29-May-2021 8:11 pm</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                        <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                        <td>$50.0</td>
-                                        <td>
-                                            <p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>
-                                        </td>
-                                        <td>House</td>
-                                        <td><span class="badge badge-primary">Pending</span></td>
-                                        <td>29-May-2021 8:11 pm</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                        <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                        <td>$50.0</td>
-                                        <td>
-                                            <p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>
-                                        </td>
-                                        <td>House</td>
-                                        <td><span class="badge badge-primary">Pending</span></td>
-                                        <td>29-May-2021 8:11 pm</td>
-                                    </tr>
-                                    
+                                    @php $s=1; @endphp
+                                    @foreach($data->listings as $val)
+                                        @php 
+                                            $address = empty($val->address) ? '' : $val->address->address.', '.$val->address->city.', '.$val->address->state.', '.$val->address->country->country.'. '.$val->address->post_code;
+                                        @endphp
+                                        <tr>
+                                            <td>{{$s}}</td>
+                                            <td>
+                                                <a href="{{URL::to('/admin/accommodation/listing/details/'.base64_encode($val->id))}}" data-toggle="tooltip" data-original-title="View Details">
+                                                    {{$val->title}}
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <p class="cut-text" title="{{$address}}">
+                                                    {{$address}}
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <strong>{{'$'.number_format($val->price, 2)}}</strong> 
+                                                <small>{{$val->unit}}</small>
+                                            </td>
+                                            <td>
+                                                <p class="cut-text" title="{{$val->description}}">
+                                                    {{$val->description}}   
+                                                </p>
+                                            </td>
+                                            <td>{{empty($val->type) ? '' : $val->type->name}}</td>
+                                            <td>
+                                                @switch($val->status)
+                                                    @case('1')
+                                                        <span class="badge badge-info">Pending</span>
+                                                        @break
+
+                                                    @case('2')
+                                                        <span class="badge badge-success">Published</span>
+                                                        @break
+
+                                                    @case('3')
+                                                        <span class="badge badge-danger">Rejected</span>
+                                                        @break
+
+                                                    @case('4')
+                                                        <span class="badge badge-primary">Approved</span>
+                                                        @break
+                                                @endswitch
+                                            </td>
+                                            <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
+                                        </tr>
+                                        @php $s++; @endphp
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -234,7 +263,6 @@
     <script>
     $(document).ready(function() {
         $('#bookingTable').DataTable();
-        $('#listingTable').DataTable();
     });
     </script>
 @endsection

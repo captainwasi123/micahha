@@ -17,6 +17,6 @@ class listingGallery extends Model
         $g->image = $filename;
         $g->save();
 
-        return $g->save();
+        return $g->id;
     }
 }

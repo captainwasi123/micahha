@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\country;
+use App\Models\accommodation\listing;
 use Auth;
 
 class User extends Authenticatable
@@ -23,7 +25,7 @@ class User extends Authenticatable
         $u->country_id = $data['Country'];
         $u->user_type = $data['user_type'];
         $u->newsletter = empty($data['newsletter']) ? '0' : '1';
-        $u->status = '1';
+        $u->status = $data['user_type'] == '1' ? '1' : '0';
         $u->save();
     }
 
@@ -68,4 +70,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function country(){
+        return $this->belongsTo(country::class, 'country_id');
+    }
+
+
+    //landlord
+        public function listings(){
+            return $this->hasMany(listing::class, 'landlord_id', 'id');
+        }
 }

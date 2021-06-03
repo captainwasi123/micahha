@@ -1,5 +1,5 @@
 @extends('admin.includes.master')
-@section('title', 'Approved | Members | Accommodation')
+@section('title', 'Blocked | Members | Accommodation')
 @section('content')
 
 <div class="row">
@@ -38,7 +38,7 @@
                                         <img src="{{URL::to('/public/storage/users/'.$val->profile_image)}}" onerror="this.src = '{{URL::to('/public/user/img/')}}/user.jpg';" alt="user" class="thumbnail" />
                                     </td>
                                     <td>
-                                        <a href="{{URL::to('/admin/accommodation/members/profile/'.base64_encode($val->id))}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
+                                        <a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
                                             {{$val->first_name}} {{$val->last_name}}
                                         </a>
                                     </td>
@@ -58,9 +58,9 @@
                                     <td>0</td>
                                     <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
                                     <td> 
-                                        <a href="#" data-toggle="tooltip" data-original-title="Block" class=" btn btn-danger btn-sm memberBlock" data-id="{{base64_encode($val->id)}}">
-                                         	<i class="fa fa-ban"></i> 
-                                     	</a>
+                                        <a href="#" data-toggle="tooltip" data-original-title="Un-Block" class="btn btn-success btn-sm memberApprove" data-id="{{base64_encode($val->id)}}"> 
+                                            <i class="fa fa-check"></i> 
+                                        </a>
                                  	</td>
                                 </tr>
                                 @php $s++; @endphp

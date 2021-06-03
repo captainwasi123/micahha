@@ -21,7 +21,20 @@ class authController extends Controller
 
             return redirect('/');
         }else{
-            return redirect()->back()->with('error', 'Authentication Failed.');
+            $msg = 'Authentication Failed.';
+            $user = User::where('email', $data['email'])->first();
+            if(empty($user->id)){
+                $msg = 'Authentication Failed.';
+            }else{
+                if($user->status == '2'){
+                    $msg = 'Your account is rejected by admin.';
+                }else if($user->status == '0'){
+                    $msg = 'Your account is under review. Please wait until admin approval.';
+                }else if($user->status == '3'){
+                    $msg = 'Your account is blocked by admin.';
+                }
+            }
+            return redirect()->back()->with('error', $msg);
         }
     }
 
@@ -39,12 +52,17 @@ class authController extends Controller
     }
     function registerSubmit(Request $request){
         $data = $request->all();
+        $msg = '';
         $validated = $request->validate([
             'email' => 'required|unique:tbl_user_info|max:255',
             'password' => 'required|confirmed|min:6',
         ]);
         User::addUser($data);
-
-        return redirect(route('user.login'))->with('success', 'You are successfully registered.');
+        if($data['user_type'] == '1'){
+            $msg = 'You are successfully registered.';
+        }else{
+            $msg = 'You are successfully registered. Please wait until admin approval.';
+        }
+        return redirect(route('user.login'))->with('success', $msg);
     }
 }
