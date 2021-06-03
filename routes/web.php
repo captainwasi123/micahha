@@ -68,7 +68,7 @@ Route::namespace('web')->group(function(){
 								Route::get('published', 'accommodationController@publishedListing')->name('admin.accommodation.listing.published');
 								Route::get('rejected', 'accommodationController@rejectedListing')->name('admin.accommodation.listing.rejected');
 
-								Route::get('details/{id}', 'accommodationController@detailListting');
+								Route::get('details/{id}', 'accommodationController@detailListing');
 							});
 
 						//Bookings
@@ -104,29 +104,34 @@ Route::namespace('web')->group(function(){
 //landlord
 	Route::prefix('landlord')->namespace('landlord')->middleware('landlordAuth')->group(function(){
 		//dashboard
-		Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
+			Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
+		
 		//user settings
-		Route::get('/profile-edit', 'SettingsController@profile_edit')->name('user.profile.edit');
-		Route::get('/change-password', 'SettingsController@change_password')->name('user.change.password');
+			Route::get('/profile-edit', 'SettingsController@profile_edit')->name('user.profile.edit');
+			Route::post('/profile-edit', 'SettingsController@profile_update');
+
+			Route::get('/change-password', 'SettingsController@change_password')->name('user.change.password');
+			Route::post('/change-password', 'SettingsController@update_password');
+		
 		//Listings
-		Route::prefix('listing')->group(function(){
-			
-			Route::get('add', 'ListingController@add_listing')->name('landlord.listing.add');
-			Route::post('add', 'ListingController@insert_listing')->name('landlord.listing.insert');
-			
-			Route::get('pending', 'ListingController@pending_listing')->name('landlord.listing.pending');
-			Route::get('published', 'ListingController@published_listing')->name('landlord.listing.published');
-			Route::get('rejected', 'ListingController@rejected_listing')->name('landlord.listing.rejected');
+			Route::prefix('listing')->group(function(){
+				
+				Route::get('add', 'ListingController@add_listing')->name('landlord.listing.add');
+				Route::post('add', 'ListingController@insert_listing')->name('landlord.listing.insert');
+				
+				Route::get('pending', 'ListingController@pending_listing')->name('landlord.listing.pending');
+				Route::get('published', 'ListingController@published_listing')->name('landlord.listing.published');
+				Route::get('rejected', 'ListingController@rejected_listing')->name('landlord.listing.rejected');
 
-			Route::get('listing/details', 'ListingController@listing_details')->name('landlord.listing.details');
+				Route::get('listing/details', 'ListingController@listing_details')->name('landlord.listing.details');
 
-			Route::get('reservation', 'ListingController@reservation')->name('landlord.listing.reservation');
-		});
+				Route::get('reservation', 'ListingController@reservation')->name('landlord.listing.reservation');
+			});
 
 		//reservation
-		Route::prefix('reservation')->group(function(){
-			
-			Route::get('add', 'ReservationController@add')->name('landlord.reservation.add');
-			Route::get('all', 'ReservationController@all')->name('landlord.reservation.all');
-		});
+			Route::prefix('reservation')->group(function(){
+				
+				Route::get('add', 'ReservationController@add')->name('landlord.reservation.add');
+				Route::get('all', 'ReservationController@all')->name('landlord.reservation.all');
+			});
 	});

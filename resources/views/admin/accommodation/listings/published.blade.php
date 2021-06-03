@@ -22,46 +22,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Wasi</a></td>
-                                <td>$50.0</td>
-                                <td>
-                                	<p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>
-                                </td>
-                                <td>House</td>
-                                <td>29-May-2021 8:11 pm</td>
-                                <td>25</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Wasi</a></td>
-                                <td>$50.0</td>
-                                <td>
-                                	<p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>
-                                </td>
-                                <td>House</td>
-                                <td>29-May-2021 8:11 pm</td>
-                                <td>15</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                <td><a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">Wasi</a></td>
-                                <td>$50.0</td>
-                                <td>
-                                	<p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>
-                                </td>
-                                <td>House</td>
-                                <td>29-May-2021 8:11 pm</td>
-                                <td>10</td>
-                            </tr>
-                            
+                            @php $s=1; @endphp
+                            @foreach($data as $val) 
+                                @php 
+                                    $address = empty($val->address) ? '' : $val->address->address.', '.$val->address->city.', '.$val->address->state.', '.$val->address->country->country.'. '.$val->address->post_code;
+                                @endphp
+                                <tr>
+                                    <td>1</td>
+                                    <td><a href="{{URL::to('/admin/accommodation/listing/details/'.base64_encode($val->id))}}" data-toggle="tooltip" data-original-title="View Details">{{$val->title}}</a></td>
+                                    <td>
+                                        <p class="cut-text" title="{{$address}}">
+                                            {{$address}}
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
+                                            {{empty($val->landlord) ? '' : $val->landlord->first_name}} 
+                                            {{empty($val->landlord) ? '' : $val->landlord->last_name}} 
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <strong>{{'$'.number_format($val->price, 2)}}</strong> 
+                                        <small>{{$val->unit}}</small>
+                                    </td>
+                                    <td>
+                                        <p class="cut-text" title="{{$val->description}}">
+                                            {{$val->description}}   
+                                        </p>
+                                    </td>
+                                    <td>{{empty($val->type) ? '' : $val->type->name}}</td>
+                                    <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
+                                    <td>0</td>
+                                </tr>
+                                @php $s++; @endphp
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

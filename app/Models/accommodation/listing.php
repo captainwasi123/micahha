@@ -63,9 +63,9 @@ class listing extends Model
 
 
     public function amenities(){
-        return $this->hasMany(listingAmenities::class, 'id', 'accom_id');
+        return $this->hasMany(listingAmenities::class, 'accom_id', 'id');
     }
     public function galleryImages(){
-        return $this->hasMany(listingGallery::class, 'id', 'accom_id');
+        return $this->hasMany(listingGallery::class, 'accom_id', 'id');
     }
 }

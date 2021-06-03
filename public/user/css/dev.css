@@ -17,3 +17,61 @@
 .mt-unit {
     margin-top: 35px;
 }
+.profile_info_iner {
+    border: 1px solid #14256a;
+}
+.profile_info .profile_info_iner .profile_author_name {
+    padding: 12px 12px !important;
+}
+.profile_info .profile_info_iner h5 {
+    margin-bottom: 0 !important;
+}
+.profile_author_name p {
+    font-size: 12px !important;
+    border-bottom: 1px solid #e6e6e6;
+}
+.icon_menu i {
+    margin: 0;
+    padding: 7px;
+    font-size: 18px !important;
+}
+.list_divider {
+    margin: 25px 0px;
+    border-bottom: 1px solid #e6e6e6;
+    margin-right: 0 !important;
+}
+.sidebar .logo {
+    margin: 30px 15px 25px 15px !important;
+    padding-bottom: 0 !important;
+}
+.sidebar .logo h2 {
+    margin-bottom: 0;
+}
+.sidebar .logo h2 font {
+    background-color: #14256a;
+    color: #fff;
+    padding: 10px 15px 6px;
+    font-weight: 700;
+    font-size: 32px;
+}
+.sidebar .logo span {
+    line-height: 42px;
+}
+.profile_picture {
+    width: 160px !important;
+    height: 160px !important;
+}
+.profileImageBlock{
+    position: relative;
+    cursor: pointer;
+}
+.profileImageBlock span {
+    position: absolute;
+    top: 61px;
+    left: 61px;
+    font-size: 20px;
+    background-color: #14256a;
+    border-radius: 50%;
+    color: #fff;
+    padding: 10px;
+}

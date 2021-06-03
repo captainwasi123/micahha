@@ -19,22 +19,26 @@ class accommodationController extends Controller
 	//Listings
 
 		function pendingListing(){
-			$data = listing::where('status', '1')->get();
+			$data = listing::where('status', '1')->orderBy('id', 'desc')->get();
 
 			return view('admin.accommodation.listings.pending', ['data' => $data]);
 		}
 		function publishedListing(){
+			$data = listing::where('status', '2')->orderBy('id', 'desc')->get();
 
-			return view('admin.accommodation.listings.published');
+			return view('admin.accommodation.listings.published', ['data' => $data]);
 		}
 		function rejectedListing(){
+			$data = listing::where('status', '3')->orderBy('id', 'desc')->get();
 
-			return view('admin.accommodation.listings.rejected');
+			return view('admin.accommodation.listings.rejected', ['data' => $data]);
 		}
 
-		function detailListting(){
+		function detailListing($id){
+			$id = base64_decode($id);
+			$data = listing::find($id);
 
-			return view('admin.accommodation.listings.details');
+			return view('admin.accommodation.listings.details', ['data' => $data]);
 		}
 
 
