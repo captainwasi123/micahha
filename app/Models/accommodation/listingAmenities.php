@@ -19,6 +19,18 @@ class listingAmenities extends Model
         $a->save();
     }
 
+    public static function editAmenity($id, $amenity){
+        $check_amenity = listingAmenities::where('accom_id',$id)->first();
+        if(empty($check_amenity)){
+            $a = new listingAmenities;
+        }else{
+            $a = $check_amenity;
+        }
+        $a->accom_id = $id;
+        $a->amenity_id = $amenity;
+        $a->save();
+    }
+
     public function amenities()
     {
         return $this->belongsTo(amenities::class, 'amenity_id');

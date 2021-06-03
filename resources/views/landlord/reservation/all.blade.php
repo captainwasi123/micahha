@@ -17,14 +17,14 @@
                                 <div class="white_box_tittle list_header">
                                     <div class="box_right d-flex lms_block">
                                         <div class="serach_field_2">
-                                            <div class="search_inner">
+                                            <!-- <div class="search_inner">
                                                 <form Active="#">
                                                     <div class="search_field">
                                                         <input type="text" placeholder="Search content here...">
                                                     </div>
                                                     <button type="submit"> <i class="ti-search"></i> </button>
                                                 </form>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                                         <thead>
                                             <tr>
                                                 <th>S#</th>
-                                                <th>List Name</th>
+                                                <th style=" width: 100px; ">List Name</th>
                                                 <th>User Name</th>
                                                 <th>Phone Number</th>
                                                 <th>No of People</th>
@@ -44,28 +44,19 @@
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @foreach($reservation_data as $key => $data)
                                             <tr>
-                                                <td>1</td>
-                                                <td><a href="{{route('landlord.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                                <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                                <td>$50.0</td>
+                                                <td>{{++$key}}</td>
+                                                <td><a  data-toggle="tooltip" data-original-title="View Details" title="{{$data->listing->title}}">{{substr($data->listing->title,0,10)}}...</a></td>
+                                                <td><p class="cut-text">{{$data->user_name}}</p></td>
+                                                <td>{{$data->ph_number}}</td>
                                                 <td>
-                                                    <p class="cut-text" title="">2</p>
+                                                    {{$data->no_of_people}}
                                                 </td>
-                                                <td>29-May-2021 8:11 pm</td>
-                                                <td>29-May-2021 8:11 pm</td>
+                                                <td>{{date('d-M-Y', strtotime($data->check_in))}}</td>
+                                                <td>{{date('d-M-Y', strtotime($data->check_out))}}</td>
                                             </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><a href="{{route('landlord.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                                <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                                <td>$50.0</td>
-                                                <td>
-                                                    <p class="cut-text" title="3">3.</p>
-                                                </td>
-                                                <td>29-May-2021 8:11 pm</td>
-                                                <td>29-May-2021 8:11 pm</td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

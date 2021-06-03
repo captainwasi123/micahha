@@ -45,6 +45,34 @@ class listing extends Model
         return $id;   
     }
 
+    public static function editListing(array $data){
+        $l = listing::find($data['list_id']);
+        $l->property_type = $data['property_type'];
+        $l->title = $data['title'];
+        $l->price = $data['price'];
+        $l->unit = $data['price_unit'];
+        $l->description = $data['description'];
+        $l->landlord_id = Auth::id();
+        $l->status = '1';
+        $l->publish_days = $data['publish_duration'];
+        $l->save();
+
+        $id = $l->id;
+        $address = array(
+            'address'   => $data['address'],
+            'city'      => $data['city'],
+            'state'     => $data['state'],
+            'post_code' => $data['post_code'],
+            'country'   => $data['country'],
+        );
+        listingAddress::editAddress($id, $address);
+        foreach($data['amenities'] as $val){
+            listingAmenities::addAmenity($id, $val);
+        }
+
+        return $id;   
+    }
+
     public static function addFeatureImage($id, $filename){
         $l = listing::find($id);
         $l->feature_img = $filename;

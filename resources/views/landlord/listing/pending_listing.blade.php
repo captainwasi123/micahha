@@ -9,6 +9,16 @@
                             <div class="box_header m-0">
                                 <div class="main-title">
                                     <h3 class="m-0">{{$title}}</h3>
+                                    @if(session()->has('success'))
+                                        <div class="alert text-white bg-success mb-0 mt-2" role="alert">
+                                        <div class="alert-text"><b>Success!</b> {{ session()->get('success') }}</div>
+                                        </div>
+                                    @endif
+                                    @if(session()->has('error'))
+                                        <div class="alert text-white bg-danger mb-0 mt-2" role="alert">
+                                        <div class="alert-text"><b>Alert!</b> {{ session()->get('error') }}</div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -31,24 +41,29 @@
         
                                 <div class="QA_table mb_30">
                                     <!-- table-responsive -->
-                                    <table>
+                                    <table class="table">
                                         <thead>
                                             <tr>
                                                 <th>S#</th>
-                                                <th>Title</th>
+                                                <th>Image</th>
+                                                <th style=" width: 100px; ">Title</th>
                                                 <th>Address</th>
                                                 <th>Price</th>
                                                 <th>Description</th>
                                                 <th>Property Type</th>
                                                 <th>Timestamp</th>
-                                                <th>Action</th>
+                                                <th style=" width: 114px; ">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($listing_data as $key => $listing)    
                                             <tr>
+                                                
                                                 <td>{{++$key}}</td>
-                                                <td><a href="{{route('landlord.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">{{$listing->title}}</a></td>
+                                                <td>
+                                                    <img src="{{URL::to('/public/storage/listing/main/')}}/{{$listing->feature_img}}" alt="" width="30px">
+                                                </td>
+                                                <td><a href="{{route('landlord.listing.details')}}" data-toggle="tooltip" data-original-title="View Details" title="{{$listing->title}}">{{substr($listing->title,0,10)}}...</a></td>
                                                 <td><p class="cut-text" title="{{$listing->address->address}}">{{substr($listing->address->address,0,15)}}...</p></td>
                                                 <td>{{'$'.number_format($listing->price, 2)}}</td>
                                                 <td>
@@ -57,8 +72,11 @@
                                                 <td>{{@$listing->type->name}}</td>
                                                 <td>{{date('d-M-Y h:i a', strtotime($listing->created_at))}}</td>
                                                 <td>
-                                                    <a href="#" data-toggle="tooltip" data-original-title="delete" style="color:red">
-                                                        <i class="fas fa-trash"></i> 
+                                                    <a href="{{route('landlord.list.edit',base64_encode($listing->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-info btn-sm" >
+                                                        <i class="fas fa-edit" style="color:#fff"></i>
+                                                    </a>
+                                                    <a href="{{route('landlord.list.delete',base64_encode($listing->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash" style="color:#fff"></i> 
                                                     </a>
                                                 </td>
                                             </tr>

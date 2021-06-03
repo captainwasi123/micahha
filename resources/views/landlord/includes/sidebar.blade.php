@@ -34,6 +34,9 @@
                     <a href="{{route('landlord.listing.pending')}}">Pending </a>
                 </li>
                 <li>
+                    <a href="{{route('landlord.listing.approved')}}">Approved </a>
+                </li>
+                <li>
                     <a href="{{route('landlord.listing.published')}}">Published</a>
                 </li>
                 <li>
@@ -53,7 +56,7 @@
                     <a href="{{route('landlord.reservation.add')}}">Add Reservation</a>
                 </li>
                 <li>
-                    <a href="{{route('landlord.reservation.all')}}">All Reservation </a>
+                    <a href="{{route('landlord.reservation.all','pending')}}">Pending</a>
                 </li>
             </ul>
         </li>
