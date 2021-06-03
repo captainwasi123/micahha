@@ -18,12 +18,12 @@
                                     <div class="box_right d-flex lms_block">
                                         <div class="serach_field_2">
                                             <div class="search_inner">
-                                                <form Active="#">
+                                                <!-- <form Active="#">
                                                     <div class="search_field">
                                                         <input type="text" placeholder="Search content here...">
                                                     </div>
                                                     <button type="submit"> <i class="ti-search"></i> </button>
-                                                </form>
+                                                </form> -->
                                             </div>
                                         </div>
                                     </div>
@@ -31,7 +31,7 @@
         
                                 <div class="QA_table mb_30">
                                     <!-- table-responsive -->
-                                    <table class="table lms_table_active ">
+                                    <table>
                                         <thead>
                                             <tr>
                                                 <th>S#</th>
@@ -41,33 +41,31 @@
                                                 <th>Description</th>
                                                 <th>Property Type</th>
                                                 <th>Timestamp</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                        @foreach($listing_data as $key => $listing)    
                                             <tr>
-                                                <td>1</td>
-                                                <td><a href="{{route('landlord.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                                <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                                <td>$50.0</td>
+                                                <td>{{++$key}}</td>
+                                                <td><a href="{{route('landlord.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">{{$listing->title}}</a></td>
+                                                <td><p class="cut-text" title="{{$listing->address->address}}">{{substr($listing->address->address,0,15)}}...</p></td>
+                                                <td>{{'$'.number_format($listing->price, 2)}}</td>
                                                 <td>
-                                                    <p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>
+                                                    <p class="cut-text" title="{{$listing->description}}">{{substr($listing->description,0,10)}}...</p>
                                                 </td>
-                                                <td>House</td>
-                                                <td>29-May-2021 8:11 pm</td>
-                                            </tr>
-                                            <tr>
-                                                <td>1</td>
-                                                <td><a href="{{route('landlord.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                                <td><p class="cut-text" title="Murree, Khyber Pakhtunkhwa, Pakistan">Murree, Khyber Pakhtunkhwa, Pakistan</p></td>
-                                                <td>$50.0</td>
+                                                <td>{{@$listing->type->name}}</td>
+                                                <td>{{date('d-M-Y h:i a', strtotime($listing->created_at))}}</td>
                                                 <td>
-                                                    <p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</p>
+                                                    <a href="#" data-toggle="tooltip" data-original-title="delete" style="color:red">
+                                                        <i class="fas fa-trash"></i> 
+                                                    </a>
                                                 </td>
-                                                <td>House</td>
-                                                <td>29-May-2021 8:11 pm</td>
                                             </tr>
+                                        @endforeach    
                                         </tbody>
                                     </table>
+                                    {{ $listing_data->withQueryString()->links('pagination::bootstrap-4') }}
                                 </div>
                             </div>
                         </div>
