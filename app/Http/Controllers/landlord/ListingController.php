@@ -49,7 +49,10 @@ class ListingController extends Controller
 
     public function pending_listing()
     {
-    	$data = array('title' => 'Pending Listing');
+    	$data = array(
+            'title' => 'Pending Listing',
+            'listing_data' => listing::where('status',1)->latest()->paginate(10),
+        );
     	return view('landlord.listing.pending_listing')->with($data);
     }
     public function published_listing()
