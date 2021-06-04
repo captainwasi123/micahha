@@ -75,6 +75,9 @@
                                                     <a href="{{route('landlord.list.delete',base64_encode($listing->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-danger btn-sm">
                                                         <i class="fas fa-trash" style="color:#fff"></i> 
                                                     </a>
+                                                    <!-- <a href="{{route('landlord.reservation.edit_status', base64_encode($data->id))}}" class="btn btn-success text-white" title="approve">
+                                                        <i class="fas fa-check"></i>
+                                                    </a> -->
                                                 </td>
                                             </tr>
                                         @endforeach    

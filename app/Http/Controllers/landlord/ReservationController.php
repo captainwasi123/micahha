@@ -50,4 +50,12 @@ class ReservationController extends Controller
         );
     	return view('landlord.reservation.all')->with($data);
     }
+    public function edit_status(Request $request)
+    {
+        $id = base64_decode($request->id);
+        $reservation = reservation::find($id);
+        $reservation->status = 1;
+        $reservation->save();
+        return redirect()->back()->with('success', 'Reservation Approved.');
+    }
 }

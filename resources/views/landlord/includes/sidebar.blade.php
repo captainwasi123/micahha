@@ -57,6 +57,8 @@
                 </li>
                 <li>
                     <a href="{{route('landlord.reservation.all','pending')}}">Pending</a>
+                    <a href="{{route('landlord.reservation.all','approve')}}">Approved</a>
+                    <a href="{{route('landlord.reservation.all','rejected')}}">Rejected</a>
                 </li>
             </ul>
         </li>

@@ -165,6 +165,7 @@ Route::namespace('web')->group(function(){
 				Route::get('listing/details', 'ListingController@listing_details')->name('landlord.listing.details');
 
 				Route::get('reservation', 'ListingController@reservation')->name('landlord.listing.reservation');
+
 			});
 
 		//reservation
@@ -173,5 +174,7 @@ Route::namespace('web')->group(function(){
 				Route::get('add', 'ReservationController@add')->name('landlord.reservation.add');
 				Route::post('save', 'ReservationController@save')->name('landlord.reservation.save');
 				Route::get('{status}', 'ReservationController@all')->name('landlord.reservation.all');
+				Route::get('edit-status/{id}' , 'reservationcontroller@edit_status')->name('landlord.reservation.edit_status');
+			
 			});
 	});

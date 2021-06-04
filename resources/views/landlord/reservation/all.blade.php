@@ -9,6 +9,16 @@
                             <div class="box_header m-0">
                                 <div class="main-title">
                                     <h3 class="m-0">{{$title}}</h3>
+                                    @if(session()->has('success'))
+                                        <div class="alert text-white bg-success mb-0 mt-2" role="alert">
+                                        <div class="alert-text"><b>Success!</b> {{ session()->get('success') }}</div>
+                                        </div>
+                                    @endif
+                                    @if(session()->has('error'))
+                                        <div class="alert text-white bg-danger mb-0 mt-2" role="alert">
+                                        <div class="alert-text"><b>Alert!</b> {{ session()->get('error') }}</div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -28,7 +38,7 @@
                                         </div>
                                     </div>
                                 </div>
-        
+
                                 <div class="QA_table mb_30">
                                     <!-- table-responsive -->
                                     <table class="table lms_table_active ">
@@ -41,6 +51,9 @@
                                                 <th>No of People</th>
                                                 <th>Check-In</th>
                                                 <th>Check-Out</th>
+                                                @if($title == 'Pending')
+                                                <th>Action</th>
+                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,6 +68,11 @@
                                                 </td>
                                                 <td>{{date('d-M-Y', strtotime($data->check_in))}}</td>
                                                 <td>{{date('d-M-Y', strtotime($data->check_out))}}</td>
+                                                @if($title == 'Pending')
+                                                <td>
+                                                    <a href="{{route('landlord.reservation.edit_status', base64_encode($data->id))}}" class="btn btn-success text-white" title="approve"><i class="fas fa-check"></i></a>
+                                                </td>
+                                                @endif
                                             </tr>
                                             @endforeach
                                         </tbody>
@@ -65,7 +83,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    
+
                 </div>
             </div>
         </div>
