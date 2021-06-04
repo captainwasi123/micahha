@@ -45,7 +45,7 @@ Route::namespace('web')->group(function(){
 //Administration
 
 	Route::prefix('admin')->namespace('admin')->group(function(){
-		
+
 		//Authentication
 			Route::get('/login', 'authController@login');
 			Route::post('/login', 'authController@loginAttempt');
@@ -53,7 +53,7 @@ Route::namespace('web')->group(function(){
 
 		//Middleware
 			Route::middleware('adminAuth')->group(function(){
-				
+
 				Route::get('/', 'adminController@index')->name('admin.dashboard');
 
 				//Accommodation
@@ -63,7 +63,7 @@ Route::namespace('web')->group(function(){
 
 						//Listings
 							Route::prefix('listing')->group(function(){
-								
+
 								Route::get('pending', 'accommodationController@pendingListing')->name('admin.accommodation.listing.pending');
 								Route::get('published', 'accommodationController@publishedListing')->name('admin.accommodation.listing.published');
 								Route::get('rejected', 'accommodationController@rejectedListing')->name('admin.accommodation.listing.rejected');
@@ -93,7 +93,7 @@ Route::namespace('web')->group(function(){
 								Route::get('approve/{id}', 'accommodationController@approveMember');
 								Route::get('reject/{id}', 'accommodationController@rejectMember');
 								Route::get('block/{id}', 'accommodationController@blockMember');
-							});	
+							});
 
 						//Inquiries
 							Route::prefix('inquiries')->group(function(){
@@ -138,22 +138,22 @@ Route::namespace('web')->group(function(){
 	Route::prefix('landlord')->namespace('landlord')->middleware('landlordAuth')->group(function(){
 		//dashboard
 			Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
-		
+
 		//user settings
 			Route::get('/profile-edit', 'SettingsController@profile_edit')->name('user.profile.edit');
 			Route::post('/profile-edit', 'SettingsController@profile_update');
 
 			Route::get('/change-password', 'SettingsController@change_password')->name('user.change.password');
 			Route::post('/change-password', 'SettingsController@update_password');
-		
+
 		//Listings
 			Route::prefix('listing')->group(function(){
-				
+
 				Route::get('add', 'ListingController@add_listing')->name('landlord.listing.add');
 				Route::post('add', 'ListingController@insert_listing')->name('landlord.listing.insert');
-				
+
 				Route::get('delete/{id}', 'ListingController@delete_list')->name('landlord.list.delete');
-				
+
 				Route::get('edit/{id}', 'ListingController@edit_list')->name('landlord.list.edit');
 				Route::post('update', 'ListingController@update_list')->name('landlord.listing.update');
 
@@ -165,16 +165,15 @@ Route::namespace('web')->group(function(){
 				Route::get('listing/details', 'ListingController@listing_details')->name('landlord.listing.details');
 
 				Route::get('reservation', 'ListingController@reservation')->name('landlord.listing.reservation');
-
 			});
 
 		//reservation
 			Route::prefix('reservation')->group(function(){
-				
+
 				Route::get('add', 'ReservationController@add')->name('landlord.reservation.add');
+                Route::get('edit/{id}', 'ReservationController@edit')->name('landlord.reservation.edit');
 				Route::post('save', 'ReservationController@save')->name('landlord.reservation.save');
 				Route::get('{status}', 'ReservationController@all')->name('landlord.reservation.all');
-				Route::get('edit-status/{id}' , 'reservationcontroller@edit_status')->name('landlord.reservation.edit_status');
-			
+                Route::get('edit-status/{id}' , 'ReservationController@edit_status')->name('landlord.reservation.edit_status');
 			});
 	});

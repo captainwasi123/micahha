@@ -51,9 +51,7 @@
                                                 <th>No of People</th>
                                                 <th>Check-In</th>
                                                 <th>Check-Out</th>
-                                                @if($title == 'Pending')
                                                 <th>Action</th>
-                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -68,9 +66,10 @@
                                                 </td>
                                                 <td>{{date('d-M-Y', strtotime($data->check_in))}}</td>
                                                 <td>{{date('d-M-Y', strtotime($data->check_out))}}</td>
-                                                @if($title == 'Pending')
                                                 <td>
-                                                    <a href="{{route('landlord.reservation.edit_status', base64_encode($data->id))}}" class="btn btn-success text-white" title="approve"><i class="fas fa-check"></i></a>
+                                                    <a href="{{route('landlord.reservation.edit', base64_encode($data->id))}}" class="btn btn-info text-white" title="Edit"><i class="fas fa-edit"></i></a>
+                                                @if($title == 'Pending') 
+                                                    <a href="{{route('landlord.reservation.edit_status', base64_encode($data->id))}}" class="btn btn-success text-white" title="Approve"><i class="fas fa-check"></i></a>
                                                 </td>
                                                 @endif
                                             </tr>

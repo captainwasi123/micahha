@@ -59,15 +59,15 @@ class ListingController extends Controller
         return redirect()->back()->with('success', 'Listing Deleted.');
     }
     public function edit_list(Request $request)
-    {
-        $id = base64_decode($request->id);
+    { 
+        $id = base64_decode($request->id); 
         $data = array(
             'title' => 'Edit Listing',
             'listing_data' => listing::where('landlord_id',Auth::id())->where('id',$id)->first(),
             'countries' => country::all(),
             'amenities' => amenities::orderBy('name')->get(),
             'propertyType' => propertyType::orderBy('name')->get()
-        );
+        ); 
     	return view('landlord.listing.edit_listing')->with($data);
     }
     public function update_list(Request $request)

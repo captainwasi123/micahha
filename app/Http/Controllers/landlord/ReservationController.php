@@ -18,21 +18,50 @@ class ReservationController extends Controller
         );
     	return view('landlord.reservation.add')->with($data);
     }
+    
+
     public function save(Request $request)
-    { 
-         $dates = explode('-',$request->check_id_date);
-        $reservation = new reservation();
+    {
+        if($request->id){
+            $id = base64_decode($request->id);
+            $reservation = reservation::find($id);
+            $reservation->status = $request->status;
+            $reservation->customer_status = $request->customer_status;
+            $msg = "Reservation Update.";
+            if($request->status == '1'){
+                $status = 'approve';
+            }if($request->status == '2'){
+                $status = 'rejected';
+            }
+        }else{
+            $reservation = new reservation();
+            $reservation->status = 1;
+            $msg = "Reservation Created.";
+            $status = 'approve';
+        }
+        $dates = explode('-',$request->check_id_date);
         $reservation->list_id = $request->list_id;
-        $reservation->landlord_id = Auth::id(); 
+        $reservation->landlord_id = Auth::id();
         $reservation->user_name = $request->user_name;
         $reservation->ph_number = $request->ph_number;
         $reservation->no_of_people = $request->no_of_people;
         $reservation->check_in = date('Y-m-d',strTotime($dates[0]));
         $reservation->check_out = date('Y-m-d',strTotime($dates[1]));
-        $reservation->status = 1;
         $reservation->save();
- 
-        return redirect()->back()->with('success', 'Reservation Created.');
+
+        return redirect()->route('landlord.reservation.all',$status)->with('success', $msg);
+    }
+
+    public function edit(Request $request)
+    {
+        $id = base64_decode($request->id);
+        $reservation = reservation::find($id);
+        $data = array(
+            'title' => 'Edit Reservation',
+            'listing_data' => listing::where('landlord_id',Auth::id())->where('status',2)->latest()->get(),
+            'reservation' => $reservation
+        );
+        return view('landlord.reservation.add')->with($data);
     }
     public function all(Request $request)
     {   
