@@ -65,10 +65,16 @@ Route::namespace('web')->group(function(){
 							Route::prefix('listing')->group(function(){
 								
 								Route::get('pending', 'accommodationController@pendingListing')->name('admin.accommodation.listing.pending');
+								Route::get('due', 'accommodationController@dueListing')->name('admin.accommodation.listing.due');
 								Route::get('published', 'accommodationController@publishedListing')->name('admin.accommodation.listing.published');
 								Route::get('rejected', 'accommodationController@rejectedListing')->name('admin.accommodation.listing.rejected');
 
 								Route::get('details/{id}', 'accommodationController@detailListing');
+
+
+
+								Route::get('approve/{id}', 'accommodationController@approveListing');
+								Route::get('reject/{id}', 'accommodationController@rejectListing');
 							});
 
 						//Bookings
@@ -162,7 +168,7 @@ Route::namespace('web')->group(function(){
 				Route::get('published', 'ListingController@published_listing')->name('landlord.listing.published');
 				Route::get('rejected', 'ListingController@rejected_listing')->name('landlord.listing.rejected');
 
-				Route::get('listing/details', 'ListingController@listing_details')->name('landlord.listing.details');
+				Route::get('details/{id}', 'ListingController@listing_details');
 
 				Route::get('reservation', 'ListingController@reservation')->name('landlord.listing.reservation');
 

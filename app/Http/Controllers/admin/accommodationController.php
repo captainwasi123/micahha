@@ -24,6 +24,11 @@ class accommodationController extends Controller
 
 			return view('admin.accommodation.listings.pending', ['data' => $data]);
 		}
+		function dueListing(){
+			$data = listing::where('status', '4')->orderBy('id', 'desc')->get();
+
+			return view('admin.accommodation.listings.due', ['data' => $data]);
+		}
 		function publishedListing(){
 			$data = listing::where('status', '2')->orderBy('id', 'desc')->get();
 
@@ -40,6 +45,23 @@ class accommodationController extends Controller
 			$data = listing::find($id);
 
 			return view('admin.accommodation.listings.details', ['data' => $data]);
+		}
+
+		function approveListing($id){
+			$id = base64_decode($id);
+			$u = listing::find($id);
+			$u->status = '4';
+			$u->save();
+
+			return redirect()->back()->with('success', 'Lisitng Approved.');
+		}
+		function rejectListing($id){
+			$id = base64_decode($id);
+			$u = listing::find($id);
+			$u->status = '3';
+			$u->save();
+
+			return redirect()->back()->with('success', 'Lisitng Rejected.');
 		}
 
 

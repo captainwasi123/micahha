@@ -6,6 +6,13 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                <div>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            <strong>Success! </strong>{{ session('success') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="table-responsive">
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
@@ -36,7 +43,7 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
+                                        <a href="{{URL::to('/admin/accommodation/members/profile/'.base64_encode($val->landlord_id))}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
                                             {{empty($val->landlord) ? '' : $val->landlord->first_name}} 
                                             {{empty($val->landlord) ? '' : $val->landlord->last_name}} 
                                         </a>

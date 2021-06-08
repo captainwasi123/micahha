@@ -6,6 +6,13 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                <div>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            <strong>Success! </strong>{{ session('success') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="table-responsive">
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
@@ -36,7 +43,7 @@
                                         </p>
                                     </td>
                                     <td>
-                                        <a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
+                                        <a href="{{URL::to('/admin/accommodation/members/profile/'.base64_encode($val->landlord_id))}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
                                             {{empty($val->landlord) ? '' : $val->landlord->first_name}} 
                                             {{empty($val->landlord) ? '' : $val->landlord->last_name}} 
                                         </a>
@@ -53,11 +60,11 @@
                                     <td>{{empty($val->type) ? '' : $val->type->name}}</td>
                                     <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
                                     <td> 
-                                    	<a href="#" data-toggle="tooltip" data-original-title="Approve"> 
+                                    	<a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="listingApprove" data-toggle="tooltip" data-original-title="Approve"> 
                                     		<i class="fa fa-check text-success"></i> 
                                     	</a>
                                     	&nbsp;&nbsp;
-                                        <a href="#" data-toggle="tooltip" data-original-title="Reject">
+                                        <a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="listingReject" data-toggle="tooltip" data-original-title="Reject">
                                          	<i class="fa fa-close text-danger"></i> 
                                      	</a>
                                  	</td>
