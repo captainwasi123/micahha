@@ -137,13 +137,10 @@ Route::namespace('web')->group(function(){
 //landlord
 	Route::prefix('landlord')->namespace('landlord')->middleware('landlordAuth')->group(function(){
 		//dashboard
-<<<<<<< HEAD
 			Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
 
-=======
 			Route::get('/', 'landlordController@index')->name('landlord.dashboard');
-		
->>>>>>> 4dd70446cfb3ab6a227ba6265635b836f7613c53
+
 		//user settings
 			Route::get('/profile-edit', 'SettingsController@profile_edit')->name('user.profile.edit');
 			Route::post('/profile-edit', 'SettingsController@profile_update');

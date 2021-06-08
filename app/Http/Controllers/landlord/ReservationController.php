@@ -28,17 +28,13 @@ class ReservationController extends Controller
             $reservation->status = $request->status;
             $reservation->customer_status = $request->customer_status;
             $msg = "Reservation Update.";
-            if($request->status == '1'){
-                $status = 'approve';
-            }if($request->status == '2'){
-                $status = 'rejected';
-            }
         }else{
             $reservation = new reservation();
             $reservation->status = 1;
             $msg = "Reservation Created.";
-            $status = 'approve';
         }
+        $status = 'approve';
+
         $dates = explode('-',$request->check_id_date);
         $reservation->list_id = $request->list_id;
         $reservation->landlord_id = Auth::id();
@@ -47,6 +43,7 @@ class ReservationController extends Controller
         $reservation->no_of_people = $request->no_of_people;
         $reservation->check_in = date('Y-m-d',strTotime($dates[0]));
         $reservation->check_out = date('Y-m-d',strTotime($dates[1]));
+        $reservation->customer_status = isset($request->customer_status) ? $request->customer_status : 0;
         $reservation->save();
 
         return redirect()->route('landlord.reservation.all',$status)->with('success', $msg);
@@ -58,6 +55,7 @@ class ReservationController extends Controller
         $reservation = reservation::find($id);
         $data = array(
             'title' => 'Edit Reservation',
+            'is_edit' => true,
             'listing_data' => listing::where('landlord_id',Auth::id())->where('status',2)->latest()->get(),
             'reservation' => $reservation
         );

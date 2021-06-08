@@ -75,7 +75,7 @@
                                                     <a href="{{route('landlord.list.edit',base64_encode($listing->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-info btn-sm" >
                                                         <i class="fas fa-edit" style="color:#fff"></i>
                                                     </a>
-                                                    <a href="{{route('landlord.list.delete',base64_encode($listing->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-danger btn-sm">
+                                                    <a onclick="return confirm_click();" href="{{route('landlord.list.delete',base64_encode($listing->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-danger btn-sm">
                                                         <i class="fas fa-trash" style="color:#fff"></i> 
                                                     </a>
                                                 </td>
@@ -104,4 +104,11 @@
         $('#myTable').DataTable();
     });
     </script>
+    <script type="text/javascript">
+function confirm_click()
+{
+return confirm("Are you sure ?");
+}
+
+</script> 
 @endsection

@@ -48,7 +48,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="">Phone Number</label>
-                                            <input type="text" class="form-control" value="{{@$reservation->ph_number}}" name="ph_number" required>
+                                            <input type="number" class="form-control" value="{{@$reservation->ph_number}}" name="ph_number" required>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="">No of People</label>
@@ -58,7 +58,6 @@
                                             <label for="">Check-In | Check-Out</label>
                                             <input type="text" class="form-control datepicker-here  digits" data-range="true" data-multiple-dates-separator="-" data-language="en" name="check_id_date" value="{{@$reservation->check_in ? @$reservation->check_in."-".@$reservation->check_out : ' ' }}" required>
                                         </div> 
-                                        @if(@$reservation->status == 1)
                                         <div class="form-group col-md-12">
                                             <label for="">Customer Status</label>
                                             <select class="form-control" name="customer_status" required>
@@ -67,7 +66,6 @@
                                                 <option value="2" {{ @$reservation->customer_status == 3 ? 'selected' : '' }}>Checked-Out</option>
                                             </select>
                                         </div>
-                                        @endif
                                     </div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
