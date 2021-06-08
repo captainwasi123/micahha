@@ -81,7 +81,7 @@ Route::namespace('web')->group(function(){
 							Route::prefix('booking')->group(function(){
 
 								Route::get('pending', 'accommodationController@pendingBooking')->name('admin.accommodation.booking.pending');
-								Route::get('completed', 'accommodationController@completedBooking')->name('admin.accommodation.booking.completed');
+								Route::get('approved', 'accommodationController@approvedBooking')->name('admin.accommodation.booking.approved');
 								Route::get('cancelled', 'accommodationController@cancelledBooking')->name('admin.accommodation.booking.cancelled');
 							});
 
@@ -139,7 +139,6 @@ Route::namespace('web')->group(function(){
 
 	});
 
-
 //landlord
 	Route::prefix('landlord')->namespace('landlord')->middleware('landlordAuth')->group(function(){
 		//dashboard
@@ -151,10 +150,10 @@ Route::namespace('web')->group(function(){
 
 
 		//user settings
-			Route::get('/profile-edit', 'SettingsController@profile_edit')->name('user.profile.edit');
+			Route::get('/profile-edit', 'SettingsController@profile_edit')->name('landlord.profile.edit');
 			Route::post('/profile-edit', 'SettingsController@profile_update');
 
-			Route::get('/change-password', 'SettingsController@change_password')->name('user.change.password');
+			Route::get('/change-password', 'SettingsController@change_password')->name('landlord.change.password');
 			Route::post('/change-password', 'SettingsController@update_password');
 
 		//Listings
@@ -187,4 +186,19 @@ Route::namespace('web')->group(function(){
 				Route::get('{status}', 'ReservationController@all')->name('landlord.reservation.all');
                 Route::get('edit-status/{id}' , 'ReservationController@edit_status')->name('landlord.reservation.edit_status');
 			});
+	});
+
+
+//User
+	Route::prefix('user')->namespace('user')->middleware('userAuth')->group(function(){
+
+		Route::get('/', 'userController@index')->name('user.dashboard');
+
+
+		//user settings
+			Route::get('/profile-edit', 'SettingController@profile_edit')->name('user.profile.edit');
+			Route::post('/profile-edit', 'SettingController@profile_update');
+
+			Route::get('/change-password', 'SettingController@change_password')->name('user.change.password');
+			Route::post('/change-password', 'SettingController@update_password');
 	});

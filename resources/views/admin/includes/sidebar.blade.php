@@ -52,7 +52,7 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('admin.accommodation.booking.pending')}}">Pending </a></li>
-                        <li><a href="{{route('admin.accommodation.booking.completed')}}">Completed</a></li>
+                        <li><a href="{{route('admin.accommodation.booking.approved')}}">Approved</a></li>
                         <li><a href="{{route('admin.accommodation.booking.cancelled')}}">Cancelled</a></li>
                     </ul>
                 </li>
