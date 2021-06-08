@@ -72,7 +72,7 @@
                                                 <td>{{@$listing->type->name}}</td>
                                                 <td>{{date('d-M-Y h:i a', strtotime($listing->created_at))}}</td>
                                                 <td>
-                                                    <a href="{{route('landlord.list.delete',base64_encode($listing->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-danger btn-sm">
+                                                    <a onclick="return confirm_click();"  href="{{route('landlord.list.delete',base64_encode($listing->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-danger btn-sm">
                                                         <i class="fas fa-trash" style="color:#fff"></i> 
                                                     </a>
                                                     <a href="{{URL::to('landlord/listing/details/'.base64_encode($listing->id))}}" title="Detail View" class="btn btn-info btn-sm">
@@ -104,4 +104,11 @@
         $('#myTable').DataTable();
     });
     </script>
+      <script type="text/javascript">
+function confirm_click()
+{
+return confirm("Are you sure ?");
+}
+
+</script> 
 @endsection

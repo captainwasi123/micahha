@@ -142,6 +142,10 @@ Route::namespace('web')->group(function(){
 //landlord
 	Route::prefix('landlord')->namespace('landlord')->middleware('landlordAuth')->group(function(){
 		//dashboard
+			Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
+
+			Route::get('/', 'landlordController@index')->name('landlord.dashboard');
+
 
 			Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
 
