@@ -44,6 +44,26 @@ $(document).ready(function(){
 					}
 				});
 
+	//Listing
+
+		//Approve
+			$(document).on('click', '.listingApprove', function(){
+				var id = $(this).data('id');
+				
+				if(confirm('Are you sure want to approve this.?')){
+					window.location.href = host+"/accommodation/listing/approve/"+id;
+				}
+			});
+
+		//Reject
+			$(document).on('click', '.listingReject', function(){
+				var id = $(this).data('id');
+				
+				if(confirm('Are you sure want to reject this.?')){
+					window.location.href = host+"/accommodation/listing/reject/"+id;
+				}
+			});
+
 
 	//Members
 

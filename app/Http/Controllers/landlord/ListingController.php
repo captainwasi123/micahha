@@ -132,9 +132,13 @@ class ListingController extends Controller
         );
     	return view('landlord.listing.rejected_listing')->with($data);
     }
-    public function listing_details()
+    public function listing_details($id)
     {
-    	$data = array('title' => 'Listing Details');
+        $id = base64_decode($id);
+    	$data = array(
+            'title' => 'Listing Details',
+            'listing' => listing::find($id)
+        );
     	return view('landlord.listing.listing_details')->with($data);
     }
     

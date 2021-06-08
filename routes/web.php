@@ -65,10 +65,16 @@ Route::namespace('web')->group(function(){
 							Route::prefix('listing')->group(function(){
 
 								Route::get('pending', 'accommodationController@pendingListing')->name('admin.accommodation.listing.pending');
+								Route::get('due', 'accommodationController@dueListing')->name('admin.accommodation.listing.due');
 								Route::get('published', 'accommodationController@publishedListing')->name('admin.accommodation.listing.published');
 								Route::get('rejected', 'accommodationController@rejectedListing')->name('admin.accommodation.listing.rejected');
 
 								Route::get('details/{id}', 'accommodationController@detailListing');
+
+
+
+								Route::get('approve/{id}', 'accommodationController@approveListing');
+								Route::get('reject/{id}', 'accommodationController@rejectListing');
 							});
 
 						//Bookings
@@ -137,10 +143,20 @@ Route::namespace('web')->group(function(){
 //landlord
 	Route::prefix('landlord')->namespace('landlord')->middleware('landlordAuth')->group(function(){
 		//dashboard
+<<<<<<< HEAD
 			Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
 
 			Route::get('/', 'landlordController@index')->name('landlord.dashboard');
 
+=======
+
+			Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
+
+
+			Route::get('/', 'landlordController@index')->name('landlord.dashboard');
+
+
+>>>>>>> 991f408f4529c6f16a7315c859095b79004bf13b
 		//user settings
 			Route::get('/profile-edit', 'SettingsController@profile_edit')->name('user.profile.edit');
 			Route::post('/profile-edit', 'SettingsController@profile_update');
@@ -164,7 +180,7 @@ Route::namespace('web')->group(function(){
 				Route::get('published', 'ListingController@published_listing')->name('landlord.listing.published');
 				Route::get('rejected', 'ListingController@rejected_listing')->name('landlord.listing.rejected');
 
-				Route::get('listing/details', 'ListingController@listing_details')->name('landlord.listing.details');
+				Route::get('details/{id}', 'ListingController@listing_details');
 
 				Route::get('reservation', 'ListingController@reservation')->name('landlord.listing.reservation');
 			});
