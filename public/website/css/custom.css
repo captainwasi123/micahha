@@ -95,6 +95,11 @@ a {
 }
 
 
+.m-t-40 {
+    margin-top: 40px !important
+}
+
+
 .m-b-10 {
 	margin-bottom: 10px !important
 }
@@ -108,6 +113,11 @@ a {
 
 .m-b-30 {
 	margin-bottom: 30px !important
+}
+
+
+.m-b-40 {
+    margin-bottom: 40px !important
 }
 
 .pad-top-20 {
@@ -183,13 +193,14 @@ footer {
 .footer-menu {
     float: left;
     width: 100%;
+    text-align: right;
 }
 
 .footer-menu a {
     font-family: 'helvetica-bold';
     font-size: 15px;
     letter-spacing: 0.3px;
-    margin-right: 60px;
+    margin-right: 32px;
     margin-top: 10px;
 }
 .footer-menu a:nth-last-child(1) {
@@ -1203,6 +1214,297 @@ button.results-btn {
     color: black;
 }
 
+
+.accomodation-tags {
+    float: left;
+    width: 100%;
+    padding: 16px 0px 8px 0px;
+}
+
+.accomodation-tags span {
+    color: black;
+    font-family: 'helvetica-bold';
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    border-right: 2px solid black;
+    padding: 4px 15px 4px 6px;
+    display: inline-block;
+}
+.accomodation-tags span:nth-last-child(1) {
+    border:none;
+}
+span.apartment-tags {
+    display: block;
+    margin-top: 0px;
+    position: relative;
+    z-index: 9;
+    padding-left: 20px;
+    padding-right: 20px;
+    top: -50px;
+}
+span.apartment-tags b {
+    display: inline-block;
+    margin-right: 20px;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'helvetica-bold';
+}
+
+span.apartment-tags b img {
+    width: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.apartment-title {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.apartment-title h5 {
+    font-size: 22px;
+    letter-spacing: 0.7px;
+}
+
+.apartment-title h5 span {
+    float: right;
+}
+
+.apartment-features {
+    float: left;
+    width: 100%;
+    background: #f1edec;
+    padding: 20px 10px;
+}
+
+.apartment-features div span {
+    float: left;
+    width: 33.333%;
+    font-size: 13px;
+    color: black;
+}
+
+.apartment-features div span img {
+    width: 27px;
+}
+
+.apartment-features div span {
+    float: left;
+    width: 33.333%;
+    font-size: 13px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.apartment-features > div {
+    float: left;
+    width: 100%;
+}
+
+.apartment-features h6 {
+    color: black;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+}
+
+
+ 
+
+
+ .custom-btn4 {
+    color: #15345a;
+    border: 1px solid #15345a;
+    font-family: 'helvetica-bold';
+    padding: 8px 18px;
+    border-radius: 24px;
+}
+
+
+.apartment-actions {
+    float: left;
+    width: 100%;
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+ .custom-btn4:hover {
+    background:#15345a;
+    color:white;
+}
+
+
+.description-field {
+    width: 100%;
+    height: 450px !important;
+    font-family: adobe-garamond;
+    font-size: 25px;
+    color: black;
+    padding: 15px 15px;
+    float: left;
+    border: 1px solid black;
+}
+.description-field h5 {
+    color: black;
+    font-size: 22px;
+    letter-spacing: 0.6px;
+    color: black;
+    margin: 0px;
+}
+
+.apartment-name {
+    float: left;
+    width: 100%;
+}
+.apartment-name h3 {
+    font-family: 'helvetica-bold';
+    letter-spacing: 0.7px;
+    font-size: 26px;
+}
+.apartment-name p {
+    color: grey;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+}
+
+button.slick-arrow {
+	display: none !important;
+}
+.image-slider:hover button.slick-arrow {
+display: block !important;
+}
+
+.logo img {
+    margin-right: -20px;
+    width: 120px !important;
+}
+.header-top .container {
+    position: relative;
+    max-width: 100%;
+}
+
+
+.btn-group:hover .dropdown-menu {
+    display: block;
+}
+
+
+.all-filters .btn-group {
+    padding: 25px 0px 20px 0px;
+}
+.all-filters {
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.all-filters .dropdown-menu {
+    min-width: 290px;
+    padding: 0px;
+    transform: none !important;
+    top: 65px !important;
+    left: 0px !important;
+    right: auto !important;
+    z-index: 9999999;
+}
+
+.art-quote {
+    background-image: url(../images/art-bg1.jpg);
+    background-size: cover;
+    float: left;
+    width: 100%;
+    padding: 100px 0px;
+}
+
+
+.art-quote p {
+ 
+    max-width: 700px;
+    font-size: 22px;
+    margin: auto;
+    margin-bottom: 30px;
+    letter-spacing: 0.7px;
+}
+
+.custom-btn5 {
+    background: white;
+    color: #223f64;
+    font-family: 'helvetica-bold';
+    font-size: 15px;
+    padding: 15px 35px;
+    letter-spacing: 0.8px;
+    border-radius: 15px;
+}
+.custom-btn5:hover {
+color:white;
+background:#223f64;
+}
+
+
+.block-element {
+    float: left;
+    width: 100%;
+}
+.custom-btn6 {
+    color: white;
+    background: #223f64;
+    font-size: 15px;
+    padding: 10px 25px;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+.custom-btn6:hover {
+color:white;
+background:#223f64;
+}
+
+.image-slider2 img {
+    max-width: 93%;
+ 
+    display: block;
+}
+
+.slick-slider:hover button.slick-arrow {
+    display: block !important;
+}
+.image-slider3 img {
+    max-width: 95%;
+ 
+    display: block;
+}
+.portrait-detail {
+    float: left;
+    width: 100%;
+}
+
+.portrait-detail p {
+    font-family: 'Alegreya SC', serif !important;
+    color: black;
+    font-size: 20px;
+    letter-spacing: 0px;
+    line-height: 28px;
+}
+
+
+.portrait-detail img {
+    max-width: 80%;
+}
+
+.checkbox-filter3 form input {
+    width: 100%;
+    height: 35px;
+    cursor: pointer;
+    border: 1px solid silver;
+    letter-spacing: 0.5px;
+    padding: 0px 10px;
+}
+
+
 /*Media Queries Of Website*/
 
 /*Small Laptops*/
@@ -1227,6 +1529,24 @@ button.results-btn {
     margin-top: 0px;
     margin-bottom: 6px;
 }
+.apartment-actions {
+    float: left;
+    width: 100%;
+    padding: 20px 0px;
+    display: block;
+    justify-content: space-between;
+}
+.apartment-actions a {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.apartment-features div span {
+    float: left;
+    width: 50%;
+    font-size: 13px;
+    color: black;
+    margin-bottom: 10px;
+}
 }
 
 
@@ -1241,6 +1561,7 @@ footer {
     width: 100%;
     margin-top: 30px;
     margin-bottom: 30px;
+    text-align: left;
 }
 .footer-menu a {
     font-family: 'helvetica-bold';
@@ -1280,6 +1601,57 @@ footer {
     margin: 0px;
     vertical-align: top;
     display: inline-block;
+}
+span.apartment-tags {
+    display: block;
+    margin-top: 0px;
+    position: relative;
+    z-index: 9;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    top: -60px;
+}
+.apartment-actions {
+    float: left;
+    width: 100%;
+    padding: 20px 0px;
+    display: block;
+    justify-content: space-between;
+}
+
+.apartment-actions a {
+    margin: 0px 15px 10px 0px;
+}
+.description-field {
+    width: 100%;
+    height: 250px !important;
+    font-family: adobe-garamond;
+    font-size: 25px;
+    color: black;
+    padding: 15px 15px;
+    float: left;
+    border: 1px solid black;
+}
+.all-filters .btn-group {
+    padding: 10px 0px 10px 0px;
+}
+.all-filters {
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+
+.all-filters .dropdown-menu {
+    min-width: 290px;
+    padding: 0px;
+    transform: none !important;
+    top: 35px !important;
+    left: 0px !important;
+    right: auto !important;
+    z-index: 9999999;
 }
 }
 
@@ -1342,7 +1714,8 @@ footer {
     margin-top: 30px;
 }
 .logo img {
-    width: 90px;
+    width: 90px !important;
+    margin: 0px !important;
 }
 .menu-item {
     display: inline-block;
@@ -1387,6 +1760,7 @@ footer {
     width: 100%;
     margin-top: 35px;
     margin-bottom: 20px;
+    text-align: left;
 }
 footer {
     background: #f5f5f5;
@@ -1502,5 +1876,111 @@ a.custom-btn2 {
     position: relative;
     background: white;
     overflow-x: hidden;
+}
+.accomodation-tags span {
+    color: black;
+    font-family: 'helvetica-bold';
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    border-right: 1px solid black;
+    padding: 2px 15px 6px 6px;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-top: 4px;
+}
+span.apartment-tags b {
+    display: inline-block;
+    margin-right: 14px;
+    color: white;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: 'helvetica-bold';
+    margin-bottom: 10px;
+}
+span.apartment-tags {
+    display: block;
+    margin-top: -80px;
+    position: relative;
+    z-index: 9;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.apartment-features div span {
+    float: left;
+    width: 50%;
+    font-size: 13px;
+    color: black;
+    margin-bottom: 10px;
+}
+.apartment-actions {
+    float: left;
+    width: 100%;
+    padding: 20px 0px;
+    display: block;
+    justify-content: space-between;
+}
+.apartment-actions a {
+    margin: 0px 10px 10px 0px;
+}
+
+.description-field {
+    width: 100%;
+    height: 300px !important;
+    font-family: adobe-garamond;
+    font-size: 25px;
+    color: black;
+    padding: 15px 15px;
+    float: left;
+    border: 1px solid black;
+}
+button.slick-arrow {
+	display: block !important;
+}
+.all-filters .btn-group {
+    padding: 10px 0px 10px 0px;
+}
+.all-filters {
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+.all-filters .btn-group {
+    padding: 10px 0px 10px 0px;
+    display: block !important;
+}
+.art-quote {
+    padding: 80px 0px;
+}
+.art-quote p {
+    max-width: 700px;
+    font-size: 20px;
+    margin: auto;
+    margin-bottom: 25px;
+    letter-spacing: 0.7px;
+    line-height: 26px;
+}
+.portrait-detail img {
+    max-width: 80% !important;
+    margin-left: 0px !important;
+}
+.portrait-detail p {
+    font-family: 'Alegreya SC', serif !important;
+    color: black;
+    font-size: 20px;
+    letter-spacing: 0px;
+    line-height: 28px;
+    text-align: left !important;
+}
+.portrait-detail {
+    float: left;
+    width: 100%;
+    margin-bottom: 30px !important;
+}
+.portrait-detail {
+    float: left;
+    width: 100%;
+    margin-bottom: 40px !important;
 }
 }

@@ -42,7 +42,7 @@ class listing extends Model
             listingAmenities::addAmenity($id, $val);
         }
 
-        return $id;   
+        return $id;
     }
 
     public static function editListing(array $data){
@@ -70,7 +70,7 @@ class listing extends Model
             listingAmenities::addAmenity($id, $val);
         }
 
-        return $id;   
+        return $id;
     }
 
     public static function addFeatureImage($id, $filename){
