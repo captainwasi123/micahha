@@ -10,7 +10,7 @@ use App\Models\accommodation\listing;
 class reservation extends Model
 {
     use HasFactory;
-    protected $table = 'tbl_reservation_info';
+    protected $table = 'tbl_accommodation_reservation_info';
     public $timestamps = false;
 
     public function landlord(){
