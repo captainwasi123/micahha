@@ -18,6 +18,8 @@
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         @if(Auth::user()->user_type == '2')
                            <a class="dropdown-item" href="{{route('landlord.dashboard')}}">Dashboard</a>
+                        @elseif(Auth::user()->user_type == '1')
+                           <a class="dropdown-item" href="{{route('user.dashboard')}}">Dashboard</a>
                         @endif
                         <a class="dropdown-item" href="#">Profile</a>
                         <hr class="m-t-0 m-b-0">

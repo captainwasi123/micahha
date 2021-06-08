@@ -58,7 +58,7 @@
                                             @foreach($reservation_data as $key => $data)
                                             <tr>
                                                 <td>{{++$key}}</td>
-                                                <td><a  data-toggle="tooltip" data-original-title="View Details" title="{{$data->listing->title}}">{{substr($data->listing->title,0,10)}}...</a></td>
+                                                <td><a  data-toggle="tooltip" data-original-title="View Details" title="{{empty($data->listing) ? '' : $data->listing->title}}">{{empty($data->listing) ? '' : substr($data->listing->title,0,10)}}...</a></td>
                                                 <td><p class="cut-text">{{$data->user_name}}</p></td>
                                                 <td>{{$data->ph_number}}</td>
                                                 <td>
@@ -67,9 +67,9 @@
                                                 <td>{{date('d-M-Y', strtotime($data->check_in))}}</td>
                                                 <td>{{date('d-M-Y', strtotime($data->check_out))}}</td>
                                                 <td>
-                                                    <a href="{{route('landlord.reservation.edit', base64_encode($data->id))}}" class="btn btn-info text-white" title="Edit"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{route('landlord.reservation.edit', base64_encode($data->id))}}" class="btn btn-info text-white btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
                                                 @if($title == 'Pending') 
-                                                    <a href="{{route('landlord.reservation.edit_status', base64_encode($data->id))}}" class="btn btn-success text-white" title="Approve"><i class="fas fa-check"></i></a>
+                                                    <a href="{{route('landlord.reservation.edit_status', base64_encode($data->id))}}" class="btn btn-success text-white btn-sm" title="Approve"><i class="fas fa-check"></i></a>
                                                 </td>
                                                 @endif
                                             </tr>

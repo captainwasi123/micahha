@@ -1,5 +1,5 @@
 @extends('admin.includes.master')
-@section('title', 'Pending | Bookings | Accommodation')
+@section('title', 'Approved | Bookings | Accommodation')
 @section('content')
 
 <div class="row">
@@ -45,7 +45,7 @@
                                     <td>{{$duration.' nights'}}</td>
                                     <td>{{$val->no_of_people}}</td>
                                     <td>
-                                    	<strong>{{'$'.number_format($val->listing->price, 2)}}</strong> 
+                                        <strong>{{'$'.number_format($val->listing->price, 2)}}</strong> 
                                         <small>{{$val->listing->unit}}</small>
                                     </td>
                                     <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>

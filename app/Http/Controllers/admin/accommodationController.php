@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\accommodation\listing;
+use App\Models\accommodation\reservation;
 use App\Models\User;
 
 class accommodationController extends Controller
@@ -68,16 +69,16 @@ class accommodationController extends Controller
 	//Bookings
 
 		function pendingBooking(){
-
-			return view('admin.accommodation.booking.pending');
+			$data = reservation::where('status', '0')->latest()->get();
+			return view('admin.accommodation.booking.pending', ['data' => $data]);
 		}
-		function completedBooking(){
-
-			return view('admin.accommodation.booking.completed');
+		function approvedBooking(){
+			$data = reservation::where('status', '1')->latest()->get();
+			return view('admin.accommodation.booking.approved', ['data' => $data]);
 		}
 		function cancelledBooking(){
-
-			return view('admin.accommodation.booking.cancelled');
+			$data = reservation::where('status', '2')->latest()->get();
+			return view('admin.accommodation.booking.cancelled', ['data' => $data]);
 		}
 
 

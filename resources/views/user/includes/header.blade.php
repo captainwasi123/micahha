@@ -23,12 +23,12 @@
                             <img  src="{{URL::to('/public/storage/users/'.Auth::user()->profile_image)}}" onerror="this.src = '{{URL::to('/public/user/img/')}}/user.jpg';" alt="#">
                             <div class="profile_info_iner">
                                 <div class="profile_author_name">
-                                    <p>Landlord</p>
+                                    <p>User</p>
                                     <h5>{{substr(Auth::user()->first_name, 0, 1).'.'}} {{Auth::user()->last_name}}</h5>
                                 </div>
                                 <div class="profile_info_details">
-                                    <a href="{{route('landlord.profile.edit')}}">My Profile </a>
-                                    <a href="{{route('landlord.change.password')}}">Change Password</a>
+                                    <a href="{{route('user.profile.edit')}}">My Profile </a>
+                                    <a href="{{route('user.change.password')}}">Change Password</a>
                                     <a href="{{route('user.logout')}}">Log Out </a>
                                 </div>
                             </div>
