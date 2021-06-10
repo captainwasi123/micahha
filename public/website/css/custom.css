@@ -45,6 +45,9 @@ src: url("../fonts/futura-std-heavy.otf");
     font-family: 'Alegreya SC', serif !important;
 }
 
+input , textarea , button , select {
+    outline: none !important;
+}
 
  body {
  	font-family: 'helvetica', sans-serif;
@@ -408,6 +411,27 @@ p.copyrights-text  {
     font-family: 'helvetica-bold';
 }
 
+
+.form-field1 select {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #c3c3c3;
+    color: black;
+    padding: 0px 10px;
+    letter-spacing: 0.5px;
+    font-family: 'helvetica-bold';
+}
+
+.form-field1 textarea {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #c3c3c3;
+    color: black;
+    padding: 10px 10px;
+    letter-spacing: 0.5px;
+    font-family: 'helvetica-bold';
+}
+
 a.reset-password {
     float: right;
     color: #a2a2a2;
@@ -435,9 +459,9 @@ input.submit-btn1 {
 }
 
 
-a.custom-btn1 {
+ .custom-btn1 {
     background: #15345a;
-    color: white;
+    color: white !important;
     border: none;
     letter-spacing: 0.8px;
     display: inline-block !important;
@@ -465,7 +489,7 @@ a.custom-btn1 {
 	color:#15345a !important;
 }
 input.submit-btn1:hover , a.custom-btn1:hover , .footer-form form input[type="submit"]:hover {
-background:black;
+background:black !important;
 }
 
 .sec-head1 {
@@ -503,8 +527,8 @@ h6.checkbox1 {
     padding-left: 35px;
     margin-top: 18px;
 }
-a.custom-btn2 {
-    color: #7c7a7a;
+ .custom-btn2 {
+    color: #7c7a7a !important;
     font-family: 'adobe-garamond';
     font-size: 17px;
     border-bottom: 1px solid #7c7a7a;
@@ -755,9 +779,9 @@ section.banner-sec {
     line-height: 30px;
     margin-bottom: 35px;
 }
-a.custom-btn3 {
+ .custom-btn3 {
     background: #213e63;
-    color: white;
+    color: white !important;
     font-family: 'helvetica-bold';
     font-size: 15px;
     letter-spacing: 0.8px;
@@ -1311,7 +1335,9 @@ span.apartment-tags b img {
 }
 
 
- 
+ .rounded1 {
+    border-radius: 30px !important;
+}
 
 
  .custom-btn4 {
@@ -1332,27 +1358,29 @@ span.apartment-tags b img {
 }
 
  .custom-btn4:hover {
-    background:#15345a;
-    color:white;
+    background:#15345a !important;
+    color:white !important;
 }
-
 
 .description-field {
     width: 100%;
-    height: 450px !important;
+    min-height: 450px !important;
     font-family: adobe-garamond;
     font-size: 25px;
     color: black;
     padding: 15px 15px;
     float: left;
     border: 1px solid black;
+    height: auto !important;
 }
 .description-field h5 {
     color: black;
-    font-size: 22px;
-    letter-spacing: 0.6px;
+    font-size: 19px;
+    letter-spacing: 0.4px;
     color: black;
     margin: 0px;
+    line-height: 32px;
+    word-break: break-word;
 }
 
 .apartment-name {
@@ -1518,6 +1546,79 @@ background:#223f64;
 .item-box:hover .prop-box-text {
     opacity: 1;
     visibility: visible;
+}
+
+
+.privacy-policy-content {
+    float: left;
+    width: 100%;
+}
+.privacy-policy-content div h4 {
+    font-family: Alegreya SC;
+    font-size: 25px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+.privacy-policy-content p {
+    font-family: 'ALEGREYA SC';
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: 0.4px;
+    margin-bottom: 20px;
+    color: black;
+}
+.privacy-policy-content div {
+    float: left;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+
+ul.list-style1 {
+    margin: 0px 0px 20px 0px;
+    padding: 0px 0px 0px 17px;
+}
+
+ul.list-style1 li {
+    font-family: 'ALEGREYA SC';
+    font-size: 18px;
+    line-height: 30px;
+    letter-spacing: 0.4px;
+    margin-bottom: 4px;
+    color: black;
+}
+
+
+.contact-form-head {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.contact-form-head h3 {
+    color: black;
+    font-family: 'ALEGREYA SC';
+    letter-spacing: -0.5px;
+    font-size: 35px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+select.select-bg {
+    background-image: url(../images/select-bg.jpg);
+    background-size: 60px 100%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    -webkit-appearance: initial !important;
+}
+
+.contact-image {
+    float: left;
+    width: 100%;
+}
+.contact-image img {
+    width: 100%;
+    margin-top: 30px;
 }
 
 /*Media Queries Of Website*/
@@ -1798,8 +1899,8 @@ footer {
     font-size: 35px;
     letter-spacing: -0.5px;
 }
-a.custom-btn2 {
-    color: #7c7a7a;
+ .custom-btn2 {
+    color: #7c7a7a !important;
     font-family: 'adobe-garamond';
     font-size: 17px;
     border-bottom: 1px solid #7c7a7a;
@@ -2025,5 +2126,21 @@ button.slick-arrow {
     opacity: 0;
     visibility: hidden;
     cursor: pointer;
+}
+.privacy-policy-content p {
+    font-family: 'ALEGREYA SC';
+    font-size: 17px;
+    line-height: 30px;
+    letter-spacing: 0.4px;
+    margin-bottom: 20px;
+    color: black;
+}
+.privacy-policy-content div h4 {
+    font-family: Alegreya SC;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    line-height: 32px;
 }
 }
