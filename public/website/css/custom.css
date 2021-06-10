@@ -1472,6 +1472,10 @@ background:#223f64;
 .slick-slider:hover button.slick-arrow {
     display: block !important;
 }
+
+.item-box:hover button.slick-arrow {
+    display: block !important;
+}
 .image-slider3 img {
     max-width: 95%;
  
@@ -1504,6 +1508,17 @@ background:#223f64;
     padding: 0px 10px;
 }
 
+
+.item-box {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+.item-box:hover .prop-box-text {
+    opacity: 1;
+    visibility: visible;
+}
 
 /*Media Queries Of Website*/
 
@@ -1982,5 +1997,33 @@ button.slick-arrow {
     float: left;
     width: 100%;
     margin-bottom: 40px !important;
+}
+.image-slider {
+    float: left;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 0px !important;
+}
+.item-box {
+    float: left;
+    width: 100%;
+    position: relative;
+    margin-bottom: 30px !important;
+}
+.prop-box-text {
+    float: left;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: rgba(255,255,255,0.8);
+    text-align: center;
+    height: 100%;
+    padding-top: 70px;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
+    cursor: pointer;
 }
 }

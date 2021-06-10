@@ -33,6 +33,7 @@ Route::namespace('web')->group(function(){
 
 				Route::get('/', 'accommodationController@index')->name('accommodation');
 				Route::get('/all', 'accommodationController@all')->name('accommodation.all');
+				Route::get('/details/{id}', 'accommodationController@details')->name('accommodation.details');
 			});
 });
 
