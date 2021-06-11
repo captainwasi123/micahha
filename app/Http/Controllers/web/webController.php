@@ -11,7 +11,7 @@ class webController extends Controller
     //
     function index(){
         $data = array(
-            'listing' => listing::where('status',2)->latest()->get(),
+            'list_data' => listing::where('status',2)->latest()->limit(3)->get(),
         );
         // dd($data);
         return view('web.index')->with($data);

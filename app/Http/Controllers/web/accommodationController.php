@@ -11,6 +11,7 @@ class accommodationController extends Controller
     //
     function index(){
         $data = array(
+            'rendom_list' => listing::where('status',2)->inRandomOrder()->limit(3)->get(),
             'list_data' => listing::where('status',2)->latest()->limit(6)->get(),
           ); 
         return view('web.accommodation.index')->with($data);
@@ -19,7 +20,8 @@ class accommodationController extends Controller
     function all(){
 
         $data = array(
-            'list_data' => listing::where('status',2)->latest()->get(),
+            'rendom_list' => listing::where('status',2)->inRandomOrder()->limit(3)->get(),
+            'list_data' => listing::where('status',2)->latest()->paginate(6),
         );
         return view('web.accommodation.all')->with($data);;
     }
@@ -28,6 +30,7 @@ class accommodationController extends Controller
     {
         $list_id =  base64_decode($request->id);
         $data = array(
+            'rendom_list' => listing::where('status',2)->where('id','!=',$list_id)->inRandomOrder()->limit(3)->get(),
             'list_data' => listing::where('status',2)->where('id',$list_id)->first(),
         );
         return view('web.accommodation.details')->with($data);

@@ -404,7 +404,7 @@
 <section class="pad-top-40 pad-bot-20">
          <div class="container">
             <div class="row margin-1">
-            @foreach($list_data as $list_val)
+            @foreach($rendom_list as $list_val)
                <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1 m-b-20">
                  <div class="item-box">
                   <div class="image-slider arrows-3">
@@ -478,20 +478,7 @@
             <div class="row">
                <div class="col-md-12 col-12 col-lg-12">
                   <div class="breadcrumbs-custom">
-                     <ul class="alegraya">
-                        <li> <a href=""> <i class="fa fa-angle-left"> </i> </a> </li>
-                        <li> <a href=""> 1 </a> </li>
-                        <li> <a href=""> 2 </a> </li>
-                        <li> <a href=""> 3 </a> </li>
-                        <li> <a href=""> 4 </a> </li>
-                        <li> <a href=""> 5 </a> </li>
-                        <li> <a href=""> 6 </a> </li>
-                        <li> <a href=""> 7 </a> </li>
-                        <li> <a href=""> 8 </a> </li>
-                        <li> <a href=""> 9 </a> </li>
-                        <li> <a href=""> 10 </a> </li>
-                        <li> <a href=""> <i class="fa fa-angle-right"> </i> </a> </li>
-                     </ul>
+                     {{ $list_data->withQueryString()->links('pagination::accommodation') }}
                   </div>
                </div>
             </div>

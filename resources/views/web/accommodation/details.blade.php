@@ -100,127 +100,33 @@
                <h3 class="col-black alegraya"> Similar Properties You May Like </h3>
             </div>
             <div class="row margin-1">
+            @foreach($rendom_list as $list_val)
                <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1 m-b-20">
+                 <div class="item-box">
                   <div class="image-slider arrows-3">
-                     <div class="prop-box">
-                        <div>
-                           <div class="prop-box-image">
-                              <img src="{{URL::to('/public/website')}}/images/accomodation-1.jpg">
-                           </div>
-                           <div class="prop-box-text">
-                              <h4> $450 per week </h4>
-                              <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
-                              <h6> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
-                              </h6>
-                           </div>
-                        </div>
+                     <div> <img src="{{URL::to('/public/storage/listing/main/')}}/{{$list_val->feature_img}}"> </div>
+                     @foreach($list_val->galleryImages as $gallery_images)
+                        <div> <img src="{{URL::to('/public/storage/listing/gallery/'.$gallery_images->id.'-'.$gallery_images->image)}}"> </div>
+                     @endforeach
+                  </div>
+                     <a href="{{route('accommodation.details',base64_encode($list_val->id))}}">
+                     <div class="prop-box-text">
+                        <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
+                        <p> {{$list_val->address->accommodation_id}}, {{$list_val->address->city}}, {{$list_val->address->state}}, {{$list_val->address->post_code}}, {{$list_val->address->country->nicename}} </p>
+                        <h6> 
+                           <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
+                           <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
+                           <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
+                           <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
+                           <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
+                        </h6>
                      </div>
-                     <div class="prop-box">
-                        <div>
-                           <div class="prop-box-image">
-                              <img src="{{URL::to('/public/website')}}/images/accomodation-2.jpg">
-                           </div>
-                           <div class="prop-box-text">
-                              <h4> $450 per week </h4>
-                              <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
-                              <h6> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
-                              </h6>
-                           </div>
-                        </div>
-                     </div>
+                     </a>
                   </div>
                </div>
-               <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1 m-b-20">
-                  <div class="image-slider arrows-3">
-                     <div class="prop-box">
-                        <div>
-                           <div class="prop-box-image">
-                              <img src="{{URL::to('/public/website')}}/images/accomodation-2.jpg">
-                           </div>
-                           <div class="prop-box-text">
-                              <h4> $450 per week </h4>
-                              <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
-                              <h6> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
-                              </h6>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="prop-box">
-                        <div>
-                           <div class="prop-box-image">
-                              <img src="{{URL::to('/public/website')}}/images/accomodation-1.jpg">
-                           </div>
-                           <div class="prop-box-text">
-                              <h4> $450 per week </h4>
-                              <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
-                              <h6> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
-                              </h6>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1 m-b-20">
-                  <div class="image-slider arrows-3">
-                     <div class="prop-box">
-                        <div>
-                           <div class="prop-box-image">
-                              <img src="{{URL::to('/public/website')}}/images/accomodation-3.jpg">
-                           </div>
-                           <div class="prop-box-text">
-                              <h4> $450 per week </h4>
-                              <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
-                              <h6> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
-                              </h6>
-                           </div>
-                        </div>
-                     </div>
-                     <div class="prop-box">
-                        <div>
-                           <div class="prop-box-image">
-                              <img src="{{URL::to('/public/website')}}/images/accomodation-1.jpg">
-                           </div>
-                           <div class="prop-box-text">
-                              <h4> $450 per week </h4>
-                              <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
-                              <h6> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
-                                 <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
-                              </h6>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+            @endforeach   
             </div>
+         </div>
          </div>
       </section>
       <!-- What We Offer Section Ends Here -->
