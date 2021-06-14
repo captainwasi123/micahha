@@ -11,10 +11,10 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{URL::to('/public/admin/')}}/assets/images/favicon.png">
     <title>@yield('title') | Admin | Micahha</title>
-    
+
     @include('landlord.includes.style')
     @yield('addStyle')
-    
+
 </head>
 <body class="crm_body_bg">
 
@@ -22,7 +22,7 @@
              @include('landlord.includes.header')
 
             <div class="main_content_iner ">
-                
+
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
@@ -31,7 +31,7 @@
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
                 <!-- ============================================================== -->
-              
+
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->

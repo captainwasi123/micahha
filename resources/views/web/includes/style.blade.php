@@ -10,3 +10,4 @@
 <link href="{{URL::to('/public/website')}}/css/dev.css" rel="stylesheet">
 <!-- Font Awesome Icons -->
 <link href="{{URL::to('/public/website')}}/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />

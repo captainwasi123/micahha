@@ -21,5 +21,6 @@
       <!-- Footer Section Ends Here -->
       <!-- Bootstrap Javascript -->
          @include('web.includes.scripts')
+         @yield('addScript')
    </body>
 </html>

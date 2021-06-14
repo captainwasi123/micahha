@@ -24,7 +24,7 @@
                         <tbody>
                             @php $s = 1; @endphp
                             @foreach($data as $val)
-                                @php 
+                                @php
                                     $address = empty($val->listing->address) ? '' : $val->listing->address->address.', '.$val->listing->address->city.', '.$val->listing->address->state.', '.$val->listing->address->country->country.'. '.$val->listing->address->post_code;
 
                                     $duration = date_diff(date_create($val->check_in), date_create($val->check_out));
@@ -34,7 +34,7 @@
                                     <td>{{$s}}</td>
                                     <td>{{$val->user_name}}</td>
                                     <td><a href="{{URL::to('/admin/accommodation/members/profile/'.base64_encode($val->landlord_id))}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
-                                        {{empty($val->landlord) ? '' : $val->landlord->first_name}} 
+                                        {{empty($val->landlord) ? '' : $val->landlord->first_name}}
                                         {{empty($val->landlord) ? '' : $val->landlord->last_name}}</a></td>
                                     <td>{{empty($val->listing->type) ? '' : $val->listing->type->name}}</td>
                                     <td>
@@ -45,7 +45,7 @@
                                     <td>{{$duration.' nights'}}</td>
                                     <td>{{$val->no_of_people}}</td>
                                     <td>
-                                        <strong>{{'$'.number_format($val->listing->price, 2)}}</strong> 
+                                        <strong>{{'$'.number_format($val->listing->price, 2)}}</strong>
                                         <small>{{$val->listing->unit}}</small>
                                     </td>
                                     <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
