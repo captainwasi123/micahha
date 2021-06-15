@@ -10,15 +10,17 @@
 @section('filter')
 
 <div class="all-filters">
+      <form method="get" action="{{route('accommodation.all')}}">
+         <input type="hidden" name="filer" value="1">
             <div class="container">
                <div class="btn-group">
-                  <button class="btn btn-lg" >
+                  <button class="btn btn-lg" type="button">
                   <img src="{{URL::to('/public/website')}}/images/filter-icon.jpg"> Filters
                   </button>
                   <div class="dropdown-menu">
                      <div class="filters-wrapper">
                         <!-- Property Types Filter Starts Here -->
-                        <div class="filter-box">
+                        <!-- <div class="filter-box">
                            <div class="filter-box-head">
                               <h4> Property Types </h4>
                            </div>
@@ -28,10 +30,10 @@
                               <p> <label> <input type="checkbox"> Town house </label> </p>
                               <p> <label> <input type="checkbox"> Villa </label> </p>
                            </div>
-                        </div>
+                        </div> -->
                         <!-- Property Types Filter Ends Here -->
                         <!-- Price Filter Starts Here -->
-                        <div class="filter-box">
+                        <!-- <div class="filter-box">
                            <div class="filter-box-head">
                               <h4> Price </h4>
                               <h6> Above $50k </h6>
@@ -44,10 +46,10 @@
                                  <div id="slider-range" class="range-bar"></div>
                               </div>
                            </div>
-                        </div>
+                        </div> -->
                         <!-- Price Filter Ends Here -->
                         <!-- Bedroom Filter Starts Here -->
-                        <div class="filter-box">
+                        <!-- <div class="filter-box">
                            <div class="filter-box-head">
                               <h4> Bedrooms </h4>
                            </div>
@@ -62,7 +64,7 @@
                            <div class="extract-value">
                               <p> <label> <input type="checkbox" name="">  Use extract value </label> </p>
                            </div>
-                        </div>
+                        </div> -->
                         <!-- Bedroom Filter Ends Here -->
                         <!-- Bathroom Filter Starts Here -->
                         <div class="filter-box">
@@ -118,17 +120,17 @@
                         </div>
                         <!-- Features Filter Ends Here -->
                         <!-- Calendar Filter Starts Here -->
-                        <div class="filter-box">
+                        <!-- <div class="filter-box">
                            <div class="filter-box-head">
                               <h4> Calendar </h4>
                            </div>
                            <div class="checkbox-filter3">
                               <img src="images/calendar.jpg">
                            </div>
-                        </div>
+                        </div> -->
                         <!-- Calendar Filter Ends Here -->
                         <!-- Guest Filter Starts Here -->
-                        <div class="filter-box no-border">
+                        <!-- <div class="filter-box no-border">
                            <div class="filter-box-head">
                               <h4> Guest </h4>
                            </div>
@@ -179,7 +181,7 @@
                                  </div>
                               </div>
                            </div>
-                        </div>
+                        </div> -->
                         <!-- Guest Filter Ends Here -->
                         <!-- Filter Actions Starts Here -->
                         <div class="filter-actions">
@@ -238,13 +240,13 @@
                            <div class="price-filter">
                               <div class="price-range-slider">
                                  <p class="range-value">
-                                    <input type="text" id="amount2" readonly>
+                                    <input type="text" id="amount2" name="price" readonly>
                                  </p>
                                  <div id="slider-range2" class="range-bar"></div>
                               </div>
                            </div>
                         </div>
-                        <!-- Price Filter Ends Here --> 
+                        <!-- Price Filter Ends Here -->
                         <!-- Filter Actions Starts Here -->
                         <div class="filter-actions">
                            <button class="cancel-btn"> Cancel </button>
@@ -266,10 +268,9 @@
                               <h4> Property Types </h4>
                            </div>
                            <div class="checkbox-filter">
-                              <p> <label> <input type="checkbox" > House </label> </p>
-                              <p> <label> <input type="checkbox" > Apartment and Unit </label> </p>
-                              <p> <label> <input type="checkbox"> Town house </label> </p>
-                              <p> <label> <input type="checkbox"> Villa </label> </p>
+                              @foreach($property_type as $property_type)
+                              <p> <label> <input type="checkbox" name="property_type[]" value="{{$property_type->id}}"> {{$property_type->name}} </label> </p>
+                              @endforeach
                            </div>
                         </div>
                         <div class="filter-box">
@@ -307,11 +308,9 @@
                            </div>
                            <div class="checkbox-filter3">
                               <div id="pageContentArea" class="pageSection">
-                                 <form>
                                     <input type="text" id="txtDateRange" name="txtDateRange" class="inputField shortInputField dateRangeField" placeholder="Select a date-range" data-from-field="txtDateFrom" data-to-field="txtDateTo" />
                                     <input type="hidden" id="txtDateFrom" value="" />
                                     <input type="hidden" id="txtDateTo" value="" />
-                                 </form>
                               </div>
                            </div>
                         </div>
@@ -395,6 +394,7 @@
                   </div>
                </div>
             </div>
+      </form>
          </div>
 
 @endsection
@@ -419,18 +419,18 @@
                      <div class="prop-box-text">
                         <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
                         <p> {{$list_val->address->accommodation_id}}, {{$list_val->address->city}}, {{$list_val->address->state}}, {{$list_val->address->post_code}}, {{$list_val->address->country->nicename}} </p>
-                        <h6> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
+                        <h6>
+                           <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
+                           <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
+                           <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
+                           <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
+                           <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
                         </h6>
                      </div>
                      </a>
                   </div>
                </div>
-            @endforeach   
+            @endforeach
             </div>
          </div>
       </section>
@@ -489,8 +489,8 @@
       <section class="pad-top-20 pad-bot-40">
          <div class="container">
             <div class="list-property">
-               <h3 class="col-black alegraya"> List Your Property On Micahha & 
-                  Open The Door To Rental Income  
+               <h3 class="col-black alegraya"> List Your Property On Micahha &
+                  Open The Door To Rental Income
                </h3>
                <a href="" class="custom-btn3"> LIST YOUR PROPERTY </a>
             </div>
@@ -514,18 +514,18 @@
                      <div class="prop-box-text">
                         <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
                         <p> {{$list_val->address->accommodation_id}}, {{$list_val->address->city}}, {{$list_val->address->state}}, {{$list_val->address->post_code}}, {{$list_val->address->country->nicename}} </p>
-                        <h6> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
+                        <h6>
+                           <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
+                           <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
+                           <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
+                           <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
+                           <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
                         </h6>
                      </div>
                      </a>
                   </div>
                </div>
-            @endforeach   
+            @endforeach
             </div>
          </div>
       </section>

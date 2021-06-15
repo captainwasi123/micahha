@@ -18,7 +18,7 @@ class ReservationController extends Controller
         );
     	return view('landlord.reservation.add')->with($data);
     }
-    
+
 
     public function save(Request $request)
     {
@@ -62,7 +62,7 @@ class ReservationController extends Controller
         return view('landlord.reservation.add')->with($data);
     }
     public function all(Request $request)
-    {   
+    {
         if($request->status == 'pending'){
             $status = '0';
         }if($request->status == 'approve'){
@@ -70,7 +70,7 @@ class ReservationController extends Controller
         }if($request->status == 'rejected'){
             $status = '2';
         }
-        
+
         $data = array(
             'title' => ucfirst($request->status),
             'reservation_data' => reservation::where('status',$status)->latest()->get(),

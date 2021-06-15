@@ -57,7 +57,7 @@
                                         <div class="form-group col-md-8">
                                             <label for="">Check-In | Check-Out</label>
                                             <input type="text" class="form-control datepicker-here  digits" data-range="true" data-multiple-dates-separator="-" data-language="en" name="check_id_date" value="{{@$reservation->check_in ? @$reservation->check_in."-".@$reservation->check_out : ' ' }}" required>
-                                        </div> 
+                                        </div>
                                         <div class="form-group col-md-12">
                                             <label for="">Customer Status</label>
                                             <select class="form-control" name="customer_status" required>
