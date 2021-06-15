@@ -109,6 +109,32 @@ Route::namespace('web')->group(function(){
 							});
 					});
 
+				//Collectibles
+					Route::prefix('collectibles')->group(function(){
+
+						Route::get('statistics', 'collectiblesController@statistics')->name('admin.collectibles.statistics');
+
+
+						//Products
+						Route::prefix('products')->group(function(){
+
+							Route::get('add', 'collectiblesController@addProduct')->name('admin.collectibles.products.add');
+
+							Route::get('published', 'collectiblesController@publishedProduct')->name('admin.collectibles.products.published');
+							Route::get('drafted', 'collectiblesController@draftedProduct')->name('admin.collectibles.products.drafted');
+						});
+
+						//Sales
+						Route::prefix('sales')->group(function(){
+
+							Route::get('new', 'collectiblesController@newOrders')->name('admin.collectibles.sales.new');
+							Route::get('processing', 'collectiblesController@processingOrders')->name('admin.collectibles.sales.processing');
+							Route::get('delivered', 'collectiblesController@deliveredOrders')->name('admin.collectibles.sales.delivered');
+
+							Route::get('orderDetail', 'collectiblesController@detailOrders');
+						});
+
+					});
 
 
 				//Settings
@@ -134,6 +160,30 @@ Route::namespace('web')->group(function(){
 
 								Route::get('editAmenities/{id}', 'settingsController@edit_amenities');
 								Route::post('editAmenities', 'settingsController@amenities_update')->name('admin.settings.accommodation.editAmenities');
+							});
+
+						//Collectibles
+							Route::prefix('collectibles')->group(function(){
+
+								//Categories
+								Route::get('categories', 'settingsController@categories')->name('admin.settings.collectibles.categories');
+								Route::post('categories', 'settingsController@categories_insert');
+
+								Route::get('editCategory/{id}', 'settingsController@edit_categories');
+								Route::post('editCategory', 'settingsController@categories_update')->name('admin.settings.collectibles.editCategory');
+
+								Route::get('deleteCategory/{id}', 'settingsController@delete_categories');
+
+								//Sub Categories
+								Route::get('subCategories', 'settingsController@subCategories')->name('admin.settings.collectibles.subCategories');
+								Route::post('subCategories', 'settingsController@subCategories_insert');
+
+								Route::get('editSubCategory/{id}', 'settingsController@edit_subCategories');
+								Route::post('editSubCategory', 'settingsController@subCategories_update')->name('admin.settings.collectibles.editSubCategory');
+
+								Route::get('deleteSubCategory/{id}', 'settingsController@delete_subCategories');
+
+
 							});
 					});
 			});
@@ -206,4 +256,21 @@ Route::namespace('web')->group(function(){
 
 			Route::get('/change-password', 'SettingController@change_password')->name('user.change.password');
 			Route::post('/change-password', 'SettingController@update_password');
+
+
+		//My Orders
+
+			Route::prefix('orders')->group(function(){
+
+				//Accommodation
+				Route::prefix('accommodation')->group(function(){
+
+					Route::get('pending', 'ordersController@accommodationPending')->name('user.orders.accommodation.pending');
+					Route::get('active', 'ordersController@accommodationActive')->name('user.orders.accommodation.active');
+					Route::get('history', 'ordersController@accommodationHistory')->name('user.orders.accommodation.history');
+
+
+					Route::get('cancel/{id}', 'ordersController@accommodationCancel')->name('user.orders.accommodation.cancel');
+				});
+			});
 	});

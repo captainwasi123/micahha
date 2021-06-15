@@ -76,97 +76,35 @@
                 </li>
 
 
-
-
-            <!--     <li class="nav-devider"></li>
-                <li class="nav-small-cap">ART</li>
+                <li class="nav-small-cap">Collectibles</li>
                 <li> 
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
+                    <a class="waves-effect waves-dark" href="{{route('admin.collectibles.statistics')}}" aria-expanded="false">
                         <i class="mdi mdi-gauge"></i>
                         <span class="hide-menu">Statistics</span>
                     </a>
                 </li>
                 <li> 
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-store"></i>
-                        <span class="hide-menu"> Store</span>
-                    </a>
-                </li>
-                <li> 
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-cart-outline"></i>
-                        <span class="hide-menu"> Orders</span>
+                        <i class="mdi mdi-format-list-bulleted"></i>
+                        <span class="hide-menu"> Products</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Pending </a></li>
-                        <li><a href="#">Completed</a></li>
-                        <li><a href="#">Cancelled</a></li>
+                        <li><a href="{{route('admin.collectibles.products.add')}}">Add New </a></li>
+                        <li><a href="{{route('admin.collectibles.products.published')}}">Published </a></li>
+                        <li><a href="{{route('admin.collectibles.products.drafted')}}">Drafted</a></li>
                     </ul>
                 </li>
                 <li> 
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-account-multiple"></i>
-                        <span class="hide-menu"> Members</span>
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="hide-menu"> Sales</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Pending </a></li>
-                        <li><a href="#">Approved</a></li>
-                        <li><a href="#">Rejected</a></li>
+                        <li><a href="{{route('admin.collectibles.sales.new')}}">New Orders <span class="badge badge-pill badge-primary">2</span></a></li>
+                        <li><a href="{{route('admin.collectibles.sales.processing')}}">Processing </a></li>
+                        <li><a href="{{route('admin.collectibles.sales.delivered')}}">Delivered</a></li>
                     </ul>
                 </li>
-                <li> 
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-comment-question-outline"></i>
-                        <span class="hide-menu">Inquiries</span>
-                    </a>
-                </li>
-
-
-
-
-
-                <li class="nav-devider"></li>
-                <li class="nav-small-cap">COLLECTABLES</li>
-                <li> 
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-gauge"></i>
-                        <span class="hide-menu">Statistics</span>
-                    </a>
-                </li>
-                <li> 
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-store"></i>
-                        <span class="hide-menu"> Store</span>
-                    </a>
-                </li>
-                <li> 
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-cart-outline"></i>
-                        <span class="hide-menu"> Orders</span>
-                    </a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Pending </a></li>
-                        <li><a href="#">Completed</a></li>
-                        <li><a href="#">Cancelled</a></li>
-                    </ul>
-                </li>
-                <li> 
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-account-multiple"></i>
-                        <span class="hide-menu"> Members</span>
-                    </a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="#">Pending </a></li>
-                        <li><a href="#">Approved</a></li>
-                        <li><a href="#">Rejected</a></li>
-                    </ul>
-                </li>
-                <li> 
-                    <a class="waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-comment-question-outline"></i>
-                        <span class="hide-menu">Inquiries</span>
-                    </a>
-                </li> -->
 
 
 
@@ -179,6 +117,24 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="{{route('admin.settings.accommodation.propertyType')}}">Property Type </a></li>
                         <li><a href="{{route('admin.settings.accommodation.amenities')}}">Amenities </a></li>
+                    </ul>
+                </li>
+                <li> 
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="hide-menu"> Collectibles</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a href="{{route('admin.settings.collectibles.categories')}}">
+                                Categories 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.settings.collectibles.subCategories')}}">
+                                Sub Categories 
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
