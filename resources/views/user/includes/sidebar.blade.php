@@ -33,13 +33,13 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="">Pending</a>
+                            <a href="{{route('user.orders.accommodation.pending')}}">Pending</a>
                         </li>
                         <li>
-                            <a href="">Active</a>
+                            <a href="{{route('user.orders.accommodation.active')}}">Active</a>
                         </li>
                         <li>
-                            <a href="">History</a>
+                            <a href="{{route('user.orders.accommodation.history')}}">History</a>
                         </li>
                     </ul>
                 </li>

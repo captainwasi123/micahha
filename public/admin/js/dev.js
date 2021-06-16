@@ -44,6 +44,46 @@ $(document).ready(function(){
 					}
 				});
 
+		//Collectibles
+			//Categories
+				$(document).on('click', '.editCat', function(){
+					var id = $(this).data('id');
+					$('#editCat-modal').modal('show');
+					$('#editCat_content').html('<br><br><br><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div><br><br><br>');
+					
+					$.get( host+"/settings/collectibles/editCategory/"+id, function( data ) {
+					  $('#editCat_content').html(data);
+					});
+				});
+				$(document).on('click', '.deleteCat', function(){
+					var id = $(this).data('id');
+					
+					if(confirm('Are you sure want to delete this.? This action will delete connected sub categories.')){
+						window.location.href = host+"/settings/collectibles/deleteCategory/"+id;
+					}
+				});
+
+			//Sub Categories
+				$(document).on('click', '.editSubCat', function(){
+					var id = $(this).data('id');
+					$('#editSubCat-modal').modal('show');
+					$('#editSubCat_content').html('<br><br><br><div class="d-flex justify-content-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div><br><br><br>');
+					
+					$.get( host+"/settings/collectibles/editSubCategory/"+id, function( data ) {
+					  $('#editSubCat_content').html(data);
+					});
+				});
+				$(document).on('click', '.deleteSubCat', function(){
+					var id = $(this).data('id');
+					
+					if(confirm('Are you sure want to delete this.?')){
+						window.location.href = host+"/settings/collectibles/deleteSubCategory/"+id;
+					}
+				});
+
+
+
+
 	//Listing
 
 		//Approve
