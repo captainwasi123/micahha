@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\accommodation\listing;
 use App\Models\accommodation\propertyType;
 use App\Models\accommodation\reservation;
+use App\Models\accommodation\amenities;
 use App\Models\User;
 use App\Models\Enquiry_type;
 use App\Models\Accommodation_Enquiry;
@@ -17,8 +18,9 @@ class accommodationController extends Controller
     //
     function index(){
         $data = array(
-            'rendom_list' => listing::where('status',2)->inRandomOrder()->limit(3)->get(),
-            'list_data' => listing::where('status',2)->latest()->limit(6)->get(),
+            'rendom_list' => listing::with(['address','address.country'])->where('status',2)->latest()->limit(30)->get()->toArray(),
+            'list_data' => listing::where('status',2)->where('is_feature',1)->latest()->limit(6)->get(),
+            'amenities_data' => amenities::where('show_in_home',1)->latest()->limit(5)->get()->toArray(),
             'property_type' => propertyType::get(),
           );
         return view('web.accommodation.index')->with($data);
@@ -106,5 +108,14 @@ class accommodationController extends Controller
         $enquiry->save();
         $msg = "Your Enquiry Is Added";
         return redirect()->route('accommodation.details', base64_encode($request->list_id))->with('success',$msg);
+    }
+
+    public function feature_list()
+    {
+        $data = array(
+            'list_data' => listing::where('status',2)->where('is_feature',1)->latest()->paginate(6),
+            'property_type' => propertyType::get(),
+          );
+        return view('web.accommodation.feature_list')->with($data);
     }
 }

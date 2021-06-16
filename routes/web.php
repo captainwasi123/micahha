@@ -36,6 +36,7 @@ Route::namespace('web')->group(function(){
 				Route::get('/details/{id}', 'accommodationController@details')->name('accommodation.details');
                 Route::post('/add_reservation_modal', 'accommodationController@add_reservation_modal')->name('web.add_reservation_modal');
                 Route::post('/add_enquiry', 'accommodationController@add_accommodation_enquiry')->name('web.add_enquiry');
+                Route::get('/feature/list', 'accommodationController@feature_list')->name('feature.list');
 			});
 });
 

@@ -70,7 +70,7 @@
                      <a href="{{route('accommodation.details',base64_encode($list_val->id))}}">
                      <div class="prop-box-text">
                         <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
-                        <p> {{$list_val->address->accommodation_id}}, {{$list_val->address->city}}, {{$list_val->address->state}}, {{$list_val->address->post_code}}, {{$list_val->address->country->nicename}} </p>
+                        <p>{{@$list_val->address->city}}, {{@$list_val->address->state}}, {{@$list_val->address->post_code}}, {{@$list_val->address->country->nicename}} </p>
                         <h6> 
                            <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
                            <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
