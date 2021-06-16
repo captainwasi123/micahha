@@ -121,9 +121,12 @@ Route::namespace('web')->group(function(){
 						Route::prefix('products')->group(function(){
 
 							Route::get('add', 'collectiblesController@addProduct')->name('admin.collectibles.products.add');
+							Route::post('add', 'collectiblesController@insertProduct');
 
 							Route::get('published', 'collectiblesController@publishedProduct')->name('admin.collectibles.products.published');
 							Route::get('drafted', 'collectiblesController@draftedProduct')->name('admin.collectibles.products.drafted');
+
+							Route::get('getSubCategory/{id}', 'collectiblesController@getSubCategoryProduct');
 						});
 
 						//Sales
