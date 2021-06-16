@@ -399,38 +399,53 @@
 
 @endsection
 @section('content')
- <!-- What We Offer Section Starts Here -->
- <section class="pad-top-40 pad-bot-20">
+  <!-- What We Offer Section Starts Here -->
+      <section class="pad-top-40 pad-bot-20">
          <div class="container">
             <div class="sec-head2">
                <h3 class="col-blue alegraya"> Start Exploring </h3>
             </div>
-            <div class="row margin-1">
-            @foreach($rendom_list as $list_val)
-               <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1 m-b-20">
-                 <div class="item-box">
-                  <div class="image-slider arrows-3">
-                     <div> <img src="{{URL::to('/public/storage/listing/main/')}}/{{$list_val->feature_img}}"> </div>
-                     @foreach($list_val->galleryImages as $gallery_images)
-                        <div> <img src="{{URL::to('/public/storage/listing/gallery/'.$gallery_images->id.'-'.$gallery_images->image)}}"> </div>
-                     @endforeach
-                  </div>
-                     <a href="{{route('accommodation.details',base64_encode($list_val->id))}}">
-                     <div class="prop-box-text">
-                        <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
-                        <p> {{$list_val->address->accommodation_id}}, {{$list_val->address->city}}, {{$list_val->address->state}}, {{$list_val->address->post_code}}, {{$list_val->address->country->nicename}} </p>
-                        <h6>
-                           <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
-                        </h6>
+             <div class="row margin-1">
+               
+               <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1">
+                  <div class="item-multiple-box arrows-3">
+
+               <?php $i = 1; $count = 1; for($x = 0; $x < count($rendom_list); $x++){  ?>   
+                    
+                     <div class="prop-box">
+                        <div>
+                           <div class="prop-box-image">
+                              <img src="{{URL::to('/public/storage/listing/main/')}}/{{$rendom_list[$x]['feature_img']}}">
+                           </div>
+                           <div class="prop-box-text">
+                              <a href="" class="feature-star"> <i class="fa fa-heart"> </i> </a>
+                              <h4> {{'$'.number_format($rendom_list[$x]['price'], 2)}} {{$rendom_list[$x]['unit']}}</h4>
+                              <p> {{@$rendom_list[$x]['address']['city']}}, {{@$rendom_list[$x]['address']['state']}}, {{@$rendom_list[$x]['address']['post_code']}}, {{@$rendom_list[$x]['address']['country']['nicename']}} </p>
+                              <a href="{{route('accommodation.details',base64_encode(@$rendom_list[$x]['id']))}}"> View Detail </a>
+                              <h6>
+                                 <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
+                                 <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
+                                 <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
+                                 <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
+                                 <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
+                              </h6>
+                           </div>
+                        </div>
                      </div>
-                     </a>
-                  </div>
+              
+               <?php  if ($i == 5) { $i = 0  ?>
+                 </div>
                </div>
-            @endforeach
+               <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1">
+                  <div class="item-multiple-box arrows-3">
+             <?php  }elseif($count == count($rendom_list)){ ?>
+             </div>
+               </div>
+             <?php }else{ 
+               $i++; }  $count++;
+            } ?>       
+                  
+               
             </div>
          </div>
       </section>
@@ -452,35 +467,27 @@
                <h3 class="col-black alegraya upper"> Get inspired </h3>
             </div>
             <div class="row margin-1">
-               <div class="col-md-6 col-lg-6 col-sm-6 col-12 padding-1">
-                  <div class="offer-box">
-                     <img src="{{URL::to('/public/website')}}/images/inspire-1.jpg">
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-6 col-sm-6 col-12 padding-1">
-                  <div class="row margin-1">
-                     <div class="col-md-6 col-lg-6 col-sm-6 col-12 padding-1">
-                        <div class="offer-box m-b-20">
-                           <img src="{{URL::to('/public/website')}}/images/inspire-2.jpg">
-                        </div>
+            <?php  for($i=0; $i < count($amenities_data) ; $i++) { 
+               if ($i == 0) { ?>
+                  <div class="col-md-6 col-lg-6 col-sm-6 col-12 padding-1">
+                     <div class="offer-box overlay-tag inspire-large">
+                        <img src="{{URL::to('/public/website')}}/images/inspire-1.jpg">
+                        <h4> {{$amenities_data[$i]['name']}}</h4>
                      </div>
-                     <div class="col-md-6 col-lg-6 col-sm-6 col-12 padding-1">
-                        <div class="offer-box m-b-20">
+                  </div>
+                  <div class="col-md-6 col-lg-6 col-sm-6 col-12 padding-1">
+                     <div class="row margin-1">
+            <?php }else{ ?>
+                     <div class="col-md-6 col-lg-6 col-sm-6 col-12 padding-1 m-b-20 ">
+                        <div class="offer-box  overlay-tag inspire-small">
                            <img src="{{URL::to('/public/website')}}/images/inspire-3.jpg">
+                           <h4> {{$amenities_data[$i]['name']}}</h4>
                         </div>
                      </div>
-                     <div class="col-md-6 col-lg-6 col-sm-6 col-12 padding-1">
-                        <div class="offer-box m-t-20">
-                           <img src="{{URL::to('/public/website')}}/images/inspire-4.jpg">
-                        </div>
-                     </div>
-                     <div class="col-md-6 col-lg-6 col-sm-6 col-12 padding-1">
-                        <div class="offer-box m-t-20">
-                           <img src="{{URL::to('/public/website')}}/images/inspire-5.jpg">
-                        </div>
+            <?php if ($i ==  4) { ?>
                      </div>
                   </div>
-               </div>
+            <?php } }  } ?>   
             </div>
          </div>
       </section>
@@ -489,8 +496,8 @@
       <section class="pad-top-20 pad-bot-40">
          <div class="container">
             <div class="list-property">
-               <h3 class="col-black alegraya"> List Your Property On Micahha &
-                  Open The Door To Rental Income
+               <h3 class="col-black alegraya"> List Your Property On Micahha & 
+                  Open The Door To Rental Income  
                </h3>
                <a href="" class="custom-btn3"> LIST YOUR PROPERTY </a>
             </div>
@@ -500,34 +507,42 @@
       <!-- Art Section Starts Here -->
       <section class="pad-bot-40">
          <div class="container">
+         <div class="sec-head2">
+         <h3 class="col-blue alegraya"> Featured Properties </h3>
+         </div>
          <div class="row margin-1">
-            @foreach($list_data as $list_val)
-               <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1 m-b-20">
-                 <div class="item-box">
+         @foreach($list_data as $list_val)    
+             <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1">
+               <div class="item-box">
                   <div class="image-slider arrows-3">
                      <div> <img src="{{URL::to('/public/storage/listing/main/')}}/{{$list_val->feature_img}}"> </div>
                      @foreach($list_val->galleryImages as $gallery_images)
                         <div> <img src="{{URL::to('/public/storage/listing/gallery/'.$gallery_images->id.'-'.$gallery_images->image)}}"> </div>
                      @endforeach
                   </div>
-                     <a href="{{route('accommodation.details',base64_encode($list_val->id))}}">
-                     <div class="prop-box-text">
-                        <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
-                        <p> {{$list_val->address->accommodation_id}}, {{$list_val->address->city}}, {{$list_val->address->state}}, {{$list_val->address->post_code}}, {{$list_val->address->country->nicename}} </p>
-                        <h6>
-                           <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
-                        </h6>
-                     </div>
-                     </a>
+                  <div class="prop-box-text">
+                        <a href="" class="feature-star"> <i class="fa fa-heart"> </i> </a>
+                     <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
+                        <p>{{@$list_val->address->city}}, {{@$list_val->address->state}}, {{@$list_val->address->post_code}}, {{@$list_val->address->country->nicename}} </p>
+                     <a href="{{route('accommodation.details',base64_encode($list_val->id))}}"> View Detail </a>
+                     <h6> 
+                        <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
+                        <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
+                        <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
+                        <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
+                        <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
+                     </h6>
                   </div>
                </div>
-            @endforeach
             </div>
+            @endforeach
          </div>
+         <div class="row">
+         <div class="col-lg-12 text-center">
+         <a href="{{route('feature.list')}}" class="custom-btn6"> VIEW MORE </a>
+         </div>
+         </div>
+     </div>
       </section>
       <!-- Art Section Ends Here -->
       <!-- Textual Content Section Starts Here -->

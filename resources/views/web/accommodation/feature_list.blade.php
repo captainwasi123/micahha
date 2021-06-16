@@ -399,52 +399,6 @@
 
 @endsection
 @section('content')
-
-<!-- What We Offer Section Starts Here -->
-<section class="pad-top-40 pad-bot-20">
-         <div class="container">
-            <div class="row margin-1">
-            @foreach($rendom_list as $list_val)
-               <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1 m-b-20">
-                 <div class="item-box">
-                  <div class="image-slider arrows-3">
-                     <div> <img src="{{URL::to('/public/storage/listing/main/')}}/{{$list_val->feature_img}}"> </div>
-                     @foreach($list_val->galleryImages as $gallery_images)
-                        <div> <img src="{{URL::to('/public/storage/listing/gallery/'.$gallery_images->id.'-'.$gallery_images->image)}}"> </div>
-                     @endforeach
-                  </div>
-                     <a href="{{route('accommodation.details',base64_encode($list_val->id))}}">
-                     <div class="prop-box-text">
-                        <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
-                        <p> {{@$list_val->address->accommodation_id}}, {{@$list_val->address->city}}, {{@$list_val->address->state}}, {{@$list_val->address->post_code}}, {{@$list_val->address->country->nicename}} </p>
-                        <h6>
-                           <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
-                           <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
-                        </h6>
-                     </div>
-                     </a>
-                  </div>
-               </div>
-            @endforeach
-            </div>
-         </div>
-      </section>
-      <!-- What We Offer Section Ends Here -->
-      <!-- List Your Property Section Starts Here -->
-      <section class="pad-top-20 pad-bot-40">
-         <div class="container">
-            <div class="list-property">
-               <h3 class="col-black alegraya"> List Your Property On Micahha &
-                  Open The Door To Rental Income
-               </h3>
-               <a href="" class="custom-btn3"> LIST YOUR PROPERTY </a>
-            </div>
-         </div>
-      </section>
-      <!-- List Your Property Section Ends Here -->
       <!-- What We Offer Section Starts Here -->
       <section class="pad-top-40 pad-bot-20">
          <div class="container">
@@ -460,8 +414,9 @@
                      </div>
                      <a href="{{route('accommodation.details',base64_encode($list_val->id))}}">
                      <div class="prop-box-text">
+                       <a href="" class="feature-star"> <i class="fa fa-heart"> </i> </a>
                         <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
-                        <p> {{@$list_val->address->accommodation_id}}, {{@$list_val->address->city}}, {{@$list_val->address->state}}, {{@$list_val->address->post_code}}, {{@$list_val->address->country->nicename}} </p>
+                        <p> {{$list_val->address->accommodation_id}}, {{$list_val->address->city}}, {{$list_val->address->state}}, {{$list_val->address->post_code}}, {{$list_val->address->country->nicename}} </p>
                         <h6>
                            <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
                            <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>

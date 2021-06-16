@@ -503,6 +503,7 @@ background:black !important;
     font-family: 'adobe-garamond';
     font-size: 45px;
     letter-spacing: -0.5px;
+    font-weight: 400;
 }
  
 h6.checkbox1 input {
@@ -1245,13 +1246,12 @@ button.results-btn {
     padding: 16px 0px 8px 0px;
 }
 
-.accomodation-tags span {
+.accomodation-tags a {
     color: black;
     font-family: 'helvetica-bold';
     font-size: 14px;
     letter-spacing: 0.4px;
-    border-right: 2px solid black;
-    padding: 4px 15px 4px 6px;
+    padding: 5px 10px 5px 10px;
     display: inline-block;
 }
 .accomodation-tags span:nth-last-child(1) {
@@ -1285,10 +1285,11 @@ span.apartment-tags b img {
 .apartment-title {
     float: left;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 26px;
+    margin-top: 25px;
 }
 .apartment-title h5 {
-    font-size: 22px;
+    font-size: 26px;
     letter-spacing: 0.7px;
 }
 
@@ -1364,7 +1365,7 @@ span.apartment-tags b img {
 
 .description-field {
     width: 100%;
-    min-height: 450px !important;
+    min-height: 0px !important;
     font-family: adobe-garamond;
     font-size: 25px;
     color: black;
@@ -1375,14 +1376,14 @@ span.apartment-tags b img {
 }
 .description-field h5 {
     color: black;
-    font-size: 19px;
+    font-size: 22px;
     letter-spacing: 0.4px;
     color: black;
     margin: 0px;
     line-height: 32px;
     word-break: break-word;
+    margin-bottom: 5px;
 }
-
 .apartment-name {
     float: left;
     width: 100%;
@@ -1492,11 +1493,9 @@ background:#223f64;
 }
 
 .image-slider2 img {
-    max-width: 93%;
- 
+    max-width: 97%;
     display: block;
 }
-
 .slick-slider:hover button.slick-arrow {
     display: block !important;
 }
@@ -1536,11 +1535,11 @@ background:#223f64;
     padding: 0px 10px;
 }
 
-
 .item-box {
     float: left;
     width: 100%;
     position: relative;
+    margin-bottom: 20px !important;
 }
 
 .item-box:hover .prop-box-text {
@@ -1621,6 +1620,327 @@ select.select-bg {
     margin-top: 30px;
 }
 
+.banner-video2 {
+    max-height: 550px;
+    overflow: hidden;
+}
+
+.banner-search-form {
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    width: 100%;
+    z-index: 999;
+}
+
+.banner-search-form h3 {
+    color: white;
+    font-size: 28px;
+    font-family: 'helvetica-bold';
+    letter-spacing: 0.8px;
+}
+.banner-search-form p {
+    color: white;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin-bottom: 30px;
+}
+
+
+.banner-search-form form {
+    max-width: 550px;
+    margin: auto;
+    background: white;
+    position: relative;
+    border-radius: 5px;
+}
+
+.banner-search-form form input {
+    border: none;
+    width: 100%;
+    height: 50px;
+    padding: 0px 10px;
+    background: none;
+    letter-spacing: 0.5px;
+    font-size: 15px;
+    color: black;
+    padding: 0px 10px 0px 50px;
+}
+.banner-search-form form i {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    color: #bfbfbf;
+    font-size: 20px;
+    width: 50px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+
+.banner-search-form h6 {
+    color: #cacaca;
+    max-width: 600px;
+    margin: auto;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    line-height: 21px;
+    margin-top: 10px;
+}
+
+
+.banner-search-form h6 a {
+    color: #cacaca;
+}
+
+
+
+
+
+
+
+.set .content {
+    display: none;
+}
+.set {
+    box-shadow: 1px 1px 10px #e2e2e2;
+    padding: 14px 25px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.set a {
+    display: block;
+    color: black;
+    font-family: 'Alegreya SC';
+    font-size: 20px;
+    letter-spacing: 0.4px;
+    position: relative;
+    padding-right: 20px;
+}
+.set a i {
+    position: absolute;
+    right: 0px;
+    top: 4px;
+    font-size: 21px;
+}
+
+.set .content p {
+    color: black;
+    letter-spacing: 0.4px;
+    margin: 0px 0px 5px 0px;
+}
+.set .content {
+    margin-top: 7px;
+}
+
+.collect-tags span {
+    font-family: 'Alegreya SC';
+    font-size: 18px;
+    border-right: 2px solid black;
+}.collect-tags {
+    padding-bottom: 20px;
+}
+
+.anchor-filter {
+    float: left;
+    width: 100%;
+}
+
+.anchor-filter a {
+    display: block;
+    color: black;
+    font-family: 'helvetica-bold';
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    padding: 6px 10px;
+    line-height: 18px;
+}
+.anchor-filter a:hover {
+    color:#15345a;
+}
+.dropdown-small {
+    min-width: 200px !important;
+}
+section.collectibles-sec {
+    background-image: url(../images/collectibles-banner.jpg);
+    background-size: cover;
+    padding: 150px 0px;
+    text-align: center;
+    background-position: center center;
+}
+
+section.collectibles-sec h3 {
+    font-size: 38px;
+    font-weight: 400;
+    max-width: 800px;
+    margin: auto;
+    line-height: 44px;
+}
+
+.description-field p {
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: 0.3px;
+}
+
+
+.quote-bg3 {
+
+    background-image: url("../images/quote-bg3.jpg");
+}
+
+.item-multiple-box {
+    float: left;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px !important;
+}
+
+.item-multiple-box:hover button.slick-arrow {
+display: block !important;
+}
+.overlay-tag {
+    position: relative;
+}
+
+.overlay-tag h4 {
+    margin: 0px;
+    position: absolute;
+    bottom: 15px;
+    color: white;
+    letter-spacing: 0.4px;
+ 
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    padding: 0px 15px;
+    text-shadow: 1px 1px 5px black;
+}
+
+ 
+.inspire-large {
+    max-height: 360px !important;
+    overflow: hidden;
+}
+.inspire-small {
+    max-height: 170px !important;
+    overflow: hidden !important;
+}
+
+.custom-btn6:hover {
+    background:black;
+}
+.accomodation-tags i {
+    color: grey;
+    font-size: 15px;
+}
+.image-slider {
+    float: left;
+    width: 100%;
+}
+
+.feature-box1 {
+    position: relative;
+    cursor: pointer;
+}
+
+.feature-title1 {
+    left: 10px;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+a.feature-star {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #223f64 !important;
+    font-size: 18px;
+    padding: 1px 5px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+.feature-box1:hover a.feature-star {
+    visibility: visible;
+    opacity: 1;
+}
+a.feature-star:hover {
+transform: scale(1.2);
+-webkit-transform: scale(1.2);
+color:#f1e558 !important;
+}
+.feature-box1:hover .feature-title1 {
+    opacity: 1;
+    visibility: visible;
+}
+.feature-title1 {
+    left: 0px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding:10px 0px;
+    visibility: hidden;
+    opacity: 0;
+    background: linear-gradient(0deg, black, #80808014);
+    transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+.feature-title1 h5 {
+    color: white;
+    font-size: 20px;
+    text-shadow: 1px 1px 1px black;
+    letter-spacing: 1px;
+    padding: 0px 15px ;
+    font-family: 'futura-std-heavy';
+    margin-bottom: 5px;
+}
+
+.feature-title1 p {
+    color: white;
+    font-size: 16px;
+    text-shadow: 1px 1px 1px black;
+    letter-spacing: 1px;
+    padding: 0px 15px;
+}
+
+.feature-title1 h6 {
+    float: right;
+    color: white;
+    padding-right: 15px;
+    position: absolute;
+    right: 0px;
+    top: 24px;
+    margin: 0px;
+    font-size: 30px;
+    font-family: 'Alegreya SC';
+    letter-spacing: 2px;
+}
+
+.prop-box-text a {
+    font-size: 15px;
+    margin-top: 14px !important;
+    color: black;
+    border-bottom: 2px solid #213e63;
+    letter-spacing: 0.8px;
+}
+.prop-box-text a:hover {
+    color:#213e63;
+}
+
+
+
+  .prop-box-text a.feature-star {
+    opacity: 1 !important;
+    visibility: visible !important;
+ 
+    border: none !important;
+    font-size: 20px !important;
+}
+
+
 /*Media Queries Of Website*/
 
 /*Small Laptops*/
@@ -1662,6 +1982,34 @@ select.select-bg {
     font-size: 13px;
     color: black;
     margin-bottom: 10px;
+}
+.prop-box-text {
+    padding-top: 30px !important;
+}
+.item-box {
+    float: left;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px !important;
+}
+.all-filters .btn-group {
+    padding: 10px 0px 10px 0px;
+}
+.all-filters {
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+.all-filters .dropdown-menu {
+    min-width: 290px;
+    padding: 0px;
+    transform: none !important;
+    top: 40px !important;
+    left: 0px !important;
+    right: auto !important;
+    z-index: 9999999;
 }
 }
 
@@ -1768,6 +2116,32 @@ span.apartment-tags {
     left: 0px !important;
     right: auto !important;
     z-index: 9999999;
+}
+.banner-search-form {
+    position: absolute;
+    top: 60px;
+    left: 0px;
+    width: 100%;
+    z-index: 999;
+}
+.banner-search-form form {
+    max-width: 400px;
+ 
+}
+.banner-search-form h6 {
+ 
+    max-width: 500px;
+ 
+}
+
+.prop-box-text {
+    padding-top: 40px !important;
+}
+.item-box {
+    float: left;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px !important;
 }
 }
 
@@ -1993,13 +2367,12 @@ footer {
     background: white;
     overflow-x: hidden;
 }
-.accomodation-tags span {
+.accomodation-tags a {
     color: black;
     font-family: 'helvetica-bold';
     font-size: 14px;
     letter-spacing: 0.4px;
-    border-right: 1px solid black;
-    padding: 2px 15px 6px 6px;
+    padding: 2px 8px 6px 6px;
     display: inline-block;
     margin-bottom: 5px;
     margin-top: 4px;
@@ -2106,10 +2479,12 @@ button.slick-arrow {
     margin-bottom: 0px !important;
 }
 .item-box {
+    max-width: 400px;
     float: left;
     width: 100%;
     position: relative;
     margin-bottom: 30px !important;
+    overflow: hidden;
 }
 .prop-box-text {
     float: left;
@@ -2142,5 +2517,78 @@ button.slick-arrow {
     letter-spacing: 1px;
     margin-bottom: 15px;
     line-height: 32px;
+}
+.banner-search-form {
+    position: static;
+    top: 100px;
+    left: 0px;
+    width: 100%;
+    z-index: 999;
+    padding: 30px 15px 50px 15px;
+}
+.banner-search-form h3 {
+    color: white;
+    font-size: 22px;
+    font-family: 'helvetica-bold';
+    letter-spacing: 0.8px;
+}
+.banner-search-form p {
+    color: #e6e6e6;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+}
+.banner-search-form form input {
+    height: 45px;
+}
+.banner-search-form form i {
+    height: 45px;
+    line-height: 45px;
+}
+.contact-form-head h3 {
+    color: black;
+    font-family: 'ALEGREYA SC';
+    letter-spacing: -0.5px;
+    font-size: 30px;
+    line-height: 30px;
+    font-weight: 400;
+}
+.set {
+    box-shadow: 1px 1px 10px #e2e2e2;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.img-mob-margin {
+    margin-bottom: 40px !important;
+}
+section.collectibles-sec h3 {
+    font-size: 30px;
+    font-weight: 400;
+    max-width: 800px;
+    margin: auto;
+    line-height: 32px;
+}
+section.collectibles-sec {
+ 
+    padding: 100px 0px;
+ 
+}
+.inspire-large {
+    max-height: max-content !important;
+    overflow: hidden;
+    margin-bottom: 20px !important
+}
+.inspire-small {
+    max-height: max-content !important;
+    overflow: hidden;
+}
+.offer-box {
+    float: left;
+    width: 100%;
+    margin-bottom: 0px;
+}
+.apartment-title h5 span {
+    float: none;
 }
 }
