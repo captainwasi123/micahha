@@ -169,15 +169,15 @@
                         @csrf
                         <input type="hidden" name="list_id" value="{{ @$list_data->id }}">
                         <input type="hidden" name="landlord_id" value="{{ base64_encode(@$list_data->landlord_id) }}">
-                        <input type="hidden" name="user_id" value="{{$user->id}}">
+                        <input type="hidden" name="user_id" value="{{@$user->id}}">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="">User Name</label>
-                                <input type="text" class="form-control"name="user_name" value="{{$user->first_name ." ". $user->last_name}}" required>
+                                <input type="text" class="form-control"name="user_name" value="{{@$user->first_name ." ". @$user->last_name}}" required>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="">Phone Number</label>
-                                <input type="number" class="form-control" value="{{$user->phone}}" name="ph_number" required>
+                                <input type="number" class="form-control" value="{{@$user->phone}}" name="ph_number" required>
                             </div>
                             {{-- <div class="form-group col-md-4">
                                 <label for="">No of People</label>
