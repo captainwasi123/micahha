@@ -43,6 +43,8 @@ Route::namespace('web')->group(function(){
 			Route::prefix('collectibles')->group(function(){
 
 				Route::get('/', 'collectiblesController@index')->name('collectibles');
+				Route::get('/{category}', 'collectiblesController@getProductByCategory');
+				Route::get('/{category}/{subcategory}', 'collectiblesController@getProductBySubCategory');
 
 
 				Route::get('/details/{id}/{title}', 'collectiblesController@details');

@@ -4,6 +4,7 @@ namespace App\Models\collectibles;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\collectibles\subCategories;
 
 class categories extends Model
 {
@@ -21,5 +22,9 @@ class categories extends Model
         $p = categories::find(base64_decode($data['type']));
         $p->name = $data['name'];
         $p->save();
+    }
+
+    public function sub(){
+        return $this->hasMany(subCategories::class, 'cat_id', 'id');
     }
 }

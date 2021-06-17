@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\collectibles\categories;
 use App\Models\collectibles\subCategories;
+use App\Models\collectibles\productGallery;
 
 class products extends Model
 {
@@ -30,5 +31,9 @@ class products extends Model
     }
     public function subCategory(){
         return $this->belongsTo(subCategories::class, 'sub_cat_id');
+    }
+
+    public function gallery(){
+        return $this->hasMany(productGallery::class, 'id', 'product_id');
     }
 }
