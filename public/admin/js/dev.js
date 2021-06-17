@@ -132,6 +132,14 @@ $(document).ready(function(){
 						window.location.href = host+"/accommodation/members/block/"+id;
 					}
 				});
+		//Inquiries
+			$(document).on('click', '.openInquiry', function(){
+				var id = $(this).data('id');
+				$('#inquiryDetail-modal').modal('show');
+				$.get( host+"/accommodation/inquiries/open/"+id, function( data ) {
+				  $('#inquiry_block').html(data);
+				});
+			});
 
 
 	//Collectibles

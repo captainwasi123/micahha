@@ -120,6 +120,8 @@ Route::namespace('web')->group(function(){
 							Route::prefix('inquiries')->group(function(){
 
 								Route::get('/', 'accommodationController@inquiries')->name('admin.accommodation.inquiries');
+
+								Route::get('/open/{id}', 'accommodationController@openInquiries');
 							});
 					});
 

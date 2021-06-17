@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\accommodation\listing;
 use App\Models\accommodation\reservation;
 use App\Models\User;
+use App\Models\Accommodation_Enquiry;
 
 class accommodationController extends Controller
 {
@@ -141,7 +142,16 @@ class accommodationController extends Controller
 	//Inquiries
 
 		function inquiries(){
+			$data = Accommodation_Enquiry::orderBy('created_at', 'desc')->get();
 
-			return view('admin.accommodation.inquiries.index');
+			return view('admin.accommodation.inquiries.index', ['data' => $data]);
+		}
+
+		function openInquiries($id){
+			$id = base64_decode($id);
+
+			$data = Accommodation_Enquiry::find($id);
+
+			return view('admin.accommodation.inquiries.detail_response', ['data' => $data]);
 		}
 }

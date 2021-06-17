@@ -12,7 +12,6 @@
                             <tr>
                                 <th>S#</th>
                                 <th>Name</th>
-                                <th>Phone</th>
                                 <th>Email</th>
                                 <th>Category</th>
                                 <th>Description</th>
@@ -22,40 +21,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Peter</td>
-                                <td>12121212121</td>
-                                <td><a href="mailto:peter@gmail.com">peter@gmail.com</a></td>
-                                <td>Request a Tour</td>
-                                <td><p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</td>
-                                <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                <td>29-May-2021 8:11 pm</td>
-                                <td><a href="javascript:void(0)" data-toggle="modal" data-target="#inquiryDetail-modal"><i class="mdi mdi-arrow-expand-all"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Peter</td>
-                                <td>12121212121</td>
-                                <td><a href="mailto:peter@gmail.com">peter@gmail.com</a></td>
-                                <td>Request a Tour</td>
-                                <td><p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</td>
-                                <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                <td>29-May-2021 8:11 pm</td>
-                                <td><a href="javascript:void(0)" data-toggle="modal" data-target="#inquiryDetail-modal"><i class="mdi mdi-arrow-expand-all"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Peter</td>
-                                <td>12121212121</td>
-                                <td><a href="mailto:peter@gmail.com">peter@gmail.com</a></td>
-                                <td>Request a Tour</td>
-                                <td><p class="cut-text" title="Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.">Situated at the most prime location of Kashmir point in Murree. Full secure, safe and peaceful surrounding . Majestic views from the apartment. All daily use amenities near by. All desi and continental food at the walking distance.</td>
-                                <td><a href="{{route('admin.accommodation.listing.details')}}" data-toggle="tooltip" data-original-title="View Details">Khawaja house</a></td>
-                                <td>29-May-2021 8:11 pm</td>
-                                <td><a href="javascript:void(0)" data-toggle="modal" data-target="#inquiryDetail-modal"><i class="mdi mdi-arrow-expand-all"></i></a></td>
-                            </tr>
-                            
+                            @php $s=1; @endphp
+                            @foreach($data as $val)
+                                <tr>
+                                    <td>{{$s}}</td>
+                                    <td>{{$val->username}}</td>
+                                    <td><a href="mailto:{{$val->email}}">{{$val->email}}</a></td>
+                                    <td>{{empty($val->type) ? '' : $val->type->name}}</td>
+                                    <td><p class="cut-text" title="{{$val->details}}">{{$val->details}}</td>
+                                    <td>
+                                        <a href="{{URL::to('/admin/accommodation/listing/details/'.base64_encode($val->listing->id))}}" data-toggle="tooltip" data-original-title="View Details">
+                                            {{$val->listing->title}}
+                                        </a>
+                                    </td>
+                                    <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
+                                    <td><a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="openInquiry"><i class="mdi mdi-arrow-expand-all"></i></a></td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -70,33 +52,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title"> << Inquiry Subject Here >>&nbsp;&nbsp;<small>5 minutes ago</small></h4>
+                    <h4 class="modal-title"> Inquiry Details&nbsp;&nbsp;</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6 col-xs-6 b-b b-r"> <strong>Phone</strong>
-                            <br>
-                            <p class="text-muted m-b-0"><i class="mdi mdi-cellphone-android"></i> 123 456 7890</p>
-                        </div>
-                        <div class="col-md-6 col-xs-6 b-b b-r"> <strong>Email</strong>
-                            <br>
-                            <p class="text-muted m-b-0"><i class="mdi mdi-email-outline"></i> johnathan@admin.com</p>
-                        </div>
-                    </div>
-                    <div class="row p-t-10">
-                        <div class="col-md-6 col-xs-6 b-r"> <strong>Subject</strong>
-                            <br>
-                            <p class="text-muted m-b-0"><i class="mdi mdi-cellphone-android"></i> Request a Tour</p>
-                        </div>
-                        <div class="col-md-6 col-xs-6 b-r"> <strong>Inquiry To</strong>
-                            <br>
-                            <p class="text-muted m-b-0"><i class="mdi mdi-email-outline"></i> Khawaja House</p>
-                        </div>
-                    </div>
-                    <hr>
-                    <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p>
+                <div class="modal-body" id="inquiry_block">
+                    
                 </div>
             </div>
         </div>
