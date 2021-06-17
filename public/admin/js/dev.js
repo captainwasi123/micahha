@@ -83,54 +83,67 @@ $(document).ready(function(){
 
 
 
+	//Accommodation
+		//Listing
 
-	//Listing
+			//Approve
+				$(document).on('click', '.listingApprove', function(){
+					var id = $(this).data('id');
+					
+					if(confirm('Are you sure want to approve this.?')){
+						window.location.href = host+"/accommodation/listing/approve/"+id;
+					}
+				});
 
-		//Approve
-			$(document).on('click', '.listingApprove', function(){
-				var id = $(this).data('id');
+			//Reject
+				$(document).on('click', '.listingReject', function(){
+					var id = $(this).data('id');
+					
+					if(confirm('Are you sure want to reject this.?')){
+						window.location.href = host+"/accommodation/listing/reject/"+id;
+					}
+				});
+
+
+		//Members
+
+			//Approve
+				$(document).on('click', '.memberApprove', function(){
+					var id = $(this).data('id');
+					
+					if(confirm('Are you sure want to approve this.?')){
+						window.location.href = host+"/accommodation/members/approve/"+id;
+					}
+				});
+
+			//Reject
+				$(document).on('click', '.memberReject', function(){
+					var id = $(this).data('id');
+					
+					if(confirm('Are you sure want to reject this.?')){
+						window.location.href = host+"/accommodation/members/reject/"+id;
+					}
+				});
+
+			//Block
+				$(document).on('click', '.memberBlock', function(){
+					var id = $(this).data('id');
+					
+					if(confirm('Are you sure want to Block this.?')){
+						window.location.href = host+"/accommodation/members/block/"+id;
+					}
+				});
+
+
+	//Collectibles
+		//Add Product
+			$(document).on('change', '#catSelect', function(){
+				var id = $(this).val();
+				$('#subCatSelect').html('<option value="">...</option>');
 				
-				if(confirm('Are you sure want to approve this.?')){
-					window.location.href = host+"/accommodation/listing/approve/"+id;
-				}
+				$.get( host+"/collectibles/products/getSubCategory/"+id, function( data ) {
+				  $('#subCatSelect').html(data);
+				});
 			});
 
-		//Reject
-			$(document).on('click', '.listingReject', function(){
-				var id = $(this).data('id');
-				
-				if(confirm('Are you sure want to reject this.?')){
-					window.location.href = host+"/accommodation/listing/reject/"+id;
-				}
-			});
-
-
-	//Members
-
-		//Approve
-			$(document).on('click', '.memberApprove', function(){
-				var id = $(this).data('id');
-				
-				if(confirm('Are you sure want to approve this.?')){
-					window.location.href = host+"/accommodation/members/approve/"+id;
-				}
-			});
-
-		//Reject
-			$(document).on('click', '.memberReject', function(){
-				var id = $(this).data('id');
-				
-				if(confirm('Are you sure want to reject this.?')){
-					window.location.href = host+"/accommodation/members/reject/"+id;
-				}
-			});
-
-		//Block
-			$(document).on('click', '.memberBlock', function(){
-				var id = $(this).data('id');
-				
-				if(confirm('Are you sure want to Block this.?')){
-					window.location.href = host+"/accommodation/members/block/"+id;
-				}
-			});
 });
