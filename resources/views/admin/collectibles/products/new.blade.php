@@ -6,6 +6,13 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                <div>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            <strong>Success! </strong>{{ session('success') }}
+                        </div>
+                    @endif
+                </div>
                 <h6 class="card-subtitle"><code>*</code> Fields are required.</h6>
                 <form class="form-material m-t-10" method="post" enctype="multipart/form-data">
                     @csrf

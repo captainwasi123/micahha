@@ -4,6 +4,8 @@ namespace App\Models\collectibles;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\collectibles\categories;
+use App\Models\collectibles\subCategories;
 
 class products extends Model
 {
@@ -21,5 +23,12 @@ class products extends Model
         $p->save();
 
         return $p->id;
+    }
+
+    public function category(){
+        return $this->belongsTo(categories::class, 'cat_id');
+    }
+    public function subCategory(){
+        return $this->belongsTo(subCategories::class, 'sub_cat_id');
     }
 }

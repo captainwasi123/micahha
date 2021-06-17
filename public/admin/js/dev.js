@@ -82,7 +82,6 @@ $(document).ready(function(){
 				});
 
 
-
 	//Accommodation
 		//Listing
 
@@ -146,4 +145,20 @@ $(document).ready(function(){
 				});
 			});
 
+
+		//Products un-Publish
+			$(document).on('click', '.unPublishProduct', function(){
+				var id = $(this).data('id');
+				if(confirm('Are you sure want to un-publish this?')){
+					window.location.href =	host+"/collectibles/products/unPublish/"+id;
+				}
+			});
+
+		//Products Publish
+			$(document).on('click', '.publishProduct', function(){
+				var id = $(this).data('id');
+				if(confirm('Are you sure want to publish this?')){
+					window.location.href =	host+"/collectibles/products/publish/"+id;
+				}
+			});
 });

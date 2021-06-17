@@ -38,6 +38,15 @@ Route::namespace('web')->group(function(){
                 Route::post('/add_enquiry', 'accommodationController@add_accommodation_enquiry')->name('web.add_enquiry');
                 Route::get('/feature/list', 'accommodationController@feature_list')->name('feature.list');
 			});
+
+		//Collectibles
+			Route::prefix('collectibles')->group(function(){
+
+				Route::get('/', 'collectiblesController@index')->name('collectibles');
+
+
+				Route::get('/details/{id}/{title}', 'collectiblesController@details');
+			});
 });
 
 
@@ -115,9 +124,6 @@ Route::namespace('web')->group(function(){
 				//Collectibles
 					Route::prefix('collectibles')->group(function(){
 
-						Route::get('statistics', 'collectiblesController@statistics')->name('admin.collectibles.statistics');
-
-
 						//Products
 						Route::prefix('products')->group(function(){
 
@@ -128,6 +134,9 @@ Route::namespace('web')->group(function(){
 							Route::get('drafted', 'collectiblesController@draftedProduct')->name('admin.collectibles.products.drafted');
 
 							Route::get('getSubCategory/{id}', 'collectiblesController@getSubCategoryProduct');
+
+							Route::get('unPublish/{id}', 'collectiblesController@unPublishProducts');
+							Route::get('publish/{id}', 'collectiblesController@publishProducts');
 						});
 
 						//Sales

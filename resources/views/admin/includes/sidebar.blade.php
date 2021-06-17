@@ -78,12 +78,6 @@
 
                 <li class="nav-small-cap">Collectibles</li>
                 <li> 
-                    <a class="waves-effect waves-dark" href="{{route('admin.collectibles.statistics')}}" aria-expanded="false">
-                        <i class="mdi mdi-gauge"></i>
-                        <span class="hide-menu">Statistics</span>
-                    </a>
-                </li>
-                <li> 
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-format-list-bulleted"></i>
                         <span class="hide-menu"> Products</span>

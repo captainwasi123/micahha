@@ -64,7 +64,7 @@
             <a href=""> Art </a>
          </div>
          <div class="menu-item">
-            <a href=""> Collectibles </a>
+            <a href="{{route('collectibles')}}"> Collectibles </a>
          </div>
       </div>
    </div>

@@ -7,14 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\collectibles\categories;
 use App\Models\collectibles\subCategories;
 use App\Models\collectibles\products;
+use App\Models\collectibles\productGallery;
 
 class collectiblesController extends Controller
 {
-    function statistics(){
-
-        return '';
-    }
-
     //Products
 
         function addProduct(){
@@ -28,29 +24,31 @@ class collectiblesController extends Controller
             if($request->hasFile('feature_img')){
                 $file = $request->file('feature_img');
                 $filename = $id.'-'.date('dmyHis').'.'.$file->getClientOriginalExtension();
-                $u = products::find($id);
-                $u->feature_img = $filename;
-                $u->save();
+                $p = products::find($id);
+                $p->feature_img = $filename;
+                $p->save();
                 $file->move(base_path('/public/storage/products/feature/'), $filename);
             }
-            if(count($data['gallery']) > 0){
-                $file = $request->file('feature_img');
-                $filename = $id.'-'.date('dmyHis').'.'.$file->getClientOriginalExtension();
-                $u = products::find($id);
-                $u->feature_img = $filename;
-                $u->save();
-                $file->move(base_path('/public/storage/products/feature/'), $filename);
+            if($request->hasfile('gallery')){
+                foreach($request->file('gallery') as $image)
+                {
+                    $filename = date('dmyHis').'.'.$image->getClientOriginalExtension();
+                    $gid = productGallery::addGalleryImage($id, $filename);
+                    $filename = $gid.'-'.$filename;
+                    $image->move(base_path('/public/storage/products/gallery/'), $filename);
+                }
             }
-            dd($data);
             return redirect()->back()->with('success', 'Product Added.');
         }
         function publishedProduct(){
+            $data = products::where('status', '1')->orderBy('created_at', 'desc')->get();
 
-            return view('admin.collectibles.products.published');
+            return view('admin.collectibles.products.published', ['data' => $data]);
         }
         function draftedProduct(){
+            $data = products::where('status', '0')->orderBy('created_at', 'desc')->get();
 
-            return view('admin.collectibles.products.drafted');
+            return view('admin.collectibles.products.drafted', ['data' => $data]);
         }
         function getSubCategoryProduct($id){
             $data  = subCategories::where('cat_id', $id)->get();
@@ -59,6 +57,22 @@ class collectiblesController extends Controller
                 $content .= '<option value="'.$val->id.'">'.$val->name.'</option>';
             }
             return $content;
+        }
+        function unPublishProducts($id){
+            $id = base64_decode($id);
+            $p = products::find($id);
+            $p->status = '0';
+            $p->save();
+
+            return redirect()->back()->with('success', 'Product sent to draft.');
+        }
+        function publishProducts($id){
+            $id = base64_decode($id);
+            $p = products::find($id);
+            $p->status = '1';
+            $p->save();
+
+            return redirect()->back()->with('success', 'Product Published.');
         }
 
 

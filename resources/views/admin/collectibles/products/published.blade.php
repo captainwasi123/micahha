@@ -6,6 +6,13 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                <div>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            <strong>Success! </strong>{{ session('success') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="table-responsive">
                     <table id="demo-foo-addrow" class="table m-t-10 table-hover contact-list" data-page-size="10">
                         <thead>
@@ -14,6 +21,7 @@
                                 <th>Title</th>
                                 <th>Price</th>
                                 <th>Category</th>
+                                <th>Sub Category</th>
                                 <th>Description</th>
                                 <th>Orders</th>
                                 <th>Created at</th>
@@ -21,42 +29,36 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <a href="javascript:void(0)"><img src="{{URL::to('/public/admin')}}/assets/images/users/4.jpg" alt="user" width="40" class="img-circle" /> Genelia Deshmukh</a>
-                                </td>
-                                <td>$50.0</td>
-                                <td><span class="label label-primary">Furniture</span> </td>
-                                <td>
-                                    <p class="cut-text" title="">
-                                        test description
-                                    </p>
-                                </td>
-                                <td>0</td>
-                                <td>14-Jun-2021 11:05 pm</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Un-Publish"><i class="ti-close" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <a href="javascript:void(0)"><img src="{{URL::to('/public/admin')}}/assets/images/users/4.jpg" alt="user" width="40" class="img-circle" /> Genelia Deshmukh</a>
-                                </td>
-                                <td>$50.0</td>
-                                <td><span class="label label-primary">Furniture</span> </td>
-                                <td>
-                                    <p class="cut-text" title="">
-                                        test description
-                                    </p>
-                                </td>
-                                <td>0</td>
-                                <td>14-Jun-2021 11:05 pm</td>
-                                <td>
-                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Un-Publish"><i class="ti-close" aria-hidden="true"></i></button>
-                                </td>
-                            </tr>
+                            @php $s=1; @endphp
+                            @foreach($data as $val)
+                                <tr>
+                                    <td>{{$s}}</td>
+                                    <td>
+                                        <a href="javascript:void(0)"><img src="{{URL::to('/public/storage/products/feature/'.$val->feature_img)}}" alt="user" width="40" class="img-circle" />
+                                            {{$val->title}}
+                                        </a>
+                                    </td>
+                                    <td>${{number_format($val->price, 1)}}</td>
+                                    <td><span class="label label-primary">{{$val->category->name}}</span> </td>
+                                    <td><span class="label label-warning">{{$val->subCategory->name}}</span> </td>
+                                    <td>
+                                        <p class="cut-text" title="{{$val->description}}">
+                                            {{$val->description}}
+                                        </p>
+                                    </td>
+                                    <td>0</td>
+                                    <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm btn-primary unPublishProduct" data-toggle="tooltip" data-original-title="Un-Publish" data-id="{{base64_encode($val->id)}}"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                @php $s++; @endphp
+                            @endforeach
+                            @if(count($data) == '0')
+                                <tr>
+                                    <td colspan="9">No Products Found.</td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
