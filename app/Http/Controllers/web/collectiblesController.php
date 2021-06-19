@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\collectibles\products;
 use App\Models\collectibles\categories;
 use App\Models\collectibles\subCategories;
+use App\Models\collectibles\wishlist;
+use Auth;
 
 class collectiblesController extends Controller
 {
@@ -51,6 +53,18 @@ class collectiblesController extends Controller
             return view('web.collectibles.all', ['data' => $data, 'categories' => $categories]);
         }else{
             return redirect(route('collectibles'));
+        }
+    }
+
+    function addWishlist($id){
+        if(Auth::check()){
+            $id = base64_decode($id);
+            $w = new wishlist;
+            $w->product_id = $id;
+            $w->user_id = Auth::id();
+            $w->save();
+        }else{
+            return redirect()->back();
         }
     }
 }

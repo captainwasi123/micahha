@@ -9,6 +9,7 @@ use App\Models\accommodation\listingAmenities;
 use App\Models\accommodation\listingAddress;
 use App\Models\accommodation\listingGallery;
 use App\Models\accommodation\propertyType;
+use App\Models\accommodation\wishlist;
 use App\Models\User;
 use Auth;
 
@@ -95,5 +96,10 @@ class listing extends Model
     }
     public function galleryImages(){
         return $this->hasMany(listingGallery::class, 'accom_id', 'id');
+    }
+
+
+    public function wishlist(){
+        return $this->hasMany(wishlist::class, 'listing_id', 'id')->where('user_id', Auth::id());
     }
 }

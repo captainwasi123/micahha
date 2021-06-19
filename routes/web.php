@@ -37,6 +37,12 @@ Route::namespace('web')->group(function(){
                 Route::post('/add_reservation_modal', 'accommodationController@add_reservation_modal')->name('web.add_reservation_modal');
                 Route::post('/add_enquiry', 'accommodationController@add_accommodation_enquiry')->name('web.add_enquiry');
                 Route::get('/feature/list', 'accommodationController@feature_list')->name('feature.list');
+
+                //Wishlist
+                Route::prefix('wishlist')->group(function(){
+
+                	Route::get('add/{id}', 'accommodationController@addWishlist');
+                });
 			});
 
 		//Collectibles
@@ -48,6 +54,12 @@ Route::namespace('web')->group(function(){
 
 
 				Route::get('/details/{id}/{title}', 'collectiblesController@details');
+
+				//Wishlist
+                Route::prefix('wishlist')->group(function(){
+
+                	Route::get('add/{id}', 'collectiblesController@addWishlist');
+                });
 			});
 });
 
@@ -290,6 +302,26 @@ Route::namespace('web')->group(function(){
 
 
 					Route::get('cancel/{id}', 'ordersController@accommodationCancel')->name('user.orders.accommodation.cancel');
+				});
+			});
+
+
+		//My Wishlist
+
+			Route::prefix('wishlist')->group(function(){
+
+				//Accommodation
+				Route::prefix('accommodation')->group(function(){
+
+					Route::get('/', 'wishlistController@accomList')->name('user.wishlist.accommodation');
+					Route::get('/remove/{id}', 'wishlistController@accomListremove');
+				});
+
+				//Collectibles
+				Route::prefix('collectibles')->group(function(){
+
+					Route::get('/', 'wishlistController@collList')->name('user.wishlist.collectibles');
+					Route::get('/remove/{id}', 'wishlistController@collListremove');
 				});
 			});
 	});

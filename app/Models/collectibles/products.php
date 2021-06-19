@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\collectibles\categories;
 use App\Models\collectibles\subCategories;
 use App\Models\collectibles\productGallery;
+use App\Models\collectibles\wishlist;
+use Auth;
 
 class products extends Model
 {
@@ -35,5 +37,9 @@ class products extends Model
 
     public function gallery(){
         return $this->hasMany(productGallery::class, 'id', 'product_id');
+    }
+
+    public function wishlist(){
+        return $this->hasMany(wishlist::class, 'product_id', 'id')->where('user_id', Auth::id());
     }
 }

@@ -65,7 +65,7 @@
       <div class="row margin-1">
          @foreach($similar as $val)
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
-               <div class="image-slider img-mob-margin arrows-1 m-b-20">
+               <div class="image-slider img-mob-margin arrows-1 m-b-20 feature-small">
                    <div class="feature-box1">
                      <img src="{{URL::to('/public/storage/products/feature/'.$val->feature_img)}}">
                      <div class="feature-title1">
@@ -73,7 +73,11 @@
                      <p> {{empty($val->category) ? '' : $val->category->name}}<small>,</small> {{empty($val->subCategory) ? '' : $val->subCategory->name}} </p>
                      <h6> ${{number_format($val->price, 1)}} </h6>
                      </div>
-                     <a href="" class="feature-star"> <i class="fa fa-star"> </i> </a>
+                     @if(Auth::id() && count($val->wishlist) == 0)
+                        <a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="feature-star collAddWishlist"> 
+                           <i class="fa fa-heart"> </i> 
+                        </a>
+                     @endif
                   </div>
                </div>
             </div>

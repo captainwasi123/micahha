@@ -93,13 +93,13 @@
             </a>
             <ul>
                 <li>
-                    <a href="">Accommodation</a>
+                    <a href="{{route('user.wishlist.accommodation')}}">Accommodation</a>
                 </li>
                 <li>
                     <a href="">Art</a>
                 </li>
                 <li>
-                    <a href="">Collectibles</a>
+                    <a href="{{route('user.wishlist.collectibles')}}">Collectibles</a>
                 </li>
             </ul>
         </li>

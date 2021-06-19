@@ -51,3 +51,4 @@
 <script src="{{URL::to('/public/user/')}}/vendors/chart_am/chart-custom.js"></script>
 <!-- custom js -->
 <script src="{{URL::to('/public/user/')}}/js/custom.js"></script>
+<script src="{{URL::to('/public/user/')}}/js/dev.js"></script>

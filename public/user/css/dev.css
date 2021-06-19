@@ -118,3 +118,11 @@
 .nav-link {
     color: #000;
 }
+.img-circle{
+    border-radius: 50%;
+    overflow: hidden;
+}
+.wishlist_title p {
+    padding-left: 45px;
+    margin-top: -30px;
+}

@@ -11,6 +11,7 @@ use App\Models\accommodation\amenities;
 use App\Models\User;
 use App\Models\Enquiry_type;
 use App\Models\Accommodation_Enquiry;
+use App\Models\accommodation\wishlist;
 use Illuminate\Support\Facades\Auth;
 
 class accommodationController extends Controller
@@ -18,7 +19,7 @@ class accommodationController extends Controller
     //
     function index(){
         $data = array(
-            'rendom_list' => listing::with(['address','address.country'])->where('status',2)->latest()->limit(30)->get()->toArray(),
+            'rendom_list' => listing::with(['address','address.country', 'wishlist'])->where('status',2)->latest()->limit(30)->get(),
             'list_data' => listing::where('status',2)->where('is_feature',1)->latest()->limit(6)->get(),
             'amenities_data' => amenities::where('show_in_home',1)->latest()->limit(5)->get()->toArray(),
             'property_type' => propertyType::get(),
@@ -117,5 +118,17 @@ class accommodationController extends Controller
             'property_type' => propertyType::get(),
           );
         return view('web.accommodation.feature_list')->with($data);
+    }
+
+    function addWishlist($id){
+        if(Auth::check()){
+            $id = base64_decode($id);
+            $w = new wishlist;
+            $w->listing_id = $id;
+            $w->user_id = Auth::id();
+            $w->save();
+        }else{
+            return redirect()->back();
+        }
     }
 }

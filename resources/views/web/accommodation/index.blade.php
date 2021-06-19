@@ -19,53 +19,6 @@
                   </button>
                   <div class="dropdown-menu">
                      <div class="filters-wrapper">
-                        <!-- Property Types Filter Starts Here -->
-                        <!-- <div class="filter-box">
-                           <div class="filter-box-head">
-                              <h4> Property Types </h4>
-                           </div>
-                           <div class="checkbox-filter">
-                              <p> <label> <input type="checkbox" > House </label> </p>
-                              <p> <label> <input type="checkbox" > Apartment and Unit </label> </p>
-                              <p> <label> <input type="checkbox"> Town house </label> </p>
-                              <p> <label> <input type="checkbox"> Villa </label> </p>
-                           </div>
-                        </div> -->
-                        <!-- Property Types Filter Ends Here -->
-                        <!-- Price Filter Starts Here -->
-                        <!-- <div class="filter-box">
-                           <div class="filter-box-head">
-                              <h4> Price </h4>
-                              <h6> Above $50k </h6>
-                           </div>
-                           <div class="price-filter">
-                              <div class="price-range-slider">
-                                 <p class="range-value">
-                                    <input type="text" id="amount" readonly>
-                                 </p>
-                                 <div id="slider-range" class="range-bar"></div>
-                              </div>
-                           </div>
-                        </div> -->
-                        <!-- Price Filter Ends Here -->
-                        <!-- Bedroom Filter Starts Here -->
-                        <!-- <div class="filter-box">
-                           <div class="filter-box-head">
-                              <h4> Bedrooms </h4>
-                           </div>
-                           <div class="checkbox-filter2">
-                              <button class="active-1"> <input type="checkbox" checked="checked" name=""> Any </button>
-                              <button> <input type="checkbox" name=""> 1+ </button>
-                              <button> <input type="checkbox" name=""> 2+ </button>
-                              <button> <input type="checkbox" name=""> 3+ </button>
-                              <button> <input type="checkbox" name=""> 4+ </button>
-                              <button> <input type="checkbox" name=""> 5+ </button>
-                           </div>
-                           <div class="extract-value">
-                              <p> <label> <input type="checkbox" name="">  Use extract value </label> </p>
-                           </div>
-                        </div> -->
-                        <!-- Bedroom Filter Ends Here -->
                         <!-- Bathroom Filter Starts Here -->
                         <div class="filter-box">
                            <div class="filter-box-head">
@@ -118,71 +71,6 @@
                               <p> <label> <input type="checkbox" name=""> Garden / courtyard </label> </p>
                            </div>
                         </div>
-                        <!-- Features Filter Ends Here -->
-                        <!-- Calendar Filter Starts Here -->
-                        <!-- <div class="filter-box">
-                           <div class="filter-box-head">
-                              <h4> Calendar </h4>
-                           </div>
-                           <div class="checkbox-filter3">
-                              <img src="images/calendar.jpg">
-                           </div>
-                        </div> -->
-                        <!-- Calendar Filter Ends Here -->
-                        <!-- Guest Filter Starts Here -->
-                        <!-- <div class="filter-box no-border">
-                           <div class="filter-box-head">
-                              <h4> Guest </h4>
-                           </div>
-                           <div class="counting-filter">
-                              <div class="row">
-                                 <div class="col-md-6 col-lg-6 col-7">
-                                    <div class="counting-name">
-                                       <h5> Adults </h5>
-                                       <p> Ages 13 or above </p>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-6 col-lg-6 col-5">
-                                    <div class="counting-number">
-                                       <button data-decrease>-</button>
-                                       <input data-value type="text" value="1" disabled />
-                                       <button data-increase>+</button>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-6 col-lg-6 col-7">
-                                    <div class="counting-name">
-                                       <h5> Children </h5>
-                                       <p> Ages 13 or above </p>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-6 col-lg-6 col-5">
-                                    <div class="counting-number">
-                                       <button data-decrease>-</button>
-                                       <input data-value type="text" value="1" disabled />
-                                       <button data-increase>+</button>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="row">
-                                 <div class="col-md-6 col-lg-6 col-7">
-                                    <div class="counting-name">
-                                       <h5> Infants </h5>
-                                       <p> Ages 13 or above </p>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-6 col-lg-6 col-5">
-                                    <div class="counting-number">
-                                       <button data-decrease>-</button>
-                                       <input data-value type="text" value="1" disabled />
-                                       <button data-increase>+</button>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div> -->
-                        <!-- Guest Filter Ends Here -->
                         <!-- Filter Actions Starts Here -->
                         <div class="filter-actions">
                            <button class="cancel-btn"> Cancel </button>
@@ -418,17 +306,14 @@
                               <img src="{{URL::to('/public/storage/listing/main/')}}/{{$rendom_list[$x]['feature_img']}}">
                            </div>
                            <div class="prop-box-text">
-                              <a href="" class="feature-star"> <i class="fa fa-heart"> </i> </a>
+                              @if(Auth::id() && count($rendom_list[$x]->wishlist) == 0)
+                                 <a href="javascript:void(0)" data-id="{{base64_encode($rendom_list[$x]['id'])}}" class="feature-star accomAddWishlist"> 
+                                    <i class="fa fa-heart"> </i> 
+                                 </a>
+                              @endif
                               <h4> {{'$'.number_format($rendom_list[$x]['price'], 2)}} {{$rendom_list[$x]['unit']}}</h4>
                               <p> {{@$rendom_list[$x]['address']['city']}}, {{@$rendom_list[$x]['address']['state']}}, {{@$rendom_list[$x]['address']['post_code']}}, {{@$rendom_list[$x]['address']['country']['nicename']}} </p>
-                              <a href="{{route('accommodation.details',base64_encode(@$rendom_list[$x]['id']))}}"> View Detail </a>
-                              <h6>
-                                 <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
-                                 <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
-                                 <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
-                                 <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
-                                 <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
-                              </h6>
+                              <a href="{{route('accommodation.details',base64_encode(@$rendom_list[$x]['id']))}}"> View Detail</a>
                            </div>
                         </div>
                      </div>
@@ -521,17 +406,14 @@
                      @endforeach
                   </div>
                   <div class="prop-box-text">
-                        <a href="" class="feature-star"> <i class="fa fa-heart"> </i> </a>
+                        @if(Auth::id() && count($list_val->wishlist) == 0)
+                           <a href="javascript:void(0)" data-id="{{base64_encode($list_val->id)}}" class="feature-star accomAddWishlist"> 
+                              <i class="fa fa-heart"> </i> 
+                           </a>
+                        @endif
                      <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
                         <p>{{@$list_val->address->city}}, {{@$list_val->address->state}}, {{@$list_val->address->post_code}}, {{@$list_val->address->country->nicename}} </p>
                      <a href="{{route('accommodation.details',base64_encode($list_val->id))}}"> View Detail </a>
-                     <h6> 
-                        <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
-                        <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
-                        <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
-                        <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
-                        <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
-                     </h6>
                   </div>
                </div>
             </div>

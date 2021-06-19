@@ -72,7 +72,7 @@
                      {{$c==2 ? 'col-md-5 col-lg-5' : ''}}
                      {{$c>2 ? 'col-md-4 col-lg-4' : ''}}
                      ">
-                  <div class="image-slider img-mob-margin arrows-1 m-b-20">
+                  <div class="image-slider img-mob-margin arrows-1 m-b-20 {{$c>2 ? 'feature-small' : 'feature-large'}}">
             @endif
                      <div class="feature-box1">
                         <img src="{{URL::to('/public/storage/products/feature/'.$val->feature_img)}}">
@@ -83,7 +83,11 @@
                               <h6> ${{number_format($val->price, 1)}} </h6>
                            </div>
                         </a>
-                        <a href="" class="feature-star"> <i class="fa fa-heart"> </i> </a>
+                        @if(Auth::id() && count($val->wishlist) == 0)
+                           <a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="feature-star collAddWishlist"> 
+                              <i class="fa fa-heart"> </i> 
+                           </a>
+                        @endif
                      </div>
             @if(($r%2) == 0)
                   </div>
