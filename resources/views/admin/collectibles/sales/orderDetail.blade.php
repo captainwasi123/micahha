@@ -1,17 +1,17 @@
 @extends('admin.includes.master')
-@section('title', 'New Orders | Sales | Collectibles')
+@section('title', 'Order Details | Sales | Collectibles')
 @section('content')
 
 <div class="row">
     <div class="col-md-12">
         <div class="card card-body printableArea">
-            <h3><b>INVOICE</b> <span class="pull-right">#5669626</span></h3>
+            <h3><b>Order</b> <span class="pull-right">#{{$data->id}}</span></h3>
             <hr>
             <div class="row">
                 <div class="col-md-12">
                     <div class="pull-left">
                         <address>
-                            <h3> &nbsp;<b class="text-danger">Material Pro Admin</b></h3>
+                            <h3> &nbsp;<b class="text-danger">Micahha</b></h3>
                             <p class="text-muted m-l-5">E 104, Dharti-2,
                                 <br/> Nr' Viswakarma Temple,
                                 <br/> Talaja Road,
@@ -21,18 +21,17 @@
                     <div class="pull-right text-right">
                         <address>
                             <h3>To,</h3>
-                            <h4 class="font-bold">Gaala & Sons,</h4>
-                            <p class="text-muted m-l-30">E 104, Dharti-2,
-                                <br/> Nr' Viswakarma Temple,
-                                <br/> Talaja Road,
-                                <br/> Bhavnagar - 364002</p>
-                            <p class="m-t-30"><b>Invoice Date :</b> <i class="fa fa-calendar"></i> 23rd Jan 2017</p>
-                            <p><b>Due Date :</b> <i class="fa fa-calendar"></i> 25th Jan 2017</p>
+                            <h4 class="font-bold">{{$data->invoice->delivery->first_name.' '.$data->invoice->delivery->last_name}},</h4>
+                            <p class="text-muted m-l-30">{{$data->invoice->delivery->address}},
+                                <br/> {{$data->invoice->delivery->city}}, {{$data->invoice->delivery->state}}
+                                <br/> {{$data->invoice->delivery->country->nicename}},
+                                <br/> -{{$data->invoice->delivery->postcode}}</p>
+                            <p class="m-t-30"><b>Order Date :</b> <i class="fa fa-calendar"></i> {{date('d-M-Y', strtotime($data->created_at))}}</p>
                         </address>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="table-responsive m-t-40" style="clear: both;">
+                    <div class="table-responsive m-t-30" style="clear: both;">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -44,44 +43,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="text-center">1</td>
-                                    <td>Milk Powder</td>
-                                    <td class="text-right">2 </td>
-                                    <td class="text-right"> $24 </td>
-                                    <td class="text-right"> $48 </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">2</td>
-                                    <td>Air Conditioner</td>
-                                    <td class="text-right"> 3 </td>
-                                    <td class="text-right"> $500 </td>
-                                    <td class="text-right"> $1500 </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">3</td>
-                                    <td>RC Cars</td>
-                                    <td class="text-right"> 20 </td>
-                                    <td class="text-right"> %600 </td>
-                                    <td class="text-right"> $12000 </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-center">4</td>
-                                    <td>Down Coat</td>
-                                    <td class="text-right"> 60 </td>
-                                    <td class="text-right">$5 </td>
-                                    <td class="text-right"> $300 </td>
-                                </tr>
+                                @foreach($data->details as $key => $val)
+                                    <tr>
+                                        <td class="text-center">{{++$key}}</td>
+                                        <td>{{$val->product->title}}</td>
+                                        <td class="text-right"><strong>{{$val->qty}}</strong>x</td>
+                                        <td class="text-right"> ${{number_format($val->price,2)}} </td>
+                                        <td class="text-right"> ${{number_format($val->sub_total,2)}} </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="pull-right m-t-30 text-right">
-                        <p>Sub - Total amount: $13,848</p>
-                        <p>vat (10%) : $138 </p>
+                        <p>Sub - Total amount: ${{number_format($data->price,2)}}</p>
+                        <p>vat (15%) : ${{number_format($data->gst,2)}} </p>
                         <hr>
-                        <h3><b>Total :</b> $13,986</h3>
+                        <h3><b>Total :</b> ${{number_format($data->total_amount,2)}}</h3>
                     </div>
                     <div class="clearfix"></div>
                     <hr>

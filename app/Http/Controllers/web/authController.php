@@ -52,17 +52,11 @@ class authController extends Controller
     }
     function registerSubmit(Request $request){
         $data = $request->all();
-        $msg = '';
         $validated = $request->validate([
             'email' => 'required|unique:tbl_user_info|max:255',
             'password' => 'required|confirmed|min:6',
         ]);
         User::addUser($data);
-        if($data['user_type'] == '1'){
-            $msg = 'You are successfully registered.';
-        }else{
-            $msg = 'You are successfully registered. Please wait until admin approval.';
-        }
-        return redirect(route('user.login'))->with('success', $msg);
+        return redirect(route('user.login'))->with('success', 'You are successfully registered.');
     }
 }

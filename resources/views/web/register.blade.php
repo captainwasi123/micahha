@@ -61,28 +61,20 @@
                      <input type="password" name="password_confirmation" required="">
                   </div>
                </div>
-               
-               <div class="col-md-6 col-lg-6 col-12 col-sm-12">
-                  <div class="form-field1">
-                     <p> User Type </p>
-                     <h6 class="radiobuttons">
-                        <input type="radio" name="user_type" id="typebutton1" value="1" checked> <label for="typebutton1">Buyer</label>
-                        <input type="radio" name="user_type" id="typebutton2" value="2"> <label for="typebutton2">Landlord</label>
-                        <input type="radio" name="user_type" id="typebutton3" value="3"> <label for="typebutton3">Artist</label>
-                        <input type="radio" name="user_type" id="typebutton4" value="4"> <label for="typebutton4">Seller</label>
-                     </h6>
-                  </div>
-               </div>
                <div class="col-md-6 col-lg-6 col-12 col-sm-12">
                   <div class="form-field1">
                      <p> Newsletter Subscription </p>
                      <h6 class="checkbox1"> <input type="checkbox" name="newsletter"> I agree to receive the Micahha newsletter.  </h6>
                   </div>
                </div>
+               
+               <div class="col-md-6 col-lg-6 col-12 col-sm-12">
+                  
+               </div>
                <div class="col-md-6 col-lg-6 col-12 col-sm-12 m-t-20">
                   <div class="form-field1">
                      <button class="custom-btn1"> Create an account </button>
-                     <a href="" class="custom-btn2"> Back to Login </a>
+                     <a href="{{route('user.login')}}" class="custom-btn2"> Back to Login </a>
                   </div>
                </div>
             </div>

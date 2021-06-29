@@ -5,6 +5,7 @@ namespace App\Http\Controllers\web;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\accommodation\listing;
+use App\Models\saleSetting;
 
 class webController extends Controller
 {
@@ -15,5 +16,11 @@ class webController extends Controller
         );
         // dd($data);
         return view('web.index')->with($data);
+    }
+
+    function cart(){
+        $saleSetting = saleSetting::first();
+
+        return view('web.cart', ['saleSetting' => $saleSetting]);
     }
 }

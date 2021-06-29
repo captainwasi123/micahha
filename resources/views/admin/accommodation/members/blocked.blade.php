@@ -38,7 +38,7 @@
                                         <img src="{{URL::to('/public/storage/users/'.$val->profile_image)}}" onerror="this.src = '{{URL::to('/public/user/img/')}}/user.jpg';" alt="user" class="thumbnail" />
                                     </td>
                                     <td>
-                                        <a href="{{route('admin.accommodation.members.profile')}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
+                                        <a href="{{URL::to('/admin/accommodation/members/profile/'.base64_encode($val->id))}}" target="_blank" data-toggle="tooltip" data-original-title="View Profile">
                                             {{$val->first_name}} {{$val->last_name}}
                                         </a>
                                     </td>

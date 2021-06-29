@@ -6,49 +6,59 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
+                <div>
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            <strong>Success! </strong>{{ session('success') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="table-responsive">
                     <table id="demo-foo-addrow" class="table m-t-10 table-hover contact-list" data-page-size="10">
                         <thead>
                             <tr>
-                                <th>No</th>
+                                <th>#</th>
+                                <th>Order#</th>
                                 <th>Customer</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Products</th>
-                                <th>Price</th>
+                                <th>Amount</th>
+                                <th>GST</th>
+                                <th>Total Amount</th>
                                 <th>Created at</th>
                                 <th class="text-right">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <a href="javascript:void(0)">Genelia Deshmukh</a>
-                                </td>
-                                <td><a href="mailto:abc@gmail.com">abc@gmail.com</a></td>
-                                <td><a href="tel:121212122">121212122</a></td>
-                                <td>2</td>
-                                <td>$50.0</td>
-                                <td>14-Jun-2021 11:05 pm</td>
-                                <td class="text-right">
-                                    <a href="{{URL::to('/admin/collectibles/sales/orderDetail')}}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-original-title="View Details"><i class="fa fa-list" aria-hidden="true"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>
-                                    <a href="javascript:void(0)">Genelia Deshmukh</a>
-                                </td>
-                                <td><a href="mailto:abc@gmail.com">abc@gmail.com</a></td>
-                                <td><a href="tel:121212122">121212122</a></td>
-                                <td>2</td>
-                                <td>$50.0</td>
-                                <td>14-Jun-2021 11:05 pm</td>
-                                <td class="text-right">
-                                    <a href="{{URL::to('/admin/collectibles/sales/orderDetail')}}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-original-title="View Details"><i class="fa fa-list" aria-hidden="true"></i></a>
-                                </td>
-                            </tr>
+                            @foreach($data as $key => $val)
+                                <tr>
+                                    <td>{{++$key}}</td>
+                                    <td>{{$val->id}}</td>
+                                    <td>
+                                        <a href="javascript:void(0)">{{$val->invoice->delivery->first_name.' '.$val->invoice->delivery->last_name}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="mailto:{{$val->invoice->delivery->email}}">
+                                            {{$val->invoice->delivery->email}}
+                                        </a>
+                                    </td>
+                                    <td><a href="tel:{{$val->invoice->delivery->phone}}">{{$val->invoice->delivery->phone}}</a></td>
+                                    <td>{{count($val->details)}}</td>
+                                    <td>${{number_format($val->price, 2)}}</td>
+                                    <td>${{number_format($val->gst, 2)}}</td>
+                                    <td><strong>${{number_format($val->total_amount, 2)}}</strong></td>
+                                    <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
+                                    <td class="text-right">
+                                        <a href="{{URL::to('/admin/collectibles/sales/orderDetail/'.base64_encode($val->id))}}" class="btn btn-sm btn-warning" data-toggle="tooltip" data-original-title="View Details"><i class="fa fa-list" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            @if(count($data) == 0)
+                                <tr>
+                                    <td colspan="9">No orders Found.</td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>

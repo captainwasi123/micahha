@@ -17,7 +17,7 @@ class landlordAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->user_type == '2'){
+        if(Auth::check() && Auth::user()->landlord_type == '2'){
             return $next($request);
         }else{
             return redirect(route('user.login'))->with('error', 'Authentication Error.');

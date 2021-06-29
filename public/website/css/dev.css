@@ -81,3 +81,28 @@
 .breadcrumbs-custom ul li a:hover {
     background-color: #15345a12;
 }
+
+.cart-table table tbody tr td img {
+    width: 45px !important;
+    height: 45px !important;
+}
+.order-summary {
+    min-width: 100% !important;
+    padding-left: 5%;
+}
+.cart-total2 table tbody tr td {
+    font-family: 'helvetica';
+}
+.cart-total2 {
+    min-width: 100%;
+}
+.alegraya {
+    width: 100% !important;
+    margin-top: 15px;
+}
+.sec-head1 {
+    margin-bottom: 15px !important;
+}
+.feature-title1 p {
+    font-size: 14px !important;
+}

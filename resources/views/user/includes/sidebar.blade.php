@@ -3,12 +3,49 @@
     <div class="logo d-flex justify-content-between">
         <a href="{{route('landlord.dashboard')}}">
             <h2><font>M</font>ICAHHA</h2>
-            <span>User</span>
+            <span>User Dashboard</span>
         </a>
         <div class="sidebar_close_icon d-lg-none">
             <i class="ti-close"></i>
         </div>
     </div>
+
+    @switch(Auth::user()->landlord_type)
+        @case(0)
+            <a href="{{route('become.a.landlord')}}" class="btn-dashboard-switch btn btn-info" aria-expanded="false">Become a Landlord</a>
+            @break
+        @case(1)
+            <a href="javascript:void(0)" class="btn-dashboard-switch btn btn-warning">Landlord in review</a>
+            @break
+        @case(2)
+            <a href="{{route('landlord.dashboard')}}" class="btn-dashboard-switch btn btn-primary" target="_blank">Landlord Dashboard</a>
+            @break
+        @case(3)
+            <a href="javascript:void(0)" class="btn-dashboard-switch btn btn-danger">Landlord rejected</a>
+            @break
+        @case(4)
+            <a href="javascript:void(0)" class="btn-dashboard-switch btn btn-danger">Landlord Blocked</a>
+            @break
+    @endswitch
+
+    @switch(Auth::user()->artist_type)
+        @case(0)
+            <a href="{{route('become.a.artist')}}" class="btn-dashboard-switch btn btn-info" aria-expanded="false">Become a Artist</a>
+            @break
+        @case(1)
+            <a href="javascript:void(0)" class="btn-dashboard-switch btn btn-warning">Artist in review</a>
+            @break
+        @case(2)
+            <a href="{{route('artist.dashboard')}}" class="btn-dashboard-switch btn btn-primary" target="_blank">Artist Dashboard</a>
+            @break
+        @case(3)
+            <a href="javascript:void(0)" class="btn-dashboard-switch btn btn-danger">Artist rejected</a>
+            @break
+        @case(4)
+            <a href="javascript:void(0)" class="btn-dashboard-switch btn btn-danger">Artist Blocked</a>
+            @break
+    @endswitch
+
     <ul id="sidebar_menu">
         <li class="list_divider"></li>
         <li class="">
@@ -75,10 +112,10 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="">Active</a>
+                            <a href="{{route('user.orders.collectibles.active')}}">Active</a>
                         </li>
                         <li>
-                            <a href="">History</a>
+                            <a href="{{route('user.orders.collectibles.history')}}">History</a>
                         </li>
                     </ul>
                 </li>

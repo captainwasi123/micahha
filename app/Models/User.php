@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\country;
 use App\Models\accommodation\listing;
+use App\Models\art\wallet;
+use App\Models\art\products;
 use Auth;
 
 class User extends Authenticatable
@@ -23,9 +25,9 @@ class User extends Authenticatable
         $u->email = $data['email'];
         $u->password = bcrypt($data['password']);
         $u->country_id = $data['Country'];
-        $u->user_type = $data['user_type'];
+        $u->user_type = '1';
         $u->newsletter = empty($data['newsletter']) ? '0' : '1';
-        $u->status = $data['user_type'] == '1' ? '1' : '0';
+        $u->status = '1';
         $u->save();
     }
 
@@ -39,6 +41,8 @@ class User extends Authenticatable
         $p->state = $data['state'];
         $p->post_code = $data['post_code'];
         $p->country_id = $data['country'];
+        $p->bank_name = $data['bank_name'];
+        $p->account_no = $data['account_no'];
         $p->save();
     }
     /**
@@ -80,5 +84,13 @@ class User extends Authenticatable
     //landlord
         public function listings(){
             return $this->hasMany(listing::class, 'landlord_id', 'id');
+        }
+
+    //Artist
+        public function wallet(){
+            return $this->belongsTo(wallet::class, 'id', 'user_id');
+        }
+        public function products(){
+            return $this->hasMany(products::class, 'artist_id', 'id');
         }
 }

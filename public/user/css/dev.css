@@ -126,3 +126,24 @@
     padding-left: 45px;
     margin-top: -30px;
 }
+.btn-dashboard-switch {
+    margin: 5px 30px;
+}
+.half_form {
+    width: 49%;
+}
+.balance_tray {
+    padding: 0px 20px;
+    font-weight: bolder;
+    color: #14256a;
+}
+.withdraw_request_btn {
+    margin: 0 !important;
+    font-size: 12px !important;
+    width: 100% !important;
+    grid-template-columns: none !important;
+    padding: 0 30px !important;
+    font-weight: 700 !important;
+    color: #4c6ef8 !important;
+    display: block !important;
+}

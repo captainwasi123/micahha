@@ -8,6 +8,7 @@ use App\Models\collectibles\categories;
 use App\Models\collectibles\subCategories;
 use App\Models\collectibles\products;
 use App\Models\collectibles\productGallery;
+use App\Models\invoice\orders;
 
 class collectiblesController extends Controller
 {
@@ -79,21 +80,57 @@ class collectiblesController extends Controller
     //Sales
 
         function newOrders(){
-
-            return view('admin.collectibles.sales.new');
+            $data = orders::where('seller_id', '0')
+                            ->where('status', '1')
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+            return view('admin.collectibles.sales.new', ['data' => $data]);
         }
         function processingOrders(){
-
-            return view('admin.collectibles.sales.processing');
+            $data = orders::where('seller_id', '0')
+                            ->where('status', '2')
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+            return view('admin.collectibles.sales.processing', ['data' => $data]);
         }
         function deliveredOrders(){
-
-            return view('admin.collectibles.sales.delivered');
+            $data = orders::where('seller_id', '0')
+                            ->where('status', '3')
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+            return view('admin.collectibles.sales.delivered', ['data' => $data]);
         }
 
-        function detailOrders(){
+        function detailOrders($id){
+            $id = base64_decode($id);
+            $data = orders::find($id);
 
-            return view('admin.collectibles.sales.orderDetail');
+            return view('admin.collectibles.sales.orderDetail', ['data' => $data]);
+        }
+
+
+        function processSale($id){
+            $id = base64_decode($id);
+            $data = orders::find($id);
+            $data->status = '2';
+            $data->save();
+
+            return redirect()->back()->with('success', 'Order Processing.');
+        }
+        function deliverSale($id){
+            $id = base64_decode($id);
+            $data = orders::find($id);
+            $data->status = '3';
+            $data->save();
+
+            return redirect()->back()->with('success', 'Order Delivered.');
+        }
+
+        function newOrdersBadge(){
+            $data = orders::where('seller_id', '0')
+                            ->where('status', '1')
+                            ->count();
+            return $data;
         }
 
 }

@@ -27,6 +27,16 @@ Route::namespace('web')->group(function(){
 	//Web Pages
 		Route::get('/', 'webController@index');
 
+		Route::prefix('cart')->group(function(){
+			Route::get('/', 'webController@cart')->name('web.cart');
+			Route::get('remove/{id}', 'cartController@removeItem');
+			Route::get('item/{type}/{method}/{id}', 'cartController@plusMinusItem');
+
+			Route::prefix('checkout')->middleware('userAuth')->group(function(){
+				Route::get('/', 'checkoutController@index')->name('web.cart.checkout');
+				Route::post('/', 'checkoutController@checkout');
+			});
+		});	
 
 		//Accommodation
 			Route::prefix('accommodation')->group(function(){
@@ -59,6 +69,37 @@ Route::namespace('web')->group(function(){
                 Route::prefix('wishlist')->group(function(){
 
                 	Route::get('add/{id}', 'collectiblesController@addWishlist');
+                });
+
+                //Add to cart
+                Route::prefix('cart')->group(function(){
+
+                	Route::get('add/{id}', 'cartController@addItemColl');
+                });
+			});
+
+
+		//Collectibles
+			Route::prefix('art')->group(function(){
+
+				Route::get('/', 'artController@index')->name('art');
+				Route::get('/all', 'artController@all')->name('art.all');
+
+				Route::get('/{category}', 'artController@category');
+
+
+				Route::get('/details/{id}/{title}', 'artController@details');
+
+				//Wishlist
+                Route::prefix('wishlist')->group(function(){
+
+                	Route::get('add/{id}', 'collectiblesController@addWishlist');
+                });
+
+                //Add to cart
+                Route::prefix('cart')->group(function(){
+
+                	Route::get('add/{id}', 'cartController@addItemArt');
                 });
 			});
 });
@@ -137,6 +178,41 @@ Route::namespace('web')->group(function(){
 							});
 					});
 
+				//Art & Portrait Customization
+					Route::prefix('art')->group(function(){
+
+						//Members
+							Route::prefix('members')->group(function(){
+
+								Route::get('pending', 'artController@pendingMembers')->name('admin.art.members.pending');
+								Route::get('approved', 'artController@approvedMembers')->name('admin.art.members.approved');
+								Route::get('rejected', 'artController@rejectedMembers')->name('admin.art.members.rejected');
+								Route::get('blocked', 'artController@blockedMembers')->name('admin.art.members.blocked');
+
+								Route::get('profile/{id}', 'artController@profileMembers');
+
+
+								Route::get('approve/{id}', 'artController@approveMember');
+								Route::get('reject/{id}', 'artController@rejectMember');
+								Route::get('block/{id}', 'artController@blockMember');
+							});
+
+						//Listings
+							Route::prefix('product')->group(function(){
+
+								Route::get('pending', 'artController@pendingProduct')->name('admin.art.product.pending');
+								Route::get('published', 'artController@publishedProduct')->name('admin.art.product.published');
+								Route::get('rejected', 'artController@rejectedProduct')->name('admin.art.product.rejected');
+
+								Route::get('details/{id}', 'artController@detailProduct');
+
+
+
+								Route::get('approve/{id}', 'artController@approveProduct');
+								Route::get('reject/{id}', 'artController@rejectProduct');
+							});
+					});
+
 				//Collectibles
 					Route::prefix('collectibles')->group(function(){
 
@@ -162,7 +238,12 @@ Route::namespace('web')->group(function(){
 							Route::get('processing', 'collectiblesController@processingOrders')->name('admin.collectibles.sales.processing');
 							Route::get('delivered', 'collectiblesController@deliveredOrders')->name('admin.collectibles.sales.delivered');
 
-							Route::get('orderDetail', 'collectiblesController@detailOrders');
+							Route::get('orderDetail/{id}', 'collectiblesController@detailOrders');
+
+							Route::get('process/{id}', 'collectiblesController@processSale');
+							Route::get('deliver/{id}', 'collectiblesController@deliverSale');
+
+							Route::get('orderBadge', 'collectiblesController@newOrdersBadge');
 						});
 
 					});
@@ -216,6 +297,30 @@ Route::namespace('web')->group(function(){
 
 
 							});
+
+						//Art & Portrait Customization
+							Route::prefix('art')->group(function(){
+
+								//Categories
+									Route::get('categories', 'settingsController@categoriesArt')->name('admin.settings.art.categories');
+									Route::post('categories', 'settingsController@categoriesArt_insert');
+
+									Route::get('editCategory/{id}', 'settingsController@edit_categoriesArt');
+									Route::post('editCategory', 'settingsController@categoriesArt_update')->name('admin.settings.art.editCategoryArt');
+
+									Route::get('deleteCategory/{id}', 'settingsController@delete_categoriesArt');
+
+								//Portrait Type
+									Route::get('portraitType', 'settingsController@portraitTypeArt')->name('admin.settings.art.portraitType');
+									Route::post('portraitType', 'settingsController@portraitTypeArt_insert');
+
+									Route::get('editPortraitType/{id}', 'settingsController@edit_portraitTypeArt');
+									Route::post('editPortraitType', 'settingsController@portraitTypeArt_update')->name('admin.settings.art.editPortraitType');
+
+									Route::get('deletePortraitType/{id}', 'settingsController@delete_portraitTypeArt');
+
+
+							});
 					});
 			});
 
@@ -224,14 +329,6 @@ Route::namespace('web')->group(function(){
 //landlord
 	Route::prefix('landlord')->namespace('landlord')->middleware('landlordAuth')->group(function(){
 		//dashboard
-			Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
-
-			Route::get('/', 'landlordController@index')->name('landlord.dashboard');
-
-
-			Route::get('/', 'LandlordController@index')->name('landlord.dashboard');
-
-
 			Route::get('/', 'landlordController@index')->name('landlord.dashboard');
 
 
@@ -275,11 +372,65 @@ Route::namespace('web')->group(function(){
 	});
 
 
+
+
+//Artist
+	Route::prefix('artist')->namespace('artist')->middleware('artistAuth')->group(function(){
+		//dashboard
+			Route::get('/', 'artistController@index')->name('artist.dashboard');
+
+
+		//user settings
+			Route::get('/profile-edit', 'SettingsController@profile_edit')->name('landlord.profile.edit');
+			Route::post('/profile-edit', 'SettingsController@profile_update');
+
+			Route::get('/change-password', 'SettingsController@change_password')->name('landlord.change.password');
+			Route::post('/change-password', 'SettingsController@update_password');
+
+		//Listings
+			Route::prefix('products')->group(function(){
+
+				Route::get('add', 'productController@add_product')->name('artist.product.add');
+				Route::post('add', 'productController@insert_product')->name('artist.product.insert');
+				
+				Route::get('delete/{id}', 'productController@delete_product')->name('artist.product.delete');
+
+				Route::get('edit/{id}', 'productController@edit_product')->name('artist.product.edit');
+				Route::post('update', 'productController@update_product')->name('artist.product.update');
+
+				Route::get('pending', 'productController@pending_product')->name('artist.product.pending');
+				Route::get('approved', 'productController@approved_product')->name('artist.product.approved');
+				Route::get('published', 'productController@published_product')->name('artist.product.published');
+				Route::get('rejected', 'productController@rejected_product')->name('artist.product.rejected');
+
+				Route::get('details/{id}', 'productController@product_details');
+			});
+
+		//Orders
+			Route::prefix('orders')->group(function(){
+
+				Route::get('new', 'ordersController@new')->name('artist.orders.new');
+				Route::get('history', 'ordersController@history')->name('artist.orders.history');
+			});
+
+		//Withdraw
+			Route::prefix('withdraw')->group(function(){
+
+				Route::get('request', 'withdrawController@request');
+				Route::get('history', 'withdrawController@history')->name('artist.withdraw.history');
+			});
+	});
+
+
+
+
 //User
 	Route::prefix('user')->namespace('user')->middleware('userAuth')->group(function(){
 
 		Route::get('/', 'userController@index')->name('user.dashboard');
 
+		Route::get('/becomeLandlord', 'userController@becomeLandlord')->name('become.a.landlord');
+		Route::get('/becomeArtist', 'userController@becomeArtist')->name('become.a.artist');
 
 		//user settings
 			Route::get('/profile-edit', 'SettingController@profile_edit')->name('user.profile.edit');
@@ -294,15 +445,22 @@ Route::namespace('web')->group(function(){
 			Route::prefix('orders')->group(function(){
 
 				//Accommodation
-				Route::prefix('accommodation')->group(function(){
+					Route::prefix('accommodation')->group(function(){
 
-					Route::get('pending', 'ordersController@accommodationPending')->name('user.orders.accommodation.pending');
-					Route::get('active', 'ordersController@accommodationActive')->name('user.orders.accommodation.active');
-					Route::get('history', 'ordersController@accommodationHistory')->name('user.orders.accommodation.history');
+						Route::get('pending', 'ordersController@accommodationPending')->name('user.orders.accommodation.pending');
+						Route::get('active', 'ordersController@accommodationActive')->name('user.orders.accommodation.active');
+						Route::get('history', 'ordersController@accommodationHistory')->name('user.orders.accommodation.history');
 
 
-					Route::get('cancel/{id}', 'ordersController@accommodationCancel')->name('user.orders.accommodation.cancel');
-				});
+						Route::get('cancel/{id}', 'ordersController@accommodationCancel')->name('user.orders.accommodation.cancel');
+					});
+
+				//Collectibles
+					Route::prefix('collectibles')->group(function(){
+						Route::get('active', 'ordersController@collectiblesActive')->name('user.orders.collectibles.active');
+						Route::get('history', 'ordersController@collectiblesHistory')->name('user.orders.collectibles.history');
+					});
+
 			});
 
 

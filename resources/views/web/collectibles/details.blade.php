@@ -49,7 +49,10 @@
                </p>
             </div>
             <div class="block-element text-right">
-               <a href="" class="custom-btn6"> Add to Cart </a>
+               <div id="cart_load">
+                  
+               </div>
+               <a href="javascript:void(0)" data-id="{{base64_encode($data->id)}}" class="custom-btn6 addtocartColl"> Add to Cart </a>
             </div>
          </div>
       </div>

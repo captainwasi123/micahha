@@ -86,6 +86,22 @@
                                             <input type="text" class="form-control" name="post_code" value="{{Auth::user()->post_code}}">
                                         </div>
                                     </div>
+                                    @if(Auth::user()->artist_type == '2')
+                                        <div class="form-row mt-5">
+                                            <div class="form-group col-md-8">
+                                                <label for="">Payout Information</label>
+                                            </div>
+                                            <div class="form-group col-md-4"></div>
+                                            <div class="form-group col-md-4">
+                                                <label for="">Bank Name</label>
+                                                <input type="text" class="form-control" name="bank_name" value="{{Auth::user()->bank_name}}">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="">Account Number</label>
+                                                <input type="text" class="form-control" name="account_no" value="{{Auth::user()->account_no}}">
+                                            </div>
+                                        </div>
+                                    @endif
                                     <button type="submit" class="btn btn-primary mt-3">Update</button>
                                 </form>
                             </div>

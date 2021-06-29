@@ -16,11 +16,7 @@
                      <i class="fa fa-user"> </i> &nbsp;{{Auth::user()->first_name}} |
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        @if(Auth::user()->user_type == '2')
-                           <a class="dropdown-item" href="{{route('landlord.dashboard')}}">Dashboard</a>
-                        @elseif(Auth::user()->user_type == '1')
-                           <a class="dropdown-item" href="{{route('user.dashboard')}}">Dashboard</a>
-                        @endif
+                        <a class="dropdown-item" href="{{route('user.dashboard')}}">Dashboard</a>
                         <a class="dropdown-item" href="#">Profile</a>
                         <hr class="m-t-0 m-b-0">
                         <a class="dropdown-item" href="{{route('user.logout')}}">Logout</a>
@@ -34,17 +30,10 @@
                   </a>
                </div>
             @endif
-            <div class="cart-dropdown">
-               <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <i class="fa fa-shopping-cart"> </i>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                     <a class="dropdown-item" href="#">Action</a>
-                     <a class="dropdown-item" href="#">Another action</a>
-                     <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-               </div>
+            <div class="user-dropdown">
+               <a title="Cart" href="{{route('web.cart')}}">
+                  <i class="fa fa-shopping-cart"></i> <label class="badge badge-pill badge-primary" id="cart_count">{{Session::get('cart') !== null ? count(Session::get('cart')) : '0'}}</label>
+               </a>
             </div>
          </div>
          <div class="logo">
@@ -61,7 +50,7 @@
             <a href="{{route('accommodation')}}"> Accomodation </a>
          </div>
          <div class="menu-item">
-            <a href=""> Art </a>
+            <a href="{{route('art')}}"> Art </a>
          </div>
          <div class="menu-item">
             <a href="{{route('collectibles')}}"> Collectibles </a>

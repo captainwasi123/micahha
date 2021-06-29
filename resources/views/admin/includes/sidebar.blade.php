@@ -28,12 +28,6 @@
 
                 <li class="nav-small-cap">ACCOMMODATION</li>
                 <li> 
-                    <a class="waves-effect waves-dark" href="{{route('admin.accommodation.statistics')}}" aria-expanded="false">
-                        <i class="mdi mdi-gauge"></i>
-                        <span class="hide-menu">Statistics</span>
-                    </a>
-                </li>
-                <li> 
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-format-list-bulleted"></i>
                         <span class="hide-menu"> Listing</span>
@@ -76,6 +70,32 @@
                 </li>
 
 
+                <li class="nav-small-cap">Art & Portrait Cust.</li>
+                <li> 
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-format-list-bulleted"></i>
+                        <span class="hide-menu"> Products</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('admin.art.product.pending')}}">Pending </a></li>
+                        <li><a href="{{route('admin.art.product.published')}}">Published</a></li>
+                        <li><a href="{{route('admin.art.product.rejected')}}">Rejected</a></li>
+                    </ul>
+                </li>
+                <li> 
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span class="hide-menu"> Members</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('admin.art.members.pending')}}">Pending </a></li>
+                        <li><a href="{{route('admin.art.members.approved')}}">Approved</a></li>
+                        <li><a href="{{route('admin.art.members.rejected')}}">Rejected</a></li>
+                        <li><a href="{{route('admin.art.members.blocked')}}">Blocked</a></li>
+                    </ul>
+                </li>
+
+
                 <li class="nav-small-cap">Collectibles</li>
                 <li> 
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
@@ -94,7 +114,7 @@
                         <span class="hide-menu"> Sales</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('admin.collectibles.sales.new')}}">New Orders <span class="badge badge-pill badge-primary">2</span></a></li>
+                        <li><a href="{{route('admin.collectibles.sales.new')}}">New Orders <span class="badge badge-pill badge-primary" id="newOrders_badge">0</span></a></li>
                         <li><a href="{{route('admin.collectibles.sales.processing')}}">Processing </a></li>
                         <li><a href="{{route('admin.collectibles.sales.delivered')}}">Delivered</a></li>
                     </ul>
@@ -127,6 +147,24 @@
                         <li>
                             <a href="{{route('admin.settings.collectibles.subCategories')}}">
                                 Sub Categories 
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li> 
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="fa fa-paint-brush"></i>
+                        <span class="hide-menu"> Art & Portrait Cust.</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a href="{{route('admin.settings.art.categories')}}">
+                                Art Categories 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('admin.settings.art.portraitType')}}">
+                                Portrait Type 
                             </a>
                         </li>
                     </ul>

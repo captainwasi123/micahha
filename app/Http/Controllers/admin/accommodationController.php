@@ -86,22 +86,22 @@ class accommodationController extends Controller
 	//Members
 
 		function pendingMembers(){
-			$data = User::where(['user_type' => '2', 'status' => '0'])->orderBy('id', 'desc')->get();
+			$data = User::where(['landlord_type' => '1'])->orderBy('id', 'desc')->get();
 
 			return view('admin.accommodation.members.pending', ['data' => $data]);
 		}
 		function approvedMembers(){
-			$data = User::where(['user_type' => '2', 'status' => '1'])->orderBy('id', 'desc')->get();
+			$data = User::where(['landlord_type' => '2'])->orderBy('id', 'desc')->get();
 
 			return view('admin.accommodation.members.approved', ['data' => $data]);
 		}
 		function rejectedMembers(){
-			$data = User::where(['user_type' => '2', 'status' => '2'])->orderBy('id', 'desc')->get();
+			$data = User::where(['landlord_type' => '3'])->orderBy('id', 'desc')->get();
 
 			return view('admin.accommodation.members.rejected', ['data' => $data]);
 		}
 		function blockedMembers(){
-			$data = User::where(['user_type' => '2', 'status' => '3'])->orderBy('id', 'desc')->get();
+			$data = User::where(['landlord_type' => '4'])->orderBy('id', 'desc')->get();
 
 			return view('admin.accommodation.members.blocked', ['data' => $data]);
 		}
@@ -116,7 +116,7 @@ class accommodationController extends Controller
 		function approveMember($id){
 			$id = base64_decode($id);
 			$u = User::find($id);
-			$u->status = '1';
+			$u->landlord_type = '2';
 			$u->save();
 
 			return redirect()->back()->with('success', 'Member Approved.');
@@ -124,7 +124,7 @@ class accommodationController extends Controller
 		function rejectMember($id){
 			$id = base64_decode($id);
 			$u = User::find($id);
-			$u->status = '2';
+			$u->landlord_type = '3';
 			$u->save();
 
 			return redirect()->back()->with('success', 'Member Rejected.');
@@ -132,7 +132,7 @@ class accommodationController extends Controller
 		function blockMember($id){
 			$id = base64_decode($id);
 			$u = User::find($id);
-			$u->status = '3';
+			$u->landlord_type = '4';
 			$u->save();
 
 			return redirect()->back()->with('success', 'Member Blocked.');

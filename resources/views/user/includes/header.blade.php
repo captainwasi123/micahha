@@ -23,7 +23,7 @@
                             <img  src="{{URL::to('/public/storage/users/'.Auth::user()->profile_image)}}" onerror="this.src = '{{URL::to('/public/user/img/')}}/user.jpg';" alt="#">
                             <div class="profile_info_iner">
                                 <div class="profile_author_name">
-                                    <p>User</p>
+                                    <p>User Dashboard</p>
                                     <h5>{{substr(Auth::user()->first_name, 0, 1).'.'}} {{Auth::user()->last_name}}</h5>
                                 </div>
                                 <div class="profile_info_details">

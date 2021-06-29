@@ -17,10 +17,10 @@ class userAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->user_type == '1'){
+        if(Auth::check()){
             return $next($request);
         }else{
-            return redirect(route('user.login'))->with('error', 'Authentication Error.');
+            return redirect(route('user.login'))->with('error', 'Authentication Failed.');
         }
     }
 }

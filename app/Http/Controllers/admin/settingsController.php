@@ -10,6 +10,8 @@ use App\Models\accommodation\amenities;
 use App\Models\accommodation\listingAmenities;
 use App\Models\collectibles\categories;
 use App\Models\collectibles\subCategories;
+use App\Models\art\categories as ArtCategories;
+use App\Models\art\portraitType;
 
 class settingsController extends Controller
 {
@@ -161,5 +163,79 @@ class settingsController extends Controller
                 $id = base64_decode($id);
                 subCategories::destroy($id);
                 return redirect()->back()->with('success', 'Sub Category Deleted.');
+            }
+
+
+    //Art & Portrait Customization
+        //Categories
+            public function categoriesArt(){
+                $data = ArtCategories::orderBy('name')->get();
+
+                return view('admin.settings.art.categoriesArt', ['data' => $data]);
+            }
+
+            public function categoriesArt_insert(Request $request){
+                $validated = $request->validate([
+                    'name' => 'required|unique:tbl_art_categories'
+                ]);
+                $data = $request->get('name');
+                ArtCategories::addCat($data);
+
+                return redirect()->back()->with('success', 'New Category Added.');
+
+            }
+            public function edit_categoriesArt($id){
+                $id = base64_decode($id);
+                $data = ArtCategories::find($id);
+
+                return view('admin.settings.art.edit_categoriesArt', ['data' => $data]);
+            }
+            public function categoriesArt_update(Request $request){
+                $data = $request->all();
+                ArtCategories::editCat($data);
+
+                return redirect()->back()->with('success', 'Category Updated.');
+
+            }
+            public function delete_categoriesArt($id){
+                $id = base64_decode($id);
+                ArtCategories::destroy($id);
+                return redirect()->back()->with('success', 'Category Deleted.');
+            }
+
+        //Portrait Type
+            public function portraitTypeArt(){
+                $data = portraitType::orderBy('name')->get();
+
+                return view('admin.settings.art.portraitType', ['data' => $data]);
+            }
+
+            public function portraitTypeArt_insert(Request $request){
+                $validated = $request->validate([
+                    'name' => 'required|unique:tbl_art_portrait_type'
+                ]);
+                $data = $request->get('name');
+                portraitType::addCat($data);
+
+                return redirect()->back()->with('success', 'New Portrait Type Added.');
+
+            }
+            public function edit_portraitTypeArt($id){
+                $id = base64_decode($id);
+                $data = portraitType::find($id);
+
+                return view('admin.settings.art.edit_portraitType', ['data' => $data]);
+            }
+            public function portraitTypeArt_update(Request $request){
+                $data = $request->all();
+                portraitType::editCat($data);
+
+                return redirect()->back()->with('success', 'Portrait Type Updated.');
+
+            }
+            public function delete_portraitTypeArt($id){
+                $id = base64_decode($id);
+                portraitType::destroy($id);
+                return redirect()->back()->with('success', 'Portrait Type Deleted.');
             }
 }
