@@ -43,4 +43,8 @@ class orders extends Model
     public function buyer(){
         return $this->belongsTo(User::class, 'buyer_id');
     }
+
+    public function artist(){
+        return $this->belongsTo(User::class, 'seller_id');
+    }
 }

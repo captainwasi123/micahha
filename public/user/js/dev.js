@@ -31,4 +31,12 @@
                 });
             }
         });
+
+
+        $(document).on('click', '.artistOrderProcess', function(){
+            var id = $(this).data('id');
+            if(confirm('Are you sure want to process this.?')){
+                window.location.href = host+'/artist/orders/process/'+id;
+            }
+        });
 });

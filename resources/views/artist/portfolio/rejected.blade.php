@@ -1,14 +1,14 @@
 @extends('artist.includes.master')
-@section('title', 'New Orders | Art')
+@section('title', 'Rejected | Porfolio | Artist')
 @section('content')
 <div class="container-fluid p-0">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
-                    <div class="white_card card_height_100 mb_30">
+                    <div class="white_card card_height_100 mb_0">
                         <div class="white_card_header">
                             <div class="box_header m-0">
                                 <div class="main-title">
-                                    <h3 class="m-0">New Orders | Art</h3>
+                                    <h3 class="m-0">Rejected | Porfolio | Artist</h3>
                                     @if(session()->has('success'))
                                         <div class="alert text-white bg-success mb-0 mt-2" role="alert">
                                         <div class="alert-text"><b>Success!</b> {{ session()->get('success') }}</div>
@@ -22,55 +22,55 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="white_card_body pt-3">
+                        <div class="white_card_body">
                             <div class="QA_section">
-                                <div class="QA_table mb_10">
+                                <div class="QA_table mb_0 mt-0">
                                     <!-- table-responsive -->
                                     <table class="table">
                                         <thead>
                                             <tr>
                                                 <th>S#</th>
-                                                <th style=" width: 150px; ">Order#</th>
-                                                <th>Buyer</th>
-                                                <th>Email</th>
-                                                <th>No. of Items</th>
-                                                <th>Amount</th>
-                                                <th>Commission</th>
-                                                <th>Total Earning</th>
-                                                <th>Order at</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>Image</th>
+                                                <th style=" width: 220px; ">Title</th>
+                                                <th>No. of Subjects</th>
+                                                <th>Delivery Time</th>
+                                                <th>Price</th>
+                                                <th>Description</th>
+                                                <th>Portrait Type</th>
+                                                <th>Timestamp</th>
+                                                <th style=" width: 150px; ">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         @foreach($data as $key => $val)    
                                             <tr>
+                                                
                                                 <td>{{++$key}}</td>
-                                                <td>{{$val->id}}</td>
-                                                <td>{{empty($val->buyer) ? 'Unknown' : $val->buyer->first_name.' '.$val->buyer->last_name}}</td>
-                                                <td>{{empty($val->buyer) ? '' : $val->buyer->email}}</td>
-                                                <td>{{count($val->details)}}</td>
-                                                <td>${{number_format($val->price,2)}}</td>
-                                                <td>${{number_format($val->gst,2)}}</td>
-                                                <td>${{number_format($val->total_amount,2)}}</td>
+                                                <td>
+                                                    <img src="{{URL::to('/public/storage/art/portfolio/')}}/{{$val->image}}" alt="" width="30px">
+                                                </td>
+                                                <td><a href="{{URL::to('landlord/listing/details/'.base64_encode($val->id))}}" data-toggle="tooltip" data-original-title="View Details">{{$val->title}}</a></td>
+                                                <td>{{$val->no_of_subject}}</td>
+                                                <td>{{$val->delivery_time.' days'}}</td>
+                                                <td>{{'$'.number_format($val->price, 2)}}</td>
+                                                <td>
+                                                    <p class="cut-text" title="{{$val->description}}">{{substr($val->description,0,10)}}...</p>
+                                                </td>
+                                                <td>{{@$val->portrait_type->name}}</td>
                                                 <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
                                                 <td>
-                                                    <label class="badge badge-warning">Pending</label>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" title="Process" class="btn btn-sm btn-primary artistOrderProcess" data-id="{{base64_encode($val->id)}}">
-                                                        <span class="fa fa-check"></span>
+                                                    <a href="{{route('artist.portfolio.edit',base64_encode($val->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-info btn-sm" >
+                                                        <i class="fas fa-edit" style="color:#fff"></i>
+                                                    </a>
+                                                    <a onclick="return confirm_click();" href="{{route('artist.portfolio.delete',base64_encode($val->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-danger btn-sm">
+                                                        <i class="fas fa-trash" style="color:#fff"></i> 
                                                     </a>
                                                 </td>
                                             </tr>
-                                        @endforeach
-                                        @if(count($data) == '0')
-                                            <tr>
-                                                <td colspan="11">No Orders Found.</td>
-                                            </tr>
-                                        @endif    
+                                        @endforeach    
                                         </tbody>
                                     </table>
+                                    {{ $data->withQueryString()->links('pagination::bootstrap-4') }}
                                 </div>
                             </div>
                         </div>

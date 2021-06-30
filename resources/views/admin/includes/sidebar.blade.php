@@ -84,6 +84,17 @@
                 </li>
                 <li> 
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-format-list-bulleted"></i>
+                        <span class="hide-menu"> Portfolio</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('admin.art.portfolio.pending')}}">Pending </a></li>
+                        <li><a href="{{route('admin.art.portfolio.published')}}">Published</a></li>
+                        <li><a href="{{route('admin.art.portfolio.rejected')}}">Rejected</a></li>
+                    </ul>
+                </li>
+                <li> 
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-account-multiple"></i>
                         <span class="hide-menu"> Members</span>
                     </a>
@@ -92,6 +103,28 @@
                         <li><a href="{{route('admin.art.members.approved')}}">Approved</a></li>
                         <li><a href="{{route('admin.art.members.rejected')}}">Rejected</a></li>
                         <li><a href="{{route('admin.art.members.blocked')}}">Blocked</a></li>
+                    </ul>
+                </li>
+                <li> 
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="fa fa-dollar"></i>
+                        <span class="hide-menu">Withdraw</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('admin.art.withdraw.new')}}">New Requests </a></li>
+                        <li><a href="{{route('admin.art.withdraw.paid')}}">Paid Requests</a></li>
+                        <li><a href="{{route('admin.art.withdraw.hold')}}">Hold Requests</a></li>
+                    </ul>
+                </li>
+                <li> 
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="hide-menu">Art Orders</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('admin.art.orders.new')}}">New Orders </a></li>
+                        <li><a href="{{route('admin.art.orders.processing')}}">Processing</a></li>
+                        <li><a href="{{route('admin.art.orders.delivered')}}">Delivered</a></li>
                     </ul>
                 </li>
 

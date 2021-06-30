@@ -276,4 +276,41 @@ $(document).ready(function(){
 						window.location.href = host+"/art/product/reject/"+id;
 					}
 				});
+
+
+		//Portfolio
+			//Approve
+				$(document).on('click', '.portfolioApproveArt', function(){
+					var id = $(this).data('id');
+					
+					if(confirm('Are you sure want to approve this.?')){
+						window.location.href = host+"/art/portfolio/approve/"+id;
+					}
+				});
+
+			//Reject
+				$(document).on('click', '.portfolioRejectArt', function(){
+					var id = $(this).data('id');
+					
+					if(confirm('Are you sure want to reject this.?')){
+						window.location.href = host+"/art/portfolio/reject/"+id;
+					}
+				});
+
+		//Withdraw
+			//Mark as Paid
+		        $(document).on('click', '.artWithdrawPaid', function(){
+		            var id = $(this).data('id');
+		            if(confirm('Are you sure want to mark as paid?')){
+		                window.location.href = host+'/art/withdraw/markPaid/'+id;
+		            }
+		        });
+
+		    //Mark as Hold
+		        $(document).on('click', '.artWithdrawHold', function(){
+		            var id = $(this).data('id');
+		            if(confirm('Are you sure want to mark as hold?')){
+		                window.location.href = host+'/art/withdraw/markHold/'+id;
+		            }
+		        });
 });

@@ -77,6 +77,29 @@
         <li class="">
             <a   class="has-arrow" href="#" aria-expanded="false">
               <div class="icon_menu">
+                  <i class="fa fa-briefcase"></i>
+              </div>
+              <span>Portrait Portfolio</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{route('artist.portfolio.new')}}">Add New</a>
+                </li>
+                <li>
+                    <a href="{{route('artist.portfolio.pending')}}">Pending</a>
+                </li>
+                <li>
+                    <a href="{{route('artist.portfolio.published')}}">Published</a>
+                </li>
+                <li>
+                    <a href="{{route('artist.portfolio.rejected')}}">Rejected</a>
+                </li>
+            </ul>
+        </li>
+        <li class="list_divider"></li>
+        <li class="">
+            <a   class="has-arrow" href="#" aria-expanded="false">
+              <div class="icon_menu">
                   <i class="ti-settings"></i>
               </div>
               <span>Settings</span>

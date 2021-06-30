@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\invoice\invoiceDelivery;
 use App\Models\invoice\order;
 use App\Models\art\wallet;
+use App\Models\saleSetting;
 use Auth;
 
 class masterInvoice extends Model
@@ -27,10 +28,11 @@ class masterInvoice extends Model
 
         invoiceDelivery::addInfo($id, $delivery);
 
+        $sales = saleSetting::first();
         foreach($data['product'] as $val){
             if($val['seller'] != '0'){
                 $w = wallet::where('user_id', $val['seller'])->first();
-                $w->balance = $w->balance+$val['total'];
+                $w->balance = $w->balance+($val['total']-(($val['total']/100)*$sales->commission));
                 $w->save();
             }
             orders::addOrder($id, $data['gst'], $val);

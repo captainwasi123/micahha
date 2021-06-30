@@ -5,6 +5,7 @@ namespace App\Models\art;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\art\wallet;
+use App\Models\User;
 use Auth;
 
 class withdraw extends Model
@@ -22,5 +23,10 @@ class withdraw extends Model
         $u = wallet::where('user_id', Auth::id())->first();
         $u->balance = 0;
         $u->save();
+    }
+
+    public function artist(){
+
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

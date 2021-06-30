@@ -79,7 +79,7 @@ Route::namespace('web')->group(function(){
 			});
 
 
-		//Collectibles
+		//Art
 			Route::prefix('art')->group(function(){
 
 				Route::get('/', 'artController@index')->name('art');
@@ -101,7 +101,16 @@ Route::namespace('web')->group(function(){
 
                 	Route::get('add/{id}', 'cartController@addItemArt');
                 });
+
 			});
+
+
+        //Portrait Customization
+
+        	Route::prefix('portrait')->group(function(){
+
+        		Route::get('/', 'portraitController@index')->name('web.portrait');
+        	});
 });
 
 
@@ -210,6 +219,41 @@ Route::namespace('web')->group(function(){
 
 								Route::get('approve/{id}', 'artController@approveProduct');
 								Route::get('reject/{id}', 'artController@rejectProduct');
+							});
+
+						//Art Orders
+							Route::prefix('withdraw')->group(function(){
+
+								Route::get('new', 'artController@newWithdraw')->name('admin.art.withdraw.new');
+								Route::get('paid', 'artController@paidWithdraw')->name('admin.art.withdraw.paid');
+								Route::get('hold', 'artController@holdWithdraw')->name('admin.art.withdraw.hold');
+
+								Route::get('markPaid/{id}', 'artController@markPaidWithdraw');
+								Route::get('markHold/{id}', 'artController@markHoldWithdraw');
+							});
+
+						//Art Orders
+							Route::prefix('orders')->group(function(){
+
+								Route::get('new', 'artController@newOrders')->name('admin.art.orders.new');
+								Route::get('processing', 'artController@processingOrders')->name('admin.art.orders.processing');
+								Route::get('delivered', 'artController@deliveredOrders')->name('admin.art.orders.delivered');
+							});
+
+
+						//Portfolio
+							Route::prefix('portfolio')->group(function(){
+
+								Route::get('pending', 'artController@pendingPortfolio')->name('admin.art.portfolio.pending');
+								Route::get('published', 'artController@publishedPortfolio')->name('admin.art.portfolio.published');
+								Route::get('rejected', 'artController@rejectedPortfolio')->name('admin.art.portfolio.rejected');
+
+								Route::get('details/{id}', 'artController@detailPortfolio');
+
+
+
+								Route::get('approve/{id}', 'artController@approvePortfolio');
+								Route::get('reject/{id}', 'artController@rejectPortfolio');
 							});
 					});
 
@@ -411,6 +455,8 @@ Route::namespace('web')->group(function(){
 
 				Route::get('new', 'ordersController@new')->name('artist.orders.new');
 				Route::get('history', 'ordersController@history')->name('artist.orders.history');
+
+				Route::get('process/{id}', 'ordersController@process');
 			});
 
 		//Withdraw
@@ -418,6 +464,24 @@ Route::namespace('web')->group(function(){
 
 				Route::get('request', 'withdrawController@request');
 				Route::get('history', 'withdrawController@history')->name('artist.withdraw.history');
+			});
+
+
+		//Portrait Portfolio
+			Route::prefix('portfolio')->group(function(){
+
+				Route::get('new', 'portfolioController@new')->name('artist.portfolio.new');
+				Route::post('new', 'portfolioController@newInsert');
+
+				Route::get('pending', 'portfolioController@pending')->name('artist.portfolio.pending');
+				Route::get('published', 'portfolioController@published')->name('artist.portfolio.published');
+				Route::get('rejected', 'portfolioController@rejected')->name('artist.portfolio.rejected');
+
+
+				Route::get('edit/{id}', 'portfolioController@edit')->name('artist.portfolio.edit');
+				Route::post('editUpdate', 'portfolioController@editUpdate')->name('artist.portfolio.update');
+
+				Route::get('delete/{id}', 'portfolioController@delete')->name('artist.portfolio.delete');
 			});
 	});
 

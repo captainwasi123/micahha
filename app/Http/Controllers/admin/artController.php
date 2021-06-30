@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\art\products;
+use App\Models\art\portfolio;
+use App\Models\art\withdraw;
+use App\Models\invoice\orders;
+use App\Models\saleSetting;
 
 class artController extends Controller
 {
@@ -51,6 +55,41 @@ class artController extends Controller
             $u->save();
 
             return redirect()->back()->with('success', 'Product Rejected.');
+        }
+
+    //Portfolio
+
+        function pendingPortfolio(){
+            $data = portfolio::where('status', '0')->orderBy('id', 'desc')->get();
+
+            return view('admin.art.portfolio.pending', ['data' => $data]);
+        }
+        function publishedPortfolio(){
+            $data = portfolio::where('status', '1')->orderBy('id', 'desc')->get();
+
+            return view('admin.art.portfolio.published', ['data' => $data]);
+        }
+        function rejectedPortfolio(){
+            $data = portfolio::where('status', '2')->orderBy('id', 'desc')->get();
+
+            return view('admin.art.portfolio.rejected', ['data' => $data]);
+        }
+
+        function approvePortfolio($id){
+            $id = base64_decode($id);
+            $u = portfolio::find($id);
+            $u->status = '1';
+            $u->save();
+
+            return redirect()->back()->with('success', 'Portfolio Published.');
+        }
+        function rejectPortfolio($id){
+            $id = base64_decode($id);
+            $u = portfolio::find($id);
+            $u->status = '2';
+            $u->save();
+
+            return redirect()->back()->with('success', 'Portfolio Rejected.');
         }
 
 
@@ -111,5 +150,64 @@ class artController extends Controller
         }
 
 
+    //Orders
+
+        function newOrders(){
+            $sales = saleSetting::first();
+            $data = orders::where('seller_id', '!=', '0')->where('status', '1')->orderBy('id', 'desc')->get();
+
+            return view('admin.art.orders.new', ['data' => $data, 'com' => $sales->commission]);
+        }
+
+
+        function processingOrders(){
+            $sales = saleSetting::first();
+            $data = orders::where('seller_id', '!=', '0')->where('status', '2')->orderBy('id', 'desc')->get();
+
+            return view('admin.art.orders.processing', ['data' => $data, 'com' => $sales->commission]);
+        }
+        function deliveredOrders(){
+            $sales = saleSetting::first();
+            $data = orders::where('seller_id', '!=', '0')->where('status', '3')->orderBy('id', 'desc')->get();
+
+            return view('admin.art.orders.delivered', ['data' => $data, 'com' => $sales->commission]);
+        }
+
+      
+
+    //Withdraw
+
+        function newWithdraw(){
+            $data = withdraw::where('status', '0')->latest()->get();
+            return view('admin.art.withdraw.new', ['data' => $data]);
+        }
+
+
+        function paidWithdraw(){
+            $data = withdraw::where('status', '1')->latest()->get();
+            return view('admin.art.withdraw.paid', ['data' => $data]);
+        }
+        function holdWithdraw(){
+            $data = withdraw::where('status', '2')->latest()->get();
+            return view('admin.art.withdraw.hold', ['data' => $data]);
+        }
+
+
+        function markPaidWithdraw($id){
+            $id = base64_decode($id);
+            $data = withdraw::find($id);
+            $data->status = '1';
+            $data->save();
+
+            return redirect()->back()->with('success', 'Withdraw marked as paid.');
+        }
+        function markHoldWithdraw($id){
+            $id = base64_decode($id);
+            $data = withdraw::find($id);
+            $data->status = '2';
+            $data->save();
+
+            return redirect()->back()->with('success', 'Withdraw marked as hold.');
+        }
 
 }

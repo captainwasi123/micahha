@@ -1,5 +1,5 @@
 @extends('artist.includes.master')
-@section('title', 'New Orders | Art')
+@section('title', 'Orders History | Art')
 @section('content')
 <div class="container-fluid p-0">
             <div class="row justify-content-center">
@@ -8,7 +8,7 @@
                         <div class="white_card_header">
                             <div class="box_header m-0">
                                 <div class="main-title">
-                                    <h3 class="m-0">New Orders | Art</h3>
+                                    <h3 class="m-0">Orders History | Art</h3>
                                     @if(session()->has('success'))
                                         <div class="alert text-white bg-success mb-0 mt-2" role="alert">
                                         <div class="alert-text"><b>Success!</b> {{ session()->get('success') }}</div>
@@ -39,7 +39,6 @@
                                                 <th>Total Earning</th>
                                                 <th>Order at</th>
                                                 <th>Status</th>
-                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,20 +54,19 @@
                                                 <td>${{number_format($val->total_amount,2)}}</td>
                                                 <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
                                                 <td>
-                                                    <label class="badge badge-warning">Pending</label>
-                                                </td>
-                                                <td>
-                                                    <a href="javascript:void(0)" title="Process" class="btn btn-sm btn-primary artistOrderProcess" data-id="{{base64_encode($val->id)}}">
-                                                        <span class="fa fa-check"></span>
-                                                    </a>
+                                                    @if($val->status == '2')
+                                                        <label class="badge badge-info">Processing</label>
+                                                    @else
+                                                        <label class="badge badge-success">Delivered</label>
+                                                    @endif
                                                 </td>
                                             </tr>
-                                        @endforeach
+                                        @endforeach 
                                         @if(count($data) == '0')
                                             <tr>
-                                                <td colspan="11">No Orders Found.</td>
+                                                <td colspan="10">No Orders Found.</td>
                                             </tr>
-                                        @endif    
+                                        @endif   
                                         </tbody>
                                     </table>
                                 </div>
