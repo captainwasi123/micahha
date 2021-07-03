@@ -96,6 +96,25 @@
                 </li>
             </ul>
         </li>
+        <li class="">
+            <a   class="has-arrow" href="#" aria-expanded="false">
+              <div class="icon_menu">
+                  <i class="fa fa-shopping-cart"></i>
+              </div>
+              <span>Portrait Orders</span>
+            </a>
+            <ul>
+                <li>
+                    <a href="{{route('artist.portrait_orders.new')}}">New Orders </a>
+                </li>
+                <li>
+                    <a href="{{route('artist.portrait_orders.processing')}}">Processing</a>
+                </li>
+                <li>
+                    <a href="{{route('artist.portrait_orders.delivered')}}">Delivered</a>
+                </li>
+            </ul>
+        </li>
         <li class="list_divider"></li>
         <li class="">
             <a   class="has-arrow" href="#" aria-expanded="false">

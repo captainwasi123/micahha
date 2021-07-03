@@ -128,6 +128,18 @@
                     </ul>
                 </li>
 
+                <li> 
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="hide-menu">Portrait Orders</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('admin.art.portrait.orders.new')}}">New Orders </a></li>
+                        <li><a href="{{route('admin.art.portrait.orders.processing')}}">Processing</a></li>
+                        <li><a href="{{route('admin.art.portrait.orders.delivered')}}">Delivered</a></li>
+                    </ul>
+                </li>
+
 
                 <li class="nav-small-cap">Collectibles</li>
                 <li> 
@@ -156,6 +168,12 @@
 
 
                 <li class="nav-small-cap">Settings</li>
+                <li> 
+                    <a class="waves-effect waves-dark" href="{{route('admin.settings.salesSetting')}}" aria-expanded="false">
+                        <i class="fa fa-gears"></i>
+                        <span class="hide-menu">Sales Settings</span>
+                    </a>
+                </li>
                 <li> 
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-home"></i>

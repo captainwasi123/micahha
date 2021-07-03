@@ -709,30 +709,20 @@ $(this).children("i").toggleClass("fa-caret-down")
 })
 
 
-/*
-We want to preview images, so we need to register the Image Preview plugin
-*/
-FilePond.registerPlugin(
-  
-  // encodes the file as base64 data
-  FilePondPluginFileEncode,
-  
-  // validates the size of the file
-  FilePondPluginFileValidateSize,
-  
-  // corrects mobile image orientation
-  FilePondPluginImageExifOrientation,
-  
-  // previews dropped images
-  FilePondPluginImagePreview
-);
-
-// Select the file input and use create() to turn it into a pond
-FilePond.create(
-  document.querySelector('.filepond1 input')
-);
-
-
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
 
 
 

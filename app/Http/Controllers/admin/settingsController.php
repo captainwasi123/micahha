@@ -12,6 +12,7 @@ use App\Models\collectibles\categories;
 use App\Models\collectibles\subCategories;
 use App\Models\art\categories as ArtCategories;
 use App\Models\art\portraitType;
+use App\Models\saleSetting;
 
 class settingsController extends Controller
 {
@@ -238,4 +239,21 @@ class settingsController extends Controller
                 portraitType::destroy($id);
                 return redirect()->back()->with('success', 'Portrait Type Deleted.');
             }
+
+
+    //Sales Setting
+        public function salesSetting(){
+            $data = saleSetting::first();
+
+            return view('admin.settings.sales', ['data' => $data]);
+        }
+        public function salesSettingUpdate(Request $request){
+            $data = $request->all();
+            $sales = saleSetting::first();
+            $sales->gst = $data['gst'];
+            $sales->commission = $data['commission'];
+            $sales->save();
+
+            return redirect()->back()->with('success', 'Sales settings updated.');
+        }
 }

@@ -32,8 +32,15 @@ class masterInvoice extends Model
         foreach($data['product'] as $val){
             if($val['seller'] != '0'){
                 $w = wallet::where('user_id', $val['seller'])->first();
-                $w->balance = $w->balance+($val['total']-(($val['total']/100)*$sales->commission));
-                $w->save();
+                if(empty($w->id)){
+                    $wn = new wallet;
+                    $wn->user_id = $val['seller'];
+                    $wn->balance = ($val['total']-(($val['total']/100)*$sales->commission));
+                    $wn->save();
+                }else{
+                    $w->balance = $w->balance+($val['total']-(($val['total']/100)*$sales->commission));
+                    $w->save();
+                }
             }
             orders::addOrder($id, $data['gst'], $val);
         }

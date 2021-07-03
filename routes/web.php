@@ -110,6 +110,13 @@ Route::namespace('web')->group(function(){
         	Route::prefix('portrait')->group(function(){
 
         		Route::get('/', 'portraitController@index')->name('web.portrait');
+        		Route::get('/{category}', 'portraitController@category');
+
+				Route::get('/details/{id}/{title}', 'portraitController@details');
+
+				Route::prefix('checkout')->middleware('userAuth')->group(function(){
+					Route::post('/', 'portraitController@checkout')->name('web.portrait.checkout');
+				});
         	});
 });
 
@@ -255,6 +262,15 @@ Route::namespace('web')->group(function(){
 								Route::get('approve/{id}', 'artController@approvePortfolio');
 								Route::get('reject/{id}', 'artController@rejectPortfolio');
 							});
+
+
+						//Portrait Orders
+							Route::prefix('portrait_orders')->group(function(){
+
+								Route::get('new', 'artController@newOrdersPortrait')->name('admin.art.portrait.orders.new');
+								Route::get('processing', 'artController@processingOrdersPortrait')->name('admin.art.portrait.orders.processing');
+								Route::get('delivered', 'artController@deliveredOrdersPortrait')->name('admin.art.portrait.orders.delivered');
+							});
 					});
 
 				//Collectibles
@@ -364,6 +380,15 @@ Route::namespace('web')->group(function(){
 									Route::get('deletePortraitType/{id}', 'settingsController@delete_portraitTypeArt');
 
 
+							});
+
+
+						//Sales Settings
+							Route::prefix('sales')->group(function(){
+
+								Route::get('/', 'settingsController@salesSetting')->name('admin.settings.salesSetting');
+
+								Route::post('/', 'settingsController@salesSettingUpdate');
 							});
 					});
 			});
@@ -482,6 +507,21 @@ Route::namespace('web')->group(function(){
 				Route::post('editUpdate', 'portfolioController@editUpdate')->name('artist.portfolio.update');
 
 				Route::get('delete/{id}', 'portfolioController@delete')->name('artist.portfolio.delete');
+			});
+
+		//Portrait Orders
+			Route::prefix('portrait_orders')->group(function(){
+
+				Route::get('new', 'portraitOrderController@new')->name('artist.portrait_orders.new');
+				Route::get('processing', 'portraitOrderController@processing')->name('artist.portrait_orders.processing');
+				Route::get('delivered', 'portraitOrderController@delivered')->name('artist.portrait_orders.delivered');
+
+
+				Route::get('details/{id}', 'portraitOrderController@details');
+				Route::get('process/{id}', 'portraitOrderController@process');
+				Route::get('deliver/{id}', 'portraitOrderController@deliver');
+
+				Route::post('deliver', 'portraitOrderController@deliverSubmit')->name('artist.portrait_orders.deliver.submit');
 			});
 	});
 

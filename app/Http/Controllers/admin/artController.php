@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\art\products;
 use App\Models\art\portfolio;
 use App\Models\art\withdraw;
+use App\Models\art\orders as PortOrders;
 use App\Models\invoice\orders;
 use App\Models\saleSetting;
 
@@ -208,6 +209,30 @@ class artController extends Controller
             $data->save();
 
             return redirect()->back()->with('success', 'Withdraw marked as hold.');
+        }
+
+
+    //Portrait Orders
+
+        function newOrdersPortrait(){
+            $sales = saleSetting::first();
+            $data = PortOrders::where('status', '1')->orderBy('id', 'desc')->get();
+
+            return view('admin.art.portrait_orders.new', ['data' => $data, 'com' => $sales->commission]);
+        }
+
+
+        function processingOrdersPortrait(){
+            $sales = saleSetting::first();
+            $data = PortOrders::where('status', '2')->orderBy('id', 'desc')->get();
+
+            return view('admin.art.portrait_orders.processing', ['data' => $data, 'com' => $sales->commission]);
+        }
+        function deliveredOrdersPortrait(){
+            $sales = saleSetting::first();
+            $data = PortOrders::where('status', '3')->orderBy('id', 'desc')->get();
+
+            return view('admin.art.portrait_orders.delivered', ['data' => $data, 'com' => $sales->commission]);
         }
 
 }

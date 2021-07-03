@@ -106,3 +106,6 @@
 .feature-title1 p {
     font-size: 14px !important;
 }
+.slick-initialized .slick-slide {
+    height: 170px !important;
+}
