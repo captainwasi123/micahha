@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\accommodation\propertyType;
 use App\Models\accommodation\listing;
 use App\Models\accommodation\amenities;
+use App\Models\accommodation\amenityType;
 use App\Models\accommodation\listingAmenities;
 use App\Models\collectibles\categories;
 use App\Models\collectibles\subCategories;
@@ -57,16 +58,18 @@ class settingsController extends Controller
 
         //Amenities
             public function amenities(){
-                $data = amenities::orderBy('name')->get();
+                $data = amenities::orderBy('type_id')->get();
+                $type = amenityType::orderBy('name')->get();
 
-                return view('admin.settings.accommodation.amenities', ['data' => $data]);
+                return view('admin.settings.accommodation.amenities', ['data' => $data, 'type' => $type]);
             }
             public function amenities_insert(Request $request){
                 $validated = $request->validate([
                     'name' => 'required|unique:tbl_amenities'
                 ]);
                 $data = $request->get('name');
-                amenities::addAmenity($data);
+                $type = $request->get('type');
+                amenities::addAmenity($type, $data);
 
                 return redirect()->back()->with('success', 'New Amenity Added.');
 
@@ -74,8 +77,9 @@ class settingsController extends Controller
             public function edit_amenities($id){
                 $id = base64_decode($id);
                 $data = amenities::find($id);
+                $type = amenityType::orderBy('name')->get();
 
-                return view('admin.settings.accommodation.edit_amenities', ['data' => $data]);
+                return view('admin.settings.accommodation.edit_amenities', ['data' => $data, 'type' => $type]);
             }
             public function amenities_update(Request $request){
                 $data = $request->all();

@@ -74,20 +74,27 @@
                      ">
                   <div class="image-slider img-mob-margin arrows-1 m-b-20 {{$c>2 ? 'feature-small' : 'feature-large'}}">
             @endif
-                     <div class="feature-box1">
-                        <img src="{{URL::to('/public/storage/products/feature/'.$val->feature_img)}}">
-                        <a href="{{URL::to('/collectibles/details/'.base64_encode($val->id).'/'.str_replace(' ', '-', $val->title))}}">
-                           <div class="feature-title1">
-                              <h5> {{$val->title}}</h5>
-                              <p> {{empty($val->category) ? '' : $val->category->name}}<small>,</small> {{empty($val->subCategory) ? '' : $val->subCategory->name}}  </p>
-                              <h6> ${{number_format($val->price, 1)}} </h6>
+                     <div class="art-item-box">
+                        <div class="art-item-image">
+                           <img src="{{URL::to('/public/storage/products/feature/'.$val->feature_img)}}">
+                        </div>
+                         <div class="art-item-hover">
+                           <div class="art-item-actions">
+                              @if(Auth::id() && count($val->wishlist) == 0)
+                                 <label class="wishlist-icon white-heart collAddWishlist" data-id="{{base64_encode($val->id)}}"> 
+                                    <i class="fa fa-heart"> </i>  
+                                    <span> Save </span> 
+                                 </label>
+                              @endif
                            </div>
-                        </a>
-                        @if(Auth::id() && count($val->wishlist) == 0)
-                           <a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="feature-star collAddWishlist"> 
-                              <i class="fa fa-heart"> </i> 
+                           <a href="{{URL::to('/collectibles/details/'.base64_encode($val->id).'/'.str_replace(' ', '-', $val->title))}}">
+                              <div class="feature-title1">
+                                 <h5> {{$val->title}}</h5>
+                                 <p> {{empty($val->category) ? '' : $val->category->name}}<small>,</small> {{empty($val->subCategory) ? '' : $val->subCategory->name}}  </p>
+                                 <h6> ${{number_format($val->price, 1)}} </h6>
+                              </div>
                            </a>
-                        @endif
+                        </div>
                      </div>
             @if(($r%2) == 0)
                   </div>

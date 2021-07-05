@@ -98,7 +98,6 @@
 }
 .alegraya {
     width: 100% !important;
-    margin-top: 15px;
 }
 .sec-head1 {
     margin-bottom: 15px !important;
@@ -106,6 +105,12 @@
 .feature-title1 p {
     font-size: 14px !important;
 }
-.slick-initialized .slick-slide {
-    height: 170px !important;
+.rel-1 img {
+    width: 100%;
+}
+.apartment-features div span{
+    width: 100% !important;
+}
+.zoom-area{
+    max-width: 100% !important;
 }

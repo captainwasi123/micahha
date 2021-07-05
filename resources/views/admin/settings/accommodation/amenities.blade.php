@@ -29,8 +29,19 @@
                         <form method="post">
                             @csrf
                             <div class="form-group">
-                                <label>Amenities</label>
+                                <label>Amenity</label>
                                 <input type="text" class="form-control" name="name" required> 
+                            </div>
+                    </div>
+                    <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control" name="type" required>
+                                    <option value="">Select</option>
+                                    @foreach($type as $val)
+                                        <option value="{{$val->id}}">{{$val->name}}</option>
+                                    @endforeach
+                                </select> 
                             </div>
                     </div>
                     <div class="col-md-2 m-t-30">
@@ -55,7 +66,8 @@
                         <thead>
                             <tr>
                                 <th width="10%">S#</th>
-                                <th width="75%">Property Type</th>
+                                <th width="55%">Amenities</th>
+                                <th width="20%">Category</th>
                                 <th width="15%"></th>
                             </tr>
                         </thead>
@@ -65,6 +77,7 @@
                                 <tr>
                                     <td>{{$s}}</td>
                                     <td>{{$val->name}}</td>
+                                    <td>{{empty($val->type) ? '' : $val->type->name}}</td>
                                     <td>
                                         <a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Edit" class="btn btn-info btn-sm editAmenity" data-id="{{base64_encode($val->id)}}">
                                             <i class="fa fa-edit"></i>

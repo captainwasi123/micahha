@@ -8,18 +8,15 @@
 </style>
 @endsection
 @section('filter')
-         <div class="accomodation-tags">
-            <div class="container">
-                <span style="border-right:none;"> <a href="{{URL::to('/')}}" style="text-decoration: none; color:black;" >Home</a></span>&gt;
-               <span style="border-right:none;"> <a href="{{route('accommodation')}}" style="text-decoration: none; color:black;"> Accomodation </a></span>&gt;
-               <span> {{ $list_data->title }} </span>
-               {{-- <span> Houses </span>
-               <span> 2 Rooms </span>
-               <span> 4 Rooms </span>
-               <span> 2 Bathrooms </span>
-               <span> 1 Parking </span> --}}
-            </div>
-         </div>
+ <div class="accommodation-tags">
+    <div class="container">
+       <a href="{{URL::to('/')}}"> Home </a>  
+       <i class="fa fa-angle-right"> </i>
+       <a href="{{route('accommodation')}}"> Accommodation </a>
+       <i class="fa fa-angle-right"> </i>
+       <a href="javascript:void(0)"> {{ $list_data->title }} </a>
+    </div>
+ </div>
 @endsection
 @section('content')
    <!-- Accomodation Entry Details Section Starts Here -->
@@ -37,37 +34,21 @@
                  </div>
              </div>
             <div class="row">
-               <div class="col-md-12 col-lg-12 col-sm-12 col-12">
+               <div class="col-md-7 col-lg-8 col-sm-12 col-12">
                   <div class="apartment-name m-b-10">
                      <h3 class="col-black"> {{ $list_data->title }} </h3>
                      <p> <img width="20px" src="{{asset('public/website/images/marker.png')}}" alt="marker"> {{$list_data->address->accommodation_id}}, {{$list_data->address->city}}, {{$list_data->address->state}}, {{$list_data->address->post_code}}, {{$list_data->address->country->nicename}} </p>
                   </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-7 col-lg-8 col-sm-12 col-12">
-                  <div class="image-slider arrows-2">
-                     <div>
+                    <div class="image-slider arrows-2">
+
+                     <div class="rel-1">
+                        <a class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </a>
                         <img src="{{URL::to('/public/storage/listing/main/')}}/{{$list_data->feature_img}}">
-                        <span class="apartment-tags">
-                        <b> <img src="{{URL::to('/public/website')}}/images/bed-icon-white.png"> 2 </b>
-                        <b> <img src="{{URL::to('/public/website')}}/images/tub-icon-white.png"> 2 </b>
-                        <b> <img src="{{URL::to('/public/website')}}/images/car-icon-white.png"> 1 </b>
-                        <b> <img src="{{URL::to('/public/website')}}/images/sofa-icon-white.png"> 1 </b>
-                        <b> <img src="{{URL::to('/public/website')}}/images/users-icon-white.png"> 3 </b>
-                        </span>
                      </div>
                      @foreach($list_data->galleryImages as $gallery_images)
-                     <div>
-                        <img src="{{URL::to('/public/storage/listing/gallery/'.$gallery_images->id.'-'.$gallery_images->image)}}">
-                        <span class="apartment-tags">
-                        <b> <img src="{{URL::to('/public/website')}}/images/bed-icon-white.png"> 2 </b>
-                        <b> <img src="{{URL::to('/public/website')}}/images/tub-icon-white.png"> 2 </b>
-                        <b> <img src="{{URL::to('/public/website')}}/images/car-icon-white.png"> 1 </b>
-                        <b> <img src="{{URL::to('/public/website')}}/images/sofa-icon-white.png"> 1 </b>
-                        <b> <img src="{{URL::to('/public/website')}}/images/users-icon-white.png"> 3 </b>
-                        </span>
-                     </div>
+                         <div class="rel-1">
+                            <img src="{{URL::to('/public/storage/listing/gallery/'.$gallery_images->id.'-'.$gallery_images->image)}}">
+                         </div>
                      @endforeach
                   </div>
                </div>
@@ -76,20 +57,12 @@
                      <h5 class="alegraya col-black"> {{$list_data->type->name}} <span> {{'$'.number_format($list_data->price, 2)}} </span> </h5>
                   </div>
                   <div class="apartment-features">
+                     <h6 class="alegraya"> Amenities </h6>
                      <div class="alegraya m-b-20">
                         @foreach($list_data->amenities as $amenities)
                         <span> <img src="{{URL::to('/public/website')}}/images/apartment-icon1.jpg"> {{$amenities->amenities->name}} </span>
                         @endforeach
                      </div>
-                     <!-- <h6 class="alegraya"> BUILDING </h6>
-                     <div class="alegraya m-t-10">
-                        <span> <img src="images/apartment-icon1.jpg"> DISHWASHER </span>
-                        <span> <img src="images/apartment-icon2.jpg"> FURNISHED </span>
-                        <span> <img src="images/apartment-icon3.jpg"> MICROWAVE </span>
-                        <span> <img src="images/apartment-icon4.jpg"> PANTRY </span>
-                        <span> <img src="images/apartment-icon5.jpg"> RENOVATED </span>
-                        <span> <img src="images/apartment-icon6.jpg"> LINEN CLOSET </span>
-                     </div> -->
                   </div>
                   <div class="apartment-actions">
                      <a href="" class="custom-btn4"> Request a Tour </a>

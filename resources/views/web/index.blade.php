@@ -58,31 +58,137 @@
             <h3 class="col-blue alegraya"> ACCOMODATION </h3>
          </div>
          <div class="row margin-1">
-            @foreach($list_data as $list_val)
-               <div class="col-md-4 col-lg-4 col-sm-6 col-12 padding-1 m-b-20">
-                 <div class="item-box">
-                  <div class="image-slider arrows-3">
-                     <div> <img src="{{URL::to('/public/storage/listing/main/')}}/{{$list_val->feature_img}}"> </div>
-                     @foreach($list_val->galleryImages as $gallery_images)
-                        <div> <img src="{{URL::to('/public/storage/listing/gallery/'.$gallery_images->id.'-'.$gallery_images->image)}}"> </div>
-                     @endforeach
-                  </div>
-                     <a href="{{route('accommodation.details',base64_encode($list_val->id))}}">
-                     <div class="prop-box-text">
-                        <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
-                        <p>{{@$list_val->address->city}}, {{@$list_val->address->state}}, {{@$list_val->address->post_code}}, {{@$list_val->address->country->nicename}} </p>
-                        <h6> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span> 
-                           <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span> 
-                        </h6>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
+                  <div class="item-multiple-box arrows-3">
+                  <div class="prop-box">
+                     <div>
+                        <div class="prop-box-image">
+                           <img src="{{URL::to('/public/website')}}/images/accommodation-1.jpg">
+                        </div>
+                        <div class="prop-box-text">
+                           <a class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </a>
+                           <h4> $450 per week </h4>
+                           <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
+                           <a href="accommodation-3.html"> View Detail </a>
+                           <h6>
+                              <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
+                           </h6>
+                        </div>
                      </div>
-                     </a>
+                  </div>
+                  <div class="prop-box">
+                     <div>
+                        <div class="prop-box-image">
+                           <img src="{{URL::to('/public/website')}}/images/accommodation-1.jpg">
+                        </div>
+                        <div class="prop-box-text">
+                              <a class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </a>
+                           <h4> $550 per week </h4>
+                           <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
+                           <a href="accommodation-3.html"> View Detail </a>
+                           <h6>
+                              <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
+                           </h6>
+                        </div>
+                     </div>
                   </div>
                </div>
-            @endforeach   
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
+                  <div class="item-multiple-box arrows-3">
+                  <div class="prop-box">
+                     <div>
+                        <div class="prop-box-image">
+                           <img src="{{URL::to('/public/website')}}/images/accommodation-2.jpg">
+                        </div>
+                        <div class="prop-box-text">
+                           <a class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </a>
+                           <h4> $450 per week </h4>
+                           <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
+                           <a href="accommodation-3.html"> View Detail </a>
+                           <h6>
+                              <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
+                           </h6>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="prop-box">
+                     <div>
+                        <div class="prop-box-image">
+                           <img src="{{URL::to('/public/website')}}/images/accommodation-2.jpg">
+                        </div>
+                        <div class="prop-box-text">
+                              <a class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </a>
+                           <h4> $550 per week </h4>
+                           <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
+                           <a href="accommodation-3.html"> View Detail </a>
+                           <h6>
+                              <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
+                           </h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
+                  <div class="item-multiple-box arrows-3">
+                  <div class="prop-box">
+                     <div>
+                        <div class="prop-box-image">
+                           <img src="{{URL::to('/public/website')}}/images/accommodation-3.jpg">
+                        </div>
+                        <div class="prop-box-text">
+                           <a class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </a>
+                           <h4> $450 per week </h4>
+                           <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
+                           <a href="accommodation-3.html"> View Detail </a>
+                           <h6>
+                              <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
+                           </h6>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="prop-box">
+                     <div>
+                        <div class="prop-box-image">
+                           <img src="{{URL::to('/public/website')}}/images/accommodation-3.jpg">
+                        </div>
+                        <div class="prop-box-text">
+                              <a class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </a>
+                           <h4> $550 per week </h4>
+                           <p> 10/42-50 Hampstead Road, Homebush West, NSW 2140 </p>
+                           <a href="accommodation-3.html"> View Detail </a>
+                           <h6>
+                              <span> <img src="{{URL::to('/public/website')}}/images/bed-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/tub-icon.png">  2 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/car-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/sofa-icon.png">  1 </span>
+                              <span> <img src="{{URL::to('/public/website')}}/images/users-icon.png">  3 </span>
+                           </h6>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
          </div>
       </div>
@@ -96,32 +202,176 @@
          </div>
          <div class="row margin-1">
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
-               <div class="image-slider arrows-1">
-                  <div>
-                     <img src="{{URL::to('/public/website')}}/images/art-1.jpg">
+               <div class="art-multiple-box arrows-1">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/art-1.jpg">
+                     </div>
+                     <div class="art-item-hover">
+                        <div class="art-item-actions">
+                          <label   class="art-btn1"> <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> <span> Similar </span> </label>
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="art-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Made By Ali  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
                   </div>
-                  <div>
-                     <img src="{{URL::to('/public/website')}}/images/art-1.jpg">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/art-1.jpg">
+                     </div>
+                      <div class="art-item-hover">
+                        <div class="art-item-actions">
+                          <label   class="art-btn1"> <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> <span> Similar </span> </label>
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="art-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Made By Ali  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
+                  </div>
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/art-1.jpg">
+                     </div>
+                      <div class="art-item-hover">
+                        <div class="art-item-actions">
+                          <label   class="art-btn1"> <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> <span> Similar </span> </label>
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="art-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Made By Ali  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
                   </div>
                </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
-               <div class="image-slider arrows-1">
-                  <div>
-                     <img src="{{URL::to('/public/website')}}/images/art-2.jpg">
+              <div class="art-multiple-box arrows-1">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/art-2.jpg">
+                     </div>
+                     <div class="art-item-hover">
+                        <div class="art-item-actions">
+                          <label   class="art-btn1"> <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> <span> Similar </span> </label>
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="art-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Made By Ali  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
                   </div>
-                  <div>
-                     <img src="{{URL::to('/public/website')}}/images/art-2.jpg">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/art-2.jpg">
+                     </div>
+                      <div class="art-item-hover">
+                        <div class="art-item-actions">
+                          <label   class="art-btn1"> <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> <span> Similar </span> </label>
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="art-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Made By Ali  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
+                  </div>
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/art-2.jpg">
+                     </div>
+                      <div class="art-item-hover">
+                        <div class="art-item-actions">
+                          <label   class="art-btn1"> <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> <span> Similar </span> </label>
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="art-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Made By Ali  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
                   </div>
                </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
-               <div class="image-slider arrows-1">
-                  <div>
-                     <img src="{{URL::to('/public/website')}}/images/art-3.jpg">
+               <div class="art-multiple-box arrows-1">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/art-3.jpg">
+                     </div>
+                     <div class="art-item-hover">
+                        <div class="art-item-actions">
+                          <label   class="art-btn1"> <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> <span> Similar </span> </label>
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="art-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Made By Ali  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
                   </div>
-                  <div>
-                     <img src="{{URL::to('/public/website')}}/images/art-3.jpg">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/art-3.jpg">
+                     </div>
+                      <div class="art-item-hover">
+                        <div class="art-item-actions">
+                          <label   class="art-btn1"> <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> <span> Similar </span> </label>
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="art-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Made By Ali  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
+                  </div>
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/art-3.jpg">
+                     </div>
+                      <div class="art-item-hover">
+                        <div class="art-item-actions">
+                          <label   class="art-btn1"> <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> <span> Similar </span> </label>
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="art-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Made By Ali  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
                   </div>
                </div>
             </div>
@@ -137,22 +387,112 @@
          </div>
          <div class="row margin-1">
             <div class="col-md-6 col-lg-6  col-sm-6 col-12 padding-1">
-               <div class="image-slider arrows-2">
-                  <div>
-                     <img src="{{URL::to('/public/website')}}/images/collectibles-1.jpg">
+                  <div class="art-multiple-box arrows-1 feature-large">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/collectibles-1.jpg">
+                     </div>
+                      <div class="art-item-hover">
+                        <div class="art-item-actions">
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="collectibles-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Category  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
                   </div>
-                  <div>
-                     <img src="{{URL::to('/public/website')}}/images/collectibles-1.jpg">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                         <img src="{{URL::to('/public/website')}}/images/collectibles-1.jpg">
+                     </div>
+                     <div class="art-item-hover">
+                        <div class="art-item-actions">
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                         <a href="collectibles-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Category  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
+                  </div>
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/collectibles-1.jpg">
+                     </div>
+                     <div class="art-item-hover">
+                        <div class="art-item-actions">
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="collectibles-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Category  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
                   </div>
                </div>
             </div>
             <div class="col-md-6 col-lg-6 col-sm-6 col-12 padding-1">
-               <div class="image-slider arrows-2">
-                  <div>
-                     <img src="{{URL::to('/public/website')}}/images/collectibles-2.jpg">
+                  <div class="art-multiple-box arrows-1 feature-large">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/collectibles-2.jpg">
+                     </div>
+                      <div class="art-item-hover">
+                        <div class="art-item-actions">
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="collectibles-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Category  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
                   </div>
-                  <div>
-                     <img src="{{URL::to('/public/website')}}/images/collectibles-2.jpg">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                         <img src="{{URL::to('/public/website')}}/images/collectibles-2.jpg">
+                     </div>
+                     <div class="art-item-hover">
+                        <div class="art-item-actions">
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                         <a href="collectibles-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Category  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
+                  </div>
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/website')}}/images/collectibles-2.jpg">
+                     </div>
+                     <div class="art-item-hover">
+                        <div class="art-item-actions">
+                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        </div>
+                        <a href="collectibles-3.html">
+                       <div class="feature-title1">
+                     <h5> Title of Image </h5>
+                     <p> Category  </p>
+                     <h6> 159$ </h6>
+                     </div>
+                  </a>
+                     </div>
                   </div>
                </div>
             </div>

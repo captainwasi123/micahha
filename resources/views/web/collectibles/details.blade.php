@@ -8,7 +8,7 @@
 </style>
 @endsection
 @section('filter')
-<div class="accomodation-tags">
+<div class="accommodation-tags">
    <div class="container">
       <a href="{{route('collectibles')}}"> Collectibles </a>  
       <i class="fa fa-angle-right"> </i>
@@ -29,8 +29,13 @@
       <div class="row">
          <div class="col-md-7 col-lg-8 col-sm-12 col-12">
             <div class="apartment-name m-b-10">
-               <h3 class="col-black"> {{$data->title}} </h3>
-               <p> {{$data->category->name}}, {{$data->subCategory->name}}</p>
+               <h3 class="col-black"> {{$data->title}} </h3> 
+                  <a href="{{route('collectibles').'/'.$data->category->name}}"> 
+                     <p> {{$data->category->name}} </p>
+                  </a>, 
+                  <a href="{{route('collectibles').'/'.$data->category->name.'/'.$data->subCategory->name}}"> 
+                     <p> {{$data->subCategory->name}} </p>
+                  </a>
             </div>
             <div class="image-slider arrows-3">
                <div>
@@ -67,20 +72,29 @@
       </div>
       <div class="row margin-1">
          @foreach($similar as $val)
-            <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
-               <div class="image-slider img-mob-margin arrows-1 m-b-20 feature-small">
-                   <div class="feature-box1">
-                     <img src="{{URL::to('/public/storage/products/feature/'.$val->feature_img)}}">
-                     <div class="feature-title1">
-                     <h5> {{$val->title}} </h5>
-                     <p> {{empty($val->category) ? '' : $val->category->name}}<small>,</small> {{empty($val->subCategory) ? '' : $val->subCategory->name}} </p>
-                     <h6> ${{number_format($val->price, 1)}} </h6>
+
+            <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1 m-b-20">
+                <div class="art-multiple-box arrows-1">
+                  <div class="art-item-box">
+                     <div class="art-item-image">
+                        <img src="{{URL::to('/public/storage/products/feature/'.$val->feature_img)}}">
                      </div>
-                     @if(Auth::id() && count($val->wishlist) == 0)
-                        <a href="javascript:void(0)" data-id="{{base64_encode($val->id)}}" class="feature-star collAddWishlist"> 
-                           <i class="fa fa-heart"> </i> 
+                      <div class="art-item-hover">
+                        <div class="art-item-actions">
+                           @if(Auth::id() && count($val->wishlist) == 0)
+                              <label class="wishlist-icon white-heart collAddWishlist" data-id="{{base64_encode($val->id)}}"> 
+                                 <i class="fa fa-heart"> </i>  <span> Save </span> 
+                              </label>
+                           @endif
+                        </div>
+                        <a href="{{URL::to('/collectibles/details/'.base64_encode($val->id).'/'.str_replace(' ', '-', $val->title))}}">
+                           <div class="feature-title1">
+                              <h5> {{$val->title}} </h5>
+                              <p> {{empty($val->category) ? '' : $val->category->name}}<small>,</small> {{empty($val->subCategory) ? '' : $val->subCategory->name}} </p>
+                              <h6> ${{number_format($val->price, 1)}} </h6>
+                           </div>
                         </a>
-                     @endif
+                     </div>
                   </div>
                </div>
             </div>

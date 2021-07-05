@@ -7,6 +7,17 @@
                 <label>Amenity</label>
                 <input type="text" class="form-control" name="name" value="{{$data->name}}" required> 
             </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select class="form-control" name="type" required>
+                    <option value="">Select</option>
+                    @foreach($type as $val)
+                        <option value="{{$val->id}}"
+                            {{$val->id == $data->type_id ? 'selected' : ''}}
+                        >{{$val->name}}</option>
+                    @endforeach
+                </select> 
+            </div>
             <br><br>
             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
                 &nbsp;&nbsp;Update&nbsp;&nbsp;

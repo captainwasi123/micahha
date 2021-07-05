@@ -27,10 +27,10 @@
                <h3 class="col-black"> {{$data->title}} </h3>
                <p> Art by: <strong>{{empty($data->artist) ? '' : $data->artist->first_name.' '.$data->artist->last_name}}</strong> </p>
             </div>
-             <div class="image-zoomer">
-               <div class="magnify">
-                  <div class="large" style="background-image:url('{{URL::to('/public/storage/art/main/')}}/{{$data->image}}');"></div>
-                  <img class="small" src="{{URL::to('/public/storage/art/main/')}}/{{$data->image}}" width="500"/>
+            <div class="image-zoomer">
+               <div class="zoom-area">
+                  <div class="large"></div>
+                  <img class="small" src="{{URL::to('/public/storage/art/main/')}}/{{$data->image}}"  />
                </div>
             </div>
          </div>

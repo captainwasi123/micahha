@@ -39,17 +39,10 @@
                         <div class="art-item-image">
                            <img src="{{URL::to('/public/storage/art/portfolio/')}}/{{$val->image}}">
                         </div>
-                        <div class="art-item-hover">
+                         <div class="art-item-hover">
                            <div class="art-item-actions">
-                              <label>
-                                 <a href="{{URL::to('/portrait')}}/{{$val->portrait_type->name}}" class="art-btn1"> 
-                                    <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> 
-                                    <span> Similar </span> 
-                                 </a>
-                              </label>
-                              <label class="wishlist-icon"> 
-                                 <i class="fa fa-heart"> </i>  
-                                 <span> Save </span> 
+                              <label class="wishlist-icon white-heart"> 
+                                 <i class="fa fa-heart"> </i>  <span> Save </span> 
                               </label>
                            </div>
                            <a href="{{URL::to('/portrait/details/'.base64_encode($val->id).'/'.str_replace(' ', '-', $val->title))}}">

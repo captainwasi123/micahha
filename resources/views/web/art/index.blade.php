@@ -5,6 +5,9 @@
    .header-bottom {
       display: none;
    }
+   .slick-initialized .slick-slide {
+       height: 170px !important;
+   }
 </style>
 @endsection
 @section('content')
@@ -53,13 +56,13 @@
                         </div>
                         <div class="art-item-hover">
                            <div class="art-item-actions">
-                              <label>
-                                 <a href="{{URL::to('/art')}}/{{$val->cat->name}}" class="art-btn1"> 
+                              <label class="art-btn1"> 
+                                 <a href="{{URL::to('/art')}}/{{$val->cat->name}}">
                                     <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> 
                                     <span> Similar </span> 
                                  </a>
                               </label>
-                              <label class="wishlist-icon"> 
+                              <label class="wishlist-icon white-heart"> 
                                  <i class="fa fa-heart"> </i>  
                                  <span> Save </span> 
                               </label>
@@ -91,7 +94,7 @@
    <div class="container">
       <div class="art-quote text-center">
          <p class="col-white alegraya">  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices  </p>
-         <a href="create-account.html" class="custom-btn5"> LIST YOUR ART </a>
+         <a href="{{route('user.login')}}" class="custom-btn5"> LIST YOUR ART </a>
       </div>
    </div>
 </section>

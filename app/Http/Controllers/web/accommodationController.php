@@ -8,6 +8,7 @@ use App\Models\accommodation\listing;
 use App\Models\accommodation\propertyType;
 use App\Models\accommodation\reservation;
 use App\Models\accommodation\amenities;
+use App\Models\accommodation\amenityType;
 use App\Models\User;
 use App\Models\Enquiry_type;
 use App\Models\Accommodation_Enquiry;
@@ -23,6 +24,7 @@ class accommodationController extends Controller
             'list_data' => listing::where('status',2)->where('is_feature',1)->latest()->limit(6)->get(),
             'amenities_data' => amenities::where('show_in_home',1)->latest()->limit(5)->get()->toArray(),
             'property_type' => propertyType::get(),
+            'amenity_type' => amenityType::orderBy('name')->get(),
           );
         return view('web.accommodation.index')->with($data);
     }

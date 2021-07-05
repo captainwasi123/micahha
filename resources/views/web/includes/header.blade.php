@@ -10,10 +10,10 @@
                </div>
             </div>
             @if(Auth::check())
-               <div class="user-dropdown">
+               <div class="cart-dropdown">
                   <div class="dropdown">
                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <i class="fa fa-user"> </i> &nbsp;{{Auth::user()->first_name}} |
+                    <img src="{{URL::to('/public/website')}}/images/user-icon.png"> &nbsp;{{Auth::user()->first_name}} |
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{route('user.dashboard')}}">Dashboard</a>
@@ -25,17 +25,20 @@
                </div>
             @else
                <div class="user-dropdown">
-                  <a title="Login" href="{{route('user.login')}}">
-                     <i class="fa fa-user"> </i>
+                  <a href="{{route('user.login')}}"> 
+                     <img src="{{URL::to('/public/website')}}/images/user-icon.png">  
                   </a>
                </div>
             @endif
             <div class="user-dropdown">
-               <a title="Cart" href="{{route('web.cart')}}">
-                  <i class="fa fa-shopping-cart"></i> <label class="badge badge-pill badge-primary" id="cart_count">{{Session::get('cart') !== null ? count(Session::get('cart')) : '0'}}</label>
+               <a href="{{route('web.cart')}}"> 
+                  <img src="{{URL::to('/public/website')}}/images/cart-icon.png">
+                  <label class="badge badge-pill badge-primary" id="cart_count">{{Session::get('cart') !== null ? count(Session::get('cart')) : '0'}}</label>
                </a>
             </div>
          </div>
+
+
          <div class="logo">
             <a href="{{URL::to('/')}}"> <img src="{{URL::to('/public/website')}}/images/logo.jpg"> </a>
          </div>

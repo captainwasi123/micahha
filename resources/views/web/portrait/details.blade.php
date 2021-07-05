@@ -76,7 +76,7 @@
                      </div>
                       <div class="art-item-hover">
                         <div class="art-item-actions">
-                        <label class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
+                        <label class="wishlist-icon white-heart"> <i class="fa fa-heart"> </i>  <span> Save </span> </label>
                         </div>
                         <a href="{{URL::to('/portrait/details/'.base64_encode($val->id).'/'.str_replace(' ', '-', $val->title))}}">
                            <div class="feature-title1">
