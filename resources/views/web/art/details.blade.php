@@ -25,7 +25,7 @@
          <div class="col-md-7 col-lg-8 col-sm-12 col-12">
             <div class="apartment-name m-b-10">
                <h3 class="col-black"> {{$data->title}} </h3>
-               <p> Art by: <strong>{{empty($data->artist) ? '' : $data->artist->first_name.' '.$data->artist->last_name}}</strong> </p>
+               <p> Art by: <strong>{{empty($data->artist) ? '' : $data->artist->username}}</strong> </p>
             </div>
             <div class="image-zoomer">
                <div class="zoom-area">
@@ -86,7 +86,7 @@
                            <div class="feature-title1">
                               <h5> {{$val->title}} </h5>
                               <p> Made By: 
-                                 <strong>{{empty($val->artist) ? '' : $val->artist->first_name}}</strong>
+                                 <strong>{{empty($val->artist) ? '' : $val->artist->username}}</strong>
                               </p>
                               <h6> {{'$'.number_format($val->price, 2)}} </h6>
                            </div>

@@ -20,12 +20,17 @@ Route::namespace('web')->group(function(){
 		Route::get('/login', 'authController@login')->name('user.login');
 		Route::get('/logout', 'authController@logout')->name('user.logout');
 		Route::get('/register', 'authController@register')->name('user.register');
+		Route::get('/register/refer/{id}', 'authController@registerRefer')->name('user.register.refer');
+		Route::get('/username/verify/{val}', 'authController@usernameVerify');
 
 		Route::post('/login', 'authController@loginSubmit');
 		Route::post('/register', 'authController@registerSubmit');
 
 	//Web Pages
 		Route::get('/', 'webController@index');
+		Route::get('contact', 'webController@contact')->name('web.contact');
+		Route::get('terms-condition', 'webController@terms')->name('web.terms_condition');
+		Route::get('pivacy-policy', 'webController@policy')->name('web.privacy_policy');
 
 		Route::prefix('cart')->group(function(){
 			Route::get('/', 'webController@cart')->name('web.cart');
@@ -139,6 +144,13 @@ Route::namespace('web')->group(function(){
 			Route::middleware('adminAuth')->group(function(){
 
 				Route::get('/', 'adminController@index')->name('admin.dashboard');
+
+				//General
+					Route::prefix('general')->group(function(){
+
+						Route::get('users', 'generalController@users')->name('admin.general.users');
+					});
+
 
 				//Accommodation
 					Route::prefix('accommodation')->group(function(){
@@ -535,6 +547,9 @@ Route::namespace('web')->group(function(){
 
 		Route::get('/becomeLandlord', 'userController@becomeLandlord')->name('become.a.landlord');
 		Route::get('/becomeArtist', 'userController@becomeArtist')->name('become.a.artist');
+
+		//Refer a friend
+		Route::get('/refer', 'userController@refer')->name('refer.friend');
 
 		//user settings
 			Route::get('/profile-edit', 'SettingController@profile_edit')->name('user.profile.edit');

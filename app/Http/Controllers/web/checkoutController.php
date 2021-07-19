@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\saleSetting;
 use App\Models\country;
+use App\Models\coupons;
 use App\Models\collectibles\products;
 use App\Models\art\products as ArtProducts;
 use App\Models\invoice\masterInvoice;
+use Auth;
 
 class checkoutController extends Controller
 {
@@ -16,8 +18,9 @@ class checkoutController extends Controller
     function index(){
         $countries = country::all();
         $saleSetting = saleSetting::first();
+        $coupons = coupons::where('user_id', Auth::id())->where('status', '0')->first();
 
-        return view('web.checkout', ['saleSetting' => $saleSetting, 'countries' => $countries]);
+        return view('web.checkout', ['saleSetting' => $saleSetting, 'countries' => $countries, 'coupon' => $coupons]);
     }
 
     function checkout(Request $request){
@@ -25,7 +28,15 @@ class checkoutController extends Controller
 
         $saleSetting = saleSetting::first();
         $cart = session()->get('cart');
-        $data = array('subtotal' => 0, 'gst' => $saleSetting->gst);
+        $coupons = coupons::where('user_id', Auth::id())->where('status', '0')->first();
+        $discount = 0;
+        if(!empty($coupons->id)){
+            $discount = $coupons->amount;
+
+            $coupons->status = '1';
+            $coupons->save();
+        }
+        $data = array('subtotal' => 0, 'gst' => $saleSetting->gst, 'discount' => $discount);
         foreach($cart as $key => $val){
             $i = isset($data['product'][$val['seller']]['item']) ? count($data['product'][$val['seller']]['item']) : 0;
             $data['product'][$val['seller']]['item'][$i]['id'] = $val['id'];
@@ -46,7 +57,7 @@ class checkoutController extends Controller
         }
 
         //dd($data);
-        $invoice_id = masterInvoice::addInvoice($data, $delivery);
+        $invoice_id = masterInvoice::addInvoice($data, $delivery, $discount);
         session()->flush('cart');
 
         return redirect(route('web.cart'))->with('success', 'Order successful. Order#'.$invoice_id);

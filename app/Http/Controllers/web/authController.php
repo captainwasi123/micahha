@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\country;
 use App\Models\User;
+use App\Models\saleSetting;
+use App\Models\coupons;
 use Auth;
 
 class authController extends Controller
@@ -54,9 +56,40 @@ class authController extends Controller
         $data = $request->all();
         $validated = $request->validate([
             'email' => 'required|unique:tbl_user_info|max:255',
+            'username' => 'required|unique:tbl_user_info|max:255',
             'password' => 'required|confirmed|min:6',
         ]);
         User::addUser($data);
+        if($data['refer_by'] != '0'){
+            $sales = saleSetting::first();
+
+            $c = new coupons;
+            $c->user_id = base64_decode(base64_decode($data['refer_by']));
+            $c->amount = $sales->refer_gift;
+            $c->status = '0';
+            $c->save();
+        }
         return redirect(route('user.login'))->with('success', 'You are successfully registered.');
+    }
+    function registerRefer($id){
+        $id = base64_decode(base64_decode($id));
+        $u = User::find($id);
+        if(!empty($u->id)){
+
+            $countries = country::all();
+            return view('web.register', ['countries' => $countries, 'refer_by' => $id]);
+        }else{
+            return redirect('/');
+        }
+    }
+
+
+    function usernameVerify($val){
+        $user = User::where('username', $val)->first();
+        if(!empty($user->id)){
+            return 'taken';
+        }else{
+            return 'available';
+        }
     }
 }

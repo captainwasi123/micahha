@@ -20,7 +20,9 @@ class masterInvoice extends Model
         $i->buyer_id = Auth::id();
         $i->price = $data['subtotal'];
         $i->gst = ($data['subtotal']/100)*$data['gst'];
-        $i->total_amount = (($data['subtotal']/100)*$data['gst'])+$data['subtotal'];
+        $i->amount = (($data['subtotal']/100)*$data['gst'])+$data['subtotal'];
+        $i->discount = $data['discount'];
+        $i->total_amount = ((($data['subtotal']/100)*$data['gst'])+$data['subtotal'])-$data['discount'];
         $i->status = '1';
         $i->save();
 

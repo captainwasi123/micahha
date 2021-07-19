@@ -138,15 +138,23 @@
                               <td> GST </td>
                               <td class="text-right"> {{$gst}}% </td>
                            </tr>
+                           @php $discount = 0; @endphp
+                           @if(!empty($coupon->id))
+                              <tr>
+                                 <td>Referral Discount</td>
+                                 <td class="text-right">{{'- $'.number_format($coupon->amount)}}</td>
+                              </tr>
+                              @php $discount = $coupon->amount; @endphp
+                           @endif
                            <tr>
                               <th> Total </th>
-                              <th class="text-right"> ${{((($subtotal/100)*$gst)+$subtotal)}} </th>
+                              <th class="text-right"> ${{(((($subtotal/100)*$gst)+$subtotal)-$discount)}} </th>
                            </tr>
                         </tbody>
                      </table>
                   </div>
+                  <br><br><br>
                   <div class="">
-                     <br><br>
                      <button class="submit-btn2 alegraya"> PLACE YOUR ORDER </button>
                   </div>
                </div>

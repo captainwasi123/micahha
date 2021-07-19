@@ -26,6 +26,14 @@
                     </a>
                 </li>
 
+                <li class="nav-small-cap">General</li>
+                <li> 
+                    <a class="waves-effect waves-dark" href="{{route('admin.general.users')}}" aria-expanded="false">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span class="hide-menu">All Users</span>
+                    </a>
+                </li>
+
                 <li class="nav-small-cap">ACCOMMODATION</li>
                 <li> 
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">

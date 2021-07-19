@@ -28,6 +28,7 @@ class User extends Authenticatable
         $u->user_type = '1';
         $u->newsletter = empty($data['newsletter']) ? '0' : '1';
         $u->status = '1';
+        $u->refer_by = $data['refer_by'] == '0' ? null : base64_decode(base64_decode($data['refer_by']));
         $u->save();
     }
 

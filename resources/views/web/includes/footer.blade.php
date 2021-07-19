@@ -11,10 +11,10 @@
          </div>
          <div class="col-md-7 col-lg-7 col-sm-12 col-12">
             <div class="footer-menu">
-               <a href="javascript:void(0)" class="col-black"> Terms & Conditions </a>
-               <a href="javascript:void(0)" class="col-black"> Privacy </a>
+               <a href="{{route('web.terms_condition')}}" class="col-black"> Terms & Conditions </a>
+               <a href="{{route('web.privacy_policy')}}" class="col-black"> Privacy </a>
                <a href="{{route('web.portrait')}}" class="col-black"> Portrait Customization </a>
-               <a href="javascript:void(0)" class="col-black"> Contact Us </a>
+               <a href="{{route('web.contact')}}" class="col-black"> Contact Us </a>
             </div>
          </div>
       </div>

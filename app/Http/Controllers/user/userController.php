@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\coupons;
 use Auth;
 
 class userController extends Controller
@@ -14,6 +15,13 @@ class userController extends Controller
 
         return view('user.index');
     }
+
+    //Refer
+        function refer(){
+            $coupons = coupons::where('user_id', Auth::id())->orderBy('status')->get();
+
+            return view('user.refer.index', ['coupons' => $coupons]);
+        }
 
     //Become a Landlord
         function becomeLandlord(){

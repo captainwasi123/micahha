@@ -1,7 +1,7 @@
  <!-- sidebar part here -->
 <nav class="sidebar vertical-scroll  ps-container ps-theme-default ps-active-y">
     <div class="logo d-flex justify-content-between">
-        <a href="{{route('landlord.dashboard')}}">
+        <a href="{{route('artist.dashboard')}}">
             <h2><font>M</font>ICAHHA</h2>
             <span>Artist Dashboard</span>
         </a>
@@ -42,7 +42,7 @@
                     <a href="{{route('artist.product.pending')}}">Pending </a>
                 </li>
                 <li>
-                    <a href="{{route('artist.product.published')}}">Published</a>
+                    <a href="{{route('artist.product.published')}}">Active</a>
                 </li>
                 <li>
                     <a href="{{route('artist.product.rejected')}}">Rejected</a>
@@ -89,7 +89,7 @@
                     <a href="{{route('artist.portfolio.pending')}}">Pending</a>
                 </li>
                 <li>
-                    <a href="{{route('artist.portfolio.published')}}">Published</a>
+                    <a href="{{route('artist.portfolio.published')}}">Active</a>
                 </li>
                 <li>
                     <a href="{{route('artist.portfolio.rejected')}}">Rejected</a>

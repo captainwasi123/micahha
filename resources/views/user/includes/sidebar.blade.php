@@ -1,7 +1,7 @@
  <!-- sidebar part here -->
 <nav class="sidebar vertical-scroll  ps-container ps-theme-default ps-active-y">
     <div class="logo d-flex justify-content-between">
-        <a href="{{route('landlord.dashboard')}}">
+        <a href="{{route('user.dashboard')}}">
             <h2><font>M</font>ICAHHA</h2>
             <span>User Dashboard</span>
         </a>
@@ -139,6 +139,14 @@
                     <a href="{{route('user.wishlist.collectibles')}}">Collectibles</a>
                 </li>
             </ul>
+        </li>
+        <li class="">
+            <a class=""  href="{{route('refer.friend')}}">
+                <div class="icon_menu">
+                    <i class="fa fa-users"></i>
+                </div>
+                <span>Refer a Friend</span>
+            </a>
         </li>
         <li class="list_divider"></li>
         <li class="">

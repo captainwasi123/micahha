@@ -17,8 +17,9 @@
          @endif
       </div>
       <div class="create-account-form">
-         <form method="post">
+         <form method="post" autocomplete="off" action="{{route('user.register')}}">
             @csrf
+            <input type="hidden" name="refer_by" value="{{isset($refer_by) ? base64_encode(base64_encode($refer_by)) : '0'}}">
             <div class="row">
                <div class="col-md-6 col-lg-6 col-12 col-sm-12">
                   <div class="form-field1">
@@ -32,13 +33,19 @@
                      <input type="text" name="last-name" required="">
                   </div>
                </div>
-               <div class="col-md-6 col-lg-6 col-12 col-sm-12">
+               <div class="col-md-7 col-lg-7 col-12 col-sm-12">
                   <div class="form-field1">
                      <p> Email Address </p>
                      <input type="email" name="email" required="">
                   </div>
                </div>
-               <div class="col-md-6 col-lg-6 col-12 col-sm-12">
+               <div class="col-md-5 col-lg-5 col-12 col-sm-12">
+                  <div class="form-field1">
+                     <p> Username <span id="user_error"></span></p>
+                     <input type="text" name="username" id="username" autocomplete="false" required>
+                  </div>
+               </div>
+               <div class="col-md-4 col-lg-4 col-12 col-sm-12">
                   <div class="form-field1">
                      <p> Country </p>
                      <select name="Country" required>
@@ -49,13 +56,13 @@
                      </select>
                   </div>
                </div>
-               <div class="col-md-6 col-lg-6 col-12 col-sm-12">
+               <div class="col-md-4 col-lg-4 col-12 col-sm-12">
                   <div class="form-field1">
                      <p> New password </p>
                      <input type="password" name="password" required="">
                   </div>
                </div>
-               <div class="col-md-6 col-lg-6 col-12 col-sm-12">
+               <div class="col-md-4 col-lg-4 col-12 col-sm-12">
                   <div class="form-field1">
                      <p> Confirm New Password </p>
                      <input type="password" name="password_confirmation" required="">

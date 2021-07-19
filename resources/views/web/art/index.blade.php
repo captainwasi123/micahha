@@ -71,7 +71,7 @@
                               <div class="feature-title1">
                                  <h5> {{$val->title}} </h5>
                                  <p> Made By: 
-                                    <strong>{{empty($val->artist) ? '' : $val->artist->first_name}}</strong>
+                                    <strong>{{empty($val->artist) ? '' : $val->artist->username}}</strong>
                                  </p>
                                  <h6> {{'$'.number_format($val->price, 2)}} </h6>
                               </div>

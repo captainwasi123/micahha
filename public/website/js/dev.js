@@ -35,6 +35,48 @@ $(document).ready(function(){
         minusItem(id, price, method);
     });
 
+    $(document).on('keyup', '#username', function(){
+        var val = $(this).val();
+
+        $.get( host+"/username/verify/"+val, function( data ) {
+            if(data == 'taken'){
+                $('#user_error').html('Username is already taken.');
+                $('#user_error').css({'color': 'red'});
+            }else{
+                $('#user_error').html('Username is available.');
+                $('#user_error').css({'color': 'green'});
+            }
+        });
+    });
+
+    $(document).on('keyup', '#username', function(){
+        var val = $(this).val();
+
+        $.get( host+"/username/verify/"+val, function( data ) {
+            if(data == 'taken'){
+                $('#user_error').html('Username is already taken.');
+                $('#user_error').css({'color': 'red'});
+            }else{
+                $('#user_error').html('Username is available.');
+                $('#user_error').css({'color': 'green'});
+            }
+        });
+    }).on('paste', function(e) {
+        setTimeout(function(){
+            var val = $('#username').val();
+
+            $.get( host+"/username/verify/"+val, function( data ) {
+                if(data == 'taken'){
+                    $('#user_error').html('Username is already taken.');
+                    $('#user_error').css({'color': 'red'});
+                }else{
+                    $('#user_error').html('Username is available.');
+                    $('#user_error').css({'color': 'green'});
+                }
+            });
+        }, 0);
+    });
+
 
 
 

@@ -187,3 +187,14 @@
   margin: auto;
   text-align: center;
 }
+
+#copied {
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: green;
+}
+#copy_referral {
+    float: right;
+    margin-top: -45px;
+}

@@ -114,3 +114,9 @@
 .zoom-area{
     max-width: 100% !important;
 }
+#user_error {
+    float: right;
+    font-family: sans-serif;
+    font-size: 12px;
+    margin-top: 12px;
+}
