@@ -6,9 +6,8 @@
    <!-- Banner Section Starts Here -->
    <section class="banner-sec">
       <div class="banner-video">
-         <video autoplay loop muted>
-            <source src="{{URL::to('/public/website')}}/images/lorem-ipsum-video.mp4" type="video/mp4">
-         </video>
+         <div style="width: 100%; height: 950px; margin-bottom: -900px;"></div>
+         <iframe style="width: 100%; height: 950px; margin-top: -110px;" src="https://www.youtube.com/embed/bvLulz7QsLE?autoplay=1&loop=1&playlist=bvLulz7QsLE&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
       </div>
       <div class="banner-curve">
          <img src="{{URL::to('/public/website')}}/images/white-curve2.png">
