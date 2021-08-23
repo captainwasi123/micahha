@@ -38,6 +38,7 @@
                                                 <th>Check-Out</th>
                                                 <th>No. of Guest</th>
                                                 <th>Booking at</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -67,6 +68,11 @@
                                                     {{$listing->no_of_people}}
                                                 </td>
                                                 <td>{{date('d-M-Y h:i a', strtotime($listing->listing->created_at))}}</td>
+                                                <td>
+                                                    <a href="{{URL::to('/user/orders/accommodation/chat/'.base64_encode($listing->id))}}" title="Chat" class="btn btn-primary btn-sm">
+                                                        <i class="fa fa-comment" style="color:#fff"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @endforeach    
                                         </tbody>

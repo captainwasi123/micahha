@@ -198,3 +198,27 @@
     float: right;
     margin-top: -45px;
 }
+.messages_box_area {
+    grid-template-columns: 12fr !important;
+    height: 520px;
+    overflow-y: scroll;
+}
+.messages_box_area::-webkit-scrollbar {
+   width: 2px !important;
+ }
+.messages_box_area::-webkit-scrollbar-track {
+   background: #f1f1f1; 
+ }
+.messages_box_area::-webkit-scrollbar-thumb {
+   background: #88888875; 
+ }
+.messages_box_area::-webkit-scrollbar-thumb:hover {
+   background: #888888bf; 
+ }
+.messages_box_area .messages_chat .message_send_field {
+    position: absolute;
+    bottom: 0;
+    width: 89%;
+    background-color: white;
+    padding-top: 10px !important;
+}

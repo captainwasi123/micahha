@@ -4,6 +4,14 @@ $(document).ready(function(){
 
     'use strict'
 
+
+    $(document).on('change', '#country_input', function() {
+        var val = $(this).find(':selected').attr('data-code');
+        $('#phonecode_span').html(val);
+        $('#phonecode_input').val(val);
+    });
+
+
     $(document).on('click', '.accomAddWishlist', function(){
         var el = $(this);
         var id = el.data('id');

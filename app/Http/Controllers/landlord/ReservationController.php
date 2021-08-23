@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\accommodation\listing;
 use App\Models\accommodation\reservation;
+use App\Models\accommodation\chat;
 use Auth;
 
 class ReservationController extends Controller
@@ -85,4 +86,27 @@ class ReservationController extends Controller
         $reservation->save();
         return redirect()->back()->with('success', 'Reservation Approved.');
     }
+
+
+    //Chat
+
+        function chat($id){
+            $id = base64_decode($id);
+            $order = reservation::find($id);
+            $data = chat::where('order_id', $id)->get();
+
+            return view('landlord.reservation.chat', ['data' => $data, 'order' => $order]);
+        }
+        function sendChat(Request $request){
+            $data = $request->all();
+
+            $c = new chat;
+            $c->order_id = base64_decode($data['order_id']);
+            $c->user_id = Auth::id();
+            $c->message = $data['message'];
+            $c->status = '1';
+            $c->save();
+
+            return redirect()->back();
+        }
 }

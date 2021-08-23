@@ -69,8 +69,11 @@
                                                 </td>
                                                 <td>{{date('d-M-Y h:i a', strtotime($listing->listing->created_at))}}</td>
                                                 <td>
-                                                    <a data-href="{{URL::to('/user/orders/accommodation/cancel')}}" data-id="{{base64_encode($listing->id)}}" title="Cancel" class="btn btn-warning btn-sm cancelBooking">
+                                                    <a href="javascript:void(0)" data-href="{{URL::to('/user/orders/accommodation/cancel')}}" data-id="{{base64_encode($listing->id)}}" title="Cancel" class="btn btn-warning btn-sm cancelBooking">
                                                         <i class="fa fa-window-close" style="color:#fff"></i>
+                                                    </a>
+                                                    <a href="{{URL::to('/user/orders/accommodation/chat/'.base64_encode($listing->id))}}" title="Chat" class="btn btn-primary btn-sm">
+                                                        <i class="fa fa-comment" style="color:#fff"></i>
                                                     </a>
                                                 </td>
                                             </tr>

@@ -93,6 +93,6 @@ class productController extends Controller
             'title' => 'Listing Details',
             'listing' => listing::find($id)
         );
-        return view('landlord.listing.listing_details')->with($data);
+        return view('artist.listing.listing_details')->with($data);
     }
 }

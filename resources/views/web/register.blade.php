@@ -29,42 +29,50 @@
                </div>
                <div class="col-md-6 col-lg-6 col-12 col-sm-12">
                   <div class="form-field1">
-                     <p> Last Name </p>
+                     <p> Last Name *</p>
                      <input type="text" name="last-name" required="">
                   </div>
                </div>
-               <div class="col-md-7 col-lg-7 col-12 col-sm-12">
+               <div class="col-md-12 col-lg-12 col-12 col-sm-12">
                   <div class="form-field1">
-                     <p> Email Address </p>
+                     <p> Email Address *</p>
                      <input type="email" name="email" required="">
                   </div>
                </div>
-               <div class="col-md-5 col-lg-5 col-12 col-sm-12">
+               <div class="col-md-4 col-lg-4 col-12 col-sm-12">
                   <div class="form-field1">
-                     <p> Username <span id="user_error"></span></p>
+                     <p> Username * <span id="user_error"></span></p>
                      <input type="text" name="username" id="username" autocomplete="false" required>
                   </div>
                </div>
                <div class="col-md-4 col-lg-4 col-12 col-sm-12">
                   <div class="form-field1">
-                     <p> Country </p>
-                     <select name="Country" required>
+                     <p> Country *</p>
+                     <select name="Country" id="country_input" required>
                         <option value="">Select</option>
                         @foreach($countries as $val)
-                           <option value="{{$val->id}}">{{$val->country}}</option>
+                           <option value="{{$val->id}}" data-code="{{'+'.$val->phonecode}}">{{$val->country}}</option>
                         @endforeach
                      </select>
                   </div>
                </div>
                <div class="col-md-4 col-lg-4 col-12 col-sm-12">
+                  <div class="form-field1 phoneField">
+                     <p> Phone * </p>
+                     <input type="number" name="phone" required="">
+                     <input type="hidden" name="phonecode" id="phonecode_input">
+                     <span id="phonecode_span"></span>
+                  </div>
+               </div>
+               <div class="col-md-3 col-lg-3 col-12 col-sm-12">
                   <div class="form-field1">
-                     <p> New password </p>
+                     <p> New password *</p>
                      <input type="password" name="password" required="">
                   </div>
                </div>
-               <div class="col-md-4 col-lg-4 col-12 col-sm-12">
+               <div class="col-md-3 col-lg-3 col-12 col-sm-12">
                   <div class="form-field1">
-                     <p> Confirm New Password </p>
+                     <p> Confirm New Password *</p>
                      <input type="password" name="password_confirmation" required="">
                   </div>
                </div>

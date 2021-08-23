@@ -449,6 +449,10 @@ Route::namespace('web')->group(function(){
 				Route::post('save', 'ReservationController@save')->name('landlord.reservation.save');
 				Route::get('{status}', 'ReservationController@all')->name('landlord.reservation.all');
                 Route::get('edit-status/{id}' , 'ReservationController@edit_status')->name('landlord.reservation.edit_status');
+
+
+				Route::get('chat/{id}', 'ReservationController@chat')->name('landlord.reservation.chat');
+				Route::post('sendChat', 'ReservationController@sendChat')->name('landlord.reservation.sendchat');
 			});
 	});
 
@@ -572,6 +576,9 @@ Route::namespace('web')->group(function(){
 
 
 						Route::get('cancel/{id}', 'ordersController@accommodationCancel')->name('user.orders.accommodation.cancel');
+
+						Route::get('chat/{id}', 'ordersController@chat');
+						Route::post('sendChat', 'ordersController@sendChat')->name('user.orders.accommodation.sendchat');
 					});
 
 				//Collectibles

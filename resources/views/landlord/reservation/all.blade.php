@@ -68,10 +68,12 @@
                                                 <td>{{date('d-M-Y', strtotime($data->check_out))}}</td>
                                                 <td>
                                                     <a href="{{route('landlord.reservation.edit', base64_encode($data->id))}}" class="btn btn-info text-white btn-sm" title="Edit"><i class="fas fa-edit"></i></a>
-                                                @if($title == 'Pending')
-                                                    <a href="{{route('landlord.reservation.edit_status', base64_encode($data->id))}}" class="btn btn-success text-white btn-sm" title="Approve"><i class="fas fa-check"></i></a>
+                                                    <a href="{{route('landlord.reservation.chat', base64_encode($data->id))}}" class="btn btn-primary text-white btn-sm" title="Order Chat"><i class="fas fa-comment"></i></a>
+
+                                                    @if($title == 'Pending')
+                                                        <a href="{{route('landlord.reservation.edit_status', base64_encode($data->id))}}" class="btn btn-success text-white btn-sm" title="Approve"><i class="fas fa-check"></i></a>
+                                                    @endif
                                                 </td>
-                                                @endif
                                             </tr>
                                             @endforeach
                                         </tbody>

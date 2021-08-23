@@ -75,7 +75,7 @@
                                                     <a onclick="return confirm_click();" href="{{route('landlord.list.delete',base64_encode($val->id))}}" data-toggle="tooltip" data-original-title="delete" class="btn btn-danger btn-sm">
                                                         <i class="fas fa-trash" style="color:#fff"></i> 
                                                     </a>
-                                                    <a href="{{URL::to('landlord/listing/details/'.base64_encode($val->id))}}" title="Detail View" class="btn btn-info btn-sm">
+                                                    <a href="{{URL::to('artist/listing/details/'.base64_encode($val->id))}}" title="Detail View" class="btn btn-info btn-sm">
                                                         <i class="fas fa-eye" style="color:#fff"></i> 
                                                     </a>
                                                 </td>

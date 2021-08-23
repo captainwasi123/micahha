@@ -23,6 +23,8 @@ class User extends Authenticatable
         $u->first_name = $data['first-name'];
         $u->last_name = $data['last-name'];
         $u->email = $data['email'];
+        $u->username = $data['username'];
+        $u->phone = $data['phonecode'].$data['phone'];
         $u->password = bcrypt($data['password']);
         $u->country_id = $data['Country'];
         $u->user_type = '1';
@@ -36,7 +38,6 @@ class User extends Authenticatable
         $p = User::find(Auth::id());
         $p->first_name = $data['first_name'];
         $p->last_name = $data['last_name'];
-        $p->phone = $data['phone'];
         $p->address = $data['address'];
         $p->city = $data['city'];
         $p->state = $data['state'];

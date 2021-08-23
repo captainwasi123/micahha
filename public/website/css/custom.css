@@ -726,6 +726,8 @@ section.banner-sec {
     background: #1a3e62;
     text-align: center;
     position: relative;
+    height: 700px;
+    overflow: hidden;
 
 }
 
