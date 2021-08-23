@@ -49,10 +49,10 @@
                               <span class="fa fa-check"></span>
                            </a>
                         </li>
-                        <li><a href="">Deutsch</a></li>
-                        <li><a href="">Español</a></li>
-                        <li><a href="">Français</a></li>
-                        <li><a href="">Português</a></li>
+                        <li><a href="">Chinese</a></li>
+                        <li><a href="">Spanish</a></li>
+                        <li><a href="">Japanese</a></li>
+                        <li><a href="">French</a></li>
                      </ul>
                  </div>
               </div>
