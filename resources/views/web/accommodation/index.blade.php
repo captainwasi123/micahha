@@ -313,8 +313,8 @@
       <section class="pad-bot-20 pad-top-40">
          <div class="container">
             <div class="quote-sec quote-bg2">
-               <h4 class="alegraya col-white"> Discover what Micahha is all about </h4>
-               <p class="col-white alegraya"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.  </p>
+               <h4 class="alegraya col-white"> What Makes Micahha Rental <br>Property Perfect for YOU </h4>
+               <p class="col-white alegraya"> Selected Accommodations <br> Checks done <br> One Stop, Easy Steps, hassle free <br> Short term long term, your pick </p>
             </div>
          </div>
       </section>
@@ -400,23 +400,10 @@
       </section>
       <!-- Art Section Ends Here -->
       <!-- Textual Content Section Starts Here -->
-      <section>
-         <div class="container">
-            <div class="textual-content">
-               <h3 class="alegraya upper col-black"> Here’s what makes a rental property perfect for you </h3>
-               <h6 class="upper alegraya"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.  </h6>
-            </div>
-         </div>
-      </section>
+      
       <!-- Textual Content Section Ends Here -->
       <!-- Locations Section Starts Here -->
-      <section class="pad-top-40">
-         <div class="container">
-            <div class="sec-head2">
-               <h3 class="col-black alegraya upper"> We Got Home And Apartments For Rent In Popular Cities </h3>
-            </div>
-         </div>
-      </section>
+      
       <section class="bg-silver pad-top-20  m-b-30">
          <div class="container">
             <div class="locations-text">

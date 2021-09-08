@@ -56,7 +56,7 @@
 
 <section class="collectibles-sec">
    <div class="container">
-      <h3 class="col-white alegraya"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore  </h3>
+      <h3 class="col-white alegraya"> Comfort & Quality Range of Selections to Play Up or Down Your Place  </h3>
    </div>
 </section>
 <!-- Collectibles Banner Section Ends Here -->

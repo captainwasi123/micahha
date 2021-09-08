@@ -44,8 +44,8 @@
    <section class="pad-bot-20 pad-top-20">
       <div class="container">
          <div class="quote-sec">
-            <h4 class="alegraya col-white"> Lorem Ipsum </h4>
-            <p class="col-white"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices.  </p>
+            <h4 class="alegraya col-white"> Discover What Micahha is All About </h4>
+            <p class="col-white"> Micahha provides a seamless renting experience for landlords and tenants<br> Micahha provides a platform where talents and their global audience meet <br> Micahha provides our carefully picked homewares for your home  </p>
          </div>
       </div>
    </section>

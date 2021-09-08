@@ -20,8 +20,8 @@
       <img src="{{URL::to('/public/website')}}/images/white-curve3.png">
    </div>
    <div class="banner-search-form">
-      <h3> Stunning free images & royalty free stock </h3>
-      <p> Over 2.3 million+ high quality stock images, videos and music shared by our talented community. </p>
+      <h3> Stunning High-Quality Images Designed and <br> Created by Our Talented Community</h3>
+      
       <form>
          <i class="fa fa-search"> </i>
          <input type="text" placeholder="Search images" name="">
@@ -105,14 +105,14 @@
       <div class="row">
          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <div class="portrait-detail">
-               <p class="alegraya m-b-40"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra mae.  </p>
+               <p class="alegraya m-b-40"> It all starts when I was little, my aunt often took me and my siblings to various outdoor and indoor places to create and appreciate art. I’ve discovered diversity and so much possibilities on the pathway of growing up, from sketch, drawing, painting, art craft to cut and paste nature art, magazine collage, etc.   </p>
                <img src="{{URL::to('/public/website')}}/images/art-detail1.jpg">
             </div>
          </div>
          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <div class="portrait-detail">
                <img src="{{URL::to('/public/website')}}/images/art-detail2.jpg" class="m-b-40" style="margin-left:auto;display:block">
-               <p class="alegraya text-right"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra mae.  </p>
+               <p class="alegraya text-right"> Ah, what a blast of fun! With my memories and amateur experiences, hope you can enjoy as much as I do. Here, to paint a dream of yours.   </p>
             </div>
          </div>
       </div>
