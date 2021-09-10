@@ -37,7 +37,7 @@
 <!-- Banner Section Ends Here -->
 <section>
    <div class="container">
-      <a href="{{route('art.all')}}" class="custom-btn6"> Start Exploring Pictures </a>
+      <a href="{{route('art.all')}}" class="custom-btn6"> Start Exploring  </a>
    </div>
 </section>
 <!-- Images Section Starts Here -->
@@ -93,7 +93,7 @@
 <section class="pad-bot-40">
    <div class="container">
       <div class="art-quote text-center">
-         <p class="col-white alegraya">  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices  </p>
+         
          <a href="{{route('user.login')}}" class="custom-btn5"> LIST YOUR ART </a>
       </div>
    </div>
@@ -105,6 +105,7 @@
       <div class="row">
          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <div class="portrait-detail">
+               <h3 class="alegraya m-b-40"> Inspiration from Editor</h3>
                <p class="alegraya m-b-40"> It all starts when I was little, my aunt often took me and my siblings to various outdoor and indoor places to create and appreciate art. I’ve discovered diversity and so much possibilities on the pathway of growing up, from sketch, drawing, painting, art craft to cut and paste nature art, magazine collage, etc.   </p>
                <img src="{{URL::to('/public/website')}}/images/art-detail1.jpg">
             </div>

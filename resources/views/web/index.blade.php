@@ -1,4 +1,4 @@
-@extends('web.includes.master')
+@extends('web.includes.master') 
 @section('title', 'Home')
 @section('content')
 
@@ -18,7 +18,8 @@
    <section class="pad-top-40 pad-bot-40">
       <div class="container">
          <div class="sec-head2">
-            <h3 class="col-blue alegraya"> WHAT WE OFFER </h3>
+            <h3 class="col-blue alegraya"> Creative Solutions for Your Home </h3>
+            <h4 class="col-blue alegraya"> Fusion combination of advertising and shopping HOME website</h4>
          </div>
          <div class="row margin-1">
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
