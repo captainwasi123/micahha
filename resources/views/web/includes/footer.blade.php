@@ -57,9 +57,19 @@
                         </li>
                         <li>
                            <a href="{{URL::to('/lang/cn')}}">
-                              中国人
+                              简体中文
                               @if(session()->has('locate'))
                                  @if(session()->get('locate') == 'cn')
+                                    <span class="fa fa-check"></span>
+                                 @endif
+                              @endif
+                           </a>
+                        </li>
+                        <li>
+                           <a href="{{URL::to('/lang/tcn')}}">
+                              繁体中文
+                              @if(session()->has('locate'))
+                                 @if(session()->get('locate') == 'tcn')
                                     <span class="fa fa-check"></span>
                                  @endif
                               @endif
