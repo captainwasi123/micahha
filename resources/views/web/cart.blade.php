@@ -5,7 +5,7 @@
 <section class="pad-top-60 pad-bot-60">
    <div class="container" >
       <div class="sec-head3 m-b-20">
-         <h3 class="col-black"> Cart</h3>
+         <h3 class="col-black">{{ __('content.Cart') }} </h3>
       </div>
       <div class="row">
          <div class="col-12">
@@ -20,11 +20,11 @@
                <table>
                   <thead>
                      <th class="off-1"> . </th>
-                     <th> Image </th>
-                     <th> Products </th>
-                     <th> Price </th>
-                     <th> Quantity </th>
-                     <th> Total </th>
+                     <th>{{ __('content.Image') }} </th>
+                     <th>{{ __('content.Products') }} </th>
+                     <th>{{ __('content.Price') }} </th>
+                     <th>{{ __('content.Quantity') }} </th>
+                     <th>{{ __('content.Total') }} </th>
                   </thead>
                   <tbody id="cart_tray">
                      @php
@@ -54,12 +54,12 @@
                         @endforeach
                         @if(count(Session::get('cart')) == 0)
                            <tr>
-                              <td colspan="6">No Items Found.</td>
+                              <td colspan="6">{{ __('content.No Items Found.') }}</td>
                            </tr>
                         @endif
                      @else
                         <tr>
-                           <td colspan="6">No Items Found.</td>
+                           <td colspan="6">{{ __('content.No Items Found.') }}</td>
                         </tr>
                      @endif
                   </tbody>
@@ -75,24 +75,24 @@
                </div>
                <div class="col-md-5 col-lg-5 col-12">
                   <div class="cart-total">
-                     <h3> Cart Total </h3>
+                     <h3>{{ __('content.Cart Total') }} </h3>
                      <table>
                         <tbody>
                            <tr>
-                              <td> Sub Total </td>
+                              <td>{{ __('content.Sub Total') }} </td>
                               <td> $<span id="cart_subtotal">{{$subtotal}}</span> </td>
                            </tr>
                            <tr>
-                              <td> GST </td>
+                              <td>{{ __('content.GST') }} </td>
                               <td> {{$gst}}% </td>
                            </tr>
                            <tr>
-                              <th> Total </th>
+                              <th>{{ __('content.Total') }} </th>
                               <th> $<span id="cart_total">{{((($subtotal/100)*$gst)+$subtotal)}}</span> </th>
                            </tr>
                         </tbody>
                      </table>
-                     <a href="{{route('web.cart.checkout')}}" class="custom-btn6"> Process to Checkout </a>
+                     <a href="{{route('web.cart.checkout')}}" class="custom-btn6">{{ __('content.Process to Checkout') }} </a>
                   </div>
                </div>
             </div>

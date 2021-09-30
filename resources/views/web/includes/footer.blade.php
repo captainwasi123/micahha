@@ -4,26 +4,26 @@
          <div class="col-md-5 col-lg-5 col-sm-12 col-12">
             <div class="footer-form">
                <form>
-                  <input type="email" placeholder="Email"  name="">
-                  <input type="submit" value="Subscribe" name="">
+                  <input type="email" placeholder="{{ __('content.Email') }}"  name="">
+                  <input type="submit" value="{{ __('content.Subscribe') }}" name="">
                </form>
             </div>
          </div>
          <div class="col-md-7 col-lg-7 col-sm-12 col-12">
             <div class="footer-menu">
-               <a href="{{route('web.terms_condition')}}" class="col-black"> Terms & Conditions </a>
-               <a href="{{route('web.privacy_policy')}}" class="col-black"> Privacy </a>
-               <a href="{{route('web.portrait')}}" class="col-black"> Portrait Customization </a>
-               <a href="{{route('web.contact')}}" class="col-black"> Contact Us </a>
+               <a href="{{route('web.terms_condition')}}" class="col-black">{{ __('content.Terms & Conditions') }}</a>
+               <a href="{{route('web.privacy_policy')}}" class="col-black">{{ __('content.Privacy') }} </a>
+               <a href="{{route('web.portrait')}}" class="col-black">{{ __('content.Portrait Customization') }} </a>
+               <a href="{{route('web.contact')}}" class="col-black">{{ __('content.Contact Us') }} </a>
                <a href="javascript::void(0)" class="col-black" data-toggle="modal" data-target="#languages">
-                  <span class="fa fa-globe"></span> English 
+                  <span class="fa fa-globe"></span> {{ __('content.language') }} 
                </a>
             </div>
          </div>
       </div>
       <div class="row">
          <div class="col-md-12 col-lg-12 col-sm-12">
-            <p class="col-black copyrights-text"> © All Rights Reserved. Micahha  </p>
+            <p class="col-black copyrights-text">{{ __('content.© All Rights Reserved. Micahha') }} </p>
          </div>
       </div>
    </div>
@@ -44,15 +44,30 @@
                   <div class="col-12">
                      <ul class="languages_list">
                         <li>
-                           <a href="">
+                           <a href="{{URL::to('/lang/en')}}">
                               English
-                              <span class="fa fa-check"></span>
+                              @if(session()->has('locate'))
+                                 @if(session()->get('locate') == 'en')
+                                    <span class="fa fa-check"></span>
+                                 @endif
+                              @else
+                                 <span class="fa fa-check"></span>
+                              @endif
                            </a>
                         </li>
-                        <li><a href="">中国人</a></li>
-                        <li><a href="">Española</a></li>
+                        <li>
+                           <a href="{{URL::to('/lang/cn')}}">
+                              中国人
+                              @if(session()->has('locate'))
+                                 @if(session()->get('locate') == 'cn')
+                                    <span class="fa fa-check"></span>
+                                 @endif
+                              @endif
+                           </a>
+                        </li>
+                        <!-- <li><a href="">Española</a></li>
                         <li><a href="">日本</a></li>
-                        <li><a href="">français</a></li>
+                        <li><a href="">français</a></li> -->
                      </ul>
                  </div>
               </div>

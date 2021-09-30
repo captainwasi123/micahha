@@ -10,9 +10,9 @@
 @section('filter')
  <div class="accommodation-tags">
     <div class="container">
-       <a href="{{URL::to('/')}}"> Home </a>  
+       <a href="{{URL::to('/')}}">{{ __('content.Home') }} </a>  
        <i class="fa fa-angle-right"> </i>
-       <a href="{{route('accommodation')}}"> Accommodation </a>
+       <a href="{{route('accommodation')}}">{{ __('content.Accommodation') }} </a>
        <i class="fa fa-angle-right"> </i>
        <a href="javascript:void(0)"> {{ $list_data->title }} </a>
     </div>
@@ -42,7 +42,7 @@
                     <div class="image-slider arrows-2">
 
                      <div class="rel-1">
-                        <a class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span> Save </span> </a>
+                        <a class="wishlist-icon"> <i class="fa fa-heart"> </i>  <span>{{ __('content.Save') }} </span> </a>
                         <img src="{{URL::to('/public/storage/listing/main/')}}/{{$list_data->feature_img}}">
                      </div>
                      @foreach($list_data->galleryImages as $gallery_images)
@@ -57,7 +57,7 @@
                      <h5 class="alegraya col-black"> {{$list_data->type->name}} <span> {{'$'.number_format($list_data->price, 2)}} </span> </h5>
                   </div>
                   <div class="apartment-features">
-                     <h6 class="alegraya"> Amenities </h6>
+                     <h6 class="alegraya">{{ __('content.Amenities') }} </h6>
                      <div class="alegraya m-b-20">
                         @foreach($list_data->amenities as $amenities)
                         <span> <img src="{{URL::to('/public/website')}}/images/apartment-icon1.jpg"> {{$amenities->amenities->name}} </span>
@@ -65,12 +65,12 @@
                      </div>
                   </div>
                   <div class="apartment-actions">
-                     <a href="" class="custom-btn4"> Request a Tour </a>
-                     <a href="javascript: void(0)" class="custom-btn4" data-toggle="modal" data-target="#booK_now"> Book Now </a>
-                     <a href="javascript: void(0)" class="custom-btn4" data-toggle="modal" data-target="#enquiry"> Enquiry </a>
+                     <a href="" class="custom-btn4">{{ __('content.Request a Tour') }} </a>
+                     <a href="javascript: void(0)" class="custom-btn4" data-toggle="modal" data-target="#booK_now">{{ __('content.Book Now') }} </a>
+                     <a href="javascript: void(0)" class="custom-btn4" data-toggle="modal" data-target="#enquiry">{{ __('content.Enquiry') }} </a>
                   </div>
                   <div class="description-field">
-                     <h5> Description </h5>
+                     <h5>{{ __('content.Description') }} </h5>
                      <p>{{$list_data->description}}</p>
                   </div>
                </div>
@@ -82,7 +82,7 @@
       <section class="pad-top-40 pad-bot-20">
          <div class="container">
             <div class="sec-head2">
-               <h3 class="col-black alegraya"> Similar Properties You May Like </h3>
+               <h3 class="col-black alegraya">{{ __('content.Similar Properties You May Like') }} </h3>
             </div>
             <div class="row margin-1">
             @foreach($rendom_list as $list_val)
@@ -126,7 +126,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="booK_nowLabel">Book Now</h5>
+              <h5 class="modal-title" id="booK_nowLabel">{{ __('content.Book Now') }}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -143,27 +143,27 @@
                         <input type="hidden" name="user_id" value="{{@$user->id}}">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="">User Name</label>
+                                <label for="">{{ __('content.User Name') }}</label>
                                 <input type="text" class="form-control"name="user_name" value="{{@$user->first_name ." ". @$user->last_name}}" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="">Phone Number</label>
+                                <label for="">{{ __('content.Phone Number') }}</label>
                                 <input type="number" class="form-control" value="{{@$user->phone}}" name="ph_number" required>
                             </div>
                             {{-- <div class="form-group col-md-4">
-                                <label for="">No of People</label>
+                                <label for="">{{ __('content.No of People') }}</label>
                                 <input type="number" class="form-control" name="no_of_people" required>
                             </div> --}}
                             <div class="form-group col-md-12">
-                                <label for="">Check-In | Check-Out</label>
+                                <label for="">{{ __('content.Check-In | Check-Out') }}</label>
                                 <input type="text" class="form-control datepicker-here  digits"  name="check_id_date" required>
                             </div>
                             <div class="form-group col-md-12">
                                 <div class="row">
                                     <div class="col-md-6 col-lg-6 col-7">
                                        <div class="counting-name">
-                                          <h5> Adults </h5>
-                                          <p> Ages 18 or above </p>
+                                          <h5>{{ __('content.Adults') }} </h5>
+                                          <p>{{ __('content.Ages 18 or above') }} </p>
                                        </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-5">
@@ -175,8 +175,8 @@
                                  <div class="row">
                                     <div class="col-md-6 col-lg-6 col-7">
                                        <div class="counting-name">
-                                          <h5> Children </h5>
-                                          <p> Ages 13 or above </p>
+                                          <h5>{{ __('content.Children') }} </h5>
+                                          <p>{{ __('content.Ages 13 or above') }} </p>
                                        </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-5">
@@ -190,8 +190,8 @@
                                  <div class="row">
                                     <div class="col-md-6 col-lg-6 col-7">
                                        <div class="counting-name">
-                                          <h5> Infants </h5>
-                                          <p> Ages 13 or above </p>
+                                          <h5>{{ __('content.Infants') }} </h5>
+                                          <p>{{ __('content.Ages 13 or above') }} </p>
                                        </div>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-5">
@@ -202,7 +202,7 @@
                                  </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">{{ __('content.Submit') }}</button>
                     </form>
                        </div>
                     </div>
@@ -225,7 +225,7 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="enquiryLabel">Enquiry</h5>
+              <h5 class="modal-title" id="enquiryLabel">{{ __('content.Enquiry') }}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">×</span>
               </button>
@@ -240,15 +240,15 @@
                         <input type="hidden" name="user_id" value="{{ @$user->id }}">
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="">Name</label>
+                                <label for="">{{ __('content.Name') }}</label>
                                 <input type="text" class="form-control" name="name" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="">Email</label>
+                                <label for="">{{ __('content.Email') }}</label>
                                 <input type="email" class="form-control" name="email" required>
                             </div>
                             <div class="form-group col-md-12">
-                                <label for="">Subject</label>
+                                <label for="">{{ __('content.Subject') }}</label>
                                 <select class="form-control" name="enquiry_type_id" required>
                                     <option value="">Select...</option>
                                     @foreach ($enquiry_type as $item)
@@ -260,7 +260,7 @@
                                 <textarea class="form-control" name="details" id="" cols="30" rows="10" required></textarea>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">{{ __('content.Submit') }}</button>
                     </form>
                        </div>
                     </div>

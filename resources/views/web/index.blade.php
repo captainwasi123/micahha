@@ -18,8 +18,8 @@
    <section class="pad-top-40 pad-bot-40">
       <div class="container">
          <div class="sec-head2">
-            <h3 class="col-blue alegraya"> Creative Solutions for Your Home </h3>
-            <h4 class="col-blue alegraya"> Fusion combination of advertising and shopping HOME website</h4>
+            <h3 class="col-blue alegraya"> {{ __('content.Creative Solutions for Your Home') }} </h3>
+            <h4 class="col-blue alegraya"> {{ __('content.Fusion combination of advertising and shopping HOME website') }}</h4>
          </div>
          <div class="row margin-1">
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
@@ -45,8 +45,8 @@
    <section class="pad-bot-20 pad-top-20">
       <div class="container">
          <div class="quote-sec">
-            <h4 class="alegraya col-white"> Discover What Micahha is All About </h4>
-            <p class="col-white"> Micahha provides a seamless renting experience for landlords and tenants<br> Micahha provides a platform where talents and their global audience meet <br> Micahha provides our carefully picked homewares for your home  </p>
+            <h4 class="alegraya col-white">{{ __('content.Discover What Micahha is All About') }}  </h4>
+            <p class="col-white">{{ __('content.Micahha provides a seamless renting experience for landlords and tenants') }} <br> {{ __('content.Micahha provides a platform where talents and their global audience meet') }} <br>{{ __('content.Micahha provides our carefully picked homewares for your home') }} </p>
          </div>
       </div>
    </section>
@@ -55,7 +55,7 @@
    <section class="pad-top-40 pad-bot-40">
       <div class="container">
          <div class="sec-head2">
-            <h3 class="col-blue alegraya"> ACCOMODATION </h3>
+            <h3 class="col-blue alegraya">{{ __('content.ACCOMODATION') }}</h3>
          </div>
          <div class="row margin-1">
             @php $i = 1; @endphp
@@ -104,7 +104,7 @@
    <section class="pad-bot-40">
       <div class="container">
          <div class="sec-head2">
-            <h3 class="col-blue alegraya"> ART </h3>
+            <h3 class="col-blue alegraya">{{ __('content.ART') }} </h3>
          </div>
          <div class="row margin-1">
             @php $c=1; $r=1; @endphp
@@ -156,7 +156,7 @@
    <section class="pad-bot-40">
       <div class="container">
          <div class="sec-head2">
-            <h3 class="col-blue alegraya"> COLLECTIBLES </h3>
+            <h3 class="col-blue alegraya">{{ __('content.COLLECTIBLES') }} </h3>
          </div>
          <div class="row margin-1">
             @php $r=1; @endphp

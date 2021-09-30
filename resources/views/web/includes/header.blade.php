@@ -50,13 +50,13 @@
    <div class="header-menu">
       <div class="container">
          <div class="menu-item">
-            <a href="{{route('accommodation')}}"> Accomodation </a>
+            <a href="{{route('accommodation')}}">{{ __('content.Accomodation') }} </a>
          </div>
          <div class="menu-item">
-            <a href="{{route('art')}}"> Art </a>
+            <a href="{{route('art')}}">{{ __('content.Art') }}</a>
          </div>
          <div class="menu-item">
-            <a href="{{route('collectibles')}}"> Collectibles </a>
+            <a href="{{route('collectibles')}}">{{ __('content.Collectibles') }}</a>
          </div>
       </div>
    </div>

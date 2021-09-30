@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Website
-Route::namespace('web')->group(function(){
+Route::namespace('web')->middleware('changeLang')->group(function(){
 
 	//User Authentication
 		Route::get('/login', 'authController@login')->name('user.login');
@@ -41,7 +41,10 @@ Route::namespace('web')->group(function(){
 				Route::get('/', 'checkoutController@index')->name('web.cart.checkout');
 				Route::post('/', 'checkoutController@checkout');
 			});
-		});	
+		});
+
+		//Languages
+			Route::get('lang/{lang}', 'webController@changeLang');
 
 		//Accommodation
 			Route::prefix('accommodation')->group(function(){

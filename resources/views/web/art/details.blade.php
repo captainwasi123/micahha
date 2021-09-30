@@ -10,7 +10,7 @@
 @section('filter')
 <div class="accommodation-tags">
    <div class="container">
-      <a href="{{route('art')}}"> Art </a>  
+      <a href="{{route('art')}}">{{ __('content.Art') }} </a>  
       <i class="fa fa-angle-right"> </i>
       <a href="{{URL::to('/art')}}/{{$data->cat->name}}"> {{$data->cat->name}} </a>
       <i class="fa fa-angle-right"> </i>
@@ -39,8 +39,8 @@
                <h5 class="alegraya col-black">  <span> {{'$'.number_format($data->price, 2)}} </span> </h5>
             </div>
             <div class="description-field" >
-               <h5> Description: </h5>
-               <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+               <h5>{{ __('content.Description:') }} </h5>
+               <p>{{ __('content.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod') }}
                   {{$data->description}}
                </p>
             </div>
@@ -48,7 +48,7 @@
                <div id="cart_load">
                   
                </div>
-               <a href="javascript:void(0)" class="custom-btn6 addtocartArt" data-id="{{base64_encode($data->id)}}"> Add to Cart </a>
+               <a href="javascript:void(0)" class="custom-btn6 addtocartArt" data-id="{{base64_encode($data->id)}}">{{ __('content.Add to Cart') }} </a>
             </div>
          </div>
       </div>
@@ -59,7 +59,7 @@
 <section class="pad-top-40 pad-bot-20">
    <div class="container">
       <div class="sec-head2">
-         <h3 class="col-black alegraya"> Similar Arts You May Like </h3>
+         <h3 class="col-black alegraya">{{ __('content.Similar Arts You May Like') }} </h3>
       </div>
       <div class="row margin-1">
          @foreach($similar as $val)
@@ -74,12 +74,12 @@
                         <label>
                            <a href="{{URL::to('/art')}}/{{$val->cat->name}}" class="art-btn1"> 
                               <img src="{{URL::to('/public/website')}}/images/similar-icon.png"> 
-                              <span> Similar </span> 
+                              <span>{{ __('content.Similar') }} </span> 
                            </a>
                         </label>
                         <label class="wishlist-icon"> 
                            <i class="fa fa-heart"> </i>  
-                           <span> Save </span> 
+                           <span>{{ __('content.Save') }} </span> 
                         </label>
                         </div>
                         <a href="{{URL::to('/art/details/'.base64_encode($val->id).'/'.str_replace(' ', '-', $val->title))}}">

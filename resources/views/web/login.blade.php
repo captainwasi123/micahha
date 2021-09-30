@@ -12,7 +12,7 @@
            </div>
            <div class="col-md-6 col-lg-6 col-12 col-sm-12">
               <div class="login-form">
-                 <h3> Login </h3>
+                 <h3>{{ __('content.Login') }} </h3>
                   @if(session()->has('success'))
                       <div class="alert alert-success">
                           {{ session()->get('success') }}
@@ -26,25 +26,25 @@
                  <form method="post">
                      @csrf
                     <div class="form-field1">
-                       <p> Email Address </p>
+                       <p>{{ __('content.Email Address') }} </p>
                        <input type="email" name="email" required="">
                     </div>
                     <div class="form-field1">
-                       <p> Password </p>
+                       <p>{{ __('content.Password') }} </p>
                        <input type="password" name="password" required="">
-                       <a href="" class="reset-password">  Reset Password </a>
+                       <a href="" class="reset-password">{{ __('content.Reset Password') }} </a>
                     </div>
                     <div class="form-field1 no-margin">
-                       <input type="submit" class="submit-btn1" value="Login" name="" style="margin-top: -25px !important;">	
+                       <input type="submit" class="submit-btn1" value="{{ __('content.Login') }}" name="" style="margin-top: -25px !important;">	
                     </div>
                  </form>
               </div>
               <div class="login-form">
-                 <h3> Create An Account </h3>
-                 <p class="para-1"> Receive exclusive access to sale previews. </p>
-                 <p class="para-1"> Enjoy special offers throughout the year. </p>
-                 <p class="para-1"> Easy order management and quick checkout. </p>
-                 <a href="{{route('user.register')}}" class="custom-btn1 m-t-20"> Create an account </a>
+                 <h3>{{ __('content.Create An Account') }} </h3>
+                 <p class="para-1">{{ __('content.Receive exclusive access to sale previews.') }} </p>
+                 <p class="para-1">{{ __('content.Enjoy special offers throughout the year.') }}  </p>
+                 <p class="para-1">{{ __('content.Easy order management and quick checkout.') }} </p>
+                 <a href="{{route('user.register')}}" class="custom-btn1 m-t-20">{{ __('content.Create an account') }} </a>
               </div>
            </div>
         </div>

@@ -11,7 +11,7 @@
 <section class="pad-top-40 pad-bot-20">
    <div class="container">
       <div class="sec-head2">
-         <h3 class="col-blue alegraya"> Explore The World Of {{isset($is_cat) ? $is_cat : 'Arts'}}</h3>
+         <h3 class="col-blue alegraya">{{ __('content.Explore The World Of') }} {{isset($is_cat) ? $is_cat : 'Arts'}}</h3>
       </div>
       <div class="row margin-1">
          @php $c=1; $r=1; @endphp

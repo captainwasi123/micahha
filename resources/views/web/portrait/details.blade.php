@@ -10,7 +10,7 @@
 @section('filter')
 <div class="accommodation-tags">
    <div class="container">
-      <a href="{{route('web.portrait')}}"> Customization </a>  
+      <a href="{{route('web.portrait')}}">{{ __('content.Customization') }} </a>  
       <i class="fa fa-angle-right"> </i>
       <a href="{{route('web.portrait')}}/{{$data->portrait_type->name}}"> {{$data->portrait_type->name}} </a>
       <i class="fa fa-angle-right"> </i>
@@ -40,7 +40,7 @@
                <h5 class="alegraya col-black">   <span> {{'$'.number_format($data->price, 2)}} </span> </h5>
             </div>
             <div class="description-field" >
-               <h5> Description </h5>
+               <h5>{{ __('content.Description') }} </h5>
                <p>
                   {{$data->description}}
                </p>
@@ -53,7 +53,7 @@
                    </div>
                @endif
             
-               <a   data-toggle="modal" data-target="#exampleModal" class="custom-btn6"> Order Now </a>
+               <a   data-toggle="modal" data-target="#exampleModal" class="custom-btn6">{{ __('content.Order Now') }} </a>
             </div>
          </div>
       </div>
@@ -64,7 +64,7 @@
 <section class="pad-top-40 pad-bot-20">
    <div class="container">
       <div class="sec-head2">
-         <h3 class="col-black alegraya"> Similar Customized Portrait You May Like </h3>
+         <h3 class="col-black alegraya">{{ __('content.Similar Customized Portrait You May Like') }} </h3>
       </div>
       <div class="row margin-1">
          @foreach($similar as $val)

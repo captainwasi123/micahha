@@ -8,6 +8,7 @@ use App\Models\accommodation\listing;
 use App\Models\art\products;
 use App\Models\collectibles\products as Cproducts;
 use App\Models\saleSetting;
+use App;
 
 class webController extends Controller
 {
@@ -35,5 +36,12 @@ class webController extends Controller
         $saleSetting = saleSetting::first();
 
         return view('web.cart', ['saleSetting' => $saleSetting]);
+    }
+
+    function changeLang($lang){
+        App::setlocale($lang);
+        session()->put('locate', $lang);
+
+        return redirect()->back();
     }
 }

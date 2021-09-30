@@ -20,14 +20,14 @@
       <img src="{{URL::to('/public/website')}}/images/white-curve3.png">
    </div>
    <div class="banner-search-form">
-      <h3> Stunning High-Quality Images Designed and <br> Created by Our Talented Community</h3>
+      <h3>{{ __('content.Stunning High-Quality Images Designed and') }} <br>{{ __('content.Created by Our Talented Community') }} </h3>
       
       <form>
          <i class="fa fa-search"> </i>
-         <input type="text" placeholder="Search images" name="">
+         <input type="text" placeholder="{{ __('content.Search images') }}" name="">
       </form>
       <h6> 
-         Popular Images: 
+         {{ __('content.Popular Images:') }} 
          @foreach($cat as $val)
             <a href="{{URL::to('/art')}}/{{$val->name}}"> {{$val->name}}, </a>&nbsp;&nbsp;
          @endforeach
@@ -37,7 +37,7 @@
 <!-- Banner Section Ends Here -->
 <section>
    <div class="container">
-      <a href="{{route('art.all')}}" class="custom-btn6"> Start Exploring  </a>
+      <a href="{{route('art.all')}}" class="custom-btn6">{{ __('content.Start Exploring') }} </a>
    </div>
 </section>
 <!-- Images Section Starts Here -->
@@ -94,7 +94,7 @@
    <div class="container">
       <div class="art-quote text-center">
          
-         <a href="{{route('user.login')}}" class="custom-btn5"> LIST YOUR ART </a>
+         <a href="{{route('user.login')}}" class="custom-btn5">{{ __('content.LIST YOUR ART') }} </a>
       </div>
    </div>
 </section>
@@ -105,15 +105,15 @@
       <div class="row">
          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <div class="portrait-detail">
-               <h3 class="alegraya m-b-40"> Inspiration from Editor</h3>
-               <p class="alegraya m-b-40"> It all starts when I was little, my aunt often took me and my siblings to various outdoor and indoor places to create and appreciate art. I’ve discovered diversity and so much possibilities on the pathway of growing up, from sketch, drawing, painting, art craft to cut and paste nature art, magazine collage, etc.   </p>
+               <h3 class="alegraya m-b-40">{{ __('content.Inspiration from Editor') }} </h3>
+               <p class="alegraya m-b-40">{{ __('content.It all starts when I was little, my aunt often took me and my siblings to various outdoor and indoor places to create and appreciate art. I’ve discovered diversity and so much possibilities on the pathway of growing up, from sketch, drawing, painting, art craft to cut and paste nature art, magazine collage, etc.') }} </p>
                <img src="{{URL::to('/public/website')}}/images/art-detail1.jpg">
             </div>
          </div>
          <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <div class="portrait-detail">
                <img src="{{URL::to('/public/website')}}/images/art-detail2.jpg" class="m-b-40" style="margin-left:auto;display:block">
-               <p class="alegraya text-right"> Ah, what a blast of fun! With my memories and amateur experiences, hope you can enjoy as much as I do. Here, to paint a dream of yours.   </p>
+               <p class="alegraya text-right">{{ __('content.Ah, what a blast of fun! With my memories and amateur experiences, hope you can enjoy as much as I do. Here, to paint a dream of yours.') }} </p>
             </div>
          </div>
       </div>

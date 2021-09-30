@@ -10,7 +10,7 @@
 @section('filter')
 <div class="accommodation-tags">
    <div class="container">
-      <a href="{{route('collectibles')}}"> Collectibles </a>  
+      <a href="{{route('collectibles')}}">{{ __('content.Collectibles') }} </a>  
       <i class="fa fa-angle-right"> </i>
       <a href="{{route('collectibles').'/'.$data->category->name}}"> {{$data->category->name}} </a>
       <i class="fa fa-angle-right"> </i>
@@ -48,7 +48,7 @@
                <h5 class="alegraya col-black">   <span> ${{number_format($data->price, 1)}} </span> </h5>
             </div>
             <div class="description-field"  >
-               <h5> Description </h5>
+               <h5>{{ __('content.Description') }} </h5>
                <p>
                   {{$data->description}}
                </p>
@@ -57,7 +57,7 @@
                <div id="cart_load">
                   
                </div>
-               <a href="javascript:void(0)" data-id="{{base64_encode($data->id)}}" class="custom-btn6 addtocartColl"> Add to Cart </a>
+               <a href="javascript:void(0)" data-id="{{base64_encode($data->id)}}" class="custom-btn6 addtocartColl">{{ __('content.Add to Cart') }} </a>
             </div>
          </div>
       </div>
@@ -68,7 +68,7 @@
 <section class="pad-top-40 pad-bot-20">
    <div class="container">
       <div class="sec-head2">
-         <h3 class="col-black alegraya"> Similar Collectibles You May Like </h3>
+         <h3 class="col-black alegraya">{{ __('content.Similar Collectibles You May Like') }} </h3>
       </div>
       <div class="row margin-1">
          @foreach($similar as $val)
@@ -83,7 +83,7 @@
                         <div class="art-item-actions">
                            @if(Auth::id() && count($val->wishlist) == 0)
                               <label class="wishlist-icon white-heart collAddWishlist" data-id="{{base64_encode($val->id)}}"> 
-                                 <i class="fa fa-heart"> </i>  <span> Save </span> 
+                                 <i class="fa fa-heart"> </i>  <span>{{ __('content.Save') }} </span> 
                               </label>
                            @endif
                         </div>

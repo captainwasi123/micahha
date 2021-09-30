@@ -13,7 +13,7 @@
    <div class="container">
       <div class="btn-group">
          <button class="btn btn-lg" >
-         <img src="{{URL::to('/public/website')}}/images/filter-icon.jpg"> Filters
+         <img src="{{URL::to('/public/website')}}/images/filter-icon.jpg">{{ __('content.Filters') }} 
          </button>
          <div class="dropdown-menu">
             <div class="filters-wrapper">
@@ -43,7 +43,7 @@
       </div>
       <div class="btn-group">
          <button class="btn btn-lg">
-         Rooms 
+         {{ __('content.Rooms') }}  
          </button>
          <div class="dropdown-menu">
             <div class="filters-wrapper">
@@ -76,7 +76,7 @@
       </div>
       <div class="btn-group">
          <button class="btn btn-lg">
-         Price  
+         {{ __('content.Price') }}  
          </button>
          <div class="dropdown-menu">
             <div class="filters-wrapper">
@@ -107,7 +107,7 @@
       </div>
       <div class="btn-group">
          <button class="btn btn-lg dropdown-toggle">
-         Property Types  
+         {{ __('content.Property Types') }}  
          </button>
          <div class="dropdown-menu">
             <div class="filters-wrapper">
@@ -160,7 +160,7 @@
       </div>
       <div class="btn-group">
          <button class="btn btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Check In/Out  
+         {{ __('content.Check In/Out') }}  
          </button>
          <div class="dropdown-menu keep-open">
             <div class="filters-wrapper">
@@ -191,7 +191,7 @@
       </div>
       <div class="btn-group">
          <button class="btn btn-lg">
-         Guest  
+         {{ __('content.Guest') }}  
          </button>
          <div class="dropdown-menu">
             <div class="filters-wrapper">
@@ -267,7 +267,7 @@
       <section class="pad-top-40 pad-bot-20">
          <div class="container">
             <div class="sec-head2">
-               <h3 class="col-blue alegraya"> Start Exploring </h3>
+               <h3 class="col-blue alegraya">{{ __('content.Start Exploring') }}</h3>
             </div>
              <div class="row margin-1">
                
@@ -313,8 +313,8 @@
       <section class="pad-bot-20 pad-top-40">
          <div class="container">
             <div class="quote-sec quote-bg2">
-               <h4 class="alegraya col-white"> What Makes Micahha Rental <br>Property Perfect for YOU </h4>
-               <p class="col-white alegraya"> Selected Accommodations <br> Checks done <br> One Stop, Easy Steps, hassle free <br> Short term long term, your pick </p>
+               <h4 class="alegraya col-white">{{ __('content.What Makes Micahha Rental') }} <br>{{ __('content.Property Perfect for YOU') }} </h4>
+               <p class="col-white alegraya">{{ __('content.Selected Accommodations') }} <br>{{ __('content.Checks done') }} <br>{{ __('content.One Stop, Easy Steps, hassle free') }} <br>{{ __('content.Short term long term, your pick') }} </p>
             </div>
          </div>
       </section>
@@ -323,7 +323,7 @@
       <section class="pad-top-40 pad-bot-40">
          <div class="container">
             <div class="sec-head2">
-               <h3 class="col-black alegraya upper"> Get inspired </h3>
+               <h3 class="col-black alegraya upper">{{ __('content.Get inspired') }} </h3>
             </div>
             <div class="row margin-1">
             <?php  for($i=0; $i < count($amenities_data) ; $i++) { 
@@ -355,10 +355,9 @@
       <section class="pad-top-20 pad-bot-40">
          <div class="container">
             <div class="list-property">
-               <h3 class="col-black alegraya"> List Your Property On Micahha & 
-                  Open The Door To Rental Income  
+               <h3 class="col-black alegraya">{{ __('content.List Your Property On Micahha & Open The Door To Rental Income') }}   
                </h3>
-               <a href="{{route('user.login')}}" class="custom-btn3"> LIST YOUR PROPERTY </a>
+               <a href="{{route('user.login')}}" class="custom-btn3">{{ __('content.LIST YOUR PROPERTY') }} </a>
             </div>
          </div>
       </section>
@@ -367,7 +366,7 @@
       <section class="pad-bot-40">
          <div class="container">
          <div class="sec-head2">
-         <h3 class="col-blue alegraya"> Featured Properties </h3>
+         <h3 class="col-blue alegraya">{{ __('content.Featured Properties') }}  </h3>
          </div>
          <div class="row margin-1">
          @foreach($list_data as $list_val)    
@@ -393,7 +392,7 @@
          </div>
          <div class="row">
          <div class="col-lg-12 text-center">
-         <a href="{{route('feature.list')}}" class="custom-btn6"> VIEW MORE </a>
+         <a href="{{route('feature.list')}}" class="custom-btn6">{{ __('content.VIEW MORE') }}</a>
          </div>
          </div>
      </div>

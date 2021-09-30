@@ -26,7 +26,7 @@
 <section class="pad-top-40 pad-bot-20">
    <div class="container">
       <div class="sec-head2">
-         <h3 class="col-blue alegraya"> {{empty($portraitType) ? 'Digital' : $portraitType}} Portrait Customization </h3>
+         <h3 class="col-blue alegraya"> {{empty($portraitType) ? 'Digital' : $portraitType}} {{ __('content.Portrait Customization') }} </h3>
       </div>
       <div class="row margin-1">
          @php $c=1; $r=1; @endphp

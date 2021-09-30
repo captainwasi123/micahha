@@ -13,17 +13,17 @@
       <!-- New Arrivals Filter Starts Here -->
       <div class="btn-group">
          <button class="btn btn-lg">
-         New Arrivals  
+         {{ __('content.New Arrivals') }}  
          </button>
          <div class="dropdown-menu dropdown-small">
             <div class="filters-wrapper">
                <div class="filter-box no-border">
                   <div class="anchor-filter">
-                     <a href=""> Seating </a>
-                     <a href=""> Table Storage </a>
-                     <a href=""> Lighting </a>
-                     <a href=""> Home Decor </a>
-                     <a href=""> Rugs </a>
+                     <a href=""> {{ __('content.Seating') }} </a>
+                     <a href=""> {{ __('content.Table Storage') }} </a>
+                     <a href=""> {{ __('content.Lighting') }} </a>
+                     <a href=""> {{ __('content.Home Decor') }} </a>
+                     <a href=""> {{ __('content.Rugs') }} </a>
                   </div>
                </div>
             </div>
@@ -56,7 +56,7 @@
 
 <section class="collectibles-sec">
    <div class="container">
-      <h3 class="col-white alegraya"> Comfort & Quality Range of Selections to Play Up or Down Your Place  </h3>
+      <h3 class="col-white alegraya">{{ __('content.Comfort & Quality Range of Selections to Play Up or Down Your Place') }} </h3>
    </div>
 </section>
 <!-- Collectibles Banner Section Ends Here -->
