@@ -75,6 +75,36 @@
                               @endif
                            </a>
                         </li>
+                        <!-- <li>
+                           <a href="{{URL::to('/lang/es')}}">
+                              española
+                              @if(session()->has('locate'))
+                                 @if(session()->get('locate') == 'es')
+                                    <span class="fa fa-check"></span>
+                                 @endif
+                              @endif
+                           </a>
+                        </li>
+                        <li>
+                           <a href="{{URL::to('/lang/fr')}}">
+                              française
+                              @if(session()->has('locate'))
+                                 @if(session()->get('locate') == 'fr')
+                                    <span class="fa fa-check"></span>
+                                 @endif
+                              @endif
+                           </a>
+                        </li>
+                        <li>
+                           <a href="{{URL::to('/lang/jp')}}">
+                              日本
+                              @if(session()->has('locate'))
+                                 @if(session()->get('locate') == 'jp')
+                                    <span class="fa fa-check"></span>
+                                 @endif
+                              @endif
+                           </a>
+                        </li> -->
                         <!-- <li><a href="">Española</a></li>
                         <li><a href="">日本</a></li>
                         <li><a href="">français</a></li> -->
