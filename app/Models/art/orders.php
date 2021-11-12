@@ -25,21 +25,12 @@ class orders extends Model
         $o->price = $product['price'];
         $o->gst = ($product['price']/100)*$sales->gst;
         $o->total_price = (($product['price']/100)*$sales->gst)+$product['price'];
-        $o->status = '1';
+        $o->status = '9';
         $o->save();
 
-        $w = wallet::where('user_id', $product['artist_id'])->first();
-        if(empty($w->id)){
-            $wn = new wallet;
-            $wn->user_id = $product['artist_id'];
-            $wn->balance = ($product['price']-(($product['price']/100)*$sales->commission));
-            $wn->save();
-        }else{
-            $w->balance = $w->balance+($product['price']-(($product['price']/100)*$sales->commission));
-            $w->save();
-        }
+       
 
-        return $o->id;
+        return $o->id."|".$o->total_price;
     }
 
 

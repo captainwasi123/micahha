@@ -27,7 +27,7 @@ Route::namespace('web')->middleware('changeLang')->group(function(){
 		Route::post('/register', 'authController@registerSubmit');
 
 	//Web Pages
-		Route::get('/', 'webController@index');
+		Route::get('/', 'webController@index')->name('home');
 		Route::get('contact', 'webController@contact')->name('web.contact');
 		Route::get('terms-condition', 'webController@terms')->name('web.terms_condition');
 		Route::get('pivacy-policy', 'webController@policy')->name('web.privacy_policy');
@@ -40,6 +40,7 @@ Route::namespace('web')->middleware('changeLang')->group(function(){
 			Route::prefix('checkout')->middleware('userAuth')->group(function(){
 				Route::get('/', 'checkoutController@index')->name('web.cart.checkout');
 				Route::post('/', 'checkoutController@checkout');
+                Route::get('/order/confirmation/{id}', 'checkoutController@confirmOrder');
 			});
 		});
 
@@ -124,10 +125,21 @@ Route::namespace('web')->middleware('changeLang')->group(function(){
 
 				Route::prefix('checkout')->middleware('userAuth')->group(function(){
 					Route::post('/', 'portraitController@checkout')->name('web.portrait.checkout');
+					Route::get('/order/confirmation/{id}', 'portraitController@confirmOrder');
+
 				});
         	});
+            
+           
+            
+            
 });
+ // payments
+Route::prefix('payments')->namespace('payments')->group(function(){
 
+    Route::post('stripe', 'stripeController@paymentCharge')->name('payment.stripe.charge');
+
+});
 
 
 
@@ -480,7 +492,7 @@ Route::namespace('web')->middleware('changeLang')->group(function(){
 
 				Route::get('add', 'productController@add_product')->name('artist.product.add');
 				Route::post('add', 'productController@insert_product')->name('artist.product.insert');
-				
+
 				Route::get('delete/{id}', 'productController@delete_product')->name('artist.product.delete');
 
 				Route::get('edit/{id}', 'productController@edit_product')->name('artist.product.edit');

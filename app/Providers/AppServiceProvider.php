@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use Stripe\Stripe;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 
@@ -24,6 +24,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Stripe::setApiKey(env('STRIPE_PRIVATE_KEY'));
     }
 }

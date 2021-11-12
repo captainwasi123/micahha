@@ -22,14 +22,17 @@ class orders extends Model
         $o->total_amount = (($data['total']/100)*$gst)+$data['total'];
         $o->seller_id = $data['seller'];
         $o->buyer_id = Auth::id();
-        $o->status = '1';
+        $o->status = '9';
         $o->save();
 
         $order_id = $o->id;
+        $totalamount= $o->total_amount;
 
         foreach($data['item'] as $val){
             orderDetail::addDetail($order_id, $val);
         }
+        
+        return  json_encode(['id'=> $order_id, 'amount' => $totalamount]);
     }
 
     public function details(){

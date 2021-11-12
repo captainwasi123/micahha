@@ -10,6 +10,7 @@ use App\Models\coupons;
 use App\Models\collectibles\products;
 use App\Models\art\products as ArtProducts;
 use App\Models\invoice\masterInvoice;
+use App\Models\invoice\orders;
 use Auth;
 
 class checkoutController extends Controller
@@ -55,11 +56,22 @@ class checkoutController extends Controller
                 $data['product'][$val['seller']]['seller'] = (isset($data['product'][$val['seller']]['seller']) ? $val['seller'] : 0);
             }
         }
-
-        //dd($data);
+      
+        // dd($data);
         $invoice_id = masterInvoice::addInvoice($data, $delivery, $discount);
-        session()->flush('cart');
+        
+         
 
-        return redirect(route('web.cart'))->with('success', 'Order successful. Order#'.$invoice_id);
+      return view('web.payments.stripe', ['id' => $invoice_id, 'amount' => $invoice_id, 'type'=>1]);
     }
+
+    function confirmOrder($id){
+        $o = masterInvoice::find($id);
+        $o->status = '1';
+        $o->save();
+        session()->flush('cart');
+        return redirect(route('home'));
+    }
+
+
 }

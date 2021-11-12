@@ -44,10 +44,14 @@ class masterInvoice extends Model
                     $w->save();
                 }
             }
-            orders::addOrder($id, $data['gst'], $val);
+
+           orders::addOrder($id, $data['gst'], $val);
+           
+          
         }
 
         return $id;
+      
     }
 
 

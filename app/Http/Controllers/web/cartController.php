@@ -18,7 +18,7 @@ class cartController extends Controller
                 return response()->json(['status' => 'error', 'message' => 'Product not found.']);
             }
             $cart = session()->get('cart');
-            
+
             if(!$cart) {
                 $cart = [
                     '0'.$id => [
@@ -28,18 +28,18 @@ class cartController extends Controller
                         "by"    => 'Micahha',
                         "seller" => 0,
                         "quantity" => 1,
-                        "price" => $product->price,
+                        "price" => $product->price, 
                         "photo" => 'products/feature/'.$product->feature_img
                     ]
                 ];
-            
+
                 session()->put('cart', $cart);
-                
+
                 return response()->json(['status' => 'success', 'message' => 'Product added.', 'item' => '1']);
             }
-            
+
             if(isset($cart['0'.$id])) {
-                
+
                 $cart['0'.$id]['quantity']++;
                 session()->put('cart', $cart);
 
@@ -58,7 +58,7 @@ class cartController extends Controller
             ];
 
             session()->put('cart', $cart);
-            
+
             return response()->json(['status' => 'success', 'message' => 'Product added.', 'item' => '1']);
 
         }
@@ -71,7 +71,7 @@ class cartController extends Controller
                 return response()->json(['status' => 'error', 'message' => 'Product not found.']);
             }
             $cart = session()->get('cart');
-            
+
             if(!$cart) {
                 $cart = [
                     '1'.$id => [
@@ -85,14 +85,14 @@ class cartController extends Controller
                         "photo" => 'art/main/'.$product->image
                     ]
                 ];
-            
+
                 session()->put('cart', $cart);
-                
+
                 return response()->json(['status' => 'success', 'message' => 'Product added.', 'item' => '1']);
             }
-            
+
             if(isset($cart['1'.$id])) {
-                
+
                 $cart['1'.$id]['quantity']++;
                 session()->put('cart', $cart);
 
@@ -111,7 +111,7 @@ class cartController extends Controller
             ];
 
             session()->put('cart', $cart);
-            
+
             return response()->json(['status' => 'success', 'message' => 'Product added.', 'item' => '1']);
 
         }
@@ -121,7 +121,7 @@ class cartController extends Controller
         Session::forget('cart.' . $id);
 
         return 'success';
-    }  
+    }
 
 
     function plusMinusItem($type,$method, $id){
@@ -135,5 +135,5 @@ class cartController extends Controller
             session()->put('cart', $cart);
             return response()->json(['status' => 'success']);
         }
-    }  
+    }
 }
