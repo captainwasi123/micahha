@@ -30,7 +30,7 @@
             <div class="image-zoomer">
                <div class="zoom-area">
                   <div class="large"></div>
-                  <img class="small" src="{{URL::to('/public/storage/art/main/')}}/{{$data->image}}"  />
+                  <img class="small" src="{{URL::to('/public/storage/art/main/thumbnail/')}}/{{$data->image}}"  />
                </div>
             </div>
          </div>
@@ -67,7 +67,7 @@
                <div class="art-multiple-box arrows-1">
                    <div class="art-item-box">
                      <div class="art-item-image">
-                        <img src="{{URL::to('/public/storage/art/main/')}}/{{$val->image}}">
+                        <img src="{{URL::to('/public/storage/art/main/thumbnail/')}}/{{$val->image}}">
                      </div>
                      <div class="art-item-hover">
                         <div class="art-item-actions">

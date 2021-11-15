@@ -9,7 +9,7 @@
             <div class="card-body">
                 <center class="m-t-0 text-left">
                     <a class="image-popup-vertical-fit" href="{{URL::to('/public/storage/listing/main/'.$data->feature_img)}}" title="{{$data->title}}">
-                        <img src="{{URL::to('/public/storage/art/main/'.$data->image)}}" alt="image" class="img-responsive" /> 
+                        <img src="{{URL::to('/public/storage/art/main/thumbnail/'.$data->image)}}" alt="image" class="img-responsive" /> 
                     </a>
                     <h3 class="m-t-10 m-b-0">{{$data->title}}</h3>
                     <small class="text-muted db">

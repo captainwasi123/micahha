@@ -29,7 +29,7 @@
                             <span style="font-size: 11px;" class="mb-2">Please Upload high resolution image of your art.</span>
                             <div class="form-group mb-0 mt-3">
                                 <img id="profileImage" src="{{URL::to('/public/user/')}}/img_placeholder.jpg">
-                                <input type="file" class="form-control" name="main_img" id="imageUpload" style="display: none;" accept=".jpeg , .jpg" required>
+                                <input type="file" class="form-control" name="main_img" id="imageUpload" style="display: none;" accept=".jpeg ,.png, .jpg" required>
                             </div>
                         </div>
                 		<div class="form-group col-md-8 mt-3">
@@ -101,7 +101,7 @@ $(function(){
     var fileInput = document.getElementById('imageUpload'); 
     var filePath = fileInput.value; 
     var allowedExtensions =  
-                    /(jpeg|jpg)$/i; 
+                    /(jpeg|png|jpg)$/i; 
                
             if (!allowedExtensions.exec(filePath)) { 
                 $('#file_error').append('File format is not supported, Please upload a file in JPEG or JPG format');

@@ -61,7 +61,7 @@
                                                 
                                                 <td>{{++$key}}</td>
                                                 <td>
-                                                    <img src="{{URL::to('/public/storage/art/main/')}}/{{$val->image}}" alt="" width="30px">
+                                                    <img src="{{URL::to('/public/storage/art/main/thumbnail/')}}/{{$val->image}}" alt="" width="30px">
                                                 </td>
                                                 <td><a href="{{URL::to('landlord/listing/details/'.base64_encode($val->id))}}" data-toggle="tooltip" data-original-title="View Details">{{$val->title}}</a></td>
                                                 <td>{{$val->img_width.'x'.$val->img_height}}</td>

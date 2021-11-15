@@ -52,7 +52,7 @@
             @endif
                      <div class="art-item-box">
                         <div class="art-item-image">
-                           <img src="{{URL::to('/public/storage/art/main/')}}/{{$val->image}}">
+                           <img src="{{URL::to('/public/storage/art/main/thumbnail/')}}/{{$val->image}}">
                         </div>
                         <div class="art-item-hover">
                            <div class="art-item-actions">
@@ -128,7 +128,7 @@
             <div class="image-slider3 arrows-3">
                @foreach($data as $val)
                   <div>
-                     <img src="{{URL::to('/public/storage/art/main/')}}/{{$val->image}}">
+                     <img src="{{URL::to('/public/storage/art/main/thumbnail/')}}/{{$val->image}}">
                   </div>
                @endforeach
             </div>
@@ -139,7 +139,7 @@
             <div class="image-slider3 arrows-3">
                @foreach($data as $val)
                   <div>
-                     <img src="{{URL::to('/public/storage/art/main/')}}/{{$val->image}}">
+                     <img src="{{URL::to('/public/storage/art/main/thumbnail/')}}/{{$val->image}}">
                   </div>
                @endforeach
             </div>

@@ -29,7 +29,7 @@
                             <h6 class="card-subtitle">Art Image<code>*</code></h6>
                             <span style="font-size: 11px;" class="mb-2">Please Upload high resolution image of your art.</span>
                             <div class="form-group mb-0 mt-3">
-                                <img id="profileImage" src="{{URL::to('/public/storage/art/main/'.$product_data->image)}}">
+                                <img id="profileImage" src="{{URL::to('/public/storage/art/main/thumbnail/'.$product_data->image)}}">
                                 <input type="file" class="form-control" name="main_img" id="imageUpload" style="display: none;" accept=".jpeg , .jpg">
                             </div>
                         </div>

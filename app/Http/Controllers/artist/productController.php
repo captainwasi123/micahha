@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\art\categories;
 use App\Models\art\products;
 use Auth;
-
+use Image;
 class productController extends Controller
 {
     //
@@ -27,7 +27,34 @@ class productController extends Controller
             $filename = $id.'-'.$filename;
             $file->move(base_path('/public/storage/art/main/'), $filename);
             products::addFeatureImage($id, $filename);
+            
+            $realpath=base_path('/public/storage/art/main/').$filename;
+        
+            $img=Image::make($realpath);
+
+                $wm=Image::make(public_path('watermark.png'));
+             $wm->resize(500,500);
+
+
+                $img->insert($wm, 'center');
+                $p = products::find($id);
+                $p->thumbnail=$filename;
+                // dd($p->thumbnail=$filename);
+
+                $p->save();
+               
+                // $p->storage_path(base_path('/public/storage/art/main/thumbnail'),$filename);
+
+                  $img->save(base_path('/public/storage/art/main/thumbnail/'.$filename));
+           
+                
+
+
         }
+
+
+
+
 
         return redirect()->back()->with('success', 'Art uploaded. Please wait for admin approval.');
     }
