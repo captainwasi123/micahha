@@ -20,7 +20,7 @@ class userAuth
         if(Auth::check()){
             return $next($request);
         }else{
-            return redirect(route('user.login'))->with('error', 'Authentication Failed.');
+            return redirect(route('user.login'))->with('error', 'Register Your Account.');
         }
     }
 }
