@@ -13,7 +13,7 @@ return [
     |
     */
     // header
-        'Accomodation' => 'Accomodation',
+        'Accomodation' => 'Accommodation',
         'Art' => 'Art',
         'Collectibles' => 'Collectibles',
 
