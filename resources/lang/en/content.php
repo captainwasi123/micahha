@@ -34,7 +34,7 @@ return [
         'Micahha provides a seamless renting experience for landlords and tenants' => 'Micahha provides a seamless renting experience for landlords and tenants',
         'Micahha provides a platform where talents and their global audience meet' => 'Micahha provides a platform where talents and their global audience meet',
         'Micahha provides our carefully picked homewares for your home' => 'Micahha provides our carefully picked homewares for your home',
-        'ACCOMODATION' => 'ACCOMODATION',
+        'ACCOMODATION' => 'ACCOMMODATION',
         'ART' => 'ART',
         'COLLECTIBLES' => 'COLLECTIBLES',
 
