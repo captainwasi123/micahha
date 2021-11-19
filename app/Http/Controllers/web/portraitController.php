@@ -86,7 +86,7 @@ class portraitController extends Controller
             $w->balance = $w->balance+($o->price-(($o->price/100)*$sales->commission));
             $w->save();
         }
-        session()->flush('cart');
+        session()->forget('cart');
         return redirect(route('home'));
     }
 }

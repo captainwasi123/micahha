@@ -69,7 +69,7 @@ class checkoutController extends Controller
         $o = masterInvoice::find($id);
         $o->status = '1';
         $o->save();
-        session()->flush('cart');
+        session()->forget('cart');
         return redirect(route('home'));
     }
 
