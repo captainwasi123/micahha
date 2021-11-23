@@ -417,6 +417,17 @@ Route::prefix('payments')->namespace('payments')->group(function(){
 
 								Route::post('/', 'settingsController@salesSettingUpdate');
 							});
+
+
+						//Shipping Countries
+							Route::prefix('shippingCountries')->group(function(){
+
+								Route::get('/', 'settingsController@shippingCountries')->name('admin.settings.shippingCountries');
+
+								Route::post('/add', 'settingsController@shippingCountriesInsert')->name('admin.settings.shippingCountries.add');
+
+								Route::get('/delete/{id}', 'settingsController@shippingCountriesDelete');
+							});
 					});
 			});
 

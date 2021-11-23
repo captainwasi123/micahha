@@ -11,14 +11,15 @@ use App\Models\collectibles\products;
 use App\Models\art\products as ArtProducts;
 use App\Models\invoice\masterInvoice;
 use App\Models\invoice\orders;
+use App\Models\shippingCountries;
 use Auth;
 
 class checkoutController extends Controller
 {
     //
     function index(){
-        $countries = country::all();
         $saleSetting = saleSetting::first();
+        $countries = shippingCountries::orderBy('country_id')->get();
         $coupons = coupons::where('user_id', Auth::id())->where('status', '0')->first();
 
         return view('web.checkout', ['saleSetting' => $saleSetting, 'countries' => $countries, 'coupon' => $coupons]);

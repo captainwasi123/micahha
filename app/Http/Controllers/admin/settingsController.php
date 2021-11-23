@@ -14,6 +14,8 @@ use App\Models\collectibles\subCategories;
 use App\Models\art\categories as ArtCategories;
 use App\Models\art\portraitType;
 use App\Models\saleSetting;
+use App\Models\shippingCountries;
+use App\Models\country;
 
 class settingsController extends Controller
 {
@@ -259,5 +261,38 @@ class settingsController extends Controller
             $sales->save();
 
             return redirect()->back()->with('success', 'Sales settings updated.');
+        }
+
+
+    //Shipping Countries
+        public function shippingCountries(){
+            $data = array(
+                'data' => shippingCountries::all(),
+                'countries' => country::all()
+            );
+
+            return view('admin.settings.shipping_countries')->with($data);
+        }
+        public function shippingCountriesInsert(Request $request){
+            $data = $request->all();
+
+            $check = shippingCountries::where('country_id', $data['country_id'])->first();
+            if(empty($check->id)){
+                $s = new shippingCountries;
+                $s->country_id = $data['country_id'];
+                $s->save();
+                
+                return redirect()->back()->with('success', 'Country Successfully Added.');
+            }else{
+
+                return redirect()->back()->with('error', 'Country Already existed.');
+            }
+
+        }
+        public function shippingCountriesDelete($id){
+            $id = base64_decode($id);
+            shippingCountries::destroy($id);
+
+            return redirect()->back()->with('success', 'Country Successfully Deleted.');
         }
 }

@@ -118,6 +118,15 @@ $(document).ready(function(){
 						window.location.href = host+"/settings/art/deletePortraitType/"+id;
 					}
 				});
+
+		//Shipping Countries			
+			$(document).on('click', '.deleteShippingCountry', function(){
+				var id = $(this).data('id');
+				
+				if(confirm('Are you sure want to delete this.?')){
+					window.location.href = host+"/settings/shippingCountries/delete/"+id;
+				}
+			});
 				
 
 

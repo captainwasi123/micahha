@@ -39,7 +39,7 @@
                            <select name="country" required>
                               <option value="">Country</option>
                               @foreach($countries as $val)
-                                 <option value="{{$val->id}}">{{$val->country}}</option>
+                                 <option value="{{$val->country_id}}">{{@$val->country->country}}</option>
                               @endforeach
                            </select>
                         </div>

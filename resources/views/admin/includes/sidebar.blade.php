@@ -183,6 +183,12 @@
                     </a>
                 </li>
                 <li> 
+                    <a class="waves-effect waves-dark" href="{{route('admin.settings.shippingCountries')}}" aria-expanded="false">
+                        <i class="fa fa-plane"></i>
+                        <span class="hide-menu">Shipping Countries</span>
+                    </a>
+                </li>
+                <li> 
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-home"></i>
                         <span class="hide-menu"> Accommodation</span>
