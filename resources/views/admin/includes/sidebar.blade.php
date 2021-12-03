@@ -163,6 +163,16 @@
                 </li>
                 <li> 
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-account-multiple"></i>
+                        <span class="hide-menu"> Suppliers</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="{{route('admin.collectibles.suppliers.add')}}">Add New </a></li>
+                        <li><a href="{{route('admin.collectibles.suppliers')}}">Suppliers list </a></li>
+                    </ul>
+                </li>
+                <li> 
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="fa fa-shopping-cart"></i>
                         <span class="hide-menu"> Sales</span>
                     </a>

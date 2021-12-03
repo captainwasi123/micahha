@@ -32,7 +32,7 @@ class masterInvoice extends Model
 
         $sales = saleSetting::first();
         foreach($data['product'] as $val){
-            if($val['seller'] != '0'){
+            if($val['type'] != 'Collectibles'){
                 $w = wallet::where('user_id', $val['seller'])->first();
                 if(empty($w->id)){
                     $wn = new wallet;

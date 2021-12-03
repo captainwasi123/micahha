@@ -36,7 +36,7 @@
                   <div class="row">
                      <div class="col-md-12 col-lg-12 col-12">
                         <div class="checkout-field1">
-                           <select name="country" required>
+                           <select name="country" id="country" required>
                               <option value="">Country</option>
                               @foreach($countries as $val)
                                  <option value="{{$val->country_id}}">{{@$val->country->country}}</option>
@@ -98,7 +98,7 @@
                               <th> Quantity </th>
                               <th> Price </th>
                            </thead>
-                           <tbody>
+                           <tbody id="cart_tray_checkout">
                               @php
                                  $subtotal = 0;
                                  $gst = $saleSetting->gst;
@@ -154,8 +154,8 @@
                      </table>
                   </div>
                   <br><br><br>
-                  <div class="">
-                     <button class="submit-btn2 alegraya"> PLACE YOUR ORDER </button>
+                  <div>
+                     <button class="submit-btn2 alegraya" id="order_btn"> PLACE YOUR ORDER </button>
                   </div>
                </div>
             </div>
@@ -166,4 +166,23 @@
    </div>
 </section>
 
+
+<!-- Modal -->
+<div id="unableShipping" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body text-center">
+         <h1>Unable to proceed</h1>
+        <p>Please remove disabled products</p>
+        <br>
+        <a href="{{route('web.cart')}}" class="submit-btn2 "> Edit Cart </a>
+        <br><br><br>
+        <a href="javascript:void(0)" class="dismiss_btn" data-dismiss="modal">&times; Dismiss</a>
+      </div>
+    </div>
+
+  </div>
+</div>
 @endsection

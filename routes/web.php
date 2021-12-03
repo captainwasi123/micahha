@@ -34,8 +34,10 @@ Route::namespace('web')->middleware('changeLang')->group(function(){
 
 		Route::prefix('cart')->group(function(){
 			Route::get('/', 'webController@cart')->name('web.cart');
-			Route::get('remove/{id}', 'cartController@removeItem');
+			Route::get('remove/{id}/{type}', 'cartController@removeItem');
 			Route::get('item/{type}/{method}/{id}', 'cartController@plusMinusItem');
+
+			Route::get('countryValidate/{id}', 'cartController@countryValidate');
 
 			Route::prefix('checkout')->middleware('userAuth')->group(function(){
 				Route::get('/', 'checkoutController@index')->name('web.cart.checkout');
@@ -331,6 +333,21 @@ Route::prefix('payments')->namespace('payments')->group(function(){
 							Route::get('deliver/{id}', 'collectiblesController@deliverSale');
 
 							Route::get('orderBadge', 'collectiblesController@newOrdersBadge');
+						});
+
+						//Suppliers
+						Route::prefix('suppliers')->group(function(){
+
+							Route::get('/', 'collectiblesController@suppliers')->name('admin.collectibles.suppliers');
+
+							Route::get('add', 'collectiblesController@addSupplier')->name('admin.collectibles.suppliers.add');
+							Route::post('add', 'collectiblesController@insertSupplier');
+
+
+							Route::get('delete/{id}', 'collectiblesController@deleteSupplier')->name('admin.collectibles.suppliers.delete');
+
+							Route::get('edit/{id}', 'collectiblesController@editSupplier')->name('admin.collectibles.suppliers.edit');
+							Route::post('update', 'collectiblesController@updateSupplier')->name('admin.collectibles.suppliers.update');
 						});
 
 					});

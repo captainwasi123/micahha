@@ -18,6 +18,7 @@ class orders extends Model
         $o = new orders;
         $o->invoice_id = $id;
         $o->price = $data['total'];
+        $o->type = $data['type'];
         $o->gst = ($data['total']/100)*$gst;
         $o->total_amount = (($data['total']/100)*$gst)+$data['total'];
         $o->seller_id = $data['seller'];

@@ -43,7 +43,8 @@ class checkoutController extends Controller
             $i = isset($data['product'][$val['seller']]['item']) ? count($data['product'][$val['seller']]['item']) : 0;
             $data['product'][$val['seller']]['item'][$i]['id'] = $val['id'];
             $data['product'][$val['seller']]['item'][$i]['qty'] = $val['quantity'];
-            if($val['by'] == 'Micahha'){
+            $data['product'][$val['seller']]['type'] = $val['type'];
+            if($val['type'] == 'Collectibles'){
                 $product = products::find(base64_decode($val['id']));
                 $data['product'][$val['seller']]['item'][$i]['price'] = $product->price;
                 $data['subtotal'] += $product->price*$val['quantity'];
@@ -58,7 +59,7 @@ class checkoutController extends Controller
             }
         }
       
-        // dd($data);
+        //dd($data);
         $invoice_id = masterInvoice::addInvoice($data, $delivery, $discount);
         
          

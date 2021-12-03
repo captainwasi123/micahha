@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\collectibles\products;
 use App\Models\art\products as ArtProducts;
 use Session;
+use App\Models\saleSetting;
 
 class cartController extends Controller
 {
@@ -18,15 +19,22 @@ class cartController extends Controller
                 return response()->json(['status' => 'error', 'message' => 'Product not found.']);
             }
             $cart = session()->get('cart');
-
+            $shipCountries = array();
+            if(!empty($product->supplier->countries)){
+                foreach($product->supplier->countries as $val){
+                    array_push($shipCountries, $val->country_id);
+                }
+            }
             if(!$cart) {
                 $cart = [
                     '0'.$id => [
                         "type" => 'Collectibles',
                         "id"    => base64_encode($product->id),
                         "title" => $product->title,
-                        "by"    => 'Micahha',
-                        "seller" => 0,
+                        "by"    => $product->supplier->name,
+                        "by_id" => $product->supplier_id,
+                        "shipCountries" => $shipCountries,
+                        "seller" => $product->supplier_id,
                         "quantity" => 1,
                         "price" => $product->price, 
                         "photo" => 'products/feature/'.$product->feature_img
@@ -50,8 +58,10 @@ class cartController extends Controller
                 "type" => 'Collectibles',
                 "id"    => base64_encode($product->id),
                 "title" => $product->title,
-                "by"    => 'Micahha',
-                "seller" => 0,
+                "by"    => $product->supplier->name,
+                "by_id" => $product->supplier_id,
+                "shipCountries" => $shipCountries,
+                "seller" => $product->supplier_id,
                 "quantity" => 1,
                 "price" => $product->price,
                 "photo" => 'products/feature/'.$product->feature_img
@@ -116,9 +126,9 @@ class cartController extends Controller
 
         }
 
-    function removeItem($id){
+    function removeItem($id, $type){
         $id = base64_decode($id);
-        Session::forget('cart.' . $id);
+        Session::forget('cart.' . $type.$id);
 
         return 'success';
     }
@@ -135,5 +145,14 @@ class cartController extends Controller
             session()->put('cart', $cart);
             return response()->json(['status' => 'success']);
         }
+    }
+
+    function countryValidate($id){
+        $data = array(
+            'id' => $id,
+            'saleSetting' => saleSetting::first()
+        );
+
+        return view('web.response.cart_validate')->with($data);
     }
 }

@@ -8,16 +8,22 @@ use App\Models\collectibles\categories;
 use App\Models\collectibles\subCategories;
 use App\Models\collectibles\products;
 use App\Models\collectibles\productGallery;
+use App\Models\collectibles\suppliers;
+use App\Models\collectibles\suppliersCountries;
 use App\Models\invoice\orders;
+use App\Models\shippingCountries;
 
 class collectiblesController extends Controller
 {
     //Products
 
         function addProduct(){
-            $cat = categories::orderBy('name')->get();
+            $data = array(
+                'cat' => categories::orderBy('name')->get(),
+                'suppliers' => suppliers::latest()->get()
+            );
 
-            return view('admin.collectibles.products.new', ['cat' => $cat]);
+            return view('admin.collectibles.products.new')->with($data);
         }
         function insertProduct(Request $request){
             $data = $request->all();
@@ -133,4 +139,51 @@ class collectiblesController extends Controller
             return $data;
         }
 
+
+
+    //Suppliers
+
+        function suppliers(){
+            $data = array(
+                'data' => suppliers::latest()->get(),
+            );
+
+            return view('admin.collectibles.suppliers.index')->with($data);
+        }
+        function addSupplier(){
+            $data = array(
+                'countries' => shippingCountries::all(),
+            );
+
+            return view('admin.collectibles.suppliers.new')->with($data);
+        }
+        function insertSupplier(Request $request){
+            $data = $request->all();
+            $id = suppliers::addSupplier($data);
+
+            return redirect()->back()->with('success', 'Supplier Added.');
+        }
+        function deleteSupplier($id){
+            $id = base64_decode($id);
+            suppliers::destroy($id);
+            suppliersCountries::where('supplier_id', $id)->delete();
+
+            return redirect()->back()->with('success', 'Supplier Deleted.');
+        }
+
+        function editSupplier($id){
+            $id = base64_decode($id);
+            $data = array(
+                'countries' => shippingCountries::all(),
+                'data' => suppliers::find($id)
+            );
+
+            return view('admin.collectibles.suppliers.edit')->with($data);
+        }
+        function updateSupplier(Request $request){
+            $data = $request->all();
+            suppliers::updateSupplier($data);
+
+            return redirect()->back()->with('success', 'Supplier Updated.');
+        }
 }

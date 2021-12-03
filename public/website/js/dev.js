@@ -111,13 +111,14 @@ $(document).ready(function(){
             $(document).on('click', '.removeItemCart', function(){
                 var el = $(this);
                 var id = el.data('id');
+                var type = el.data('type');
                 let price = parseFloat(el.data('price'));
                 let qty = parseInt(el.data('qty'));
                 let gst = parseInt($('#gst').val());
                 let subtotal = parseFloat($('#cart_subtotal').html());
                 let total = parseFloat($('#cart_total').html());
                 let ccount = parseInt($('#cart_count').html());
-                $.get( host+"/cart/remove/"+id, function( data ) {
+                $.get( host+"/cart/remove/"+id+"/"+type, function( data ) {
                     if(data == 'success'){
                         subtotal = subtotal-(price*qty);
                         $('#cart_subtotal').html(subtotal);
@@ -127,6 +128,25 @@ $(document).ready(function(){
                             $('#cart_tray').html('<tr><td colspan="6">No Items Found.</td></tr>');
                         }
                         $('#cart_count').html(ccount-1);
+                    }
+                });
+            });
+
+        //Validate Country
+            $(document).on('change', '#country', function(){
+                var val = $(this).val();
+                $('#cart_tray_checkout').html('<tr><td colspan="4" class="cart_loader"><img src="'+host+'/public/loader.gif"></td></tr>');
+                $.get( host+"/cart/countryValidate/"+val, function( data ) {
+                    $('#cart_tray_checkout').html(data);
+                    var valid = $('#valid').val();
+                    if(valid == 0){
+                        $('#order_btn').attr('type', 'submit');
+                        $('#order_btn').removeAttr('data-toggle');
+                        $('#order_btn').removeAttr('data-target');
+                    }else{
+                        $('#order_btn').attr('type', 'button');
+                        $('#order_btn').attr('data-toggle', 'modal');
+                        $('#order_btn').attr('data-target', '#unableShipping');
                     }
                 });
             });

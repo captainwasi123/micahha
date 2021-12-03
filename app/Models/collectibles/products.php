@@ -8,6 +8,7 @@ use App\Models\collectibles\categories;
 use App\Models\collectibles\subCategories;
 use App\Models\collectibles\productGallery;
 use App\Models\collectibles\wishlist;
+use App\Models\collectibles\suppliers;
 use Auth;
 
 class products extends Model
@@ -18,6 +19,7 @@ class products extends Model
     public static function addProduct(array $data){
         $p = new products;
         $p->title = $data['title'];
+        $p->supplier_id = $data['supplier'];
         $p->cat_id = $data['category'];
         $p->sub_cat_id = $data['sub_category'];
         $p->price = $data['price'];
@@ -30,6 +32,9 @@ class products extends Model
 
     public function category(){
         return $this->belongsTo(categories::class, 'cat_id');
+    }
+    public function supplier(){
+        return $this->belongsTo(suppliers::class, 'supplier_id');
     }
     public function subCategory(){
         return $this->belongsTo(subCategories::class, 'sub_cat_id');

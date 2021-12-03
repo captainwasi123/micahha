@@ -57,6 +57,19 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label>Supplier <code>*</code></label>
+                                <select class="form-control" name="supplier" required>
+                                    <option value="" selected disabled>Selected</option>
+                                    @foreach($suppliers as $val)
+                                        <option value="{{$val->id}}">{{$val->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Description <code>*</code></label>

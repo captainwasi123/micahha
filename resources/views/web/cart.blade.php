@@ -36,7 +36,7 @@
                         @foreach(Session::get('cart') as $val)
                            <tr>
                               <td class="text-center"> 
-                                 <a href="javascript:void(0)" data-price="{{$val['price']}}" data-qty="{{$val['quantity']}}" class="col-black removeItemCart" data-id="{{$val['id']}}"> <i class="fa fa-trash"> </i> </a> 
+                                 <a href="javascript:void(0)" data-price="{{$val['price']}}" data-qty="{{$val['quantity']}}" class="col-black removeItemCart" data-type="{{$val['type'] == 'Art' ? '1' : '0'}}" data-id="{{$val['id']}}"> <i class="fa fa-trash"> </i> </a> 
                               </td>
                               <td> <img src="{{URL::to('/public/storage/'.$val['photo'])}}"> </td>
                               <td> <b> {{$val['title']}} </b> <span> {{$val['type']}} -> by: {{$val['by']}} </span> </td>

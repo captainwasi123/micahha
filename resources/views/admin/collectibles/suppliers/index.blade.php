@@ -1,5 +1,5 @@
 @extends('admin.includes.master')
-@section('title', 'Published | Products | Collectibles')
+@section('title', 'Suppliers | Collectibles')
 @section('content')
 
 <div class="row">
@@ -18,13 +18,10 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Title</th>
-                                <th>Price</th>
-                                <th>Supplier</th>
-                                <th>Category</th>
-                                <th>Sub Category</th>
-                                <th>Description</th>
-                                <th>Orders</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Shipping Countries</th>
                                 <th>Created at</th>
                                 <th>Action</th>
                             </tr>
@@ -34,24 +31,19 @@
                             @foreach($data as $val)
                                 <tr>
                                     <td>{{$s}}</td>
+                                    <td>{{$val->name}}</td>
+                                    <td>{{$val->email}}</td>
+                                    <td>{{$val->phone}}</td>
                                     <td>
-                                        <a href="javascript:void(0)"><img src="{{URL::to('/public/storage/products/feature/'.$val->feature_img)}}" alt="user" width="40" class="img-circle" />
-                                            {{$val->title}}
-                                        </a>
+                                        @foreach($val->countries as $c)
+                                            <span class="badge badge-info">{{$c->country->nicename}}</span>
+                                        @endforeach
                                     </td>
-                                    <td>${{number_format($val->price, 1)}}</td>
-                                    <td>{{@$val->supplier->name}} </td>
-                                    <td><span class="label label-primary">{{@$val->category->name}}</span> </td>
-                                    <td><span class="label label-warning">{{@$val->subCategory->name}}</span> </td>
-                                    <td>
-                                        <p class="cut-text" title="{{$val->description}}">
-                                            {{$val->description}}
-                                        </p>
-                                    </td>
-                                    <td>0</td>
                                     <td>{{date('d-M-Y h:i a', strtotime($val->created_at))}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-primary unPublishProduct" data-toggle="tooltip" data-original-title="Un-Publish" data-id="{{base64_encode($val->id)}}"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
+                                        <button type="button" class="btn btn-sm btn-primary editSupplier" data-toggle="tooltip" data-original-title="Edit" data-href="{{route('admin.collectibles.suppliers.edit', base64_encode($val->id))}}"><i class="fa fa-edit" aria-hidden="true"></i></button>
+
+                                        <button type="button" class="btn btn-sm btn-danger deleteSupplier" data-toggle="tooltip" data-original-title="Delete" data-href="{{route('admin.collectibles.suppliers.delete', base64_encode($val->id))}}"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                     </td>
                                 </tr>
                                 @php $s++; @endphp
@@ -73,4 +65,22 @@
 @section('addStyle')
 @endsection
 @section('addScript')
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $(document).on('click', '.deleteSupplier', function(){
+            var link = $(this).data('href');
+            if(confirm('Are you sure?')){
+                window.location.href = link;
+            }
+        });
+
+        $(document).on('click', '.editSupplier', function(){
+            var link = $(this).data('href');
+            if(confirm('Are you sure?')){
+                window.location.href = link;
+            }
+        });
+    });
+</script>
 @endsection

@@ -156,3 +156,20 @@
 .languages_list li a span {
     margin-left: 10px;
 }
+.cart_loader {
+    text-align: center !important;
+}
+#cart_tray_checkout .disabled {
+    background-color: #f6f6f6;
+}
+#cart_tray_checkout .noti {
+    font-weight: normal;
+    font-family: arial;
+    font-size: 11px;
+    margin-bottom: 0;
+    color: red;
+}
+#unableShipping .dismiss_btn {
+    float: right;
+    color: #4c4c4c;
+}
