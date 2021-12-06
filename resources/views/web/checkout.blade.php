@@ -2,13 +2,164 @@
 @section('title', 'Checkout')
 @section('content')
 
+<style type="text/css">
+   
+.card-input-element+.card {
+  color: var(--primary);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+
+.card-input-element+.card:hover {
+  cursor: pointer;
+}
+
+.card-input-element:checked+.card {
+  -webkit-transition: border .3s;
+  -o-transition: border .3s;
+  transition: border .3s;
+  background:#15345a !important;
+  color:white !important;
+}
+
+.card-input-element:checked+.card::after {
+  -webkit-animation-name: fadeInCheckbox;
+  animation-name: fadeInCheckbox;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.address-box .card-body {
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px -3px black;
+}
+.address-box h4 {
+    font-size: 25px;
+}
+.address-box p {
+    font-size: 15px;
+}
+.btn-floating {
+    background: white;
+    padding: 2px 10px;
+    border-radius: 30px;
+    color: #15345a;
+        font-size: 18px;
+}
+.controls-top
+{
+   position: absolute;
+   top: 135px;
+   z-index: 9999;
+   box-shadow: 0px 0px 8px -3px black;
+   border-radius: 30px;
+}
+.order-summary {
+
+    margin-top: 0px;
+}
+.order-summary h3 {
+    padding-bottom: 20px;
+}
+.sec-head1
+{
+   text-align: left;
+   margin-bottom:0px !important;
+}
+</style>
+
 <section class="pad-top-60 pad-bot-60">
-   <div class="container" >
+   <div class="container">
       <div class="row">
-         <div class="col-md-5 col-lg-5 col-12">
-            <div class="sec-head1 text-left">
-               <h3 class="alegraya"> Checkout </h3>
+         <div class="col-md-12">
+            <div class="sec-head1 no-margin">
+               <h3 class="alegraya no-margin"> Checkout </h3>
             </div>
+            <div class="container" style="padding: 0px !important;">
+               <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+                  <div class="controls-top">
+                     <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                  </div>
+
+                  <div class="carousel-inner address-box pad-top-20 pad-bot-20" role="listbox">
+                     <div class="carousel-item active">
+                        <div class="col-md-3" style="float:left">
+                           <label>
+                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                                 <div class="card card-body">
+                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
+                                 </div>
+                           </label>               
+                        </div>
+                        <div class="col-md-3" style="float:left">
+                           <label>
+                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                                 <div class="card card-body">
+                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
+                                 </div>
+                           </label>               
+                        </div>
+                        <div class="col-md-3" style="float:left">
+                           <label>
+                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                                 <div class="card card-body">
+                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
+                                 </div>
+                           </label>               
+                        </div>
+                        <div class="col-md-3" style="float:left">
+                           <label>
+                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                                 <div class="card card-body">
+                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
+                                 </div>
+                           </label>               
+                        </div>           
+                     </div>
+
+                     <div class="carousel-item">
+                        <div class="col-md-3" style="float:left">
+                           <label>
+                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                                 <div class="card card-body">
+                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
+                                 </div>
+                           </label>               
+                        </div>
+                        <div class="col-md-3" style="float:left">
+                           <label>
+                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                                 <div class="card card-body">
+                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
+                                 </div>
+                           </label>               
+                        </div>
+                     </div>
+                 </div>
+
+                  <div class="controls-top" style="right: 0px;">
+                     <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-5 col-lg-5 col-12">
             <div class="checkout-form">
                <form method="post">
                   @csrf
@@ -89,7 +240,7 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="order-summary">
-                     <h3 class="alegraya"> Order Summary <a href="{{route('web.cart')}}"> Edit Cart </a> </h3>
+                     <h3 class="alegraya no-margin"> Order Summary <a href="{{route('web.cart')}}"> Edit Cart </a> </h3>
                      <div class="cart-table">
                         <table>
                            <thead>
@@ -165,7 +316,6 @@
    </div>
    </div>
 </section>
-
 
 <!-- Modal -->
 <div id="unableShipping" class="modal fade" role="dialog">
