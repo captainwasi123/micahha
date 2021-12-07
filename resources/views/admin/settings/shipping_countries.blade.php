@@ -34,7 +34,7 @@
                         <form method="post" action="{{route('admin.settings.shippingCountries.add')}}">
                             @csrf
                             <div class="form-group">
-                                <label>Country</label>
+                                <label>Country *</label>
                                 <select class="form-control" name="country_id" required>
                                     <option value="">Select</option>
                                     @foreach($countries as $val)
@@ -42,6 +42,18 @@
                                     @endforeach
                                 </select> 
                             </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>Max Value *</label>
+                            <input type="number" step="any" class="form-control" name="max_value" required>
+                        </div> 
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label>GST <small>(%)</small> *</label>
+                            <input type="number" step="any" class="form-control" name="gst" required>
+                        </div> 
                     </div>
                     <div class="col-md-2 m-t-30">
                             <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
@@ -62,7 +74,9 @@
                         <thead>
                             <tr>
                                 <th width="10%">S#</th>
-                                <th width="75%">Country</th>
+                                <th width="45%">Country</th>
+                                <th width="15%">Max Value</th>
+                                <th width="15%">GST</th>
                                 <th width="15%"></th>
                             </tr>
                         </thead>
@@ -72,6 +86,8 @@
                                 <tr>
                                     <td>{{$s}}</td>
                                     <td>{{@$val->country->nicename}}</td>
+                                    <td>{{number_format($val->max_value)}}</td>
+                                    <td>{{$val->gst}} <small>%</small></td>
                                     <td>
                                         <a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Delete" class="btn btn-danger btn-sm deleteShippingCountry" data-id="{{base64_encode($val->id)}}">
                                             <i class="fa fa-trash"></i>

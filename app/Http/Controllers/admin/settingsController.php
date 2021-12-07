@@ -280,6 +280,8 @@ class settingsController extends Controller
             if(empty($check->id)){
                 $s = new shippingCountries;
                 $s->country_id = $data['country_id'];
+                $s->max_value = $data['max_value'];
+                $s->gst = $data['gst'];
                 $s->save();
                 
                 return redirect()->back()->with('success', 'Country Successfully Added.');
