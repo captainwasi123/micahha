@@ -2,6 +2,9 @@
 @section('title', 'Checkout')
 @section('content')
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css'>
+<!-- <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css'> -->
 <section class="pad-top-60 pad-bot-60">
    <div class="container">
       <div class="row">
@@ -10,78 +13,81 @@
                <h3 class="alegraya no-margin"> Checkout </h3>
             </div>
             <div class="container" style="padding: 0px !important;">
+               
+
                <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
                   <div class="controls-top">
                      <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
                   </div>
+                  <div class="main" style="margin-top: 50px;margin-bottom:  50px;">
 
-                  <div class="carousel-inner address-box pad-top-20 pad-bot-20" role="listbox">
-                     <div class="carousel-item active">
-                        <div class="col-md-3" style="float:left">
-                           <label>
-                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
-                                 <div class="card card-body">
-                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
-                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
-                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
-                                 </div>
-                           </label>               
-                        </div>
-                        <div class="col-md-3" style="float:left">
-                           <label>
-                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
-                                 <div class="card card-body">
-                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
-                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
-                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
-                                 </div>
-                           </label>               
-                        </div>
-                        <div class="col-md-3" style="float:left">
-                           <label>
-                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
-                                 <div class="card card-body">
-                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
-                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
-                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
-                                 </div>
-                           </label>               
-                        </div>
-                        <div class="col-md-3" style="float:left">
-                           <label>
-                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
-                                 <div class="card card-body">
-                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
-                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
-                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
-                                 </div>
-                           </label>               
-                        </div>           
+                  <div class="slider slider-for">
+                  </div>
+                  <div class="slider slider-nav">
+                     <div class="address-box">
+         
+                           <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                              <div class="card card-body">
+                                 <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                 <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                 <p class="card-text alegraya no-margin">Post Code:2246</p>
+                              </div>
+                   
+                     </div>
+                     <div class="address-box">
+                        <label>
+                           <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                              <div class="card card-body">
+                                 <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                 <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                 <p class="card-text alegraya no-margin">Post Code:2246</p>
+                              </div>
+                        </label> 
+                     </div>
+                     <div class="address-box">
+                        <label>
+                           <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                              <div class="card card-body">
+                                 <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                 <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                 <p class="card-text alegraya no-margin">Post Code:2246</p>
+                              </div>
+                        </label> 
+                     </div>
+                     <div class="address-box">
+                        <label>
+                           <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                              <div class="card card-body">
+                                 <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                 <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                 <p class="card-text alegraya no-margin">Post Code:2246</p>
+                              </div>
+                        </label> 
+                     </div>
+                     <div class="address-box">
+                        <label>
+                           <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                              <div class="card card-body">
+                                 <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                 <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                 <p class="card-text alegraya no-margin">Post Code:2246</p>
+                              </div>
+                        </label> 
+                     </div>
+                     <div class="address-box">
+                        <label>
+                           <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
+                              <div class="card card-body">
+                                 <h4 class="card-title alegraya no-margin">Pakistan</h4>
+                                 <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
+                                 <p class="card-text alegraya no-margin">Post Code:2246</p>
+                              </div>
+                        </label> 
                      </div>
 
-                     <div class="carousel-item">
-                        <div class="col-md-3" style="float:left">
-                           <label>
-                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
-                                 <div class="card card-body">
-                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
-                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
-                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
-                                 </div>
-                           </label>               
-                        </div>
-                        <div class="col-md-3" style="float:left">
-                           <label>
-                              <input type="radio" name="demo" class="card-input-element d-none" id="demo1">
-                                 <div class="card card-body">
-                                    <h4 class="card-title alegraya no-margin">Pakistan</h4>
-                                    <p class="card-text alegraya no-margin">Power house, North Karachi sec 11/A</p>
-                                    <p class="card-text alegraya no-margin">Post Code:2246</p>
-                                 </div>
-                           </label>               
-                        </div>
-                     </div>
-                 </div>
+                  </div>
+               </div>
+
 
                   <div class="controls-top" style="right: 0px;">
                      <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fas fa-chevron-right"></i></a>
@@ -244,7 +250,7 @@
          </div>
       </div>
    </div>
-   </div>
+</div>
 </section>
 
 <!-- Modal -->
@@ -265,4 +271,76 @@
 
   </div>
 </div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js'></script>
+<script type="text/javascript">
+  $('.slider-for').slick({
+   slidesToShow: 1,
+   slidesToScroll: 1,
+   arrows: true,
+   fade: true,
+   asNavFor: '.slider-nav'
+ });
+ $('.slider-nav').slick({
+   slidesToShow: 4,
+   slidesToScroll: 1,
+   asNavFor: '.slider-for',
+   dots: false,
+
+   focusOnSelect: true,
+   responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+ });
+ $('a[data-slide]').click(function(e) {
+   e.preventDefault();
+   var slideno = $(this).data('slide');
+   $('.slider-nav').slick('slickGoTo', slideno - 1);
+ });
+
+</script>
 @endsection
