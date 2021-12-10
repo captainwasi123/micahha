@@ -50,7 +50,7 @@ class masterInvoice extends Model
           
         }
 
-        return $id;
+        return $id."|".$i->total_amount;
       
     }
 

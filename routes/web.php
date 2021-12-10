@@ -47,6 +47,7 @@ Route::namespace('web')->middleware('changeLang')->group(function(){
 			Route::get('item/{type}/{method}/{id}', 'cartController@plusMinusItem');
 
 			Route::get('countryValidate/{id}', 'cartController@countryValidate');
+			Route::get('savedAddress/{id}', 'cartController@savedAddress');
 
 			Route::prefix('checkout')->middleware('userAuth')->group(function(){
 				Route::get('/', 'checkoutController@index')->name('web.cart.checkout');

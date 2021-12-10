@@ -135,20 +135,27 @@ $(document).ready(function(){
         //Validate Country
             $(document).on('change', '#country', function(){
                 var val = $(this).val();
-                $('#cart_tray_checkout').html('<tr><td colspan="4" class="cart_loader"><img src="'+host+'/public/loader.gif"></td></tr>');
+                $('#cart_tray_checkout').html('<div class="col-12 cart_loader"><img src="'+host+'/public/loader.gif"></div>');
                 $.get( host+"/cart/countryValidate/"+val, function( data ) {
                     $('#cart_tray_checkout').html(data);
-                    var valid = $('#valid').val();
-                    if(valid == 0){
-                        $('#order_btn').attr('type', 'submit');
-                        $('#order_btn').removeAttr('data-toggle');
-                        $('#order_btn').removeAttr('data-target');
-                    }else{
-                        $('#order_btn').attr('type', 'button');
-                        $('#order_btn').attr('data-toggle', 'modal');
-                        $('#order_btn').attr('data-target', '#unableShipping');
-                    }
+                    
                 });
+            });
+
+        //Saved Address
+            $(document).on('change', 'input:radio[name="savedAddress"]', function(){
+                $('#cart_tray_checkout').html('<div class="col-12 cart_loader"><img src="'+host+'/public/loader.gif"></div>');
+                var val = $(this).val();
+                $.getJSON( host+"/cart/savedAddress/"+val, function( data ) {
+                    console.log(data.country_id);
+                    $("#country").val(data.country_id).change();
+                    $('#address').val(data.address);
+                    $('#city').val(data.city);
+                    $('#state').val(data.state);
+                    $('#post_code').val(data.postcode);
+                    $('#phone').val(data.phone);
+                });
+
             });
 
     //Art

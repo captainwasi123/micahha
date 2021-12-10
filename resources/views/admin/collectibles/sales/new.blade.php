@@ -19,7 +19,11 @@
                             <tr>
                                 <th>#</th>
                                 <th>Order#</th>
+<<<<<<< HEAD
                                 <th>Seller</th>
+=======
+                                <th>Supplier</th>
+>>>>>>> d2445ae906cacb6cc499c14ef464d6f10d28529c
                                 <th>Customer</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -36,8 +40,12 @@
                                 <tr>
                                     <td>{{++$key}}</td>
                                     <td>{{$val->id}}</td>
+<<<<<<< HEAD
                                     <td>{{@$val->artist->first_name}}</td>
 
+=======
+                                    <td>{{@$val->supplier->name}}</td>
+>>>>>>> d2445ae906cacb6cc499c14ef464d6f10d28529c
                                     <td>
                                         <a href="javascript:void(0)">{{$val->invoice->delivery->first_name.' '.$val->invoice->delivery->last_name}}</a>
                                     </td>
@@ -73,7 +81,17 @@
 </div>
 
 @endsection
-@section('addStyle')
-@endsection
 @section('addScript')
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $(document).on('click', '.processSale', function(){
+            var id = $(this).data('id');
+            
+            if(confirm('Are you sure want to reject this.?')){
+                window.location.href = "{{URL::to('admin')}}/collectibles/sales/process/"+id;
+            }
+        });
+    })
+</script>
 @endsection

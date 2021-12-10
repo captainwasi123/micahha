@@ -8,6 +8,8 @@ use App\Models\collectibles\products;
 use App\Models\art\products as ArtProducts;
 use Session;
 use App\Models\saleSetting;
+use App\Models\userAddress;
+use App\Models\shippingCountries;
 
 class cartController extends Controller
 {
@@ -150,9 +152,15 @@ class cartController extends Controller
     function countryValidate($id){
         $data = array(
             'id' => $id,
+            'country' => shippingCountries::where('country_id', $id)->first(),
             'saleSetting' => saleSetting::first()
         );
 
         return view('web.response.cart_validate')->with($data);
+    }
+    function savedAddress($id){
+        $data = userAddress::find($id);
+
+        return json_encode($data, true);
     }
 }

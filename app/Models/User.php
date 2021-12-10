@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\country;
+use App\Models\userAddress;
 use App\Models\accommodation\listing;
 use App\Models\art\wallet;
 use App\Models\art\products;
@@ -83,7 +84,9 @@ class User extends Authenticatable
     public function country(){
         return $this->belongsTo(country::class, 'country_id');
     }
-
+    public function addresses(){
+        return $this->hasMany(userAddress::class, 'user_id', 'id');
+    }
 
     //landlord
         public function listings(){
