@@ -19,6 +19,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Order#</th>
+                                <th>Supplier</th>
                                 <th>Customer</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -35,6 +36,7 @@
                                 <tr>
                                     <td>{{++$key}}</td>
                                     <td>{{$val->id}}</td>
+                                    <td>{{@$val->supplier->name}}</td>
                                     <td>
                                         <a href="javascript:void(0)">{{$val->invoice->delivery->first_name.' '.$val->invoice->delivery->last_name}}</a>
                                     </td>
@@ -70,7 +72,17 @@
 </div>
 
 @endsection
-@section('addStyle')
-@endsection
 @section('addScript')
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $(document).on('click', '.processSale', function(){
+            var id = $(this).data('id');
+            
+            if(confirm('Are you sure want to reject this.?')){
+                window.location.href = "{{URL::to('admin')}}/collectibles/sales/process/"+id;
+            }
+        });
+    })
+</script>
 @endsection

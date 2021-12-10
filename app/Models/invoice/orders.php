@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\invoice\orderDetail;
 use App\Models\invoice\masterInvoice;
+use App\Models\collectibles\suppliers;
 use App\Models\User;
 use Auth;
 
@@ -50,5 +51,8 @@ class orders extends Model
 
     public function artist(){
         return $this->belongsTo(User::class, 'seller_id');
+    }
+    public function supplier(){
+        return $this->belongsTo(suppliers::class, 'seller_id');
     }
 }

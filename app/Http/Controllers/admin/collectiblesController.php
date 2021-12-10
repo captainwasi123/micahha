@@ -86,21 +86,21 @@ class collectiblesController extends Controller
     //Sales
 
         function newOrders(){
-            $data = orders::where('seller_id', '0')
+            $data = orders::where('type', 'Collectibles')
                             ->where('status', '1')
                             ->orderBy('created_at', 'desc')
                             ->get();
             return view('admin.collectibles.sales.new', ['data' => $data]);
         }
         function processingOrders(){
-            $data = orders::where('seller_id', '0')
+            $data = orders::where('type', 'Collectibles')
                             ->where('status', '2')
                             ->orderBy('created_at', 'desc')
                             ->get();
             return view('admin.collectibles.sales.processing', ['data' => $data]);
         }
         function deliveredOrders(){
-            $data = orders::where('seller_id', '0')
+            $data = orders::where('type', 'Collectibles')
                             ->where('status', '3')
                             ->orderBy('created_at', 'desc')
                             ->get();

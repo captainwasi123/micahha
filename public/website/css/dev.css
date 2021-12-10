@@ -245,8 +245,17 @@ footer {
 }
 .address-box {
     padding: 20px 15px;
+    width: 100%;
 }
 
+.cut-line {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 33px;
+}
 @media screen and (max-width:519px) and (min-width:320px) { 
 .controls-top {
     top: 60px;
