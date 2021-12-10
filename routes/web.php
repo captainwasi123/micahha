@@ -23,6 +23,13 @@ Route::namespace('web')->middleware('changeLang')->group(function(){
 		Route::get('/register/refer/{id}', 'authController@registerRefer')->name('user.register.refer');
 		Route::get('/username/verify/{val}', 'authController@usernameVerify');
 
+		// forget password
+
+        Route::get('forget-password', 'authController@showForgetPasswordForm')->name('forget.password.get');
+        Route::post('forget-password', 'authController@submitForgetPasswordForm')->name('forget.password.post');
+        Route::get('reset-password/{token}', 'authController@showResetPasswordForm')->name('reset.password.get');
+        Route::post('reset-password', 'authController@submitResetPasswordForm')->name('reset.password.post');
+
 		Route::post('/login', 'authController@loginSubmit');
 		Route::post('/register', 'authController@registerSubmit');
 
@@ -31,6 +38,8 @@ Route::namespace('web')->middleware('changeLang')->group(function(){
 		Route::get('contact', 'webController@contact')->name('web.contact');
 		Route::get('terms-condition', 'webController@terms')->name('web.terms_condition');
 		Route::get('pivacy-policy', 'webController@policy')->name('web.privacy_policy');
+
+
 
 		Route::prefix('cart')->group(function(){
 			Route::get('/', 'webController@cart')->name('web.cart');

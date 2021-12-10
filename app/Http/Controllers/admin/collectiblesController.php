@@ -81,7 +81,7 @@ class collectiblesController extends Controller
 
             return redirect()->back()->with('success', 'Product Published.');
         }
-
+ 
 
     //Sales
 

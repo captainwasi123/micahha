@@ -9,6 +9,11 @@ use App\Models\User;
 use App\Models\saleSetting;
 use App\Models\coupons;
 use Auth;
+use Mail;
+use Carbon\Carbon; 
+use Illuminate\Support\Str;
+use Hash;
+use DB;
 
 class authController extends Controller
 {
@@ -82,6 +87,70 @@ class authController extends Controller
             return redirect('/');
         }
     }
+
+
+
+
+       
+    // forget password
+
+    function showForgetPasswordForm(){
+
+        return view('web.forgetPassword');
+    }
+
+    function submitForgetPasswordForm(Request $request){
+
+
+        $request->validate([
+            'email' => 'required|email|exists:tbl_user_info',
+        ]);
+
+        $token = Str::random(64);
+
+        DB::table('password_resets')->insert([
+            'email' => $request->email, 
+            'token' => $token, 
+            'created_at' => Carbon::now()
+          ]);
+
+        Mail::send('web.mail.forgetPassword', ['token' => $token], function($message) use($request){
+            $message->to($request->email);
+            $message->subject('Reset Password');
+        });
+
+        return back()->with('message', 'We have e-mailed your password reset link!');
+       
+    }
+
+    public function showResetPasswordForm($token) { 
+
+
+        return view('web.forgetPasswordLink', ['token' => $token]);
+     }
+     
+
+    public function submitResetPasswordForm(Request $request)
+    {
+          $request->validate([
+          
+              'password' => '|required_with:confirmation_password|same:confirmation_password',
+              'confirmation_password' => 'required'
+          ]);
+          $updatePassword = DB::table('password_resets')
+                              ->where([ 'token' => $request->token])->first();
+  
+          if(!$updatePassword){
+              return back()->withInput()->with('error', 'Invalid token!');
+          }
+          $user = User::where('email', $updatePassword->email)
+                      ->update(['password' => Hash::make($request->password)]);
+          DB::table('password_resets')->where(['email'=> $updatePassword->email])->delete();
+
+          return redirect('login')->with('message', 'Your password has been changed!');
+
+      }
+
 
 
     function usernameVerify($val){

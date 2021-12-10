@@ -19,6 +19,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Order#</th>
+                                <th>Seller</th>
                                 <th>Customer</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -30,11 +31,13 @@
                                 <th class="text-right">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody>artist
                             @foreach($data as $key => $val)
                                 <tr>
                                     <td>{{++$key}}</td>
                                     <td>{{$val->id}}</td>
+                                    <td>{{@$val->artist->first_name}}</td>
+
                                     <td>
                                         <a href="javascript:void(0)">{{$val->invoice->delivery->first_name.' '.$val->invoice->delivery->last_name}}</a>
                                     </td>

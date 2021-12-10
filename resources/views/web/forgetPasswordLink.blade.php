@@ -12,7 +12,7 @@
            </div>
            <div class="col-md-6 col-lg-6 col-12 col-sm-12">
               <div class="login-form">
-                 <h3>{{ __('content.Login') }} </h3>
+                 <h3>Recover Password </h3>
                   @if(session()->has('success'))
                       <div class="alert alert-success">
                           {{ session()->get('success') }}
@@ -23,19 +23,29 @@
                           {{ session()->get('error') }}
                       </div>
                   @endif
-                 <form method="post">
-                     @csrf
+
+                 <form action="{{ route('reset.password.post') }}" method="POST">
+                          @csrf
+                          <input type="hidden" name="token" value="{{ $token }}">
+
+                   
                     <div class="form-field1">
-                       <p>{{ __('content.Email Address') }} </p>
-                       <input type="email" name="email" required="">
+                        <p>{{ __('content.New password *') }} </p>
+                         <input type="password"  id="password"   name="password" required>
+                        @if ($errors->has('password'))
+                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                        @endif
                     </div>
-                    <div class="form-field1">
-                       <p>{{ __('content.Password') }} </p>
-                       <input type="password" name="password" required="">
-                       <a href="{{URL::to('/forget-password')}}" class="reset-password">{{ __('content.Reset Password') }} </a>
+
+                       <div class="form-field1">
+                     <p>{{ __('content.Confirm New Password *') }} </p>
+                         <input type="password" id="confirmation_password"   name="confirmation_password"   required>
+                           @if ($errors->has('confirmation_password'))
+                              <span class="text-danger">{{ $errors->first('confirmation_password') }}</span>
+                           @endif
                     </div>
                     <div class="form-field1 no-margin">
-                       <input type="submit" class="submit-btn1" value="{{ __('content.Login') }}" name="" style="margin-top: -25px !important;">	
+                       <input type="submit" class="submit-btn1" value="Resert Password" name="" style="margin-top: -25px !important;">	
                     </div>
                  </form>
               </div>
@@ -44,7 +54,7 @@
                  <p class="para-1">{{ __('content.Receive exclusive access to sale previews.') }} </p>
                  <p class="para-1">{{ __('content.Enjoy special offers throughout the year.') }}  </p>
                  <p class="para-1">{{ __('content.Easy order management and quick checkout.') }} </p>
-                 <a href="{{route('user.register')}}" class="custom-btn1 m-t-20">{{ __('content.Create an account') }} </a>
+                  <a href="{{route('user.login')}}" class="custom-btn2">{{ __('content.Back to Login') }} </a>
               </div>
            </div>
         </div>

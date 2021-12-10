@@ -10,6 +10,8 @@ use App\Models\country;
 use App\Models\accommodation\listing;
 use App\Models\art\wallet;
 use App\Models\art\products;
+use App\Models\invoice\orders;
+
 use Auth;
 
 class User extends Authenticatable
@@ -95,4 +97,6 @@ class User extends Authenticatable
         public function products(){
             return $this->hasMany(products::class, 'artist_id', 'id');
         }
+
+       
 }

@@ -27,9 +27,6 @@ class orders extends Model
         $o->total_price = (($product['price']/100)*$sales->gst)+$product['price'];
         $o->status = '9';
         $o->save();
-
-       
-
         return $o->id."|".$o->total_price;
     }
 
