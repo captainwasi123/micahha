@@ -19,6 +19,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Order#</th>
+                                <th>Supplier</th>
                                 <th>Customer</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -35,6 +36,7 @@
                                 <tr>
                                     <td>{{++$key}}</td>
                                     <td>{{$val->id}}</td>
+                                    <td>{{@$val->supplier->name}}</td>
                                     <td>
                                         <a href="javascript:void(0)">{{$val->invoice->delivery->first_name.' '.$val->invoice->delivery->last_name}}</a>
                                     </td>

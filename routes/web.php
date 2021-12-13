@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 //Website
 Route::namespace('web')->middleware('changeLang')->group(function(){
 
-	//User Authentication
+	//User Authentication'
 		Route::get('/login', 'authController@login')->name('user.login');
 		Route::get('/logout', 'authController@logout')->name('user.logout');
 		Route::get('/register', 'authController@register')->name('user.register');
@@ -336,7 +336,12 @@ Route::prefix('payments')->namespace('payments')->group(function(){
 							Route::get('new', 'collectiblesController@newOrders')->name('admin.collectibles.sales.new');
 							Route::get('processing', 'collectiblesController@processingOrders')->name('admin.collectibles.sales.processing');
 							Route::get('delivered', 'collectiblesController@deliveredOrders')->name('admin.collectibles.sales.delivered');
+							Route::get('search', 'collectiblesController@search')->name('admin.collectibles.sales.search');
+							Route::post('search', 'collectiblesController@search')->name('admin.collectibles.sales.search');
+							
 
+							
+							
 							Route::get('orderDetail/{id}', 'collectiblesController@detailOrders');
 
 							Route::get('process/{id}', 'collectiblesController@processSale');

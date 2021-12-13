@@ -180,6 +180,9 @@
                         <li><a href="{{route('admin.collectibles.sales.new')}}">New Orders <span class="badge badge-pill badge-primary" id="newOrders_badge">0</span></a></li>
                         <li><a href="{{route('admin.collectibles.sales.processing')}}">Processing </a></li>
                         <li><a href="{{route('admin.collectibles.sales.delivered')}}">Delivered</a></li>
+                        <li><a href="{{route('admin.collectibles.sales.search')}}">Filter</a></li>
+
+                       
                     </ul>
                 </li>
 

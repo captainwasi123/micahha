@@ -140,6 +140,67 @@ class collectiblesController extends Controller
         }
 
 
+        // order filter
+
+        function search(Request $req){
+
+            $search = $req->all();
+
+            $data['suppliers'] =suppliers::orderBy('name')->get();
+
+            
+         
+            $data['data'] = orders::when(!empty($search['id']), function($q) use ($search){
+                return $q->where('id', 'LIKE', $search['id']); 
+            })
+            ->when(!empty($search['seller_id']), function($q) use ($search){
+                return $q->where('seller_id',$search['seller_id']); 
+            })
+            ->whereHas('invoice', function($q) use ($search)
+            {
+                $q->whereHas('delivery', function($q) use ($search)
+                {
+                    $q->when(!empty($search['first_name']), function($q) use ($search){
+                        return $q->where('first_name', 'LIKE', '%'.$search['first_name'].'%')
+                                    ->orWhere('last_name', 'LIKE', '%'.$search['first_name'].'%'); 
+                    });
+                });
+              
+            })
+            ->whereHas('invoice', function($q) use ($search)
+            {
+                $q->whereHas('delivery', function($q) use ($search)
+                {
+                    $q->when(!empty($search['email']), function($q) use ($search){
+                        return $q->where('email', 'LIKE', $search['email']); 
+                    });
+                });
+            
+            })
+            ->whereHas('invoice', function($q) use ($search)
+            {
+                $q->whereHas('delivery', function($q) use ($search)
+                {
+                    $q->when(!empty($search['phone']), function($q) use ($search){
+                        return $q->where('phone', 'LIKE', $search['phone']); 
+                    });
+                });
+            
+            })
+            ->when(!empty($search['status']), function($q) use ($search){
+                    return $q->where('status',$search['status']); 
+            })
+            ->get();
+            $data['search'] = $search;  
+         
+
+
+            return view('admin.collectibles.sales.filter')->with($data);
+        }
+
+       
+
+        
 
     //Suppliers
 
