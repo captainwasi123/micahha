@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="form-group">
-                            <label>Max Value *</label>
+                            <label>Tax Free Value *</label>
                             <input type="number" step="any" class="form-control" name="max_value" required>
                         </div> 
                     </div>
@@ -75,7 +75,7 @@
                             <tr>
                                 <th width="10%">S#</th>
                                 <th width="45%">Country</th>
-                                <th width="15%">Max Value</th>
+                                <th width="15%">Tax Free Value</th>
                                 <th width="15%">GST</th>
                                 <th width="15%"></th>
                             </tr>

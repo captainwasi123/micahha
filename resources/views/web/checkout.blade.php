@@ -138,7 +138,7 @@
                               <tbody>
                                  @php
                                     $subtotal = 0;
-                                    $gst = $saleSetting->gst;
+                                    $gst = 0;
                                     $s=1;
                                  @endphp
                                  @if(Session::get('cart') !== null)

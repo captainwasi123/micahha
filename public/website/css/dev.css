@@ -261,3 +261,11 @@ footer {
     top: 60px;
 }
 }
+
+#cart_tray .disabled {
+    background-color: #f6f6f6;
+}
+#cart_tray .noti {
+    font-size: 11px;
+    color: red;
+}

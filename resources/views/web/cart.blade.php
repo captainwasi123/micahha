@@ -29,38 +29,87 @@
                   <tbody id="cart_tray">
                      @php
                         $subtotal = 0;
-                        $gst = $saleSetting->gst;
+                        $gst = 0;
                      @endphp
-                     <input type="hidden" name="gst" value="{{$gst}}" id="gst">
-                     @if(Session::get('cart') !== null)
-                        @foreach(Session::get('cart') as $val)
-                           <tr>
-                              <td class="text-center"> 
-                                 <a href="javascript:void(0)" data-price="{{$val['price']}}" data-qty="{{$val['quantity']}}" class="col-black removeItemCart" data-type="{{$val['type'] == 'Art' ? '1' : '0'}}" data-id="{{$val['id']}}"> <i class="fa fa-trash"> </i> </a> 
-                              </td>
-                              <td> <img src="{{URL::to('/public/storage/'.$val['photo'])}}"> </td>
-                              <td> <b> {{$val['title']}} </b> <span> {{$val['type']}} -> by: {{$val['by']}} </span> </td>
-                              <td class="col-blue"> ${{number_format($val['price'], 2)}} </td>
-                              <td>
-                                 <div class="counting-number">
-                                    <button data-decreaseCart="" class="minusItem" data-id="{{base64_decode($val['id'])}}" data-price="{{$val['price']}}" data-method="{{$val['type'] == 'Art' ? '1' : '0'}}">-</button>
-                                    <input data-valueCart="" type="text" id="cart_qty{{base64_decode($val['id'])}}" value="{{$val['quantity']}}" disabled="">
-                                    <button data-increaseCart="" class="plusItem" data-id="{{base64_decode($val['id'])}}" data-price="{{$val['price']}}" data-method="{{$val['type'] == 'Art' ? '1' : '0'}}">+</button>
-                                 </div>
-                              </td>
-                              <td class="col-black"> $<font id="item_total{{base64_decode($val['id'])}}">{{$val['price']*$val['quantity']}}</font> </td>
-                           </tr>
-                           @php $subtotal += $val['price']*$val['quantity']; @endphp
-                        @endforeach
-                        @if(count(Session::get('cart')) == 0)
+                     @if(session()->has('country_id'))
+                        @php $id = session()->get('country_id'); @endphp
+                        <input type="hidden" name="gst" value="{{$gst}}" id="gst">
+                        @if(Session::get('cart') !== null)
+                           @foreach(Session::get('cart') as $val)
+                              @php $validate = 1; @endphp
+                              @if($val['type'] != 'Art')
+                                 @php $validate = 0; @endphp
+                                 @foreach($val['shipCountries'] as $sc)
+                                    @if($sc == $id)
+                                       @php $validate = 1; @endphp
+                                    @endif
+                                 @endforeach
+                              @endif
+                              <tr class="{{$validate == 0 ? 'disabled' : ''}}">
+                                 <td class="text-center"> 
+                                    <a href="javascript:void(0)" data-price="{{$val['price']}}" data-qty="{{$val['quantity']}}" class="col-black removeItemCart" data-type="{{$val['type'] == 'Art' ? '1' : '0'}}" data-id="{{$val['id']}}"> <i class="fa fa-trash"> </i> </a> 
+                                 </td>
+                                 <td> <img src="{{URL::to('/public/storage/'.$val['photo'])}}"> </td>
+                                 <td> 
+                                    <b> {{$val['title']}} </b> <span> {{$val['type']}} -> by: {{$val['by']}} </span>
+                                    @if($validate == 0)
+                                       <p class="noti">Unable to ship this product to your country</p>
+                                    @endif 
+                                 </td>
+                                 <td class="col-blue"> ${{number_format($val['price'], 2)}} </td>
+                                 <td>
+                                    <div class="counting-number">
+                                       <button data-decreaseCart="" class="minusItem" data-id="{{base64_decode($val['id'])}}" data-price="{{$val['price']}}" data-method="{{$val['type'] == 'Art' ? '1' : '0'}}">-</button>
+                                       <input data-valueCart="" type="text" id="cart_qty{{base64_decode($val['id'])}}" value="{{$val['quantity']}}" disabled="">
+                                       <button data-increaseCart="" class="plusItem" data-id="{{base64_decode($val['id'])}}" data-price="{{$val['price']}}" data-method="{{$val['type'] == 'Art' ? '1' : '0'}}">+</button>
+                                    </div>
+                                 </td>
+                                 <td class="col-black"> $<font id="item_total{{base64_decode($val['id'])}}">{{$val['price']*$val['quantity']}}</font> </td>
+                              </tr>
+                              @php $subtotal += $val['price']*$val['quantity']; @endphp
+                           @endforeach
+                           @if(count(Session::get('cart')) == 0)
+                              <tr>
+                                 <td colspan="6">{{ __('content.No Items Found.') }}</td>
+                              </tr>
+                           @endif
+                        @else
                            <tr>
                               <td colspan="6">{{ __('content.No Items Found.') }}</td>
                            </tr>
                         @endif
                      @else
-                        <tr>
-                           <td colspan="6">{{ __('content.No Items Found.') }}</td>
-                        </tr>
+                        <input type="hidden" name="gst" value="{{$gst}}" id="gst">
+                        @if(Session::get('cart') !== null)
+                           @foreach(Session::get('cart') as $val)
+                              <tr>
+                                 <td class="text-center"> 
+                                    <a href="javascript:void(0)" data-price="{{$val['price']}}" data-qty="{{$val['quantity']}}" class="col-black removeItemCart" data-type="{{$val['type'] == 'Art' ? '1' : '0'}}" data-id="{{$val['id']}}"> <i class="fa fa-trash"> </i> </a> 
+                                 </td>
+                                 <td> <img src="{{URL::to('/public/storage/'.$val['photo'])}}"> </td>
+                                 <td> <b> {{$val['title']}} </b> <span> {{$val['type']}} -> by: {{$val['by']}} </span> </td>
+                                 <td class="col-blue"> ${{number_format($val['price'], 2)}} </td>
+                                 <td>
+                                    <div class="counting-number">
+                                       <button data-decreaseCart="" class="minusItem" data-id="{{base64_decode($val['id'])}}" data-price="{{$val['price']}}" data-method="{{$val['type'] == 'Art' ? '1' : '0'}}">-</button>
+                                       <input data-valueCart="" type="text" id="cart_qty{{base64_decode($val['id'])}}" value="{{$val['quantity']}}" disabled="">
+                                       <button data-increaseCart="" class="plusItem" data-id="{{base64_decode($val['id'])}}" data-price="{{$val['price']}}" data-method="{{$val['type'] == 'Art' ? '1' : '0'}}">+</button>
+                                    </div>
+                                 </td>
+                                 <td class="col-black"> $<font id="item_total{{base64_decode($val['id'])}}">{{$val['price']*$val['quantity']}}</font> </td>
+                              </tr>
+                              @php $subtotal += $val['price']*$val['quantity']; @endphp
+                           @endforeach
+                           @if(count(Session::get('cart')) == 0)
+                              <tr>
+                                 <td colspan="6">{{ __('content.No Items Found.') }}</td>
+                              </tr>
+                           @endif
+                        @else
+                           <tr>
+                              <td colspan="6">{{ __('content.No Items Found.') }}</td>
+                           </tr>
+                        @endif
                      @endif
                   </tbody>
                </table>
@@ -75,20 +124,11 @@
                </div>
                <div class="col-md-5 col-lg-5 col-12">
                   <div class="cart-total">
-                     <h3>{{ __('content.Cart Total') }} </h3>
                      <table>
                         <tbody>
                            <tr>
-                              <td>{{ __('content.Sub Total') }} </td>
+                              <td>{{ __('content.Cart Total') }} </td>
                               <td> $<span id="cart_subtotal">{{$subtotal}}</span> </td>
-                           </tr>
-                           <tr>
-                              <td>{{ __('content.GST') }} </td>
-                              <td> {{$gst}}% </td>
-                           </tr>
-                           <tr>
-                              <th>{{ __('content.Total') }} </th>
-                              <th> $<span id="cart_total">{{((($subtotal/100)*$gst)+$subtotal)}}</span> </th>
                            </tr>
                         </tbody>
                      </table>

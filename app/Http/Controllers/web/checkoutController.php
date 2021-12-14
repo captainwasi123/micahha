@@ -97,6 +97,7 @@ class checkoutController extends Controller
             'status' => '1'
         ]);
         session()->forget('cart');
+        session()->forget('country_id');
         return redirect(route('home'));
     }
 
