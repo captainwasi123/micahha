@@ -155,7 +155,7 @@ class cartController extends Controller
             'country' => shippingCountries::where('country_id', $id)->first(),
             'saleSetting' => saleSetting::first()
         );
-
+        Session::put('country_id', $id);
         return view('web.response.cart_validate')->with($data);
     }
     function savedAddress($id){
