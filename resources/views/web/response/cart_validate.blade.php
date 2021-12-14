@@ -1,6 +1,6 @@
 <div class="col-md-12">
    <div class="order-summary">
-      <h3 class="alegraya no-margin"> {{$id.' '.$country->gst}} Order Summary <a href="{{route('web.cart')}}"> Edit Cart </a> </h3>
+      <h3 class="alegraya no-margin"> Order Summary <a href="{{route('web.cart')}}"> Edit Cart </a> </h3>
       <div class="cart-table">
          <table>
             <thead>
