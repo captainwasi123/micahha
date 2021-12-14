@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-md-4">
                             
-                              <label>Supplier Name</label> 
+                              <label>Supplier-Name</label> 
                                 <select class="form-control custom-select" name="seller_id">
                                     <option value="">Supplier *</option>
                                     @foreach($suppliers as $val)

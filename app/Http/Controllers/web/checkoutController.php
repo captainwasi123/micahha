@@ -14,6 +14,7 @@ use App\Models\invoice\orders;
 use App\Models\shippingCountries;
 use App\Models\userAddress;
 use Auth;
+use Session;
 
 class checkoutController extends Controller
 {
@@ -22,7 +23,7 @@ class checkoutController extends Controller
         $saleSetting = saleSetting::first();
         $countries = shippingCountries::orderBy('country_id')->get();
         $coupons = coupons::where('user_id', Auth::id())->where('status', '0')->first();
-
+     
         return view('web.checkout', ['saleSetting' => $saleSetting, 'countries' => $countries, 'coupon' => $coupons]);
     }
 
@@ -42,6 +43,7 @@ class checkoutController extends Controller
         }
         $saleSetting = saleSetting::first();
         $cart = session()->get('cart');
+       
         $coupons = coupons::where('user_id', Auth::id())->where('status', '0')->first();
         $discount = 0;
         if(!empty($coupons->id)){
@@ -74,13 +76,15 @@ class checkoutController extends Controller
         $ship = shippingCountries::where('country_id', $delivery['country'])->first();
         $data['gst'] = $data['subtotal'] >= $ship->max_value ? $ship->gst : 0;
         
+        $cart = session()->get($ship);
+        dd($ship);
 
-        //dd($data);
+        
         $invoice_id = masterInvoice::addInvoice($data, $delivery, $discount);
         
         $invoice = explode("|", $invoice_id);
          
-
+       
       return view('web.payments.stripe', ['id' => $invoice[0], 'amount' => $invoice[1], 'type'=>1]);
     }
 

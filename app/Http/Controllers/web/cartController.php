@@ -121,9 +121,9 @@ class cartController extends Controller
                 "price" => $product->price,
                 "photo" => 'art/main/'.$product->image
             ];
-
+          
             session()->put('cart', $cart);
-
+           
             return response()->json(['status' => 'success', 'message' => 'Product added.', 'item' => '1']);
 
         }

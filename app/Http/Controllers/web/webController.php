@@ -34,6 +34,9 @@ class webController extends Controller
 
     function cart(){
         $saleSetting = saleSetting::first();
+       
+        
+
 
         return view('web.cart', ['saleSetting' => $saleSetting]);
     }
