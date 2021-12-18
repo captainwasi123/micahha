@@ -10,7 +10,7 @@ use App\Models\saleSetting;
 use App\Models\coupons;
 use Auth;
 use Mail;
-use Carbon\Carbon; 
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Hash;
 use DB;
@@ -64,18 +64,43 @@ class authController extends Controller
             'username' => 'required|unique:tbl_user_info|max:255',
             'password' => 'required|confirmed|min:6',
         ]);
-        User::addUser($data);
+        $emailCode = User::addUser($data);
+
+
+
         if($data['refer_by'] != '0'){
             $sales = saleSetting::first();
-
             $c = new coupons;
             $c->user_id = base64_decode(base64_decode($data['refer_by']));
             $c->amount = $sales->refer_gift;
             $c->status = '0';
             $c->save();
         }
-        return redirect(route('user.login'))->with('success', 'You are successfully registered.');
+
+            $to_name = $data['username'];
+            $to_email=$data['email'];
+            $to_code=$emailCode;
+
+            $emailData = array(
+                'name' => $to_name,
+                'email' => $to_email,
+                'emailcode' => $to_code
+            );
+
+            Mail::send('email.activation', $emailData, function($message) use ( $to_email, $to_name) {
+            $message->to($to_email, $to_name)
+            ->subject('Site - Activation Code');
+            $message->from("Info@micahha.com","Micahha");
+            });
+
+             return redirect(route('user.login'))->with('success', 'You are successfully registered.');
+
+            //  return redirect(route('web.verifycode'))->with('success', 'You are successfully registered.');
+
     }
+
+   
+
     function registerRefer($id){
         $id = base64_decode(base64_decode($id));
         $u = User::find($id);
@@ -88,10 +113,12 @@ class authController extends Controller
         }
     }
 
+    
 
 
 
-       
+
+
     // forget password
 
     function showForgetPasswordForm(){
@@ -109,8 +136,8 @@ class authController extends Controller
         $token = Str::random(64);
 
         DB::table('password_resets')->insert([
-            'email' => $request->email, 
-            'token' => $token, 
+            'email' => $request->email,
+            'token' => $token,
             'created_at' => Carbon::now()
           ]);
 
@@ -120,26 +147,26 @@ class authController extends Controller
         });
 
         return back()->with('message', 'We have e-mailed your password reset link!');
-       
+
     }
 
-    public function showResetPasswordForm($token) { 
+    public function showResetPasswordForm($token) {
 
 
         return view('web.forgetPasswordLink', ['token' => $token]);
      }
-     
+
 
     public function submitResetPasswordForm(Request $request)
     {
           $request->validate([
-          
+
               'password' => '|required_with:confirmation_password|same:confirmation_password',
               'confirmation_password' => 'required'
           ]);
           $updatePassword = DB::table('password_resets')
                               ->where([ 'token' => $request->token])->first();
-  
+
           if(!$updatePassword){
               return back()->withInput()->with('error', 'Invalid token!');
           }

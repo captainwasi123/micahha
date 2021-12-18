@@ -40,4 +40,25 @@ class userController extends Controller
 
             return redirect()->back();
         }
+
+        public function verifyform()
+        {
+            return view('user.verifycode');
+        }
+
+        public function verifyAccountBycode(Request $request)
+        {  
+            
+            
+            $data=User::Where('id', Auth::id())->where('emailcode', $request->emailcode )->first();
+            $data=User::Where('id', Auth::id())->where('emailcode', $request->emailcode )->Update([
+
+                'is_verified' => 1,
+
+            ]);
+        
+    
+
+            return redirect()->back()->with('success', 'You account has been Verified');
+        }
 }
