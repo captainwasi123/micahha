@@ -621,7 +621,7 @@ h6.checkbox1 {
 }
 
 .quote-sec h4 {
-    font-size: 45px;
+    font-size: 32px;
     font-weight: 400;
     margin: 0px 0px 10px 0px;
 }
@@ -631,7 +631,7 @@ h6.checkbox1 {
     margin: auto;
     text-align: center;
     letter-spacing: 0.9px;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .arrows-1 button.slick-prev.slick-arrow {
@@ -3253,8 +3253,8 @@ span.apartment-tags {
     text-align: left;
 }
 footer {
-    background: #f5f5f5;
-    padding: 40px 0px;
+    background: #f5f5f5 !important;
+    padding: 30px 0px !important;
 }
 .image-type1 img {
     width: 100%;
@@ -3292,7 +3292,7 @@ footer {
 .offer-box {
     float: left;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 00px;
 }
 .image-slider {
     float: left;
@@ -3304,6 +3304,7 @@ footer {
     width: 100%;
     max-height: 250px;
     height: 60px;
+    margin-bottom: -1px;
 }
 .sec-head2 h3 {
     font-size: 28px;
@@ -3451,7 +3452,7 @@ button.slick-arrow {
     line-height: 26px;
 }
 .portrait-detail img {
-    max-width: 80% !important;
+    max-width: 100% !important;
     margin-left: 0px !important;
 }
 .portrait-detail p {
@@ -3483,7 +3484,7 @@ button.slick-arrow {
     float: left;
     width: 100%;
     position: relative;
-    margin-bottom: 30px !important;
+    margin-bottom: 10px !important;
     overflow: hidden;
 }
 .prop-box-text {
@@ -3502,6 +3503,10 @@ button.slick-arrow {
     visibility: hidden;
     cursor: pointer;
 }
+.quote-sec {
+    padding: 100px 40px;
+ }
+
 .privacy-policy-content p {
     font-family: 'ALEGREYA SC';
     font-size: 17px;
@@ -3586,8 +3591,13 @@ section.collectibles-sec {
 .offer-box {
     float: left;
     width: 100%;
-    margin-bottom: 0px;
+    ;
 }
+
+.offer-box-extra{
+    margin-bottom: 30px
+}
+
 .apartment-title h5 span {
     float: none;
 }
@@ -3631,7 +3641,7 @@ section.collectibles-sec {
 .offer-box img {
     width: auto !important;
     min-width: 100% !important;
-    max-width: 150% !important;
+    max-width: 100% !important;
 }
 .image-zoomer .large {
     display: none !important;
