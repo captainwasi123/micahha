@@ -13,8 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 //Website
 Route::namespace('web')->middleware('changeLang')->group(function(){
+
+	// verifiyCode
+
+	
 
 	//User Authentication'
 		Route::get('/login', 'authController@login')->name('user.login');
@@ -604,7 +610,11 @@ Route::prefix('payments')->namespace('payments')->group(function(){
 
 //User
 	Route::prefix('user')->namespace('user')->middleware('userAuth')->group(function(){
-
+		
+	
+		Route::get('/verifyform', 'userController@verifyform')->name('web.verifycode');
+		Route::post('/verifyAccountBycode', 'userController@verifyAccountBycode')->name('web.verified');
+	
 		Route::get('/', 'userController@index')->name('user.dashboard');
 
 		Route::get('/becomeLandlord', 'userController@becomeLandlord')->name('become.a.landlord');

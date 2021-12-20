@@ -9,8 +9,9 @@
             <i class="ti-close"></i>
         </div>
     </div>
-
+    @if(Auth::user()->is_verified!=0)
     @switch(Auth::user()->landlord_type)
+   
         @case(0)
             <a href="{{route('become.a.landlord')}}" class="btn-dashboard-switch btn btn-info" aria-expanded="false">Become a Landlord</a>
             @break
@@ -45,7 +46,9 @@
             <a href="javascript:void(0)" class="btn-dashboard-switch btn btn-danger">Artist Blocked</a>
             @break
     @endswitch
-
+    @else
+        <a href="{{route('web.verifycode')}}" class="btn-dashboard-switch btn btn-danger">Account Verifiy</a>
+    @endif
     <ul id="sidebar_menu">
         <li class="list_divider"></li>
         <li class="">

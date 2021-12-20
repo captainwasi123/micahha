@@ -13,6 +13,28 @@
            <div class="col-md-6 col-lg-6 col-12 col-sm-12">
               <div class="login-form">
                  <h3>{{ __('content.Login') }} </h3>
+
+                  {{--    --}}
+                  @if ($message = Session::get('success'))
+
+                        <div>
+
+                        <p>{{ $message }}</p>
+
+                        </div>
+
+                  @endif
+                  @if ($message = Session::get('warning'))
+
+                        <div>
+
+                        <p>{{ $message }}</p>
+
+                        </div>
+
+                  @endif
+                  {{--    --}}
+
                   @if(session()->has('success'))
                       <div class="alert alert-success">
                           {{ session()->get('success') }}
