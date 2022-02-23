@@ -23,17 +23,17 @@
          </div>
          <div class="row margin-1">
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
-               <div class="offer-box">
+               <div class="offer-box offer-box-extra">
                   <img src="{{URL::to('/public/website')}}/images/offer-image1.jpg">
                </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
-               <div class="offer-box">
+               <div class="offer-box offer-box-extra ">
                   <img src="{{URL::to('/public/website')}}/images/offer-image2.jpg">
                </div>
             </div>
             <div class="col-md-4 col-lg-4 col-sm-4 col-12 padding-1">
-               <div class="offer-box">
+               <div class="offer-box offer-box-extra">
                   <img src="{{URL::to('/public/website')}}/images/offer-image3.jpg">
                </div>
             </div>
