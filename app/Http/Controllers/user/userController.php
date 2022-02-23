@@ -48,17 +48,16 @@ class userController extends Controller
 
         public function verifyAccountBycode(Request $request)
         {  
-            
-            
-            $data=User::Where('id', Auth::id())->where('emailcode', $request->emailcode )->first();
-            $data=User::Where('id', Auth::id())->where('emailcode', $request->emailcode )->Update([
+            $emailCode = $request->get('emailcode');
+            $data=User::Where('id', Auth::id())->where('emailcode',  $emailCode)->first();
+            if(!empty($data->id)){
+                $data->is_verified_email = '1';
+                $data->save();
 
-                'is_verified' => 1,
+                return redirect()->back()->with('success', 'You account has been Verified');
+            }else{
+                return redirect()->back()->with('error', 'Invalid Code.');
+            }
 
-            ]);
-        
-    
-
-            return redirect()->back()->with('success', 'You account has been Verified');
         }
 }

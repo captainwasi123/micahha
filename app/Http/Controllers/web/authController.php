@@ -14,10 +14,18 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Hash;
 use DB;
+use URL;
+use GuzzleHttp\Client;
+use Infobip\Api\SendSmsApi;
+use Infobip\Configuration;
+use Infobip\Model\SmsAdvancedTextualRequest;
+use Infobip\Model\SmsDestination;
+use Infobip\Model\SmsTextualMessage;
 
 class authController extends Controller
 {
     //
+
     function login(){
 
         return view('web.login');
@@ -64,8 +72,8 @@ class authController extends Controller
             'username' => 'required|unique:tbl_user_info|max:255',
             'password' => 'required|confirmed|min:6',
         ]);
-        $emailCode = User::addUser($data);
-
+        $codes = User::addUser($data);
+        $codes = explode('|', $codes);
 
 
         if($data['refer_by'] != '0'){
@@ -79,7 +87,7 @@ class authController extends Controller
 
             $to_name = $data['username'];
             $to_email=$data['email'];
-            $to_code=$emailCode;
+            $to_code=$codes[0];
 
             $emailData = array(
                 'name' => $to_name,
@@ -92,6 +100,25 @@ class authController extends Controller
             ->subject('Site - Activation Code');
             $message->from("Info@micahha.com","Micahha");
             });
+
+            $configuration = (new Configuration())
+                ->setHost(URL::to('/'))
+                ->setApiKeyPrefix('Authorization', 'APP')
+                ->setApiKey('Authorization', env('SMS_API_KEY'));
+
+            $phcode = explode('+', $data['phonecode']);
+            $client = new Client();
+
+            $sendSmsApi = new SendSMSApi($client, $configuration);
+            $destination = (new SmsDestination())->setTo($phcode[1].$data['phone']);
+            $message = (new SmsTextualMessage())
+                ->setFrom('Micahha')
+                ->setText('Hi,\n\
+                    Your account verification code: '.$codes[0].'\n\
+                ')
+                ->setDestinations([$destination]);
+            $request = (new SmsAdvancedTextualRequest())
+                ->setMessages([$message]);
 
              return redirect(route('user.login'))->with('success', 'You are successfully registered.');
 

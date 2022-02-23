@@ -8,10 +8,12 @@
         "php": "^7.3|^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.4",
+        "infobip/infobip-api-php-client": "3.1.0",
         "intervention/image": "^2.7",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
+        "pnlinh/laravel-infobip-sms": "^1.0",
         "stripe/stripe-php": "^7.100"
     },
     "require-dev": {

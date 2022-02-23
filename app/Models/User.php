@@ -23,6 +23,7 @@ class User extends Authenticatable
 
     public static function addUser(array $data){
         $emailCode = rand(100000, 999999);
+        $phoneCode = rand(1000, 9999);
         $u = new User;
         $u->first_name = $data['first-name'];
         $u->last_name = $data['last-name'];
@@ -35,10 +36,11 @@ class User extends Authenticatable
         $u->newsletter = empty($data['newsletter']) ? '0' : '1';
         $u->status = '1';
         $u->emailcode = $emailCode;
+        $u->smsacode = $phoneCode;
         $u->refer_by = $data['refer_by'] == '0' ? null : base64_decode(base64_decode($data['refer_by']));
         $u->save();
 
-        return $emailCode;
+        return $emailCode.'|'.$phoneCode;
     }
 
     public static function updateProfile(array $data){

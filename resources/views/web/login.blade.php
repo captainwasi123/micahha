@@ -14,27 +14,6 @@
               <div class="login-form">
                  <h3>{{ __('content.Login') }} </h3>
 
-                  {{--    --}}
-                  @if ($message = Session::get('success'))
-
-                        <div>
-
-                        <p>{{ $message }}</p>
-
-                        </div>
-
-                  @endif
-                  @if ($message = Session::get('warning'))
-
-                        <div>
-
-                        <p>{{ $message }}</p>
-
-                        </div>
-
-                  @endif
-                  {{--    --}}
-
                   @if(session()->has('success'))
                       <div class="alert alert-success">
                           {{ session()->get('success') }}

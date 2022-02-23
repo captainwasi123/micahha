@@ -8,7 +8,7 @@
                         <div class="white_card_header">
                             <div class="box_header m-0">
                                 <div class="main-title">
-                                    <h3 class="m-0">'Account Verify'</h3>
+                                    <h3 class="m-0">Account Verify</h3>
                                     @if ($errors->any())
                                         <div class="alert text-white bg-danger mb-0 mt-2" role="alert">
                                             <ul>
@@ -35,20 +35,38 @@
                             <div class="card-body">
                                  <form action="{{route('web.verified')}}" method="post">
                                     @csrf
-                                    {{--  <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="">Email</label>
-                                            <input type="email" class="form-control" name="email" required>
+                                    @if(Auth::user()->is_verified_email == 0)
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="">Email Verification Code <small>(6 Digits)</small></label>
+                                                <input type="Number" class="form-control" name="emailcode" required>
+                                            </div>
                                         </div>
-                                    </div>  --}}
-                                    <div class="form-row">
-                                        <div class="form-group col-md-4">
-                                            <label for="">Code</label>
-                                            <input type="Number" class="form-control" name="emailcodee" required>
+                                    @else
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label class="alert alert-success">Email Verified.</label>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
+                                    @if(Auth::user()->is_verified_phone == 0)
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label for="">Phone Verification Code <small>(4 Digits)</small></label>
+                                                <input type="Number" class="form-control" name="phonecode" required>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="form-row">
+                                            <div class="form-group col-md-4">
+                                                <label class="alert alert-success">Phone Verified.</label>
+                                            </div>
+                                        </div>
+                                    @endif
                                     <br>
-                                    <button type="submit" class="btn btn-primary">Verify</button>
+                                    @if(Auth::user()->is_verified_phone == 0 || Auth::user()->is_verified_email == 0)
+                                        <button type="submit" class="btn btn-primary">Verify</button>
+                                    @endif
                                 </form>
                             </div>
                         </div>
