@@ -60,7 +60,7 @@
                      <h6 class="alegraya">{{ __('content.Amenities') }} </h6>
                      <div class="alegraya m-b-20">
                         @foreach($list_data->amenities as $amenities)
-                        <span> <img src="{{URL::to('/public/website')}}/images/apartment-icon1.jpg"> {{$amenities->amenities->name}} </span>
+                        <span> <img src="{{URL::to('/public/website')}}/images/apartment-icon1.jpg"> {{ __('content.'.$amenities->amenities->name) }} </span>
                         @endforeach
                      </div>
                   </div>

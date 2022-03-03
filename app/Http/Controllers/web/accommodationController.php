@@ -117,7 +117,9 @@ class accommodationController extends Controller
     {
         $data = array(
             'list_data' => listing::where('status',2)->where('is_feature',1)->latest()->paginate(6),
+            'amenities_data' => amenities::where('show_in_home',1)->latest()->limit(5)->get()->toArray(),
             'property_type' => propertyType::get(),
+            'amenity_type' => amenityType::orderBy('name')->get(),
           );
         return view('web.accommodation.feature_list')->with($data);
     }

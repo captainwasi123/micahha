@@ -14,184 +14,35 @@
         <input type="hidden" name="filer" value="1">
            <div class="container">
               <div class="btn-group">
-                 <button class="btn btn-lg" type="button">
-                 <img src="{{URL::to('/public/website')}}/images/filter-icon.jpg"> Filters
-                 </button>
-                 <div class="dropdown-menu">
-                    <div class="filters-wrapper">
-                       <!-- Property Types Filter Starts Here -->
-                       <!-- <div class="filter-box">
-                          <div class="filter-box-head">
-                             <h4> Property Types </h4>
-                          </div>
-                          <div class="checkbox-filter">
-                             <p> <label> <input type="checkbox" > House </label> </p>
-                             <p> <label> <input type="checkbox" > Apartment and Unit </label> </p>
-                             <p> <label> <input type="checkbox"> Town house </label> </p>
-                             <p> <label> <input type="checkbox"> Villa </label> </p>
-                          </div>
-                       </div> -->
-                       <!-- Property Types Filter Ends Here -->
-                       <!-- Price Filter Starts Here -->
-                       <!-- <div class="filter-box">
-                          <div class="filter-box-head">
-                             <h4> Price </h4>
-                             <h6> Above $50k </h6>
-                          </div>
-                          <div class="price-filter">
-                             <div class="price-range-slider">
-                                <p class="range-value">
-                                   <input type="text" id="amount" readonly>
-                                </p>
-                                <div id="slider-range" class="range-bar"></div>
-                             </div>
-                          </div>
-                       </div> -->
-                       <!-- Price Filter Ends Here -->
-                       <!-- Bedroom Filter Starts Here -->
-                       <!-- <div class="filter-box">
-                          <div class="filter-box-head">
-                             <h4> Bedrooms </h4>
-                          </div>
-                          <div class="checkbox-filter2">
-                             <button class="active-1"> <input type="checkbox" checked="checked" name=""> Any </button>
-                             <button> <input type="checkbox" name=""> 1+ </button>
-                             <button> <input type="checkbox" name=""> 2+ </button>
-                             <button> <input type="checkbox" name=""> 3+ </button>
-                             <button> <input type="checkbox" name=""> 4+ </button>
-                             <button> <input type="checkbox" name=""> 5+ </button>
-                          </div>
-                          <div class="extract-value">
-                             <p> <label> <input type="checkbox" name="">  Use extract value </label> </p>
-                          </div>
-                       </div> -->
-                       <!-- Bedroom Filter Ends Here -->
-                       <!-- Bathroom Filter Starts Here -->
-                       <div class="filter-box">
-                          <div class="filter-box-head">
-                             <h4> Bathrooms </h4>
-                          </div>
-                          <div class="checkbox-filter2">
-                             <button class="active-1"> <input type="checkbox" checked="checked" name=""> Any </button>
-                             <button> <input type="checkbox" name=""> 1+ </button>
-                             <button> <input type="checkbox" name=""> 2+ </button>
-                             <button> <input type="checkbox" name=""> 3+ </button>
-                             <button> <input type="checkbox" name=""> 4+ </button>
-                             <button> <input type="checkbox" name=""> 5+ </button>
-                          </div>
-                          <div class="extract-value">
-                             <p> <label> <input type="checkbox" name="">  Use extract value </label> </p>
-                          </div>
-                       </div>
-                       <!-- Bathroom Filter Ends Here -->
-                       <!-- Parking Filter Starts Here -->
-                       <div class="filter-box">
-                          <div class="filter-box-head">
-                             <h4> Parking </h4>
-                          </div>
-                          <div class="checkbox-filter2">
-                             <button class="active-1"> <input type="checkbox" checked="checked" name=""> Any </button>
-                             <button> <input type="checkbox" name=""> 1+ </button>
-                             <button> <input type="checkbox" name=""> 2+ </button>
-                             <button> <input type="checkbox" name=""> 3+ </button>
-                             <button> <input type="checkbox" name=""> 4+ </button>
-                             <button> <input type="checkbox" name=""> 5+ </button>
-                          </div>
-                          <div class="extract-value">
-                             <p> <label> <input type="checkbox" name="">  Use extract value </label> </p>
-                          </div>
-                       </div>
-                       <!-- Parking Filter Ends Here -->
-                       <!-- Features Filter Starts Here -->
-                       <div class="filter-box">
-                          <div class="filter-box-head">
-                             <h4> Features </h4>
-                          </div>
-                          <div class="checkbox-filter3">
-                             <p> <label> <input type="checkbox" name=""> Pets Allowed </label> </p>
-                             <p> <label> <input type="checkbox" name=""> Internal Laundary </label> </p>
-                             <p> <label> <input type="checkbox" name=""> Gas </label> </p>
-                             <p> <label> <input type="checkbox" name=""> Swimming Pool </label> </p>
-                             <p> <label> <input type="checkbox" name=""> Balcony / deck </label> </p>
-                             <p> <label> <input type="checkbox" name=""> Built & wardrobes </label> </p>
-                             <p> <label> <input type="checkbox" name=""> Air Conditioning </label> </p>
-                             <p> <label> <input type="checkbox" name=""> Garden / courtyard </label> </p>
-                          </div>
-                       </div>
-                       <!-- Features Filter Ends Here -->
-                       <!-- Calendar Filter Starts Here -->
-                       <!-- <div class="filter-box">
-                          <div class="filter-box-head">
-                             <h4> Calendar </h4>
-                          </div>
-                          <div class="checkbox-filter3">
-                             <img src="images/calendar.jpg">
-                          </div>
-                       </div> -->
-                       <!-- Calendar Filter Ends Here -->
-                       <!-- Guest Filter Starts Here -->
-                       <!-- <div class="filter-box no-border">
-                          <div class="filter-box-head">
-                             <h4> Guest </h4>
-                          </div>
-                          <div class="counting-filter">
-                             <div class="row">
-                                <div class="col-md-6 col-lg-6 col-7">
-                                   <div class="counting-name">
-                                      <h5> Adults </h5>
-                                      <p> Ages 13 or above </p>
-                                   </div>
-                                </div>
-                                <div class="col-md-6 col-lg-6 col-5">
-                                   <div class="counting-number">
-                                      <button data-decrease>-</button>
-                                      <input data-value type="text" value="1" disabled />
-                                      <button data-increase>+</button>
-                                   </div>
-                                </div>
-                             </div>
-                             <div class="row">
-                                <div class="col-md-6 col-lg-6 col-7">
-                                   <div class="counting-name">
-                                      <h5> Children </h5>
-                                      <p> Ages 13 or above </p>
-                                   </div>
-                                </div>
-                                <div class="col-md-6 col-lg-6 col-5">
-                                   <div class="counting-number">
-                                      <button data-decrease>-</button>
-                                      <input data-value type="text" value="1" disabled />
-                                      <button data-increase>+</button>
-                                   </div>
-                                </div>
-                             </div>
-                             <div class="row">
-                                <div class="col-md-6 col-lg-6 col-7">
-                                   <div class="counting-name">
-                                      <h5> Infants </h5>
-                                      <p> Ages 13 or above </p>
-                                   </div>
-                                </div>
-                                <div class="col-md-6 col-lg-6 col-5">
-                                   <div class="counting-number">
-                                      <button data-decrease>-</button>
-                                      <input data-value type="text" value="1" disabled />
-                                      <button data-increase>+</button>
-                                   </div>
-                                </div>
-                             </div>
-                          </div>
-                       </div> -->
-                       <!-- Guest Filter Ends Here -->
-                       <!-- Filter Actions Starts Here -->
-                       <div class="filter-actions">
-                          <button class="cancel-btn"> Cancel </button>
-                          <button class="results-btn"> See Results </button>
-                       </div>
-                       <!-- Filter Actions Ends Here -->
-                    </div>
-                 </div>
-              </div>
+                  <button class="btn btn-lg" >
+                  <img src="{{URL::to('/public/website')}}/images/filter-icon.jpg">{{ __('content.Filters') }} 
+                  </button>
+                  <div class="dropdown-menu">
+                     <div class="filters-wrapper">
+                        <!-- Property Types Filter Starts Here -->
+                        <div class="filter-box">
+                           <div class="filter-box-head">
+                              <h4> {{ __('content.FEATURES') }}  </h4>
+                           </div>
+                           @foreach($amenity_type as $val)
+                              <div class="checkbox-filter checkbox-filter4">
+                                 <h6> {{ __('content.'.$val->name) }}<i class="fa fa-caret-right"> </i> </h6>
+                                 @foreach($val->amenities as $vall)
+                                    <p> <label> <input type="checkbox" name="amenities" value="{{$vall->id}}"> {{ __('content.'.$vall->name) }} </label> </p>
+                                 @endforeach
+                              </div>
+                           @endforeach
+                        </div>
+                        <!-- Property Types Filter Ends Here -->
+                        <!-- Filter Actions Starts Here -->
+                        <div class="filter-actions">
+                           <button class="cancel-btn"> {{ __('content.Cancel') }} </button>
+                           <button class="results-btn"> {{ __('content.See Results') }} </button>
+                        </div>
+                        <!-- Filter Actions Ends Here -->
+                     </div>
+                  </div>
+               </div>
               <div class="btn-group">
                  <button class="btn btn-lg">
                  Rooms <i class="fa fa-angle-down"> </i>
