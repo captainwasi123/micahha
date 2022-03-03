@@ -16,6 +16,7 @@ return [
         'Accomodation' => 'Accommodation',
         'Art' => 'Art',
         'Collectibles' => 'Collectibles',
+        'See Results' => 'See Results',
 
     //Art Category
         'Oil painting' => 'Oil painting',
