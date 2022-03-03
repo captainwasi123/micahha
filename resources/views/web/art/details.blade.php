@@ -12,7 +12,7 @@
    <div class="container">
       <a href="{{route('art')}}">{{ __('content.Art') }} </a>  
       <i class="fa fa-angle-right"> </i>
-      <a href="{{URL::to('/art')}}/{{$data->cat->name}}"> {{$data->cat->name}} </a>
+      <a href="{{URL::to('/art')}}/{{$data->cat->name}}"> {{ __('content.'.$data->cat->name) }} </a>
       <i class="fa fa-angle-right"> </i>
       <a href="javascript:void(0)"> {{$data->title}} </a>
    </div>

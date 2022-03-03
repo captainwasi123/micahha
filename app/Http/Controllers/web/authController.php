@@ -21,6 +21,7 @@ use Infobip\Configuration;
 use Infobip\Model\SmsAdvancedTextualRequest;
 use Infobip\Model\SmsDestination;
 use Infobip\Model\SmsTextualMessage;
+use Pnlinh\InfobipSms\Facades\InfobipSms;
 
 class authController extends Controller
 {
@@ -59,6 +60,32 @@ class authController extends Controller
         return redirect('login')->with('success', 'Successfully logged out.');
     }
 
+    function testsms(){
+
+            $configuration = (new Configuration())
+                ->setHost("r525y1.api.infobip.com")
+                ->setApiKeyPrefix('Authorization', 'App')
+                ->setApiKey('Authorization', env('SMS_API_KEY'));
+
+            $client = new Client();
+
+            $sendSmsApi = new SendSMSApi($client, $configuration);
+            $destination = (new SmsDestination())->setTo('923142138370');
+            $message = (new SmsTextualMessage())
+                ->setFrom('Micahha')
+                ->setText('Hi,
+Your account verification code: 
+
+1234
+                ')
+                ->setDestinations([$destination]);
+            $request = (new SmsAdvancedTextualRequest())
+                ->setMessages([$message]);
+
+        $smsResponse = $sendSmsApi->sendSmsMessage($request);
+
+        return $smsResponse;
+    }
 
     function register(){
         $countries = country::all();
@@ -102,8 +129,8 @@ class authController extends Controller
             });
 
             $configuration = (new Configuration())
-                ->setHost(URL::to('/'))
-                ->setApiKeyPrefix('Authorization', 'APP')
+                ->setHost("r525y1.api.infobip.com")
+                ->setApiKeyPrefix('Authorization', 'App')
                 ->setApiKey('Authorization', env('SMS_API_KEY'));
 
             $phcode = explode('+', $data['phonecode']);
@@ -113,16 +140,18 @@ class authController extends Controller
             $destination = (new SmsDestination())->setTo($phcode[1].$data['phone']);
             $message = (new SmsTextualMessage())
                 ->setFrom('Micahha')
-                ->setText('Hi,\n\
-                    Your account verification code: '.$codes[0].'\n\
+                ->setText('Hi,
+Your account verification code: 
+
+'.$codes[1].'
                 ')
                 ->setDestinations([$destination]);
             $request = (new SmsAdvancedTextualRequest())
                 ->setMessages([$message]);
 
-             return redirect(route('user.login'))->with('success', 'You are successfully registered.');
-
-            //  return redirect(route('web.verifycode'))->with('success', 'You are successfully registered.');
+            $smsResponse = $sendSmsApi->sendSmsMessage($request);
+        
+        return redirect(route('user.login'))->with('success', 'You are successfully registered.');
 
     }
 

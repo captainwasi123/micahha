@@ -48,16 +48,33 @@ class userController extends Controller
 
         public function verifyAccountBycode(Request $request)
         {  
+            $evalid = 0;
+            $pvalid = 0;
             $emailCode = $request->get('emailcode');
-            $data=User::Where('id', Auth::id())->where('emailcode',  $emailCode)->first();
-            if(!empty($data->id)){
-                $data->is_verified_email = '1';
-                $data->save();
+            $phonecode = $request->get('phonecode');
+            $edata=User::Where('id', Auth::id())->where('emailcode',  $emailCode)->first();
+            if(!empty($edata->id)){
+                $edata->is_verified_email = '1';
+                $edata->save();
 
-                return redirect()->back()->with('success', 'You account has been Verified');
+                $evalid = 1;
+            }
+            $pdata=User::Where('id', Auth::id())->where('smsacode',  $phonecode)->first();
+            if(!empty($pdata->id)){
+                $pdata->is_varified_phone = '1';
+                $pdata->save();
+
+                $pvalid = 1;
+            }
+            $message = '';
+            if($evalid == 1 && $pvalid == 1){
+                return redirect()->back()->with('success', 'Your email & Phone is Verified.');
+            }elseif($evalid == 1 && $pvalid == 0){
+                return redirect()->back()->with('success', 'Your email is Verified.');
+            }elseif($evalid == 0 && $pvalid == 1){
+                return redirect()->back()->with('success', 'Your Phone is Verified.');
             }else{
                 return redirect()->back()->with('error', 'Invalid Code.');
             }
-
         }
 }

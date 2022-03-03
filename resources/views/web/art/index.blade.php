@@ -29,7 +29,7 @@
       <h6> 
          {{ __('content.Popular Images:') }} 
          @foreach($cat as $val)
-            <a href="{{URL::to('/art')}}/{{$val->name}}"> {{$val->name}}, </a>&nbsp;&nbsp;
+            <a href="{{URL::to('/art')}}/{{$val->name}}"> {{ __('content.'.$val->name) }}, </a>&nbsp;&nbsp;
          @endforeach
       </h6>
    </div>

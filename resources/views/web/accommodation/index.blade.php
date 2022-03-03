@@ -20,13 +20,13 @@
                <!-- Property Types Filter Starts Here -->
                <div class="filter-box">
                   <div class="filter-box-head">
-                     <h4> FEATURES </h4>
+                     <h4> {{ __('content.FEATURES') }}  </h4>
                   </div>
                   @foreach($amenity_type as $val)
                      <div class="checkbox-filter checkbox-filter4">
-                        <h6> {{$val->name}} <i class="fa fa-caret-right"> </i> </h6>
+                        <h6> {{ __('content.'.$val->name) }}<i class="fa fa-caret-right"> </i> </h6>
                         @foreach($val->amenities as $vall)
-                           <p> <label> <input type="checkbox" name="amenities" value="{{$vall->id}}"> {{$vall->name}} </label> </p>
+                           <p> <label> <input type="checkbox" name="amenities" value="{{$vall->id}}"> {{ __('content.'.$vall->name) }} </label> </p>
                         @endforeach
                      </div>
                   @endforeach
@@ -34,8 +34,8 @@
                <!-- Property Types Filter Ends Here -->
                <!-- Filter Actions Starts Here -->
                <div class="filter-actions">
-                  <button class="cancel-btn"> Cancel </button>
-                  <button class="results-btn"> See Results </button>
+                  <button class="cancel-btn"> {{ __('content.Cancel') }} </button>
+                  <button class="results-btn"> {{ __('content.See Results') }} </button>
                </div>
                <!-- Filter Actions Ends Here -->
             </div>
@@ -50,10 +50,10 @@
                <!-- Bedroom Filter Starts Here -->
                <div class="filter-box">
                   <div class="filter-box-head">
-                     <h4> Bedrooms </h4>
+                     <h4> {{ __('content.Bedrooms') }} </h4>
                   </div>
                   <div class="checkbox-filter2">
-                     <button class="active-1"> <input type="checkbox" checked="checked" name=""> Any </button>
+                     <button class="active-1"> <input type="checkbox" checked="checked" name=""> {{ __('content.Any') }} </button>
                      <button> <input type="checkbox" name=""> 1+ </button>
                      <button> <input type="checkbox" name=""> 2+ </button>
                      <button> <input type="checkbox" name=""> 3+ </button>
@@ -61,14 +61,14 @@
                      <button> <input type="checkbox" name=""> 5+ </button>
                   </div>
                   <div class="extract-value">
-                     <p> <label> <input type="checkbox" name="">  Use extract value </label> </p>
+                     <p> <label> <input type="checkbox" name="">  {{ __('content.Use extract value') }} </label> </p>
                   </div>
                </div>
                <!-- Bedroom Filter Ends Here -->
                <!-- Filter Actions Starts Here -->
                <div class="filter-actions">
-                  <button class="cancel-btn"> Cancel </button>
-                  <button class="results-btn"> See Results </button>
+                  <button class="cancel-btn"> {{ __('content.Cancel') }} </button>
+                  <button class="results-btn"> {{ __('content.See Results') }} </button>
                </div>
                <!-- Filter Actions Ends Here -->
             </div>
@@ -83,8 +83,8 @@
                <!-- Price Filter Starts Here -->
                <div class="filter-box">
                   <div class="filter-box-head">
-                     <h4> Price </h4>
-                     <h6> Above $50k </h6>
+                     <h4> {{ __('content.Price') }} </h4>
+                     <h6> {{ __('content.Above') }} $50k </h6>
                   </div>
                   <div class="price-filter">
                      <div class="price-range-slider">
@@ -98,8 +98,8 @@
                <!-- Price Filter Ends Here --> 
                <!-- Filter Actions Starts Here -->
                <div class="filter-actions">
-                  <button class="cancel-btn"> Cancel </button>
-                  <button class="results-btn"> See Results </button>
+                  <button class="cancel-btn"> {{ __('content.Cancel') }} </button>
+                  <button class="results-btn"> {{ __('content.See Results') }} </button>
                </div>
                <!-- Filter Actions Ends Here -->
             </div>
@@ -114,45 +114,45 @@
                <!-- Property Types Filter Starts Here -->
                <div class="filter-box">
                   <div class="filter-box-head">
-                     <h4> Property Types </h4>
+                     <h4> {{ __('content.Property Types') }} </h4>
                   </div>
                   <div class="checkbox-filter">
-                     <p> <label> <input type="checkbox" > apartment </label> </p>
-                     <p> <label> <input type="checkbox" > bed and breakfast </label> </p>
-                     <p> <label> <input type="checkbox"> boutique hotel </label> </p>
-                     <p> <label> <input type="checkbox"> bungalow </label> </p>
-                     <p> <label> <input type="checkbox">  cabin </label> </p>
-                     <p> <label> <input type="checkbox">  chalet   </label> </p>
-                     <p> <label> <input type="checkbox">  cottage  </label> </p>
-                     <p> <label> <input type="checkbox">  condominium   </label> </p>
-                     <p> <label> <input type="checkbox">  guest suite  </label> </p>
-                     <p> <label> <input type="checkbox">  guesthouse  </label> </p>
-                     <p> <label> <input type="checkbox"> house   </label> </p>
-                     <p> <label> <input type="checkbox">  hotel  </label> </p>
-                     <p> <label> <input type="checkbox">  loft   </label> </p>
-                     <p> <label> <input type="checkbox">  resort    </label> </p>
-                     <p> <label> <input type="checkbox">  serviced apartment  </label> </p>
-                     <p> <label> <input type="checkbox">  townhouse   </label> </p>
-                     <p> <label> <input type="checkbox">  villa  </label> </p>
+                     <p> <label> <input type="checkbox" > {{ __('content.apartment') }} </label> </p>
+                     <p> <label> <input type="checkbox" > {{ __('content.bed and breakfast') }} </label> </p>
+                     <p> <label> <input type="checkbox"> {{ __('content.boutique hotel') }} </label> </p>
+                     <p> <label> <input type="checkbox"> {{ __('content.bungalow') }} </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.cabin') }} </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.chalet') }}   </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.cottage') }}  </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.condominium') }}   </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.guest suite') }}  </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.guesthouse') }}  </label> </p>
+                     <p> <label> <input type="checkbox"> {{ __('content.house') }}   </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.hotel') }}  </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.loft') }}   </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.resort') }}    </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.serviced apartment') }}  </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.townhouse') }}   </label> </p>
+                     <p> <label> <input type="checkbox">  {{ __('content.villa') }}  </label> </p>
                   </div>
                </div>
                <div class="filter-box">
                   <div class="filter-box-head">
-                     <h4> Type of Place </h4>
+                     <h4> {{ __('content.Type of Place') }} </h4>
                   </div>
                   <div class="checkbox-filter">
-                     <p> <label> <input type="checkbox" > Entire Place </label> </p>
-                     <p> <label> <input type="checkbox" > Shared Place </label> </p>
-                     <p> <label> <input type="checkbox"> Private Room </label> </p>
-                     <p> <label> <input type="checkbox"> Shared Room  </label> </p>
-                     <p> <label> <input type="checkbox"> Hotel Room  </label> </p>
+                     <p> <label> <input type="checkbox" > {{ __('content.Entire Place') }} </label> </p>
+                     <p> <label> <input type="checkbox" > {{ __('content.Shared Place') }} </label> </p>
+                     <p> <label> <input type="checkbox"> {{ __('content.Private Room') }} </label> </p>
+                     <p> <label> <input type="checkbox"> {{ __('content.Shared Room') }}  </label> </p>
+                     <p> <label> <input type="checkbox"> {{ __('content.Hotel Room') }}  </label> </p>
                   </div>
                </div>
                <!-- Property Types Filter Ends Here -->
                <!-- Filter Actions Starts Here -->
                <div class="filter-actions">
-                  <button class="cancel-btn"> Cancel </button>
-                  <button class="results-btn"> See Results </button>
+                  <button class="cancel-btn"> {{ __('content.Cancel') }} </button>
+                  <button class="results-btn"> {{ __('content.See Results') }} </button>
                </div>
                <!-- Filter Actions Ends Here -->
             </div>
@@ -167,12 +167,12 @@
                <!-- Calendar Filter Starts Here -->
                <div class="filter-box no-border">
                   <div class="filter-box-head">
-                     <h4> Calendar </h4>
+                     <h4> {{ __('content.Calendar') }} </h4>
                   </div>
                   <div class="checkbox-filter3">
                      <div id="pageContentArea" class="pageSection">
                         <form>
-                           <input type="text" id="txtDateRange" name="txtDateRange" class="inputField shortInputField dateRangeField" placeholder="Select a date-range" data-from-field="txtDateFrom" data-to-field="txtDateTo" />
+                           <input type="text" id="txtDateRange" name="txtDateRange" class="inputField shortInputField dateRangeField" placeholder="{{ __('content.Select a date-range') }}" data-from-field="txtDateFrom" data-to-field="txtDateTo" />
                            <input type="hidden" id="txtDateFrom" value="" />
                            <input type="hidden" id="txtDateTo" value="" />
                         </form>
@@ -183,8 +183,8 @@
             <!-- Calendar Filter Ends Here -->
             <!-- Filter Actions Starts Here -->
             <div class="filter-actions">
-               <button class="cancel-btn"> Cancel </button>
-               <button class="results-btn"> See Results </button>
+               <button class="cancel-btn"> {{ __('content.Cancel') }} </button>
+               <button class="results-btn"> {{ __('content.See Results') }} </button>
             </div>
             <!-- Filter Actions Ends Here -->
          </div>
@@ -198,14 +198,14 @@
                <!-- Guest Filter Starts Here -->
                <div class="filter-box no-border">
                   <div class="filter-box-head">
-                     <h4> Guest </h4>
+                     <h4> {{ __('content.Guest') }}  </h4>
                   </div>
                   <div class="counting-filter">
                      <div class="row">
                         <div class="col-md-6 col-lg-6 col-7">
                            <div class="counting-name">
                               <h5> Adults </h5>
-                              <p> Ages 13 or above </p>
+                              <p> Ages 18 or above </p>
                            </div>
                         </div>
                         <div class="col-md-6 col-lg-6 col-5">
@@ -220,7 +220,7 @@
                         <div class="col-md-6 col-lg-6 col-7">
                            <div class="counting-name">
                               <h5> Children </h5>
-                              <p> Ages 13 or above </p>
+                              <p> Ages 8 or above </p>
                            </div>
                         </div>
                         <div class="col-md-6 col-lg-6 col-5">
@@ -235,7 +235,7 @@
                         <div class="col-md-6 col-lg-6 col-7">
                            <div class="counting-name">
                               <h5> Infants </h5>
-                              <p> Ages 13 or above </p>
+                              <p> Ages 7 or below </p>
                            </div>
                         </div>
                         <div class="col-md-6 col-lg-6 col-5">
@@ -251,8 +251,8 @@
                <!-- Guest Filter Ends Here -->
                <!-- Filter Actions Starts Here -->
                <div class="filter-actions">
-                  <button class="cancel-btn"> Cancel </button>
-                  <button class="results-btn"> See Results </button>
+               <button class="cancel-btn"> {{ __('content.Cancel') }} </button>
+               <button class="results-btn"> {{ __('content.See Results') }} </button>
                </div>
                <!-- Filter Actions Ends Here -->
             </div>

@@ -49,7 +49,7 @@
                                             </div>
                                         </div>
                                     @endif
-                                    @if(Auth::user()->is_verified_phone == 0)
+                                    @if(Auth::user()->is_varified_phone == 0)
                                         <div class="form-row">
                                             <div class="form-group col-md-4">
                                                 <label for="">Phone Verification Code <small>(4 Digits)</small></label>
@@ -64,7 +64,7 @@
                                         </div>
                                     @endif
                                     <br>
-                                    @if(Auth::user()->is_verified_phone == 0 || Auth::user()->is_verified_email == 0)
+                                    @if(Auth::user()->is_varified_phone == 0 || Auth::user()->is_verified_email == 0)
                                         <button type="submit" class="btn btn-primary">Verify</button>
                                     @endif
                                 </form>

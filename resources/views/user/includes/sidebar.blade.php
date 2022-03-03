@@ -9,7 +9,7 @@
             <i class="ti-close"></i>
         </div>
     </div>
-    @if(Auth::user()->is_verified_email == 1)
+    @if(Auth::user()->is_verified_email == 1 && Auth::user()->is_varified_phone == 1)
     @switch(Auth::user()->landlord_type)
    
         @case(0)

@@ -12,9 +12,9 @@
    <div class="container">
       <a href="{{route('collectibles')}}">{{ __('content.Collectibles') }} </a>  
       <i class="fa fa-angle-right"> </i>
-      <a href="{{route('collectibles').'/'.$data->category->name}}"> {{$data->category->name}} </a>
+      <a href="{{route('collectibles').'/'.$data->category->name}}"> {{ __('content.'.$data->category->name) }} </a>
       <i class="fa fa-angle-right"> </i>
-      <a href="{{route('collectibles').'/'.$data->category->name.'/'.$data->subCategory->name}}"> {{$data->subCategory->name}} </a>
+      <a href="{{route('collectibles').'/'.$data->category->name.'/'.$data->subCategory->name}}"> {{ __('content.'.$data->subCategory->name) }} </a>
       <i class="fa fa-angle-right"> </i>
       <a href="javascript:void(0)" disabled> {{$data->title}} </a>
    </div>

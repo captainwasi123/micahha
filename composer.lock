@@ -2058,12 +2058,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Pnlinh\\InfobipSms\\": "src/"
-                },
                 "files": [
                     "src/helpers.php"
-                ]
+                ],
+                "psr-4": {
+                    "Pnlinh\\InfobipSms\\": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [

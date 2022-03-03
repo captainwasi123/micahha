@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('web')->middleware('changeLang')->group(function(){
 
 	// verifiyCode
-
+		Route::get('/testsms', 'authController@testsms');
 	
 
 	//User Authentication'
