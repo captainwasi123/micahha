@@ -83,6 +83,8 @@ return [
         'Fabrics' => '面料',
         'Deco' => '装饰',
 
+        'View Detail' => '查看详情',
+
     //Amenities
         'Alarm System' => '报警系统',
         'Air Con' => '空调',

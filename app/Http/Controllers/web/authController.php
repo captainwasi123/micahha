@@ -97,7 +97,7 @@ Your account verification code:
         $validated = $request->validate([
             'email' => 'required|unique:tbl_user_info|max:255',
             'username' => 'required|unique:tbl_user_info|max:255',
-            'password' => 'required|confirmed|min:6',
+            'password' => 'required|confirmed|min:8',
         ]);
         $codes = User::addUser($data);
         $codes = explode('|', $codes);

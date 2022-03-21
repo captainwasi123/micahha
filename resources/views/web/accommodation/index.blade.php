@@ -204,8 +204,8 @@
                      <div class="row">
                         <div class="col-md-6 col-lg-6 col-7">
                            <div class="counting-name">
-                              <h5> Adults </h5>
-                              <p> Ages 18 or above </p>
+                              <h5> {{ __('content.Adults') }} </h5>
+                              <p> {{ __('content.Ages 13 or above') }} </p>
                            </div>
                         </div>
                         <div class="col-md-6 col-lg-6 col-5">
@@ -219,8 +219,8 @@
                      <div class="row">
                         <div class="col-md-6 col-lg-6 col-7">
                            <div class="counting-name">
-                              <h5> Children </h5>
-                              <p> Ages 8 or above </p>
+                              <h5> {{ __('content.Children') }} </h5>
+                              <p> {{ __('content.Ages 8 or above') }} </p>
                            </div>
                         </div>
                         <div class="col-md-6 col-lg-6 col-5">
@@ -234,8 +234,8 @@
                      <div class="row">
                         <div class="col-md-6 col-lg-6 col-7">
                            <div class="counting-name">
-                              <h5> Infants </h5>
-                              <p> Ages 7 or below </p>
+                              <h5> {{ __('content.Infants') }} </h5>
+                              <p> {{ __('content.Ages 7 or below') }} </p>
                            </div>
                         </div>
                         <div class="col-md-6 col-lg-6 col-5">
@@ -287,7 +287,7 @@
                               @endif
                               <h4> {{'$'.number_format($rendom_list[$x]['price'], 2)}} {{$rendom_list[$x]['unit']}}</h4>
                               <p> {{@$rendom_list[$x]['address']['city']}}, {{@$rendom_list[$x]['address']['state']}}, {{@$rendom_list[$x]['address']['post_code']}}, {{@$rendom_list[$x]['address']['country']['nicename']}} </p>
-                              <a href="{{route('accommodation.details',base64_encode(@$rendom_list[$x]['id']))}}"> View Detail</a>
+                              <a href="{{route('accommodation.details',base64_encode(@$rendom_list[$x]['id']))}}"> {{ __('content.View Detail') }}</a>
                            </div>
                         </div>
                      </div>
@@ -384,7 +384,7 @@
                         @endif
                      <h4> {{'$'.number_format($list_val->price, 2)}} {{$list_val->unit}} </h4>
                         <p>{{@$list_val->address->city}}, {{@$list_val->address->state}}, {{@$list_val->address->post_code}}, {{@$list_val->address->country->nicename}} </p>
-                     <a href="{{route('accommodation.details',base64_encode($list_val->id))}}"> View Detail </a>
+                     <a href="{{route('accommodation.details',base64_encode($list_val->id))}}"> {{ __('content.View Detail') }} </a>
                   </div>
                </div>
             </div>

@@ -75,6 +75,8 @@ return [
         'Fabrics' => '面料',
         'Deco' => '装饰',
 
+        'View Detail' => '查看詳情',
+
     //Amenities
         'Alarm System' => '报警系统',
         'Air Con' => '空调',
@@ -482,11 +484,11 @@ return [
         'No of People' => '人數',
         'Check-In | Check-Out' => '入住 |查看',
         'Adults' => '成年人',
-        'Ages 18 or above' => '18歲或以上',
-        'Children' => '孩子們',
-        'Ages 13 or above' => '13歲或以上',
-        'Infants' => '嬰兒',
-        'Ages 13 or above' => '13歲或以上',
+        'Ages 13 or above' => '13岁或以上',
+        'Children' => '孩子们',
+        'Ages 8 or above' => '8岁或以上',
+        'Infants' => '婴儿',
+        'Ages 7 or below' => '7岁或以下',
         'Submit' => '提交',
         'Enquiry' => '詢問',
         'Name' => '姓名',

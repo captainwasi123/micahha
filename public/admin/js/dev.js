@@ -45,6 +45,18 @@ $(document).ready(function(){
 					}
 				});
 
+			//notification					
+				$.get( host+"/accommodation/listing/pendingCount", function( data ) {
+					if(data != '0'){
+						$('#pendingListing').html('<span class="badge badge-pill badge-info">'+data+'</span>');
+					}
+				});			
+				$.get( host+"/accommodation/listing/paymentDueCount", function( data ) {
+					if(data != '0'){
+						$('#paymentDueListing').html('<span class="badge badge-pill badge-info">'+data+'</span>');
+					}
+				});
+
 		//Collectibles
 			//Categories
 				$(document).on('click', '.editCat', function(){

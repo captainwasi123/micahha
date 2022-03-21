@@ -204,6 +204,9 @@ Route::prefix('payments')->namespace('payments')->group(function(){
 
 								Route::get('approve/{id}', 'accommodationController@approveListing');
 								Route::get('reject/{id}', 'accommodationController@rejectListing');
+
+								Route::get('pendingCount', 'accommodationController@getPendingCount');
+								Route::get('paymentDueCount', 'accommodationController@getPaymentDueCount');
 							});
 
 						//Bookings

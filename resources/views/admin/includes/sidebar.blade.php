@@ -41,8 +41,8 @@
                         <span class="hide-menu"> Listing</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="{{route('admin.accommodation.listing.pending')}}">Pending </a></li>
-                        <li><a href="{{route('admin.accommodation.listing.due')}}">Payment Due</a></li>
+                        <li><a href="{{route('admin.accommodation.listing.pending')}}">Pending <label id="pendingListing"></label></a></li>
+                        <li><a href="{{route('admin.accommodation.listing.due')}}">Payment Due <label id="paymentDueListing"></label></a></li>
                         <li><a href="{{route('admin.accommodation.listing.published')}}">Published</a></li>
                         <li><a href="{{route('admin.accommodation.listing.rejected')}}">Rejected</a></li>
                     </ul>

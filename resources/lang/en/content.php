@@ -81,6 +81,8 @@ return [
         'Fabrics' => 'Fabrics',
         'Deco' => 'Deco',
 
+        'View Detail' => 'View Detail',
+
     //Amenities
         'Alarm System' => 'Alarm System',
         'Air Con' => 'Air Con',

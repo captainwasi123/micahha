@@ -66,6 +66,17 @@ class accommodationController extends Controller
 			return redirect()->back()->with('success', 'Lisitng Rejected.');
 		}
 
+		function getPendingCount(){
+			$data = listing::where('status', '1')->orderBy('id', 'desc')->count();
+
+			return $data;
+		}
+		function getPaymentDueCount(){
+			$data = listing::where('status', '4')->orderBy('id', 'desc')->count();
+
+			return $data;
+		}
+
 
 	//Bookings
 
