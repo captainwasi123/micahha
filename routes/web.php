@@ -28,6 +28,7 @@ Route::namespace('web')->middleware('changeLang')->group(function(){
 		Route::get('/register', 'authController@register')->name('user.register');
 		Route::get('/register/refer/{id}', 'authController@registerRefer')->name('user.register.refer');
 		Route::get('/username/verify/{val}', 'authController@usernameVerify');
+		Route::get('/email/verify/{val}', 'authController@emailVerify');
 
 		// forget password
 

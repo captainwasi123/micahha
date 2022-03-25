@@ -35,8 +35,8 @@
                </div>
                <div class="col-md-12 col-lg-12 col-12 col-sm-12">
                   <div class="form-field1">
-                     <p>{{ __('content.Email Address *') }} </p>
-                     <input type="email" name="email" required="">
+                     <p>{{ __('content.Email Address *') }} <span id="email_error"></span></p>
+                     <input type="email" name="email" id="email" autocomplete="false" required="">
                   </div>
                </div>
                <div class="col-md-4 col-lg-4 col-12 col-sm-12">
@@ -64,16 +64,23 @@
                      <span id="phonecode_span"></span>
                   </div>
                </div>
-               <div class="col-md-3 col-lg-3 col-12 col-sm-12">
-                  <div class="form-field1">
-                     <p>{{ __('content.New password *') }} </p>
-                     <input type="password" name="password" required="">
+               <div class="col-md-6">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-field1" style="margin-bottom: 3px;">
+                           <p>{{ __('content.New password *') }} </p>
+                           <input type="password" name="password" id="passwordField" required="">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-field1" style="margin-bottom: 3px;">
+                           <p>{{ __('content.Confirm New Password *') }} </p>
+                           <input type="password" name="password_confirmation" required="">
+                        </div>
+                     </div>
                   </div>
-               </div>
-               <div class="col-md-3 col-lg-3 col-12 col-sm-12">
-                  <div class="form-field1">
-                     <p>{{ __('content.Confirm New Password *') }} </p>
-                     <input type="password" name="password_confirmation" required="">
+                  <div class="progress">
+                     
                   </div>
                </div>
                <div class="col-md-6 col-lg-6 col-12 col-sm-12">
@@ -81,13 +88,8 @@
                      <p>{{ __('content.Newsletter Subscription') }} </p>
                      <h6 class="checkbox1"> <input type="checkbox" name="newsletter">{{ __('content.I agree to receive the Micahha newsletter.') }}  </h6>
                   </div>
-               </div>
-               
-               <div class="col-md-6 col-lg-6 col-12 col-sm-12">
-                  
-               </div>
-               <div class="col-md-6 col-lg-6 col-12 col-sm-12 m-t-20">
                   <div class="form-field1">
+                  <br><br>
                      <button class="custom-btn1">{{ __('content.Create an account') }} </button>
                      <a href="{{route('user.login')}}" class="custom-btn2">{{ __('content.Back to Login') }} </a>
                   </div>

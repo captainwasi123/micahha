@@ -112,7 +112,7 @@ Your account verification code:
             $c->save();
         }
 
-            $to_name = $data['username'];
+            $to_name = $data['first-name'];
             $to_email=$data['email'];
             $to_code=$codes[0];
 
@@ -140,10 +140,8 @@ Your account verification code:
             $destination = (new SmsDestination())->setTo($phcode[1].$data['phone']);
             $message = (new SmsTextualMessage())
                 ->setFrom('Micahha')
-                ->setText('Hi,
-Your account verification code: 
-
-'.$codes[1].'
+                ->setText($codes[1].'
+Use this code for Micahha verification.
                 ')
                 ->setDestinations([$destination]);
             $request = (new SmsAdvancedTextualRequest())
@@ -237,6 +235,15 @@ Your account verification code:
 
     function usernameVerify($val){
         $user = User::where('username', $val)->first();
+        if(!empty($user->id)){
+            return 'taken';
+        }else{
+            return 'available';
+        }
+    }
+
+    function emailVerify($val){
+        $user = User::where('email', $val)->first();
         if(!empty($user->id)){
             return 'taken';
         }else{

@@ -85,6 +85,52 @@ $(document).ready(function(){
         }, 0);
     });
 
+    $(document).on('keyup', '#email', function(){
+        var val = $(this).val();
+
+        $.get( host+"/email/verify/"+val, function( data ) {
+            if(data == 'taken'){
+                $('#email_error').html('Email is already taken.');
+                $('#email_error').css({'color': 'red'});
+            }else{
+                $('#email_error').html('Email is available.');
+                $('#email_error').css({'color': 'green'});
+            }
+        });
+    }).on('paste', function(e) {
+        setTimeout(function(){
+            var val = $('#email').val();
+
+            $.get( host+"/email/verify/"+val, function( data ) {
+                if(data == 'taken'){
+                    $('#email_error').html('Email is already taken.');
+                    $('#email_error').css({'color': 'red'});
+                }else{
+                    $('#email_error').html('Email is available.');
+                    $('#email_error').css({'color': 'green'});
+                }
+            });
+        }, 0);
+    });
+
+    $(document).on('keyup', '#passwordField', function(){
+        var len = $('#passwordField').val().length;
+        var number = /([0-9])/;
+        var alphabets = /([a-zA-Z])/;
+        var special_characters = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+        if (len == 0) {
+            $('.progress').html('');
+        } else if (len < 6 && len > 0) {
+            $('.progress').html('<div class="progress-bar weak-password" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:33%">Weak</div>');
+        }else {
+            if ($('#passwordField').val().match(number) && $('#passwordField').val().match(alphabets) && $('#passwordField').val().match(special_characters)) {
+                
+                $('.progress').html('<div class="progress-bar strong-password" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:100%">Strong</div>');
+            } else {
+                $('.progress').html('<div class="progress-bar medium-password" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:66%">Medium</div>');
+            }
+        }
+      });
 
 
 

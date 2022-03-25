@@ -120,6 +120,34 @@
     font-size: 12px;
     margin-top: 12px;
 }
+#email_error {
+    font-family: sans-serif;
+    font-size: 12px;
+    margin-top: 12px;
+}
+#password-strength-status {
+    padding: 5px 10px;
+    color: #FFFFFF;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+.medium-password {
+    background-color: #ff7600;
+    font-weight: 600;
+    color: #000000b5;
+}
+
+.weak-password {
+    background-color: red;
+    font-weight: 700;
+}
+
+.strong-password {
+    background-color: #29a500;
+    font-weight: 600;
+    color: #ffffff;;
+}
 .banner-video {
     overflow: hidden !important;
 }
